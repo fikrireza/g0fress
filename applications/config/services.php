@@ -38,7 +38,7 @@ return [
     'facebook' => [
       'client_id' => '180780819104546', // configure with your app id
       'client_secret' => '217bc574afae3a1eb3768846ad3df464', // your app secret
-      'redirect' => 'http://localhost/go-fresh/public/callback',
+      'redirect' => 'http://localhost/g0fresh/callback',
     ],
 
 ];
