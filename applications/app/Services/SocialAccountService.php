@@ -32,6 +32,9 @@ class SocialAccountService {
           'email' => $providerUser->getEmail(),
           'name'  => $providerUser->getName(),
           'avatar'  => $providerUser->getAvatar(),
+          // 3 adalah user
+          'role_id' => 3,
+          'seen' => 1,
         ]);
       }
 
