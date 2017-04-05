@@ -21,3 +21,5 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('redirect', 'SocialAuthController@redirectFB')->name('redirectFB');
 Route::get('/callback', 'SocialAuthController@callBackFB')->name('callBackFB');
+
+Route::get('analytics', 'AnalyticsFBController@index')->name('analytics.index');
