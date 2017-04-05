@@ -9,8 +9,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+	<link rel="stylesheet" type="text/css" href="{{ asset('plugin/bootstrap-3.3.7/css/bootstrap.min.css') }}" />
 	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css ">
-	<link rel="stylesheet" type="text/css" href="{{ asset('plugin/bootstrap-3.3.7/css/bootstrap.css') }}" />
 	@yield('style')
 
 </head>
@@ -26,30 +26,30 @@
 
 	<style type="text/css">
 		.background-rainbow{
-			width: 100%; 
-			height: 100vh; 
-			position: fixed; 
-			top: 0; 
-			left: 0; 
-			z-index: -1; 
-			background-image: url('{{ asset('picture/firstCampaign/background-rainbow.png') }}'); 
-			background-size: cover; 
+			width: 100%;
+			height: 100vh;
+			position: fixed;
+			top: 0;
+			left: 0;
+			z-index: -1;
+			background-image: url('{{ asset('picture/firstCampaign/background-rainbow.png') }}');
+			background-size: cover;
 			background-repeat: no-repeat;
 		}
 		.background-rainbow .background-left{
-			position: fixed; 
-			bottom: -5px; 
+			position: fixed;
+			bottom: -5px;
 			left: 0;
 		}
 		.background-rainbow .background-left img{
 			width: 580px;
 		}
 		.background-rainbow .background-right{
-			position: fixed; 
-			bottom: -5px; 
+			position: fixed;
+			bottom: -5px;
 			right: 0;
 		}
-		.background-rainbow .background-right img{			
+		.background-rainbow .background-right img{
 			width: 365px;
 		}
 	</style>

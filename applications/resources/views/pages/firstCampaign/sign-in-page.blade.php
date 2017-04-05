@@ -5,27 +5,27 @@
 
 <style type="text/css">
 .wrapper-content{
-	position: relative; 
-	width: 100%; 
-	height: 100vh; 
+	position: relative;
+	width: 100%;
+	height: 100vh;
 	display: table;
 }
 .wrapper-content .middle-window{
-	width: 100%; 
-	height: 100vh; 
-	display: table-cell; 
+	width: 100%;
+	height: 100vh;
+	display: table-cell;
 	vertical-align: middle;
 }
 .sign-in-wrapper{
-	float: right; 
-	width: 400px; 
+	float: right;
+	width: 400px;
 	background-color: rgb(212,29,125);
 	padding: 20px 10px;
 	box-shadow: -7px 10px rgb(255,238,64);
 }
 .sign-in-wrapper .sign-in-content{
 	padding-left: 5px;
-	width: 350px; 
+	width: 350px;
 	text-align: center;
 }
 .sign-in-wrapper .sign-in-content h1{
@@ -37,7 +37,7 @@
 	margin-top: 20px;
 	margin-left: auto;
 	margin-right: auto;
-	width: 200px; 
+	width: 200px;
 }
 </style>
 @endsection
@@ -49,7 +49,7 @@
 			<div class="sign-in-content">
 				<h1>Hai, selamat datang!</h1>
 				<h1>ayo disign-in dulu!</h1>
-				<a class="btn btn-block btn-social btn-facebook" href="{{ route('first-campaign-pertanyaan-dari-kami') }}">
+				<a class="btn btn-block btn-social btn-facebook" href="{{ route('redirectFB') }}">
 		        	<span class="fa fa-facebook"></span> Sign in with Facebook
 		        </a>
 			</div>

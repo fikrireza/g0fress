@@ -5,13 +5,13 @@
 
 <style type="text/css">
 .question-wrapper{
-	width: 60%; 
+	width: 60%;
 	height: 100vh;
 	margin: 0 auto;
 	background-color: rgb(86,187,239);
 }
 .question-wrapper .person-data-wrapper{
-	background-color: rgb(121,206,235); 
+	background-color: rgb(121,206,235);
 	padding: 20px 40px;
 }
 .question-wrapper .person-data-wrapper h1{
@@ -75,7 +75,7 @@
     margin-right: 5px;
 }
 .question-wrapper .question-content .question .que-4-colm{
-	width: 25%; 
+	width: 25%;
 	padding-right: 20px;
 	float: left;
 }
@@ -95,60 +95,59 @@
 }
 .question-wrapper .question-content .for-btn .btn-costum:hover{
 	border: 2px solid rgba(255,255,255,.6);
-    color: rgba(255,255,255,.6);	
+    color: rgba(255,255,255,.6);
 }
 </style>
 @endsection
 
 @section('content')
 <div class="question-wrapper">
-	<form action="{{ route('first-campaign-terimakasih') }}">
+	<form action="{{ route('post.first-campaign-pertanyaan-dari-kami') }}" method="POST" >
+		{{ csrf_field() }}
 		<div class="person-data-wrapper">
 			<h1>Detail Anda</h1>
 			<div class="row">
-				<div class="col col-md-2">
-					Nama
-				</div>
+				<div class="col col-md-2"> Nama </div>
 				<div class="col col-md-4">
 					<div class="input-group">
-						<input type="text" class="form-control">
+						<input type="text" name="nama" class="form-control" value="{{ $getProfil->name}}" readonly="">
+						@if($errors->has('nama'))
 						<span class="input-group-addon">
 							<i class="fa fa-exclamation" aria-hidden="true"></i>
 						</span>
+						@endif
 					</div>
 				</div>
-				<div class="col col-md-2">
-					No Hp
-				</div>
+				<div class="col col-md-2"> No Hp </div>
 				<div class="col col-md-4">
 					<div class="input-group">
-						<input type="text" class="form-control">
+						<input type="text" name="hp" class="form-control" value="{{ old('hp') }}">
+						@if($errors->has('hp'))
 						<span class="input-group-addon">
 							<i class="fa fa-exclamation" aria-hidden="true"></i>
 						</span>
+						@endif
 					</div>
 				</div>
-				<div class="col col-md-2">
-					Email
-				</div>
+				<div class="col col-md-2"> Email </div>
 				<div class="col col-md-4">
 					<div class="input-group">
-						<input type="text" class="form-control">
+						<input type="email" name="email" class="form-control" value="{{ $getProfil->email }}" readonly="">
+						@if($errors->has('email'))
 						<span class="input-group-addon">
 							<i class="fa fa-exclamation" aria-hidden="true"></i>
 						</span>
+						@endif
 					</div>
 				</div>
-				<div class="col col-md-2">
-					Kota
-				</div>
+				<div class="col col-md-2"> Kota </div>
 				<div class="col col-md-4">
 					<div class="input-group">
-						<select class="form-control select2">
-							<option value="Dki Jakarta">Dki Jakarta</option>
-							<option value="Bekasi">Bekasi</option>
-							<option value="Depok">Depok</option>
-							<option value="Tangerang">Tangerang</option>
+						<select name="kota" class="form-control select2">
+							<option value="--Pilih--">--Pilih--</option>
+							@foreach ($getKota as $key)
+							<option value="{{ $key->id }}" @if($key->id == old('kota')) selected @endif>{{ $key->nama_kota }}</option>
+							@endforeach
 						</select>
 					</div>
 				</div>
@@ -156,94 +155,94 @@
 		</div>
 		<div class="question-content">
 			<h1>Pertanyaan dari kami</h1>
-			
-			<div class="question" id="question-1">
+
+			<div class="question" id="pertanyaan_1">
 				<p>1) Situasi apa yang membuat kamu bau mulut?</p>
 				<label>
-					<input type="radio" name="question-1" value="Setelah Makan">Setelah Makan
+					<input type="radio" name="pertanyaan_1" value="Setelah Makan">Setelah Makan
 				</label>
 				<label>
-					<input type="radio" name="question-1" value="Setelah Minum Kopi">Setelah Minum Kopi
+					<input type="radio" name="pertanyaan_1" value="Setelah Minum Kopi">Setelah Minum Kopi
 				</label>
 				<label>
-					<input type="radio" name="question-1" value="Setelah Merokok">Setelah Merokok
+					<input type="radio" name="pertanyaan_1" value="Setelah Merokok">Setelah Merokok
 				</label>
 			</div>
 
-			<div class="question" id="question-2">
+			<div class="question" id="pertanyaan_2">
 				<p>2) Bagaimana cara kamu mengatasi bau mulut?</p>
 				<label>
-					<input type="radio" name="question-2" value="Sikat Gigi">Sikat Gigi
+					<input type="radio" name="pertanyaan_2" value="Sikat Gigi">Sikat Gigi
 				</label>
 				<label>
-					<input type="radio" name="question-2" value="Berkumur">Berkumur
+					<input type="radio" name="pertanyaan_2" value="Berkumur">Berkumur
 				</label>
 				<label>
-					<input type="radio" name="question-2" value="Makan Perment">Makan Perment
+					<input type="radio" name="pertanyaan_2" value="Makan Perment">Makan Perment
 				</label>
 				<label>
-					<input type="radio" name="question-2" value="Berobat ke dokter">Berobat ke dokter
+					<input type="radio" name="pertanyaan_2" value="Berobat ke dokter">Berobat ke dokter
 				</label>
 				<label>
-					<input type="radio" name="question-2" value="Berobat sendiri sesuai rekomendasi temen">Berobat sendiri sesuai rekomendasi temen
+					<input type="radio" name="pertanyaan_2" value="Berobat sendiri sesuai rekomendasi temen">Berobat sendiri sesuai rekomendasi temen
 				</label>
-			</div>
-			
-			<div class="question" id="question-3">
-				<p>3) Sudah pernah coba Gofress?</p>
-				<input type="radio" name="question-3" value="Ya"><label>Ya</label>
-				<input type="radio" name="question-3" value="Belum"><label>Belum</label>
 			</div>
 
-			<div class="question" id="question-4">
+			<div class="question" id="pertanyaan_3">
+				<p>3) Sudah pernah coba Gofress?</p>
+				<input type="radio" name="pertanyaan_3" value="Ya"><label>Ya</label>
+				<input type="radio" name="pertanyaan_3" value="Belum"><label>Belum</label>
+			</div>
+
+			<div class="question" id="pertanyaan_4">
 				<p>4) Tahukah kamu di mana Gofress bisa dibeli?</p>
 				<div class="que-4-colm">
 					<label>
-						<input type="checkbox" name="question-4" value="Indomaret">Indomaret
+						<input type="checkbox" name="pertanyaan_4[]" value="Indomaret">Indomaret
 					</label>
 					<label>
-						<input type="checkbox" name="question-4" value="Superindo">Superindo
+						<input type="checkbox" name="pertanyaan_4[]" value="Superindo">Superindo
 					</label>
 					<label>
-						<input type="checkbox" name="question-4" value="Hero">Hero
-					</label>	
-				</div>
-				<div class="que-4-colm">
-					<label>
-						<input type="checkbox" name="question-4" value="Alfamart">Alfamart
-					</label>
-					<label>
-						<input type="checkbox" name="question-4" value="Alfamidi">Alfamidi
-					</label>
-					<label>
-						<input type="checkbox" name="question-4" value="Century">Century
+						<input type="checkbox" name="pertanyaan_4[]" value="Hero">Hero
 					</label>
 				</div>
 				<div class="que-4-colm">
 					<label>
-						<input type="checkbox" name="question-4" value="Giant">Giant
+						<input type="checkbox" name="pertanyaan_4[]" value="Alfamart">Alfamart
 					</label>
 					<label>
-						<input type="checkbox" name="question-4" value="Circle K">Circle K
+						<input type="checkbox" name="pertanyaan_4[]" value="Alfamidi">Alfamidi
 					</label>
 					<label>
-						<input type="checkbox" name="question-4" value="Guradian">Guradian
+						<input type="checkbox" name="pertanyaan_4[]" value="Century">Century
 					</label>
 				</div>
 				<div class="que-4-colm">
 					<label>
-						<input type="checkbox" name="question-4" value="Hypermart">Hypermart
+						<input type="checkbox" name="pertanyaan_4[]" value="Giant">Giant
 					</label>
 					<label>
-						<input type="checkbox" name="question-4" value="Yogya">Yogya
+						<input type="checkbox" name="pertanyaan_4[]" value="Circle K">Circle K
+					</label>
+					<label>
+						<input type="checkbox" name="pertanyaan_4[]" value="Guradian">Guradian
+					</label>
+				</div>
+				<div class="que-4-colm">
+					<label>
+						<input type="checkbox" name="pertanyaan_4[]" value="Hypermart">Hypermart
+					</label>
+					<label>
+						<input type="checkbox" name="pertanyaan_4[]" value="Yogya">Yogya
 					</label>
 				</div>
 				<div class="clearfix"></div>
 			</div>
 
 			<div class="for-btn">
-				<input type="reset" name="Reset" class="btn-costum">
-				<input type="Submit" name="Submit" class="btn-costum">
+				<input type="reset" name="Reset" class="btn-costum" value="Reset">
+				<input type="Submit" name="Submit" class="btn-costum" value="Submit">
 			</div>
 		</div>
 	</form>

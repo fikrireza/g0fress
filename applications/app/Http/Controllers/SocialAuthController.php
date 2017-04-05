@@ -20,13 +20,8 @@ class SocialAuthController extends Controller
     {
       $user = $service->createOrGetUser(Socialite::driver('facebook')->user());
 
-      $token = $user->getUserByToken;
-      $tokenSecret = $user->tokenSecret;
-
-      dd($token);
-
       auth()->login($user);
 
-      return redirect()->to('/home');
+      return redirect()->to('/hello/pertanyaan-dari-kami#');
     }
 }

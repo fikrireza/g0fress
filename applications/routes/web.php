@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('redirect', 'SocialAuthController@redirectFB')->name('redirectFB');
+Route::get('loginCampaign', 'SocialAuthController@redirectFB')->name('redirectFB');
 Route::get('/callback', 'SocialAuthController@callBackFB')->name('callBackFB');
 
 Route::get('analytics', 'AnalyticsFBController@index')->name('analytics.index');
@@ -29,6 +29,7 @@ Route::get('analytics', 'AnalyticsFBController@index')->name('analytics.index');
 
 	Route::get('/hello', 'FirstCampaignController@signInPage')->name('first-campaign-sign-in');
 	Route::get('/hello/pertanyaan-dari-kami', 'FirstCampaignController@pertanyaanPage')->name('first-campaign-pertanyaan-dari-kami');
-	Route::get('/hello/hello/terimakasih', 'FirstCampaignController@thanksPage')->name('first-campaign-terimakasih');
+  Route::post('/hello/pertanyaan-dari-kami', 'FirstCampaignController@pertanyaanPageStore')->name('post.first-campaign-pertanyaan-dari-kami');
+	Route::get('/hello/terimakasih', 'FirstCampaignController@thanksPage')->name('first-campaign-terimakasih');
 
 /* end first campaign : kuisioner hello go fress */
