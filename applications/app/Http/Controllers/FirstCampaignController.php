@@ -99,7 +99,16 @@ class FirstCampaignController extends Controller
 
 		public function thanksPage()
     {
-        return view('pages.firstCampaign.terimakasih');
+				$cekEmail = Campaign1::join('master_kupon', 'master_kupon.id', '=', 'campaign_1.kupon_id')
+															->select('master_kupon.kupon')
+															->where('campaign_1.email', '=', Auth::user()->email)->first();
+
+				if(!$cekEmail)
+				{
+					return redirect()->route('first-campaign-sign-in');
+				}
+
+        return view('pages.firstCampaign.terimakasih', compact('cekEmail'));
     }
 
 
