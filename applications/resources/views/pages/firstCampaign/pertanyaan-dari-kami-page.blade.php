@@ -102,6 +102,34 @@
 	border: 2px solid rgba(255,255,255,.6);
     color: rgba(255,255,255,.6);
 }
+@media (max-width: 480px) {
+	/* update layout */
+	.background-rainbow{
+		height: 10vh !important;
+		background-position: 100% 100% !important;
+	}
+	.background-rainbow .background-left img{
+		display: none;
+	}
+	.background-rainbow .background-right img{
+		width: 160px !important;
+	}
+	/* end update layout */
+
+	.question-wrapper{
+		width: 100%;
+	}
+	.question-wrapper .question-content .question .que-4-colm{
+		width: 50%;
+		padding-right: 20px;
+	}
+	input[type="text"]{
+		width: 100%;
+		box-sizing: border-box;
+	     -webkit-box-sizing:border-box;
+	     -moz-box-sizing: border-box;
+	}
+}
 </style>
 @endsection
 
@@ -112,8 +140,8 @@
 		<div class="person-data-wrapper">
 			<h1>Detail Anda</h1>
 			<div class="row">
-				<div class="col col-md-2"> Nama </div>
-				<div class="col col-md-4">
+				<div class="col col-md-2 col-sm-3 col-xs-3"> Nama </div>
+				<div class="col col-md-4 col-sm-9 col-xs-9">
 					<div class="input-group">
 						<input type="text" name="nama" class="form-control" value="{{ $getProfil->name}}" readonly="">
 						@if($errors->has('nama'))
@@ -123,8 +151,8 @@
 						@endif
 					</div>
 				</div>
-				<div class="col col-md-2"> No Hp </div>
-				<div class="col col-md-4">
+				<div class="col col-md-2 col-sm-3 col-xs-3"> No Hp </div>
+				<div class="col col-md-4 col-sm-9 col-xs-9">
 					<div class="input-group">
 						<input type="text" name="hp" class="form-control" value="{{ old('hp') }}">
 						@if($errors->has('hp'))
@@ -134,8 +162,8 @@
 						@endif
 					</div>
 				</div>
-				<div class="col col-md-2"> Email </div>
-				<div class="col col-md-4">
+				<div class="col col-md-2 col-sm-3 col-xs-3"> Email </div>
+				<div class="col col-md-4 col-sm-9 col-xs-9">
 					<div class="input-group">
 						<input type="email" name="email" class="form-control" value="{{ $getProfil->email }}" readonly="">
 						@if($errors->has('email'))
@@ -145,8 +173,8 @@
 						@endif
 					</div>
 				</div>
-				<div class="col col-md-2"> Kota </div>
-				<div class="col col-md-4">
+				<div class="col col-md-2 col-sm-3 col-xs-3"> Kota </div>
+				<div class="col col-md-4 col-sm-9 col-xs-9">
 					<div class="input-group">
 						<select name="kota" class="form-control select2">
 							<option value="--Pilih--">--Pilih--</option>

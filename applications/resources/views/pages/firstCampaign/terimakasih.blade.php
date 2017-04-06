@@ -45,6 +45,9 @@
 .thanks-wrapper .thanks-body .kupon-wrapper .kupon-code label{
 	margin: 0;
 }
+.thanks-wrapper .thanks-body .for-mobile{
+	display: none;
+}
 .thanks-wrapper .thanks-body .link-wrapper label{
 	color: black;
 	font-size: 12px;
@@ -57,6 +60,46 @@
 }
 .thanks-wrapper .thanks-body .link-wrapper label a img{
 	width: 15px;
+}
+
+@media (max-width: 480px) {
+	/* update layout */
+	.background-rainbow{
+		display: none;
+	}
+	.background-rainbow .background-left img{
+		display: none;
+	}
+	.background-rainbow .background-right img{
+		display: none;
+	}
+	/* end update layout */
+
+	.thanks-wrapper{
+		width: 100%;
+	}
+	.thanks-wrapper .thanks-head{
+		padding: 5px 0px;
+	}
+	.thanks-wrapper .thanks-head h1{
+		font-size: 50px;
+	}
+	.thanks-wrapper .thanks-body{
+		width: 80%;
+	}
+	.thanks-wrapper .thanks-body .kupon-wrapper .kupon-code{
+		bottom: 48px;
+	}
+	.thanks-wrapper .thanks-body .for-mobile{
+		display: block;
+	}
+	.thanks-wrapper .thanks-body .link-wrapper{
+		text-align: center;
+	}
+	.thanks-wrapper .thanks-body .link-wrapper .link-2,
+	.thanks-wrapper .thanks-body .link-wrapper .link-3{
+		display: none;
+	}
 }
 </style>
 @endsection
@@ -75,21 +118,25 @@
 				<label>123456789012</label>
 			</div>
 		</div>
+
+		<div class="for-mobile">
+			<label>Tekan gambar diatas dan simpan gambarnya di handphonemu.</label>
+		</div>
 		
 		<div class="link-wrapper">
-			<label>
+			<label class="link-1">
 				<a href="">
 					<img src="{{ asset('picture\firstCampaign\icon-Ketentuan-&-Persyaratan.png') }}">
 					Ketentuan & Persyaratan
 				</a>
 			</label>
-			<label>
+			<label class="link-2">
 				<a href="">
 					<img src="{{ asset('picture\firstCampaign\icon-Simpan-Gambar.png') }}">
 					Simpan Gambar
 				</a>
 			</label>
-			<label>
+			<label class="link-3">
 				<a href="">
 					<img src="{{ asset('picture\firstCampaign\icon-Print-Gambar.png') }}">
 					Print Gambar

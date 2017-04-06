@@ -56,7 +56,6 @@
 		@media (max-width: 480px) {
 			.background-rainbow{
 				position: relative;
-				/*background-position: 100% 100%;*/
 				width: 100%;
 				height: 50vh;
 			}
@@ -64,13 +63,13 @@
 				position: absolute;
 			}
 			.background-rainbow .background-left img{
-				width: 20px;
+				width: 320px;
 			}
 			.background-rainbow .background-right{
 				position: absolute;
 			}
 			.background-rainbow .background-right img{
-				width: 20px;
+				width: 200px;
 			}
 
 		}
