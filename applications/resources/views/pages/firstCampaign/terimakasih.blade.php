@@ -26,9 +26,24 @@
 .thanks-wrapper .thanks-body label .logo-alfamart{
 	width: 120px;
 }
-.thanks-wrapper .thanks-body .kupon{
+.thanks-wrapper .thanks-body .kupon-wrapper{
+	position: relative; 
+	margin-top: 10px;
+	margin-bottom: -10px;
+	padding: 0;
+}
+.thanks-wrapper .thanks-body .kupon-wrapper .kupon-image{
 	width: 100%;
-	margin: 10px auto;
+}
+.thanks-wrapper .thanks-body .kupon-wrapper .kupon-code{
+	position: relative; 
+	bottom: 58px; 
+	width: 50%; 
+	margin: 0 auto;
+	text-align: center; 
+}
+.thanks-wrapper .thanks-body .kupon-wrapper .kupon-code label{
+	margin: 0;
 }
 .thanks-wrapper .thanks-body .link-wrapper label{
 	color: black;
@@ -53,7 +68,14 @@
 	</div>
 	<div class="thanks-body">
 		<label>Sebagai apresiasi kami, Anda berhak untuk mendapatkan 1 kemasan Gofress gratis dari kami.<br>Tunjukkan kupon dibawah ini di <img class="logo-alfamart" src="{{ asset('picture\firstCampaign\logo-alfamart.png') }}"></label>
-		<img class="kupon" src="{{ asset('picture\firstCampaign\kupon.png') }}">
+		
+		<div class="kupon-wrapper">
+			<img class="kupon-image" src="{{ asset('picture\firstCampaign\kupon.png') }}">
+			<div class="kupon-code">
+				<label>123456789012</label>
+			</div>
+		</div>
+		
 		<div class="link-wrapper">
 			<label>
 				<a href="">
