@@ -11,6 +11,7 @@
 
 	<link rel="stylesheet" type="text/css" href="{{ asset('plugin/bootstrap-3.3.7/css/bootstrap.min.css') }}" />
 	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css ">
+	<link rel="stylesheet" type="text/css" href="{{ asset('font/1-font-family.css') }}" />
 	@yield('style')
 
 </head>

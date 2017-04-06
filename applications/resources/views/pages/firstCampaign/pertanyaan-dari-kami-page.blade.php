@@ -17,9 +17,12 @@
 .question-wrapper .person-data-wrapper h1{
 	margin: 0;
 	margin-bottom: 10px;
+    font-family: 'Gotham';
+    font-weight: bold;
 }
 .question-wrapper .person-data-wrapper .row .col{
 	margin-bottom: 10px;
+    font-family: 'Gotham-Book';
 }
 .question-wrapper .person-data-wrapper .row .col .input-group .form-control{
 	border-radius: 0;
@@ -60,18 +63,27 @@
 .question-wrapper .question-content h1{
 	margin: 0;
 	margin-bottom: 10px;
+    font-family: 'Gotham';
+    font-weight: bold;
 }
 .question-wrapper .question-content .question{
-	margin-bottom: 10px;
+	margin-bottom: 15px;
 }
 .question-wrapper .question-content .question label{
 	margin-right: 10px;
 	margin-bottom: 0px;
 	cursor: pointer;
+    font-family: 'Gotham';
+	font-weight: bold;
+}
+.question-wrapper .question-content .question p{
+    font-family: 'Gotham-Book';
 }
 .question-wrapper .question-content .question p .warning{
 	margin-left: 10px;
 	color: red;
+    font-family: 'Gotham';
+    font-weight: bold;
 }
 .question-wrapper .question-content .question input[type="radio"],
 .question-wrapper .question-content .question input[type="checkbox"]{
@@ -96,6 +108,8 @@
     padding: 5px 20px;
     border: 2px solid rgb(255,255,255);
     color: rgb(255,255,255);
+    font-family: 'Gotham';
+    font-weight: bold;
     transition: all .51s;
 }
 .question-wrapper .question-content .for-btn .btn-costum:hover{
@@ -118,6 +132,9 @@
 
 	.question-wrapper{
 		width: 100%;
+	}
+	.question-wrapper .question-content #pertanyaan_2 label{
+		display: block;
 	}
 	.question-wrapper .question-content .question .que-4-colm{
 		width: 50%;
@@ -205,13 +222,13 @@
 			<div class="question" id="pertanyaan_2">
 				<p>2) Bagaimana cara kamu mengatasi bau mulut? @if($errors->has('pertanyaan_2'))<label class="warning">*Pilih Satu!</label>@endif</p>
 				<label>
-					<input type="radio" name="pertanyaan_2" value="Sikat Gigi" @if(old('pertanyaan_2') == 'Sikat Gigi') checked="checked" @endif>Sikat Gigi
+					<input type="radio" name="pertanyaan_2" value="Sikat Gigi" @if(old('pertanyaan_2') == 'Sikat Gigi') checked="checked" @endif>Sikat gigi
 				</label>
 				<label>
 					<input type="radio" name="pertanyaan_2" value="Berkumur" @if(old('pertanyaan_2') == 'Berkumur') checked="checked" @endif>Berkumur
 				</label>
 				<label>
-					<input type="radio" name="pertanyaan_2" value="Makan Perment" @if(old('pertanyaan_2') == 'Makan Perment') checked="checked" @endif>Makan Perment
+					<input type="radio" name="pertanyaan_2" value="Makan Permen" @if(old('pertanyaan_2') == 'Makan Perment') checked="checked" @endif>Makan permen
 				</label>
 				<label>
 					<input type="radio" name="pertanyaan_2" value="Berobat ke dokter" @if(old('pertanyaan_2') == 'Berobat ke dokter') checked="checked" @endif>Berobat ke dokter
@@ -223,8 +240,8 @@
 
 			<div class="question" id="pertanyaan_3">
 				<p>3) Sudah pernah coba Gofress? @if($errors->has('pertanyaan_3'))<label class="warning">*Pilih Satu!</label>@endif</p>
-				<input type="radio" name="pertanyaan_3" value="Ya" @if(old('pertanyaan_3') == 'Ya') checked="checked" @endif><label>Ya</label>
-				<input type="radio" name="pertanyaan_3" value="Belum" @if(old('pertanyaan_3') == 'Belum') checked="checked" @endif><label>Belum</label>
+				<label><input type="radio" name="pertanyaan_3" value="Ya" @if(old('pertanyaan_3') == 'Ya') checked="checked" @endif>Ya</label>
+				<label><input type="radio" name="pertanyaan_3" value="Belum" @if(old('pertanyaan_3') == 'Belum') checked="checked" @endif>Belum</label>
 			</div>
 
 			<div class="question" id="pertanyaan_4">

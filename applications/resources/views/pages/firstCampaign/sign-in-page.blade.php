@@ -32,6 +32,8 @@
 	color: white;
 	font-size: 30px;
 	margin: 0px;
+    font-family: 'Gotham';
+    font-weight: bold;
 }
 .sign-in-wrapper .sign-in-content .btn-facebook{
 	margin-top: 20px;
