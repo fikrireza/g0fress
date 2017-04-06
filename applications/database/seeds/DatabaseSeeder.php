@@ -14,7 +14,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
     	Eloquent::unguard();
-        
-        $this->call(KotaTableSeeder::class);
+
+      $this->call(KotaTableSeeder::class);
+        $this->call(KuponTableSeeder::class);
     }
 }
