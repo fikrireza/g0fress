@@ -9,7 +9,7 @@
     </p>
 
     <p>
-      Isi Body email
+      Ini kupon {{ $data[0]['kupon'] }}
     </p>
 
   </body>

@@ -14,7 +14,8 @@ use App\Models\Campaign1;
 use Auth;
 use Validator;
 use DB;
-
+use Mail;
+use Input;
 
 class FirstCampaignController extends Controller
 {
@@ -85,13 +86,15 @@ class FirstCampaignController extends Controller
 			$set->kupon_id = $kupon[0]->id;
 			$set->save();
 
+			// Kirim email
 			$data = array([
+					'nama' => $request->nama,
           'email' => $request->email,
           'kupon' => $kupon[0]->kupon
         ]);
 
-      Mail::send('campaign1_kupon', ['data' => $data], function($message) {
-        $message->to(Input::get('email'), Input::get('nama'))->subject('Hello Tukarkan Kupon Ini di Alfamart');
+      Mail::send('mails.campaign1_kupon', ['data' => $data], function($message) use($data) {
+        $message->to($data[0]['email'], $data[0]['nama'])->subject('Hello Tukarkan Kupon Ini di Alfamart');
       });
 
 			return redirect()->route('first-campaign-terimakasih');

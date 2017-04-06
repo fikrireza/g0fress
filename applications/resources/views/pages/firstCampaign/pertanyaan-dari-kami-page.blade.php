@@ -164,39 +164,39 @@
 			<div class="question" id="pertanyaan_1">
 				<p>1) Situasi apa yang membuat kamu bau mulut? @if($errors->has('pertanyaan_1'))<label class="warning">*Pilih Satu!</label>@endif</p>
 				<label>
-					<input type="radio" name="pertanyaan_1" value="Setelah Makan">Setelah Makan
+					<input type="radio" name="pertanyaan_1" value="Setelah Makan" @if(old('pertanyaan_1') == 'Setelah Makan') checked="checked" @endif>Setelah Makan
 				</label>
 				<label>
-					<input type="radio" name="pertanyaan_1" value="Setelah Minum Kopi">Setelah Minum Kopi
+					<input type="radio" name="pertanyaan_1" value="Setelah Minum Kopi" @if(old('pertanyaan_1') == 'Setelah Minum Kopi') checked="checked" @endif>Setelah Minum Kopi
 				</label>
 				<label>
-					<input type="radio" name="pertanyaan_1" value="Setelah Merokok">Setelah Merokok
+					<input type="radio" name="pertanyaan_1" value="Setelah Merokok" @if(old('pertanyaan_1') == 'Setelah Merokok') checked="checked" @endif>Setelah Merokok
 				</label>
 			</div>
 
 			<div class="question" id="pertanyaan_2">
 				<p>2) Bagaimana cara kamu mengatasi bau mulut? @if($errors->has('pertanyaan_2'))<label class="warning">*Pilih Satu!</label>@endif</p>
 				<label>
-					<input type="radio" name="pertanyaan_2" value="Sikat Gigi">Sikat Gigi
+					<input type="radio" name="pertanyaan_2" value="Sikat Gigi" @if(old('pertanyaan_2') == 'Sikat Gigi') checked="checked" @endif>Sikat Gigi
 				</label>
 				<label>
-					<input type="radio" name="pertanyaan_2" value="Berkumur">Berkumur
+					<input type="radio" name="pertanyaan_2" value="Berkumur" @if(old('pertanyaan_2') == 'Berkumur') checked="checked" @endif>Berkumur
 				</label>
 				<label>
-					<input type="radio" name="pertanyaan_2" value="Makan Perment">Makan Perment
+					<input type="radio" name="pertanyaan_2" value="Makan Perment" @if(old('pertanyaan_2') == 'Makan Perment') checked="checked" @endif>Makan Perment
 				</label>
 				<label>
-					<input type="radio" name="pertanyaan_2" value="Berobat ke dokter">Berobat ke dokter
+					<input type="radio" name="pertanyaan_2" value="Berobat ke dokter" @if(old('pertanyaan_2') == 'Berobat ke dokter') checked="checked" @endif>Berobat ke dokter
 				</label>
 				<label>
-					<input type="radio" name="pertanyaan_2" value="Berobat sendiri sesuai rekomendasi temen">Berobat sendiri sesuai rekomendasi temen
+					<input type="radio" name="pertanyaan_2" value="Berobat sendiri sesuai rekomendasi temen" @if(old('pertanyaan_2') == 'Berobat sendiri sesuai rekomendasi temen') checked="checked" @endif>Berobat sendiri sesuai rekomendasi temen
 				</label>
 			</div>
 
 			<div class="question" id="pertanyaan_3">
 				<p>3) Sudah pernah coba Gofress? @if($errors->has('pertanyaan_3'))<label class="warning">*Pilih Satu!</label>@endif</p>
-				<input type="radio" name="pertanyaan_3" value="Ya"><label>Ya</label>
-				<input type="radio" name="pertanyaan_3" value="Belum"><label>Belum</label>
+				<input type="radio" name="pertanyaan_3" value="Ya" @if(old('pertanyaan_3') == 'Ya') checked="checked" @endif><label>Ya</label>
+				<input type="radio" name="pertanyaan_3" value="Belum" @if(old('pertanyaan_3') == 'Belum') checked="checked" @endif><label>Belum</label>
 			</div>
 
 			<div class="question" id="pertanyaan_4">
