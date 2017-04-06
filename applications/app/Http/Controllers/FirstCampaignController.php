@@ -85,7 +85,7 @@ class FirstCampaignController extends Controller
 			$set->pertanyaan_2 = $request->pertanyaan_2;
 			$set->pertanyaan_3 = $request->pertanyaan_3;
 			$set->pertanyaan_4 = implode(',',$request->pertanyaan_4);
-			$set->kupon_id = $kupon->id;
+			$set->kupon_id = $kupon[0]->id;
 			$set->save();
 
 			// Kirim email

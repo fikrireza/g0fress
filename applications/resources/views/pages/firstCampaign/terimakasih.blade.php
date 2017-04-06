@@ -17,11 +17,16 @@
 	color: white;
 	font-size: 55px;
 	margin: 10px auto;
+	font-family: 'Gotham';
+    font-weight: bold;
 }
 .thanks-wrapper .thanks-body{
 	width: 50%;
 	padding: 15px 0px;
 	margin: 0 auto;
+}
+.thanks-wrapper .thanks-body label{
+    font-family: 'Gotham';
 }
 .thanks-wrapper .thanks-body label .logo-alfamart{
 	width: 120px;
@@ -53,6 +58,8 @@
 	font-size: 12px;
 	margin-bottom: 0px;
 	margin-right: 5px;
+    font-family: 'Gotham';
+    font-weight: normal;
 }
 .thanks-wrapper .thanks-body .link-wrapper label a{
 	color: black;
