@@ -85,6 +85,15 @@ class FirstCampaignController extends Controller
 			$set->kupon_id = $kupon[0]->id;
 			$set->save();
 
+			$data = array([
+          'email' => $request->email,
+          'kupon' => $kupon[0]->kupon
+        ]);
+
+      Mail::send('campaign1_kupon', ['data' => $data], function($message) {
+        $message->to(Input::get('email'), Input::get('nama'))->subject('Hello Tukarkan Kupon Ini di Alfamart');
+      });
+
 			return redirect()->route('first-campaign-terimakasih');
 		}
 

@@ -162,7 +162,7 @@
 			<h1>Pertanyaan dari kami</h1>
 
 			<div class="question" id="pertanyaan_1">
-				<p>1) Situasi apa yang membuat kamu bau mulut? <label class="warning">*Pilih Satu!</label></p>
+				<p>1) Situasi apa yang membuat kamu bau mulut? @if($errors->has('pertanyaan_1'))<label class="warning">*Pilih Satu!</label>@endif</p>
 				<label>
 					<input type="radio" name="pertanyaan_1" value="Setelah Makan">Setelah Makan
 				</label>
@@ -175,7 +175,7 @@
 			</div>
 
 			<div class="question" id="pertanyaan_2">
-				<p>2) Bagaimana cara kamu mengatasi bau mulut?<label class="warning">*Pilih Satu!</label></p>
+				<p>2) Bagaimana cara kamu mengatasi bau mulut? @if($errors->has('pertanyaan_2'))<label class="warning">*Pilih Satu!</label>@endif</p>
 				<label>
 					<input type="radio" name="pertanyaan_2" value="Sikat Gigi">Sikat Gigi
 				</label>
@@ -194,13 +194,13 @@
 			</div>
 
 			<div class="question" id="pertanyaan_3">
-				<p>3) Sudah pernah coba Gofress?<label class="warning">*Pilih Satu!</label></p>
+				<p>3) Sudah pernah coba Gofress? @if($errors->has('pertanyaan_3'))<label class="warning">*Pilih Satu!</label>@endif</p>
 				<input type="radio" name="pertanyaan_3" value="Ya"><label>Ya</label>
 				<input type="radio" name="pertanyaan_3" value="Belum"><label>Belum</label>
 			</div>
 
 			<div class="question" id="pertanyaan_4">
-				<p>4) Tahukah kamu di mana Gofress bisa dibeli?<label class="warning">*Pilih Minimal Satu!</label></p>
+				<p>4) Tahukah kamu di mana Gofress bisa dibeli? @if($errors->has('pertanyaan_4'))<label class="warning">*Pilih Minimal Satu!</label>@endif</p>
 				<div class="que-4-colm">
 					<label>
 						<input type="checkbox" name="pertanyaan_4[]" value="Indomaret">Indomaret
