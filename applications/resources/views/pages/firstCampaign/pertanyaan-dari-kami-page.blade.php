@@ -66,7 +66,12 @@
 }
 .question-wrapper .question-content .question label{
 	margin-right: 10px;
+	margin-bottom: 0px;
 	cursor: pointer;
+}
+.question-wrapper .question-content .question p .warning{
+	margin-left: 10px;
+	color: red;
 }
 .question-wrapper .question-content .question input[type="radio"],
 .question-wrapper .question-content .question input[type="checkbox"]{
@@ -157,7 +162,7 @@
 			<h1>Pertanyaan dari kami</h1>
 
 			<div class="question" id="pertanyaan_1">
-				<p>1) Situasi apa yang membuat kamu bau mulut?</p>
+				<p>1) Situasi apa yang membuat kamu bau mulut? <label class="warning">*Pilih Satu!</label></p>
 				<label>
 					<input type="radio" name="pertanyaan_1" value="Setelah Makan">Setelah Makan
 				</label>
@@ -170,7 +175,7 @@
 			</div>
 
 			<div class="question" id="pertanyaan_2">
-				<p>2) Bagaimana cara kamu mengatasi bau mulut?</p>
+				<p>2) Bagaimana cara kamu mengatasi bau mulut?<label class="warning">*Pilih Satu!</label></p>
 				<label>
 					<input type="radio" name="pertanyaan_2" value="Sikat Gigi">Sikat Gigi
 				</label>
@@ -189,13 +194,13 @@
 			</div>
 
 			<div class="question" id="pertanyaan_3">
-				<p>3) Sudah pernah coba Gofress?</p>
+				<p>3) Sudah pernah coba Gofress?<label class="warning">*Pilih Satu!</label></p>
 				<input type="radio" name="pertanyaan_3" value="Ya"><label>Ya</label>
 				<input type="radio" name="pertanyaan_3" value="Belum"><label>Belum</label>
 			</div>
 
 			<div class="question" id="pertanyaan_4">
-				<p>4) Tahukah kamu di mana Gofress bisa dibeli?</p>
+				<p>4) Tahukah kamu di mana Gofress bisa dibeli?<label class="warning">*Pilih Minimal Satu!</label></p>
 				<div class="que-4-colm">
 					<label>
 						<input type="checkbox" name="pertanyaan_4[]" value="Indomaret">Indomaret
