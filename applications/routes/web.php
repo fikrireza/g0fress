@@ -29,7 +29,10 @@ Route::get('analytics', 'AnalyticsFBController@index')->name('analytics.index');
 
 	Route::get('/hello', 'FirstCampaignController@signInPage')->name('first-campaign-sign-in');
 	Route::get('/hello/pertanyaan-dari-kami', 'FirstCampaignController@pertanyaanPage')->name('first-campaign-pertanyaan-dari-kami');
-  Route::post('/hello/pertanyaan-dari-kami', 'FirstCampaignController@pertanyaanPageStore')->name('post.first-campaign-pertanyaan-dari-kami');
+  	Route::post('/hello/pertanyaan-dari-kami', 'FirstCampaignController@pertanyaanPageStore')->name('post.first-campaign-pertanyaan-dari-kami');
 	Route::get('/hello/terimakasih', 'FirstCampaignController@thanksPage')->name('first-campaign-terimakasih');
 
+// Route::get('/test-email', function () {
+//     return view('mails.campaign1_kupon');
+// });
 /* end first campaign : kuisioner hello go fress */
