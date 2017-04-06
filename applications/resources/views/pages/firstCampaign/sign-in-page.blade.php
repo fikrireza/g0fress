@@ -39,6 +39,28 @@
 	margin-right: auto;
 	width: 200px;
 }
+@media (max-width: 480px) {
+	.wrapper-content{
+		height: 50vh;
+	}
+	.wrapper-content .middle-window{
+		height: 50vh;
+		display: table-cell;
+		vertical-align: middle;
+	}	
+	.sign-in-wrapper{
+		float: none;
+		width: 100%;
+		height: 50vh;
+	}
+	.sign-in-wrapper .sign-in-content{
+		width: 100%;
+		padding: 0;
+	}
+	.sign-in-wrapper .sign-in-content h1{
+		margin: 10px;
+	}
+}
 </style>
 @endsection
 
