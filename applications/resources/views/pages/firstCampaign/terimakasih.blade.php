@@ -27,7 +27,7 @@
 	width: 120px;
 }
 .thanks-wrapper .thanks-body .kupon-wrapper{
-	position: relative; 
+	position: relative;
 	margin-top: 10px;
 	margin-bottom: -10px;
 	padding: 0;
@@ -36,11 +36,11 @@
 	width: 100%;
 }
 .thanks-wrapper .thanks-body .kupon-wrapper .kupon-code{
-	position: relative; 
-	bottom: 58px; 
-	width: 50%; 
+	position: relative;
+	bottom: 58px;
+	width: 50%;
 	margin: 0 auto;
-	text-align: center; 
+	text-align: center;
 }
 .thanks-wrapper .thanks-body .kupon-wrapper .kupon-code label{
 	margin: 0;
@@ -56,7 +56,7 @@
 }
 .thanks-wrapper .thanks-body .link-wrapper label a{
 	color: black;
-	margin: 0;	
+	margin: 0;
 }
 .thanks-wrapper .thanks-body .link-wrapper label a img{
 	width: 15px;
@@ -111,11 +111,11 @@
 	</div>
 	<div class="thanks-body">
 		<label>Sebagai apresiasi kami, Anda berhak untuk mendapatkan 1 kemasan Gofress gratis dari kami.<br>Tunjukkan kupon dibawah ini di <img class="logo-alfamart" src="{{ asset('picture\firstCampaign\logo-alfamart.png') }}"></label>
-		
+
 		<div class="kupon-wrapper">
 			<img class="kupon-image" src="{{ asset('picture\firstCampaign\kupon.png') }}">
 			<div class="kupon-code">
-				<label>123456789012</label>
+				<label>{{ $cekEmail->kupon}}</label>
 			</div>
 		</div>
 
