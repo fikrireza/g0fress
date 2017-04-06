@@ -96,8 +96,7 @@
 	.thanks-wrapper .thanks-body .link-wrapper{
 		text-align: center;
 	}
-	.thanks-wrapper .thanks-body .link-wrapper .link-2,
-	.thanks-wrapper .thanks-body .link-wrapper .link-3{
+	.thanks-wrapper .thanks-body .link-wrapper .link-2{
 		display: none;
 	}
 }
@@ -131,12 +130,6 @@
 				</a>
 			</label>
 			<label class="link-2">
-				<a href="">
-					<img src="{{ asset('picture\firstCampaign\icon-Simpan-Gambar.png') }}">
-					Simpan Gambar
-				</a>
-			</label>
-			<label class="link-3">
 				<a href="">
 					<img src="{{ asset('picture\firstCampaign\icon-Print-Gambar.png') }}">
 					Print Gambar
