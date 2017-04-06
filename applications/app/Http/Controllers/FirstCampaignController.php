@@ -20,23 +20,25 @@ use Input;
 class FirstCampaignController extends Controller
 {
 
-	/**
-   * Create a new controller instance.
-   *
-   * @return void
-   */
-  public function __construct()
-  {
-      $this->middleware('auth', ['except' => 'signInPage']);
-  }
-
-	public function signInPage()
+		public function signInPage()
     {
+				if(Auth::check()){
+					$cekEmail = Campaign1::where('email', '=', Auth::user()->email)->first();
+
+					if($cekEmail){
+						return redirect()->route('first-campaign-terimakasih');
+					}
+				}
+
         return view('pages.firstCampaign.sign-in-page');
     }
 
     public function pertanyaanPage()
     {
+				if(!Auth::check()) {
+					return redirect()->route('first-campaign-sign-in');
+				}
+
 				$cekEmail = Campaign1::where('email', '=', Auth::user()->email)->first();
 
 				if($cekEmail){
@@ -102,6 +104,10 @@ class FirstCampaignController extends Controller
 
 		public function thanksPage()
     {
+				if(!Auth::check()) {
+					return redirect()->route('first-campaign-sign-in');
+				}
+
 				$cekEmail = Campaign1::join('master_kupon', 'master_kupon.id', '=', 'campaign_1.kupon_id')
 															->select('master_kupon.kupon')
 															->where('campaign_1.email', '=', Auth::user()->email)->first();
