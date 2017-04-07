@@ -160,7 +160,8 @@
 				<div class="col col-md-2 col-sm-3 col-xs-3"> Nama </div>
 				<div class="col col-md-4 col-sm-9 col-xs-9">
 					<div class="input-group">
-						<input type="text" name="nama" class="form-control" value="{{ $getProfil->name}}" readonly="">
+						<input type="hidden" name="user_id" value="{{ $getProfil->id }}">
+						<input type="text" name="nama" class="form-control" value="{{ $getProfil->name }}" readonly="">
 						@if($errors->has('nama'))
 						<span class="input-group-addon">
 							<i class="fa fa-exclamation" aria-hidden="true"></i>
@@ -172,17 +173,17 @@
 				<div class="col col-md-4 col-sm-9 col-xs-9">
 					<div class="input-group">
 						<input type="text" name="hp" class="form-control" value="{{ old('hp') }}">
-						@if($errors->has('hp'))
+						{{-- @if($errors->has('hp')) --}}
 						<span class="input-group-addon">
 							<i class="fa fa-exclamation" aria-hidden="true"></i>
 						</span>
-						@endif
+						{{-- @endif --}}
 					</div>
 				</div>
 				<div class="col col-md-2 col-sm-3 col-xs-3"> Email </div>
 				<div class="col col-md-4 col-sm-9 col-xs-9">
 					<div class="input-group">
-						<input type="email" name="email" class="form-control" value="{{ $getProfil->email }}" readonly="">
+						<input type="email" name="email" class="form-control" value="{{ $getProfil->email }}">
 						@if($errors->has('email'))
 						<span class="input-group-addon">
 							<i class="fa fa-exclamation" aria-hidden="true"></i>
@@ -248,43 +249,43 @@
 				<p>4) Tahukah kamu di mana Gofress bisa dibeli? @if($errors->has('pertanyaan_4'))<label class="warning">*Pilih Minimal Satu!</label>@endif</p>
 				<div class="que-4-colm">
 					<label>
-						<input type="checkbox" name="pertanyaan_4[]" value="Indomaret">Indomaret
+						<input type="checkbox" name="pertanyaan_4[Indomaret]" value="Indomaret" @if(is_array(old('pertanyaan_4')) && in_array('Indomaret',old('pertanyaan_4'))) checked @endif>Indomaret
 					</label>
 					<label>
-						<input type="checkbox" name="pertanyaan_4[]" value="Superindo">Superindo
+						<input type="checkbox" name="pertanyaan_4[Superindo]" value="Superindo" @if(is_array(old('pertanyaan_4')) && in_array('Superindo',old('pertanyaan_4'))) checked @endif>Superindo
 					</label>
 					<label>
-						<input type="checkbox" name="pertanyaan_4[]" value="Hero">Hero
-					</label>
-				</div>
-				<div class="que-4-colm">
-					<label>
-						<input type="checkbox" name="pertanyaan_4[]" value="Alfamart">Alfamart
-					</label>
-					<label>
-						<input type="checkbox" name="pertanyaan_4[]" value="Alfamidi">Alfamidi
-					</label>
-					<label>
-						<input type="checkbox" name="pertanyaan_4[]" value="Century">Century
+						<input type="checkbox" name="pertanyaan_4[Hero]" value="Hero" @if(is_array(old('pertanyaan_4')) && in_array('Hero',old('pertanyaan_4'))) checked @endif>Hero
 					</label>
 				</div>
 				<div class="que-4-colm">
 					<label>
-						<input type="checkbox" name="pertanyaan_4[]" value="Giant">Giant
+						<input type="checkbox" name="pertanyaan_4[Alfamart]" value="Alfamart" @if(is_array(old('pertanyaan_4')) && in_array('Alfamart',old('pertanyaan_4'))) checked @endif>Alfamart
 					</label>
 					<label>
-						<input type="checkbox" name="pertanyaan_4[]" value="Circle K">Circle K
+						<input type="checkbox" name="pertanyaan_4[Alfamidi]" value="Alfamidi" @if(is_array(old('pertanyaan_4')) && in_array('Alfamidi',old('pertanyaan_4'))) checked @endif>Alfamidi
 					</label>
 					<label>
-						<input type="checkbox" name="pertanyaan_4[]" value="Guradian">Guradian
+						<input type="checkbox" name="pertanyaan_4[Century]" value="Century" @if(is_array(old('pertanyaan_4')) && in_array('Century',old('pertanyaan_4'))) checked @endif>Century
 					</label>
 				</div>
 				<div class="que-4-colm">
 					<label>
-						<input type="checkbox" name="pertanyaan_4[]" value="Hypermart">Hypermart
+						<input type="checkbox" name="pertanyaan_4[Giant]" value="Giant" @if(is_array(old('pertanyaan_4')) && in_array('Giant',old('pertanyaan_4'))) checked @endif>Giant
 					</label>
 					<label>
-						<input type="checkbox" name="pertanyaan_4[]" value="Yogya">Yogya
+						<input type="checkbox" name="pertanyaan_4[Circle K]" value="Circle K" @if(is_array(old('pertanyaan_4')) && in_array('Circle K',old('pertanyaan_4'))) checked @endif>Circle K
+					</label>
+					<label>
+						<input type="checkbox" name="pertanyaan_4[Guradian]" value="Guradian" @if(is_array(old('pertanyaan_4')) && in_array('Guradian',old('pertanyaan_4'))) checked @endif>Guradian
+					</label>
+				</div>
+				<div class="que-4-colm">
+					<label>
+						<input type="checkbox" name="pertanyaan_4[Hypermart]" value="Hypermart" @if(is_array(old('pertanyaan_4')) && in_array('Hypermart',old('pertanyaan_4'))) checked @endif>Hypermart
+					</label>
+					<label>
+						<input type="checkbox" name="pertanyaan_4[Yogya]" value="Yogya" @if(is_array(old('pertanyaan_4')) && in_array('Yogya',old('pertanyaan_4'))) checked @endif>Yogya
 					</label>
 				</div>
 				<div class="clearfix"></div>

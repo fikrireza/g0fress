@@ -27,9 +27,11 @@ class SocialAccountService {
 
       $user = User::whereEmail($providerUser->getEmail())->first();
 
+      $email = (!empty($providerUser->getEmail())) ? $providerUser->getEmail() : str_slug($providerUser->getName()) . str_random(3) . '@gofress.co.id';
+
       if(!$user){
         $user = User::create([
-          'email' => $providerUser->getEmail(),
+          'email' => $email,
           'name'  => $providerUser->getName(),
           'avatar'  => $providerUser->getAvatar(),
           // 3 adalah user

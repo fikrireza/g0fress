@@ -53,17 +53,23 @@ class FirstCampaignController extends Controller
 
 		public function pertanyaanPageStore(Request $request)
 		{
+			$message = [
+				'email.unique' => 'Email telah terdaftar',
+				'hp.required'	=> 'Hp Wajib diisi',
+				'kota.required' => 'Kota wajib diisi'
+			];
+
 			// Cek inputan
 			$validator = Validator::make($request->all(), [
         'nama' => 'required',
-        'email' => 'required|email',
+        'email' => 'required|email|unique:users',
         'hp' => 'required',
         'kota' => 'required|not_in:--Pilih--',
         'pertanyaan_1' => 'required',
         'pertanyaan_2' => 'required',
         'pertanyaan_3' => 'required',
-        'pertanyaan_4' => 'required',
-      ]);
+        'pertanyaan_4' => 'required|min:1',
+      ], $message);
 
       if($validator->fails())
       {
@@ -85,8 +91,12 @@ class FirstCampaignController extends Controller
 			$set->pertanyaan_2 = $request->pertanyaan_2;
 			$set->pertanyaan_3 = $request->pertanyaan_3;
 			$set->pertanyaan_4 = implode(',',$request->pertanyaan_4);
-			$set->kupon_id = $kupon->id;
+			$set->kupon_id = $kupon[0]->id;
 			$set->save();
+
+			$updateEmail = User::find($request->user_id);
+			$updateEmail->email = $request->email;
+			$updateEmail->update();
 
 			// Kirim email
 			$data = array([
