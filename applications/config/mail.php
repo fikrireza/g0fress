@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => 'smtp.mailtrap.io',
+    'host' => 'smtp.gmail.com',
 
     /*
     |--------------------------------------------------------------------------
@@ -42,7 +42,7 @@ return [
     |
     */
 
-    'port' => 2525,
+    'port' => 587,
 
     /*
     |--------------------------------------------------------------------------
@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => 'hello@gofress.co.id',
-        'name' => 'GoFress',
+        'address' => 'fourline66@gmail.com',
+        'name' => 'Adam',
     ],
 
     /*
@@ -84,9 +84,9 @@ return [
     |
     */
 
-    'username' => 'bb80632e6236b7',
+    'username' => 'fourline66@gmail.com',
 
-    'password' => '73d50da835fba7',
+    'password' => 'yejluynhqogvmfrc',
 
     /*
     |--------------------------------------------------------------------------
