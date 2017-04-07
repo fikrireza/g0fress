@@ -62,7 +62,7 @@ class FirstCampaignController extends Controller
 			// Cek inputan
 			$validator = Validator::make($request->all(), [
         'nama' => 'required',
-        'email' => 'required|email|unique:users',
+        'email' => 'required|email|unique:campaign_1',
         'hp' => 'required',
         'kota' => 'required|not_in:--Pilih--',
         'pertanyaan_1' => 'required',
@@ -105,9 +105,14 @@ class FirstCampaignController extends Controller
           'kupon' => $kupon[0]->kupon
         ]);
 
-      Mail::send('mails.campaign1_kupon', ['data' => $data], function($message) use($data) {
-        $message->to($data[0]['email'], $data[0]['nama'])->subject('Hello Tukarkan Kupon Ini di Alfamart');
-      });
+			try{
+	      Mail::send('mails.campaign1_kupon', ['data' => $data], function($message) use($data) {
+	        $message->to($data[0]['email'], $data[0]['nama'])->subject('Hello Tukarkan Kupon Ini di Alfamart');
+	      });
+			}
+			catch(Exception $e){
+
+			}
 
 			return redirect()->route('first-campaign-terimakasih');
 		}
