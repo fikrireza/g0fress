@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 @yield('title')
 @include('backend.includes.head')
-    @yield('headscript')
+    
   </head>
 
   <body class="nav-md">

@@ -15,7 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
@@ -33,13 +32,19 @@ Route::get('/hello/terimakasih', 'FirstCampaignController@thanksPage')->name('fi
 
 
 // BACKEND
-Route::get('/dashboard', function(){
+Route::get('admin/dashboard', function(){
     return view('backend.dashboard.index');
 });
 
-Route::get('/login', function(){
+Route::get('admin', function(){
     return view('backend.auth.login');
 });
+
+Auth::routes();
+
+Route::get('admin/produk', 'Backend\ProdukController@index')->name('produk.index');
+Route::get('admin/produk/tambah', 'Backend\ProdukController@tambah')->name('produk.tambah');
+Route::post('admin/produk/tambah', 'Backend\ProdukController@store')->name('produk.store');
 
 
 
