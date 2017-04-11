@@ -19,7 +19,7 @@ class CreateInboxTable extends Migration
           $table->string('subjek');
           $table->string('email');
           $table->text('pesan');
-          $table->imestamps();
+          $table->timestamps();
         });
     }
 

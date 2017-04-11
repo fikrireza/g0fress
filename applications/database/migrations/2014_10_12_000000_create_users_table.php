@@ -13,7 +13,7 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('amd_users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('avatar')->nullable();
@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password')->nullable();
             $table->boolean('confirmed')->default(false);
       			$table->string('confirmation_code')->nullable();
-            $table->boolean('seen')->default(false);
+            $table->boolean('login_count')->default(false);
             $table->integer('role_id')->unsigned();
             $table->rememberToken();
             $table->timestamps();

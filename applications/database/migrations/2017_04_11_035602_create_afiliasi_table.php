@@ -21,7 +21,7 @@ class CreateAfiliasiTable extends Migration
           $table->date('tanggal_post');
           $table->integer('flag_publish')->unsigned()->default(0);
           $table->integer('actor')->unsigned();
-          $table->imestamps();
+          $table->timestamps();
         });
     }
 

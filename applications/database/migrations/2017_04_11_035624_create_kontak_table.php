@@ -19,7 +19,7 @@ class CreateKontakTable extends Migration
           $table->string('email');
           $table->string('no_telp');
           $table->integer('actor');
-          $table->imestamps();
+          $table->timestamps();
         });
     }
 

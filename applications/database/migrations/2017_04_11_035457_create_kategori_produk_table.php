@@ -25,7 +25,7 @@ class CreateKategoriProdukTable extends Migration
           $table->integer('flag_publish')->unsigned()->default(0);
           $table->string('slug');
           $table->integer('actor')->unsigned();
-          $table->imestamps();
+          $table->timestamps();
         });
     }
 

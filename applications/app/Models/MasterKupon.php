@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class MasterKupon extends Model
 {
-    protected $table = 'master_kupon';
+    protected $table = 'amd_master_kupon';
 
 }

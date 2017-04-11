@@ -27,7 +27,7 @@ class CreatePromosiTable extends Migration
           $table->integer('flag_publish')->unsigned()->default(0);
           $table->integer('slug');
           $table->integer('actor');
-          $table->imestamps();
+          $table->timestamps();
         });
     }
 

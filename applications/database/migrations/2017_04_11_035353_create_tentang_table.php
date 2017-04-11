@@ -19,7 +19,7 @@ class CreateTentangTable extends Migration
           $table->text('deskripsi_id');
           $table->string('img_url');
           $table->integer('actor')->unsigned();
-          $table->imestamps();
+          $table->timestamps();
         });
     }
 
