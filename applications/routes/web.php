@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
@@ -43,4 +43,7 @@ Route::get('/login', function(){
 
 
 
-//FRONTEND
+// FRONTEND
+// Route::get('/', '')->name('');
+
+Route::get('/', 'Frontend\HomeController@index')->name('frontend.home.index');
