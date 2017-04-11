@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 
 Route::get('/home', 'HomeController@index');
@@ -49,3 +49,8 @@ Route::post('admin/produk/tambah', 'Backend\ProdukController@store')->name('prod
 
 
 //FRONTEND
+=======
+// FRONTEND
+// Route::get('/', '')->name('');
+
+Route::get('/', 'Frontend\HomeController@index')->name('frontend.home.index');
