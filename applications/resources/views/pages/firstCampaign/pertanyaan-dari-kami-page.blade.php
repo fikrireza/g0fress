@@ -173,11 +173,11 @@
 				<div class="col col-md-4 col-sm-9 col-xs-9">
 					<div class="input-group">
 						<input type="text" name="hp" class="form-control" value="{{ old('hp') }}">
-						{{-- @if($errors->has('hp')) --}}
+						@if($errors->has('hp'))
 						<span class="input-group-addon">
 							<i class="fa fa-exclamation" aria-hidden="true"></i>
 						</span>
-						{{-- @endif --}}
+						@endif
 					</div>
 				</div>
 				<div class="col col-md-2 col-sm-3 col-xs-3"> Email </div>
@@ -188,6 +188,7 @@
 						<span class="input-group-addon">
 							<i class="fa fa-exclamation" aria-hidden="true"></i>
 						</span>
+						{{ $errors->first('email')}}
 						@endif
 					</div>
 				</div>

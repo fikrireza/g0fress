@@ -36,8 +36,10 @@ return [
     ],
 
     'facebook' => [
-      'client_id' => '180780819104546', // configure with your app id
-      'client_secret' => '217bc574afae3a1eb3768846ad3df464', // your app secret
+      //'client_id' => '180780819104546', // configure with your app id
+      'client_id' => '1268984179818118', // configure with your app id
+      // 'client_secret' => '217bc574afae3a1eb3768846ad3df464', // your app secret
+      'client_secret' => '69dcb7c5ad142a5dcad8c50cabe0db15', // your app secret
       'redirect' => 'http://localhost/g0fress/callback',
     ],
 

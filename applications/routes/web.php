@@ -25,14 +25,22 @@ Route::get('/callback', 'SocialAuthController@callBackFB')->name('callBackFB');
 Route::get('analytics', 'AnalyticsFBController@index')->name('analytics.index');
 
 
-/* first campaign : kuisioner hello go fress */
+// First Campaign : kuisioner hello go fress
+Route::get('/hello', 'FirstCampaignController@signInPage')->name('first-campaign-sign-in');
+Route::get('/hello/pertanyaan-dari-kami', 'FirstCampaignController@pertanyaanPage')->name('first-campaign-pertanyaan-dari-kami');
+Route::post('/hello/pertanyaan-dari-kami', 'FirstCampaignController@pertanyaanPageStore')->name('post.first-campaign-pertanyaan-dari-kami');
+Route::get('/hello/terimakasih', 'FirstCampaignController@thanksPage')->name('first-campaign-terimakasih');
 
-	Route::get('/hello', 'FirstCampaignController@signInPage')->name('first-campaign-sign-in');
-	Route::get('/hello/pertanyaan-dari-kami', 'FirstCampaignController@pertanyaanPage')->name('first-campaign-pertanyaan-dari-kami');
-  	Route::post('/hello/pertanyaan-dari-kami', 'FirstCampaignController@pertanyaanPageStore')->name('post.first-campaign-pertanyaan-dari-kami');
-	Route::get('/hello/terimakasih', 'FirstCampaignController@thanksPage')->name('first-campaign-terimakasih');
 
-Route::get('/test-email', function () {
-    return view('mails.campaign1_kupon');
+// BACKEND
+Route::get('/dashboard', function(){
+    return view('backend.dashboard.index');
 });
-/* end first campaign : kuisioner hello go fress */
+
+Route::get('/login', function(){
+    return view('backend.auth.login');
+});
+
+
+
+//FRONTEND
