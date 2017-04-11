@@ -32,7 +32,7 @@ Route::get('analytics', 'AnalyticsFBController@index')->name('analytics.index');
   	Route::post('/hello/pertanyaan-dari-kami', 'FirstCampaignController@pertanyaanPageStore')->name('post.first-campaign-pertanyaan-dari-kami');
 	Route::get('/hello/terimakasih', 'FirstCampaignController@thanksPage')->name('first-campaign-terimakasih');
 
-// Route::get('/test-email', function () {
-//     return view('mails.campaign1_kupon');
-// });
+Route::get('/test-email', function () {
+    return view('mails.campaign1_kupon');
+});
 /* end first campaign : kuisioner hello go fress */
