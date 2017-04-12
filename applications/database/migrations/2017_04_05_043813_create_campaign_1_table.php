@@ -13,7 +13,7 @@ class CreateCampaign1Table extends Migration
      */
     public function up()
     {
-        Schema::create('campaign_1', function(Blueprint $table){
+        Schema::create('amd_campaign_1', function(Blueprint $table){
           $table->increments('id');
           $table->string('nama', 50);
           $table->string('email')->unique();

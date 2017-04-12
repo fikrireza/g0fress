@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateKotaTable extends Migration
+class CreateKontakTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreateKotaTable extends Migration
      */
     public function up()
     {
-        Schema::create('amd_kota', function(Blueprint $table){
+        Schema::create('amd_kontak', function(Blueprint $table){
           $table->increments('id');
-          $table->string('nama_kota', 75);
+          $table->text('alamat');
+          $table->string('email');
+          $table->string('no_telp');
+          $table->integer('actor');
           $table->timestamps();
         });
     }

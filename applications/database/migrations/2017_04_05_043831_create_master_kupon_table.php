@@ -13,7 +13,7 @@ class CreateMasterKuponTable extends Migration
      */
     public function up()
     {
-        Schema::create('master_kupon', function(Blueprint $table){
+        Schema::create('amd_master_kupon', function(Blueprint $table){
           $table->increments('id');
           $table->string('kupon', 15);
           $table->timestamps();

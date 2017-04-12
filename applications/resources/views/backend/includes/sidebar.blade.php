@@ -25,11 +25,13 @@
       <div class="menu_section">
         <h3>General</h3>
         <ul class="nav side-menu">
-          <li class="active"><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
-            <ul class="nav child_menu" style="display: block;">
-              <li class="current-page"><a href="index.html">Dashboard</a></li>
-              <li><a href="index2.html">Dashboard2</a></li>
-              <li><a href="index3.html">Dashboard3</a></li>
+          <li class="{{ Route::currentRouteNamed('produk.index') ? 'active' : '' }}{{ Route::currentRouteNamed('produk.tambah') ? 'active' : '' }}{{ Route::currentRouteNamed('produk.lihat') ? 'active' : '' }}">
+            <a>
+              <i class="fa fa-home"></i> Produk <span class="fa fa-chevron-down"></span>
+            </a>
+            <ul class="nav child_menu" style="{{ Route::currentRouteNamed('produk.index') ? 'display: block;' : '' }}{{ Route::currentRouteNamed('produk.tambah') ? 'display: block;' : '' }}{{ Route::currentRouteNamed('produk.lihat') ? 'display: block;' : '' }}">
+              <li class="{{ Route::currentRouteNamed('produk.index') ? 'current-page' : '' }}{{ Route::currentRouteNamed('produk.tambah') ? 'current-page' : '' }}{{ Route::currentRouteNamed('produk.lihat') ? 'current-page' : '' }}"><a href="{{ route('produk.index')}}">Produk</a></li>
+              <li><a href="index2.html">Produk Kategori</a></li>
             </ul>
           </li>
           <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
