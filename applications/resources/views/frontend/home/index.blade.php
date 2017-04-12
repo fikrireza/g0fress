@@ -168,13 +168,10 @@
 	<div class="scroldown-wrapper">
 		<div class="position">
 			<div class="wrapper-content">
-
 				<label class="circle-shape left"></label>
-			
 				<label class="wrapper-shape" onclick="scrollWin()">
 					scroll down for more
 				</label>
-			
 				<label class="circle-shape right"></label>
 			</div>
 		</div>
@@ -185,21 +182,227 @@
 			<div class="text-center">
 				<img src=" {{ asset('public\image\default\gofss.png') }}" style="width: 75%;">
 			</div>
+
+			<div class="flag-title-wrapper">
+				<div class="vertical-align-midle">
+					<label class="circle-shape left"></label>
+					<label class="circle-shape left"></label>
+				</div>
+				<div class="vertical-align-midle">
+					<label class="flag-title">About Go Fress</label>
+				</div>
+				<div class="vertical-align-midle">
+					<label class="circle-shape right"></label>
+					<label class="circle-shape right"></label>
+				</div>
+			</div>
+
+			<div class="content-description">
+				<label>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in scelerisque massa, aliquam molestie lorem. Sed rhoncus, erat ac ornare cursus, tellus odio egestas urna, eu accumsan sapien sapien molestie nulla. Etiam dignissim malesuada vulputate. Nulla at nunc sapien. Proin mollis ligula sapien, in euismod nisl cursus ut. In at quam orci. Cras pharetra eros sed rhoncus feugiat. Nam ligula ante, consectetur eget sagittis at, eleifend vel tortor. Etiam varius faucibus arcu, ut posuere massa fermentum quis. Etiam eu ipsum convallis, aliquet elit ut, pellentesque purus. Curabitur in felis pulvinar, feugiat tellus eu, elementum enim. Curabitur accumsan eu mauris vel vulputate.</label>
+			</div>
+
+			<div class="flag-title-wrapper color">
+				<div class="vertical-align-midle">
+					<label class="circle-shape left"></label>
+					<label class="circle-shape left"></label>
+				</div>
+				<div class="vertical-align-midle">
+					<label class="flag-title">Go Fress Product</label>
+				</div>
+				<div class="vertical-align-midle">
+					<label class="circle-shape right"></label>
+					<label class="circle-shape right"></label>
+				</div>
+			</div>
+
+			<div class="slider-product">
+				<div class="item">
+					<div class="wrapper-product">
+						<div class="front">
+							<div class="vertical-align-middle">
+								<img src="{{ asset('public\image\default\pic-1.png') }}">
+							</div>
+						</div>
+						<div class="back">
+							<div class="vertical-align-middle">
+								@for($i=0; $i<=5; $i++)
+								<div class="col col-md-4">
+									<img src="{{ asset('public\image\default\pic-1.png') }}">
+								</div>
+								@endfor
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="for-btn-see-more">
+				<a class="btn-see-more" href="">See More</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="background-content background-content-second">
+		<div class="title-background">
+			<div class="flag-title-wrapper white">
+				<div class="vertical-align-midle">
+					<label class="circle-shape left"></label>
+					<label class="circle-shape left"></label>
+				</div>
+				<div class="vertical-align-midle">
+					<label class="flag-title">Promotion</label>
+				</div>
+				<div class="vertical-align-midle">
+					<label class="circle-shape right"></label>
+					<label class="circle-shape right"></label>
+				</div>
+			</div>
+		</div>
+
+		<div class="content-wrapper">
+			<div class="slider-second">
+				@for($i=0; $i<=15; $i++)
+				<div class="item">
+					<div class="wrapper-item">
+						<div class="img" style="background-image: url('{{ asset('picture/firstCampaign/background-rainbow.png') }}');">
+							<div class="wrapper-title">
+								<label>some asdsadas</label>
+								<img class="ribbon" src="{{ asset('public\image\default\ribbon.png') }}">
+							</div>
+						</div>
+						<label>Lorem ipsum dolor sit amet  varius faucibus arcu, ut posuere massa fermentum quis. Etiam eu ipsum</label>
+					</div>
+				</div>
+				@endfor
+			</div>
+
+			<div class="for-btn-see-more">
+				<a class="btn-see-more" href="">See More</a>
+			</div>
+
+		</div>
+
+	</div>
+
+	<div class="background-content background-content-first">
+		<div class="title-background">
+			<div class="flag-title-wrapper white">
+				<div class="vertical-align-midle">
+					<label class="circle-shape left"></label>
+					<label class="circle-shape left"></label>
+				</div>
+				<div class="vertical-align-midle">
+					<label class="flag-title">Lates News</label>
+				</div>
+				<div class="vertical-align-midle">
+					<label class="circle-shape right"></label>
+					<label class="circle-shape right"></label>
+				</div>
+			</div>
+		</div>
+
+		<div class="content-wrapper">
+			<div class="lates-news-wrapper">
+				@for($i=0; $i<=2; $i++)
+				<div class="col-md-4">
+					<div class="wrapper-news">
+						<h3>Title</h3>
+						<label>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in scelerisque massa, aliquam molestie lorem. Sed rhoncus, erat ac ornare cursus, tellus odio egestas urna, eu accumsan sapien sapien ipsum convallis, aliquet elit ut, pellentesque purus.... <a href="">Read More</a></label>
+					</div>		
+				</div>
+				@endfor
+				<div class="clearfix"></div>
+			</div>
+
+			<div class="for-btn-see-more">
+				<a class="btn-see-more" href="">See More</a>
+			</div>
+
+		</div>
+
+	</div>
+
+	<div class="background-content background-content-second">
+
+		<div class="title-background">
+			<div class="flag-title-wrapper white">
+				<div class="vertical-align-midle">
+					<label class="circle-shape left"></label>
+					<label class="circle-shape left"></label>
+				</div>
+				<div class="vertical-align-midle">
+					<label class="flag-title">Stay Connected</label>
+				</div>
+				<div class="vertical-align-midle">
+					<label class="circle-shape right"></label>
+					<label class="circle-shape right"></label>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="background-content background-content-first">
+
+		<div class="content-wrapper" style="padding-top: 60px;">
+			<div class="flag-title-wrapper color">
+				<div class="vertical-align-midle">
+					<label class="circle-shape left"></label>
+					<label class="circle-shape left"></label>
+				</div>
+				<div class="vertical-align-midle">
+					<label class="flag-title">Where to Find Us</label>
+				</div>
+				<div class="vertical-align-midle">
+					<label class="circle-shape right"></label>
+					<label class="circle-shape right"></label>
+				</div>
+			</div>
+
+			<img src="{{ asset('public\image\default\toko.png') }}" style="width: 100%; margin-top: 60px;">
+
+			<div class="for-btn-see-more">
+				<a class="btn-see-more" href="">More Location</a>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="footer background-content background-content-second">
+		<div style="width: 80%; margin: 0 auto; padding-top: 80px;">
+			<div style="float: left;">
+				<ul style="list-style: none; margin: 0; padding: 0;">
+					<li style="display: inline-block; margin-right: 20px;">
+						<a href="">
+							Home
+						</a>
+					</li>
+					<li style="display: inline-block; margin-right: 20px;">
+						<a href="">
+							About
+						</a>
+					</li>
+					<li style="display: inline-block; margin-right: 20px;">
+						<a href="">
+							Contact
+						</a>
+					</li>
+				</ul>
+			</div>
+
+			<div style="float: right;">
+				<img src="{{ asset('public\image\default\facebook-gray.png') }}">
+				<img src="{{ asset('public\image\default\twitter-gray.png') }}">
+				<img src="{{ asset('public\image\default\instagram-gray.png') }}">
+			</div>
+
+			<div class="clearfix"></div>
+
+			<p style="text-align: right; margin-top: 40px;">© 2017 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore<br>magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
 		</div>
 	</div>
 
 <style type="text/css">
-.background-content{
-	width: 100%; 
-	margin:0;
-}
-.background-content .content-wrapper{
-	width: 60%; 
-	margin:0 auto;
-}
-.background-content-first{
-	background-color: rgb(255,239,211);
-}
 
 </style>
 	@yield('body-content')
