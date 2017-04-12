@@ -31,7 +31,7 @@ Route::post('/hello/pertanyaan-dari-kami', 'FirstCampaignController@pertanyaanPa
 Route::get('/hello/terimakasih', 'FirstCampaignController@thanksPage')->name('first-campaign-terimakasih');
 
 
-// BACKEND
+//----------------------- BACKEND -----------------------//
 Route::get('admin/dashboard', function(){
     return view('backend.dashboard.index');
 });
@@ -42,14 +42,21 @@ Route::get('admin', function(){
 
 Auth::routes();
 
+// Produk
 Route::get('admin/produk', 'Backend\ProdukController@index')->name('produk.index');
 Route::get('admin/produk/tambah', 'Backend\ProdukController@tambah')->name('produk.tambah');
 Route::post('admin/produk/tambah', 'Backend\ProdukController@store')->name('produk.store');
+Route::get('admin/produk/lihat/{id}', 'Backend\ProdukController@lihat')->name('produk.lihat');
+Route::get('admin/produk/ubah/{id}', 'Backend\ProdukController@ubah')->name('produk.ubah');
+Route::post('admin/produk/ubah', 'Backend\ProdukController@edit')->name('produk.edit');
+
+// Produk Kategori
+
+
+//----------------------- BACKEND -----------------------//
 
 
 
-//FRONTEND
-=======
 // FRONTEND
 // Route::get('/', '')->name('');
 
