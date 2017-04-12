@@ -1,7 +1,7 @@
 @extends('backend.layout.master')
 
 @section('title')
-  <title>Aquasolve | Lihat Produk</title>
+  <title>Aquasolve | Lihat Produk Kategori</title>
 @endsection
 
 @section('headscript')
@@ -12,7 +12,7 @@
 @section('content')
 <div class="page-title">
   <div class="title_left">
-    <h3>{{ $getProdukKategori->nama_kategori }} - {{ $getProduk->nama_produk }}</h3>
+    <h3>{{ $getProdukKategori->nama_kategori }}</h3>
   </div>
 </div>
 
@@ -22,9 +22,9 @@
   <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="x_panel">
       <div class="x_title">
-        <h2>{{ $getProduk->nama_produk }}</h2>
+        <h2>{{ $getProdukKategori->nama_kategori }}</h2>
         <ul class="nav panel_toolbox">
-          <a href="{{ route('produk.ubah', $getProduk->id) }}" class="btn btn-warning btn-sm">Ubah</a><a href="{{ route('produk.index') }}" class="btn btn-primary btn-sm">Kembali</a>
+          <a href="{{ route('produkKategori.ubah', $getProdukKategori->id) }}" class="btn btn-warning btn-sm">Ubah</a><a href="{{ route('produkKategori.index') }}" class="btn btn-primary btn-sm">Kembali</a>
         </ul>
         <div class="clearfix"></div>
       </div>
@@ -33,44 +33,39 @@
           <tbody>
 
           <tr>
-            <td><strong>Kategori</strong></td>
+            <td><strong>Produk Kategori</strong></td>
             <td>:</td>
             <td>{{ $getProdukKategori->nama_kategori }}</td>
           </tr>
           <tr>
-            <td><strong>Nama Produk</strong></td>
-            <td>:</td>
-            <td>{{ $getProduk->nama_produk }}</td>
-          </tr>
-          <tr>
             <td><strong>Deskripsi EN</strong></td>
             <td>:</td>
-            <td>{{ $getProduk->deskripsi_en }}</td>
+            <td>{{ $getProdukKategori->deskripsi_en }}</td>
           </tr>
           <tr>
             <td><strong>Deskripsi ID</strong></td>
             <td>:</td>
-            <td>{{ $getProduk->deskripsi_id }}</td>
+            <td>{{ $getProdukKategori->deskripsi_id }}</td>
           </tr>
           <tr>
             <td><strong>Gambar Produk</strong></td>
             <td>:</td>
-            <td><img src="{{ asset('images/produk').'/'.$getProduk->img_url }}" width="100%" /></td>
+            <td><img src="{{ asset('images/produk').'/'.$getProdukKategori->img_url }}" width="100%" /></td>
           </tr>
           <tr>
             <td><strong>Gambar alt</strong></td>
             <td>:</td>
-            <td>{{ $getProduk->img_alt }}</td>
+            <td>{{ $getProdukKategori->img_alt }}</td>
           </tr>
           <tr>
             <td><strong>Tanggal Post</strong></td>
             <td>:</td>
-            <td>{{ $getProduk->tanggal_post }}</td>
+            <td>{{ $getProdukKategori->tanggal_post }}</td>
           </tr>
           <tr>
             <td><strong>Publish</strong></td>
             <td>:</td>
-            <td>@if ($getProduk->flag_publish == 1) Ya @else Tidak @endif</td>
+            <td>@if ($getProdukKategori->flag_publish == 1) Ya @else Tidak @endif</td>
           </tr>
         </tbody>
         </table>

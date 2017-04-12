@@ -16,8 +16,7 @@ class CreateProdukTable extends Migration
         Schema::create('amd_produk', function(Blueprint $table){
           $table->increments('id');
           $table->integer('kategori_id')->unsigned();
-          $table->string('nama_produk_en');
-          $table->string('nama_produk_id');
+          $table->string('nama_produk');
           $table->text('deskripsi_en');
           $table->text('deskripsi_id');
           $table->string('img_url');

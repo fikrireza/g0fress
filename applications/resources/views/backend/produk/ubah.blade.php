@@ -32,7 +32,7 @@
               <select id="kategori_id" name="kategori_id" class="form-control select2_single" required="required">
                 <option value="">Pilih</option>
                 @foreach ($getProdukKategori as $key)
-                  <option value="{{ $key->id }}" {{ $getProduk->kategori_id == $key->id ? 'selected="selected"' : '' }}>{{ $key->nama_kategori_id}}</option>
+                  <option value="{{ $key->id }}" {{ $getProduk->kategori_id == $key->id ? 'selected="selected"' : '' }}>{{ $key->nama_kategori}}</option>
                 @endforeach
               </select>
             </div>
@@ -44,10 +44,10 @@
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nama Produk <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="1" name="nama_produk_id" placeholder="Contoh: Nama Produk" required="required" type="text" value="{{ $getProduk->nama_produk_id }}">
+              <input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="1" name="nama_produk" placeholder="Contoh: Nama Produk" required="required" type="text" value="{{ $getProduk->nama_produk }}">
             </div>
-            @if($errors->has('nama_produk_id'))
-            <div class="alert">{{ $errors->first('nama_produk_id')}}</div>
+            @if($errors->has('nama_produk'))
+            <div class="alert">{{ $errors->first('nama_produk')}}</div>
             @endif
           </div>
           <div class="item form-group">
@@ -144,6 +144,7 @@
   $('#tanggal_post').daterangepicker({
     singleDatePicker: true,
     calender_style: "picker_3",
+    format: 'YYYY-MM-DD',
   });
 
   // initialize the validator function

@@ -15,8 +15,7 @@ class CreateKategoriProdukTable extends Migration
     {
         Schema::create('amd_produk_kategori', function(Blueprint $table){
           $table->increments('id');
-          $table->string('nama_kategori_en');
-          $table->string('nama_kategori_id');
+          $table->string('nama_kategori')->unique();
           $table->text('deskripsi_en');
           $table->text('deskripsi_id');
           $table->string('img_url');

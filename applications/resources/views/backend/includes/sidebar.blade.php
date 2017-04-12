@@ -25,13 +25,13 @@
       <div class="menu_section">
         <h3>General</h3>
         <ul class="nav side-menu">
-          <li class="{{ Route::currentRouteNamed('produk.index') ? 'active' : '' }}{{ Route::currentRouteNamed('produk.tambah') ? 'active' : '' }}{{ Route::currentRouteNamed('produk.lihat') ? 'active' : '' }}">
+          <li class="{{ Route::currentRouteNamed('produk.index') ? 'active' : '' }}{{ Route::currentRouteNamed('produk.tambah') ? 'active' : '' }}{{ Route::currentRouteNamed('produk.lihat') ? 'active' : '' }}{{ Route::currentRouteNamed('produk.ubah') ? 'active' : '' }}{{ Route::currentRouteNamed('produkKategori.index') ? 'active' : '' }}{{ Route::currentRouteNamed('produkKategori.tambah') ? 'active' : '' }}{{ Route::currentRouteNamed('produkKategori.lihat') ? 'active' : '' }}{{ Route::currentRouteNamed('produkKategori.ubah') ? 'active' : '' }}">
             <a>
               <i class="fa fa-home"></i> Produk <span class="fa fa-chevron-down"></span>
             </a>
-            <ul class="nav child_menu" style="{{ Route::currentRouteNamed('produk.index') ? 'display: block;' : '' }}{{ Route::currentRouteNamed('produk.tambah') ? 'display: block;' : '' }}{{ Route::currentRouteNamed('produk.lihat') ? 'display: block;' : '' }}">
-              <li class="{{ Route::currentRouteNamed('produk.index') ? 'current-page' : '' }}{{ Route::currentRouteNamed('produk.tambah') ? 'current-page' : '' }}{{ Route::currentRouteNamed('produk.lihat') ? 'current-page' : '' }}"><a href="{{ route('produk.index')}}">Produk</a></li>
-              <li><a href="index2.html">Produk Kategori</a></li>
+            <ul class="nav child_menu" style="{{ Route::currentRouteNamed('produk.index') ? 'display: block;' : '' }}{{ Route::currentRouteNamed('produk.tambah') ? 'display: block;' : '' }}{{ Route::currentRouteNamed('produk.lihat') ? 'display: block;' : '' }}{{ Route::currentRouteNamed('produk.ubah') ? 'display: block;' : '' }}{{ Route::currentRouteNamed('produkKategori.index') ? 'display: block;' : '' }}{{ Route::currentRouteNamed('produkKategori.tambah') ? 'display: block;' : '' }}{{ Route::currentRouteNamed('produkKategori.lihat') ? 'display: block;' : '' }}{{ Route::currentRouteNamed('produkKategori.ubah') ? 'display: block;' : '' }}">
+              <li class="{{ Route::currentRouteNamed('produk.index') ? 'current-page' : '' }}{{ Route::currentRouteNamed('produk.tambah') ? 'current-page' : '' }}{{ Route::currentRouteNamed('produk.lihat') ? 'current-page' : '' }}{{ Route::currentRouteNamed('produk.ubah') ? 'current-page' : '' }}"><a href="{{ route('produk.index')}}">Produk</a></li>
+              <li class="{{ Route::currentRouteNamed('produkKategori.index') ? 'current-page' : '' }}{{ Route::currentRouteNamed('produkKategori.tambah') ? 'current-page' : '' }}{{ Route::currentRouteNamed('produkKategori.lihat') ? 'current-page' : '' }}{{ Route::currentRouteNamed('produkKategori.ubah') ? 'current-page' : '' }}"><a href="{{ route('produkKategori.index')}}">Produk Kategori</a></li>
             </ul>
           </li>
           <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
