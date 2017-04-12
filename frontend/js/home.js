@@ -22,4 +22,13 @@ $(document).ready(function() {
     	singleItem:true
  
   	});
+
+  $(".slider-second").owlCarousel({
+ 
+      navigation : true, // Show next and prev buttons
+      items: 4,
+      pagination:false
+ 
+    });
+
 })
