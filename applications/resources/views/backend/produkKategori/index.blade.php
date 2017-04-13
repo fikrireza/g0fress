@@ -1,7 +1,7 @@
 @extends('backend.layout.master')
 
 @section('title')
-  <title>Aquasolve | Produk</title>
+  <title>Aquasolve | Produk Kategori</title>
 @endsection
 
 @section('headscript')
@@ -34,16 +34,16 @@
 
 <div class="page-title">
   <div class="title_left">
-    <h3>Semua Produk <small></small></h3>
+    <h3>Semua Produk Kategori <small></small></h3>
   </div>
 </div>
 
 <div class="col-md-12 col-sm-12 col-xs-12">
   <div class="x_panel">
     <div class="x_title">
-      <h2>Produk </h2>
+      <h2>Produk Kategori</h2>
       <ul class="nav panel_toolbox">
-        <a href="{{ route('produk.tambah') }}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Tambah Produk</a>
+        <a href="{{ route('produkKategori.tambah') }}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Tambah Produk Kategori</a>
       </ul>
       <div class="clearfix"></div>
     </div>
@@ -52,7 +52,6 @@
         <thead>
           <tr role="row">
             <th>No</th>
-            <th>Produk</th>
             <th>Produk Kategori</th>
             <th>Deskripsi</th>
             <th>Tanggal Post</th>
@@ -64,15 +63,14 @@
           @php
             $no = 1;
           @endphp
-          @foreach ($getProduk as $key)
+          @foreach ($getProdukKategori as $key)
           <tr>
             <td>{{ $no }}</td>
-            <td>{{ $key->nama_produk }}</td>
             <td>{{ $key->nama_kategori }}</td>
             <td>{{ $key->deskripsi_id }}</td>
             <td>{{ $key->tanggal_post }}</td>
             <td>@if ($key->flag_publish == 1) Ya @else Tidak @endif</td>
-            <td><a href="{{ route('produk.lihat', $key->id) }}" class="btn btn-xs btn-primary"><i class="fa fa-folder"></i> Lihat</a><a href="{{ route('produk.ubah', $key->id) }}" class="btn btn-xs btn-warning btn-sm"><i class="fa fa-pencil"></i> Ubah</a></td>
+            <td><a href="{{ route('produkKategori.lihat', $key->id) }}" class="btn btn-xs btn-primary"><i class="fa fa-folder"></i> Lihat</a><a href="{{ route('produkKategori.ubah', $key->id) }}" class="btn btn-xs btn-warning btn-sm"><i class="fa fa-pencil"></i> Ubah</a></td>
           </tr>
           @php
             $no++;

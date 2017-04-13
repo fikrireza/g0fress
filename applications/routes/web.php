@@ -51,7 +51,12 @@ Route::get('admin/produk/ubah/{id}', 'Backend\ProdukController@ubah')->name('pro
 Route::post('admin/produk/ubah', 'Backend\ProdukController@edit')->name('produk.edit');
 
 // Produk Kategori
-
+Route::get('admin/produk-kategori', 'Backend\ProdukKategoriController@index')->name('produkKategori.index');
+Route::get('admin/produk-kategori/tambah', 'Backend\ProdukKategoriController@tambah')->name('produkKategori.tambah');
+Route::post('admin/produk-kategori/tambah', 'Backend\ProdukKategoriController@store')->name('produkKategori.store');
+Route::get('admin/produk-kategori/lihat/{id}', 'Backend\ProdukKategoriController@lihat')->name('produkKategori.lihat');
+Route::get('admin/produk-kategori/ubah/{id}', 'Backend\ProdukKategoriController@ubah')->name('produkKategori.ubah');
+Route::post('admin/produk-kategori/ubah', 'Backend\ProdukKategoriController@edit')->name('produkKategori.edit');
 
 //----------------------- BACKEND -----------------------//
 

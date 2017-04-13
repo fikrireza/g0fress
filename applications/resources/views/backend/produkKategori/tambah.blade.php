@@ -1,7 +1,7 @@
 @extends('backend.layout.master')
 
 @section('title')
-  <title>Aquasolve | Tambah Produk</title>
+  <title>Aquasolve | Tambah Produk Kategori</title>
 @endsection
 
 @section('headscript')
@@ -15,38 +15,23 @@
   <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="x_panel">
       <div class="x_title">
-        <h2>Tambah Produk<small></small></h2>
+        <h2>Tambah Produk Kategori<small></small></h2>
         <ul class="nav panel_toolbox">
-          <a href="{{ route('produk.index') }}" class="btn btn-primary btn-sm">Kembali</a>
+          <a href="{{ route('produkKategori.index') }}" class="btn btn-primary btn-sm">Kembali</a>
         </ul>
         <div class="clearfix"></div>
       </div>
       <div class="x_content">
-        <form action="{{ route('produk.store') }}" method="POST" class="form-horizontal form-label-left" enctype="multipart/form-data" novalidate>
+        <form action="{{ route('produkKategori.store') }}" method="POST" class="form-horizontal form-label-left" enctype="multipart/form-data" novalidate>
           {{ csrf_field() }}
           <div class="item form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Kategori Produk <span class="required">*</span>
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nama Produk Kategori<span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <select id="kategori_id" name="kategori_id" class="form-control select2_single" required="required">
-                <option value="">Pilih</option>
-                @foreach ($getProdukKategori as $key)
-                  <option value="{{ $key->id }}" {{ old('kategori_id') == $key->id ? 'selected' : '' }}>{{ $key->nama_kategori_id}}</option>
-                @endforeach
-              </select>
+              <input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="1" name="nama_kategori" placeholder="Contoh: Nama Produk Kategori" required="required" type="text" value="{{ old('nama_kategori') }}">
             </div>
-            @if($errors->has('kategori_id'))
-            <div class="alert">{{ $errors->first('kategori_id')}}</div>
-            @endif
-          </div>
-          <div class="item form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nama Produk <span class="required">*</span>
-            </label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="1" name="nama_produk" placeholder="Contoh: Nama Produk" required="required" type="text" value="{{ old('nama_produk') }}">
-            </div>
-            @if($errors->has('nama_produk'))
-            <div class="alert">{{ $errors->first('nama_produk')}}</div>
+            @if($errors->has('nama_kategori'))
+            <div class="alert">{{ $errors->first('nama_kategori')}}</div>
             @endif
           </div>
           <div class="item form-group">
@@ -84,7 +69,7 @@
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Deskripsi Gambar <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="img_alt" class="form-control col-md-7 col-xs-12" data-validate-length-range="1" name="img_alt" placeholder="Contoh: Nama Produk" required="required" type="text" value="{{ old('img_alt') }}">
+              <input id="img_alt" class="form-control col-md-7 col-xs-12" data-validate-length-range="1" name="img_alt" placeholder="Contoh: Nama Produk Kategori" required="required" type="text" value="{{ old('img_alt') }}">
             </div>
             @if($errors->has('img_alt'))
             <div class="alert">{{ $errors->first('img_alt')}}</div>
@@ -94,7 +79,7 @@
             <label class="control-label col-md-3 col-sm-3 col-xs-12">Tanggal Publish <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="tanggal_post" name="tanggal_post" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" value="{{ date('d/m/Y') }}">
+              <input id="tanggal_post" name="tanggal_post" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" value="{{ date('Y-m-d') }}">
             </div>
             @if($errors->has('tanggal_post'))
             <div class="alert">{{ $errors->first('tanggal_post')}}</div>

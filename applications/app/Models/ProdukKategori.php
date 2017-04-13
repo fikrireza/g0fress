@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class KategoriProduk extends Model
+class ProdukKategori extends Model
 {
     protected $table = 'amd_produk_kategori';
 
