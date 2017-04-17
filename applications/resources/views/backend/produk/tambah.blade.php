@@ -31,7 +31,7 @@
               <select id="kategori_id" name="kategori_id" class="form-control select2_single" required="required">
                 <option value="">Pilih</option>
                 @foreach ($getProdukKategori as $key)
-                  <option value="{{ $key->id }}" {{ old('kategori_id') == $key->id ? 'selected' : '' }}>{{ $key->nama_kategori_id}}</option>
+                  <option value="{{ $key->id }}" {{ old('kategori_id') == $key->id ? 'selected' : '' }}>{{ $key->nama_kategori}}</option>
                 @endforeach
               </select>
             </div>
@@ -50,23 +50,43 @@
             @endif
           </div>
           <div class="item form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Deskripsi EN <span class="required">*</span>
-            </label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <textarea id="textarea" required="required" name="deskripsi_en" class="form-control col-md-7 col-xs-12">{{ old('deskripsi_en')}}</textarea>
-            </div>
-            @if($errors->has('deskripsi_en'))
-            <div class="alert">{{ $errors->first('deskripsi_en')}}</div>
-            @endif
-          </div>
-          <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Deskripsi ID <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <textarea id="textarea" required="required" name="deskripsi_id" class="form-control col-md-7 col-xs-12">{{ old('deskripsi_id') }}</textarea>
+              <textarea id="textarea" required="required" name="deskripsi_ID" class="form-control col-md-7 col-xs-12">{{ old('deskripsi_ID') }}</textarea>
             </div>
-            @if($errors->has('deskripsi_id'))
-            <div class="alert">{{ $errors->first('deskripsi_id')}}</div>
+            @if($errors->has('deskripsi_ID'))
+            <div class="alert">{{ $errors->first('deskripsi_ID')}}</div>
+            @endif
+          </div>
+          <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Deskripsi EN <span class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <textarea id="textarea" required="required" name="deskripsi_EN" class="form-control col-md-7 col-xs-12">{{ old('deskripsi_EN')}}</textarea>
+            </div>
+            @if($errors->has('deskripsi_EN'))
+            <div class="alert">{{ $errors->first('deskripsi_EN')}}</div>
+            @endif
+          </div>
+          <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Ingredient <span class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <textarea id="textarea" required="required" name="ingredient" class="form-control col-md-7 col-xs-12">{{ old('ingredient')}}</textarea>
+            </div>
+            @if($errors->has('ingredient'))
+            <div class="alert">{{ $errors->first('ingredient')}}</div>
+            @endif
+          </div>
+          <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Nutrition Fact <span class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <textarea id="textarea" required="required" name="nutrition_fact" class="form-control col-md-7 col-xs-12">{{ old('nutrition_fact')}}</textarea>
+            </div>
+            @if($errors->has('nutrition_fact'))
+            <div class="alert">{{ $errors->first('nutrition_fact')}}</div>
             @endif
           </div>
           <div class="item form-group">
@@ -94,7 +114,7 @@
             <label class="control-label col-md-3 col-sm-3 col-xs-12">Tanggal Publish <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="tanggal_post" name="tanggal_post" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" value="{{ date('d/m/Y') }}">
+              <input id="tanggal_post" name="tanggal_post" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" value="{{ date('Y-m-d') }}">
             </div>
             @if($errors->has('tanggal_post'))
             <div class="alert">{{ $errors->first('tanggal_post')}}</div>

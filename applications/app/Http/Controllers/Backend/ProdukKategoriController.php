@@ -108,20 +108,21 @@ class ProdukKategoriController extends Controller
 
     public function edit(Request $request)
     {
+      // dd($request);
       $message = [
         'nama_kategori.required' => 'Wajib di isi',
         'nama_kategori.unique' => 'Kategori ini sudah ada',
-        'deskripsi_en.required' => 'Wajib di isi',
-        'deskripsi_id.required' => 'Wajib di isi',
+        'deskripsi_ID.required' => 'Wajib di isi',
+        'deskripsi_EN.required' => 'Wajib di isi',
         'img_url.required' => 'Wajib di isi',
         'img_alt.required' => 'Wajib di isi',
         'tanggal_post.required' => 'Wajib di isi',
       ];
 
       $validator = Validator::make($request->all(), [
-        'nama_kategori' => 'required|unique:amd_produk_kategori',
-        'deskripsi_en' => 'required',
-        'deskripsi_id' => 'required',
+        'nama_kategori' => 'required|unique:amd_produk_kategori,id',
+        'deskripsi_ID' => 'required',
+        'deskripsi_EN' => 'required',
         'img_url' => 'image|mimes:jpeg,bmp,png',
         'img_alt' => 'required',
         'tanggal_post' => 'required'
@@ -129,7 +130,7 @@ class ProdukKategoriController extends Controller
 
       if($validator->fails())
       {
-        return redirect()->route('produkKategori.tambah')->withErrors($validator)->withInput();
+        return redirect()->route('produkKategori.ubah', array('id' => $request->id))->withErrors($validator)->withInput();
       }
 
 
@@ -144,8 +145,8 @@ class ProdukKategoriController extends Controller
       if (!$image) {
         $update = ProdukKategori::find($request->id);
         $update->nama_kategori = $request->nama_kategori;
-        $update->deskripsi_en = $request->deskripsi_en;
-        $update->deskripsi_id = $request->deskripsi_id;
+        $update->deskripsi_EN = $request->deskripsi_EN;
+        $update->deskripsi_ID = $request->deskripsi_ID;
         $update->img_alt  = $request->img_alt;
         $update->tanggal_post = $request->tanggal_post;
         $update->flag_publish = $flag_publish;
@@ -159,8 +160,8 @@ class ProdukKategoriController extends Controller
 
         $update = ProdukKategori::find($request->id);
         $update->nama_kategori = $request->nama_kategori;
-        $update->deskripsi_en = $request->deskripsi_en;
-        $update->deskripsi_id = $request->deskripsi_id;
+        $update->deskripsi_EN = $request->deskripsi_EN;
+        $update->deskripsi_ID = $request->deskripsi_ID;
         $update->img_url  = $img_url;
         $update->img_alt  = $request->img_alt;
         $update->tanggal_post = $request->tanggal_post;
