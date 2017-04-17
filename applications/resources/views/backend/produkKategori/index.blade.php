@@ -47,8 +47,8 @@
       </ul>
       <div class="clearfix"></div>
     </div>
-    <div class="x_content">
-      <table id="produktabel" class="table table-striped table-bordered dt-responsive no-footer" role="grid" aria-describedby="datatable_info">
+    <div class="x_content table-responsive">
+      <table id="produktabel" class="table table-striped table-bordered dt-responsive no-footer" width="100%">
         <thead>
           <tr role="row">
             <th>No</th>

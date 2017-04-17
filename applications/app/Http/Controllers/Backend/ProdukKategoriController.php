@@ -120,7 +120,7 @@ class ProdukKategoriController extends Controller
       ];
 
       $validator = Validator::make($request->all(), [
-        'nama_kategori' => 'required|unique:amd_produk_kategori,id',
+        'nama_kategori' => 'required|unique:amd_produk_kategori,nama_kategori,'.$request->id,
         'deskripsi_ID' => 'required',
         'deskripsi_EN' => 'required',
         'img_url' => 'image|mimes:jpeg,bmp,png',

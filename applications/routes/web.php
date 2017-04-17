@@ -66,6 +66,13 @@ Route::get('admin/produk-kategori/lihat/{id}', 'Backend\ProdukKategoriController
 Route::get('admin/produk-kategori/ubah/{id}', 'Backend\ProdukKategoriController@ubah')->name('produkKategori.ubah');
 Route::post('admin/produk-kategori/ubah', 'Backend\ProdukKategoriController@edit')->name('produkKategori.edit');
 
+// News
+Route::get('admin/news', 'Backend\NewsController@index')->name('news.index');
+Route::get('admin/news/tambah', 'Backend\NewsController@tambah')->name('news.tambah');
+Route::post('admin/news/tambah', 'Backend\NewsController@store')->name('news.store');
+Route::get('admin/news/lihat/{id}', 'Backend\NewsController@lihat')->name('news.lihat');
+Route::get('admin/news/ubah/{id}', 'Backend\NewsController@ubah')->name('news.ubah');
+Route::post('admin/news/ubah', 'Backend\NewsController@edit')->name('news.edit');
 //----------------------- BACKEND -----------------------//
 
 

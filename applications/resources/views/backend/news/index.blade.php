@@ -1,7 +1,7 @@
 @extends('backend.layout.master')
 
 @section('title')
-  <title>Aquasolve | Produk</title>
+  <title>Aquasolve | News</title>
 @endsection
 
 @section('headscript')
@@ -12,7 +12,6 @@
 @endsection
 
 @section('content')
-
 @if(Session::has('berhasil'))
 <script>
   window.setTimeout(function() {
@@ -34,27 +33,27 @@
 
 <div class="page-title">
   <div class="title_left">
-    <h3>Semua Produk <small></small></h3>
+    <h3>Semua News <small></small></h3>
   </div>
 </div>
 
 <div class="col-md-12 col-sm-12 col-xs-12">
   <div class="x_panel">
     <div class="x_title">
-      <h2>Produk </h2>
+      <h2>News </h2>
       <ul class="nav panel_toolbox">
-        <a href="{{ route('produk.tambah') }}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Tambah Produk</a>
+        <a href="{{ route('news.tambah') }}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Tambah News</a>
       </ul>
       <div class="clearfix"></div>
     </div>
     <div class="x_content table-responsive">
-      <table id="produktabel" class="table table-striped table-bordered dt-responsive no-footer" width="100%">
+      <table id="newstabel" class="table table-striped table-bordered dt-responsive no-footer" width="100%">
         <thead>
           <tr role="row">
             <th>No</th>
-            <th>Produk</th>
-            <th>Produk Kategori</th>
+            <th>Judul</th>
             <th>Deskripsi</th>
+            <th>Show Home Page</th>
             <th>Tanggal Post</th>
             <th>Publish</th>
             <th>Aksi</th>
@@ -64,15 +63,15 @@
           @php
             $no = 1;
           @endphp
-          @foreach ($getProduk as $key)
+          @foreach ($getNews as $key)
           <tr>
             <td>{{ $no }}</td>
-            <td>{{ $key->nama_produk }}</td>
-            <td>{{ $key->nama_kategori }}</td>
+            <td>{{ $key->judul_ID }}</td>
             <td>{{ $key->deskripsi_ID }}</td>
+            <td>@if ($key->show_homepage == 1) Ya @else Tidak @endif</td>
             <td>{{ $key->tanggal_post }}</td>
             <td>@if ($key->flag_publish == 1) Ya @else Tidak @endif</td>
-            <td><a href="{{ route('produk.lihat', $key->id) }}" class="btn btn-xs btn-primary"><i class="fa fa-folder"></i> Lihat</a><a href="{{ route('produk.ubah', $key->id) }}" class="btn btn-xs btn-warning btn-sm"><i class="fa fa-pencil"></i> Ubah</a></td>
+            <td><a href="{{ route('news.lihat', $key->id) }}" class="btn btn-xs btn-primary"><i class="fa fa-folder"></i> Lihat</a><a href="{{ route('news.ubah', $key->id) }}" class="btn btn-xs btn-warning btn-sm"><i class="fa fa-pencil"></i> Ubah</a></td>
           </tr>
           @php
             $no++;
@@ -91,29 +90,8 @@
 <script src="{{ asset('backend/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
 <script src="{{ asset('backend/vendors/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
 <script src="{{ asset('backend/vendors/datatables.net-scroller/js/datatables.scroller.min.js') }}"></script>
-<script src="{{ asset('backend/vendors/pnotify/dist/pnotify.js') }}"></script>
-<script src="{{ asset('backend/vendors/pnotify/dist/pnotify.nonblock.js') }}"></script>
 
 <script type="text/javascript">
-  $('#produktabel').DataTable();
+  $('#newstabel').DataTable();
 </script>
-
-@if(Session::has('berhasisl'))
-<script>
-  $(document).ready(function() {
-    new PNotify({
-      title: "Berhasil",
-      type: "success",
-      text: "Berhasil Menambahkan Produk Baru",
-      nonblock: {
-          nonblock: true
-      },
-      // addclass: 'dark',
-      styling: 'bootstrap3',
-      // hide: false,
-    });
-
-  });
-</script>
-@endif
 @endsection

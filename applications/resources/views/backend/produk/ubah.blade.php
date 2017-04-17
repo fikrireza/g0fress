@@ -35,60 +35,60 @@
                   <option value="{{ $key->id }}" {{ $getProduk->kategori_id == $key->id ? 'selected="selected"' : '' }}>{{ $key->nama_kategori}}</option>
                 @endforeach
               </select>
+              @if($errors->has('kategori_id'))
+                <code><span style="color:red; font-size:10px;">{{ $errors->first('kategori_id')}}</span></code>
+              @endif
             </div>
-            @if($errors->has('kategori_id'))
-            <div class="alert">{{ $errors->first('kategori_id')}}</div>
-            @endif
           </div>
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nama Produk <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
               <input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="1" name="nama_produk" placeholder="Contoh: Nama Produk" required="required" type="text" value="{{ $getProduk->nama_produk }}">
+              @if($errors->has('nama_produk'))
+                <code><span style="color:red; font-size:10px;">{{ $errors->first('nama_produk')}}</span></code>
+              @endif
             </div>
-            @if($errors->has('nama_produk'))
-            <div class="alert">{{ $errors->first('nama_produk')}}</div>
-            @endif
           </div>
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Deskripsi ID <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
               <textarea id="textarea" required="required" name="deskripsi_ID" class="form-control col-md-7 col-xs-12">{{ $getProduk->deskripsi_ID }}</textarea>
+              @if($errors->has('deskripsi_ID'))
+                <code><span style="color:red; font-size:10px;">{{ $errors->first('deskripsi_ID')}}</span></code>
+              @endif
             </div>
-            @if($errors->has('deskripsi_ID'))
-            <div class="alert">{{ $errors->first('deskripsi_ID')}}</div>
-            @endif
           </div>
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Deskripsi EN <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
               <textarea id="textarea" required="required" name="deskripsi_EN" class="form-control col-md-7 col-xs-12">{{ $getProduk->deskripsi_EN }}</textarea>
+              @if($errors->has('deskripsi_EN'))
+                <code><span style="color:red; font-size:10px;">{{ $errors->first('deskripsi_EN')}}</span></code>
+              @endif
             </div>
-            @if($errors->has('deskripsi_EN'))
-            <div class="alert">{{ $errors->first('deskripsi_EN')}}</div>
-            @endif
           </div>
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Ingredient <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
               <textarea id="textarea" required="required" name="ingredient" class="form-control col-md-7 col-xs-12">{{ $getProduk->ingredient }}</textarea>
+              @if($errors->has('ingredient'))
+                <code><span style="color:red; font-size:10px;">{{ $errors->first('ingredient')}}</span></code>
+              @endif
             </div>
-            @if($errors->has('ingredient'))
-            <div class="alert">{{ $errors->first('ingredient')}}</div>
-            @endif
           </div>
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Nutrition Fact <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
               <textarea id="textarea" required="required" name="nutrition_fact" class="form-control col-md-7 col-xs-12">{{ $getProduk->nutrition_fact }}</textarea>
+              @if($errors->has('nutrition_fact'))
+                <code><span style="color:red; font-size:10px;">{{ $errors->first('nutrition_fact')}}</span></code>
+              @endif
             </div>
-            @if($errors->has('nutrition_fact'))
-            <div class="alert">{{ $errors->first('nutrition_fact')}}</div>
-            @endif
           </div>
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Gambar Produk <span class="required">*</span>
@@ -97,30 +97,30 @@
             <div class="col-md-6 col-sm-6 col-xs-12">
               <input id="img_url" class="form-control col-md-7 col-xs-12" name="img_url" type="file">
               <span style="color:red; font-size:10px;">Width: 100px; Heigh: 100px</span>
+              @if($errors->has('img_url'))
+                <code><span style="color:red; font-size:10px;">{{ $errors->first('img_url')}}</span></code>
+              @endif
             </div>
-            @if($errors->has('img_url'))
-            <div class="alert">{{ $errors->first('img_url')}}</div>
-            @endif
           </div>
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Deskripsi Gambar <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
               <input id="img_alt" class="form-control col-md-7 col-xs-12" data-validate-length-range="1" name="img_alt" placeholder="Contoh: Nama Produk" required="required" type="text" value="{{ $getProduk->img_alt }}">
+              @if($errors->has('img_alt'))
+                <code><span style="color:red; font-size:10px;">{{ $errors->first('img_alt')}}</span></code>
+              @endif
             </div>
-            @if($errors->has('img_alt'))
-            <div class="alert">{{ $errors->first('img_alt')}}</div>
-            @endif
           </div>
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12">Tanggal Publish <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
               <input id="tanggal_post" name="tanggal_post" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" value="{{ $getProduk->tanggal_post }}">
+              @if($errors->has('tanggal_post'))
+                <code><span style="color:red; font-size:10px;">{{ $errors->first('tanggal_post')}}</span></code>
+              @endif
             </div>
-            @if($errors->has('tanggal_post'))
-            <div class="alert">{{ $errors->first('tanggal_post')}}</div>
-            @endif
           </div>
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Publish <span class="required">*</span>
@@ -172,9 +172,9 @@
 
   // validate a field on "blur" event, a 'select' on 'change' event & a '.reuired' classed multifield on 'keyup':
   $('form')
-    .on('blur', 'input[required], input.optional, select.required', validator.checkField)
+    .on('blur', 'input[required], textarea, input.optional, select.required', validator.checkField)
     .on('change', 'select.required', validator.checkField)
-    .on('keypress', 'input[required][pattern]', validator.keypress);
+    .on('keypress', 'input[required][pattern], textarea', validator.keypress);
 
   $('form').submit(function(e) {
     e.preventDefault();

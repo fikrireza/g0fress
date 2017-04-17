@@ -146,7 +146,7 @@ class ProdukController extends Controller
 
       $validator = Validator::make($request->all(), [
         'kategori_id' => 'required',
-        'nama_produk' => 'required|unique:amd_produk,id',
+        'nama_produk' => 'required|unique:amd_produk,nama_produk,'.$request->id,
         'deskripsi_EN' => 'required',
         'deskripsi_ID' => 'required',
         // 'ingredient'  => 'required',
