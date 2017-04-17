@@ -43,14 +43,24 @@
             <td>{{ $getProduk->nama_produk }}</td>
           </tr>
           <tr>
-            <td><strong>Deskripsi EN</strong></td>
-            <td>:</td>
-            <td>{{ $getProduk->deskripsi_en }}</td>
-          </tr>
-          <tr>
             <td><strong>Deskripsi ID</strong></td>
             <td>:</td>
-            <td>{{ $getProduk->deskripsi_id }}</td>
+            <td>{{ $getProduk->deskripsi_ID }}</td>
+          </tr>
+          <tr>
+            <td><strong>Deskripsi EN</strong></td>
+            <td>:</td>
+            <td>{{ $getProduk->deskripsi_EN }}</td>
+          </tr>
+          <tr>
+            <td><strong>Ingredient</strong></td>
+            <td>:</td>
+            <td>{{ $getProduk->ingredient }}</td>
+          </tr>
+          <tr>
+            <td><strong>Nutrition Fact</strong></td>
+            <td>:</td>
+            <td>{{ $getProduk->nutrition_fact }}</td>
           </tr>
           <tr>
             <td><strong>Gambar Produk</strong></td>

@@ -38,14 +38,14 @@
             <td>{{ $getProdukKategori->nama_kategori }}</td>
           </tr>
           <tr>
-            <td><strong>Deskripsi EN</strong></td>
-            <td>:</td>
-            <td>{{ $getProdukKategori->deskripsi_en }}</td>
-          </tr>
-          <tr>
             <td><strong>Deskripsi ID</strong></td>
             <td>:</td>
-            <td>{{ $getProdukKategori->deskripsi_id }}</td>
+            <td>{{ $getProdukKategori->deskripsi_ID }}</td>
+          </tr>
+          <tr>
+            <td><strong>Deskripsi EN</strong></td>
+            <td>:</td>
+            <td>{{ $getProdukKategori->deskripsi_EN }}</td>
           </tr>
           <tr>
             <td><strong>Gambar Produk</strong></td>

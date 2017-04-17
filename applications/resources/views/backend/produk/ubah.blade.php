@@ -51,23 +51,43 @@
             @endif
           </div>
           <div class="item form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Deskripsi EN <span class="required">*</span>
-            </label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <textarea id="textarea" required="required" name="deskripsi_en" class="form-control col-md-7 col-xs-12">{{ $getProduk->deskripsi_en }}</textarea>
-            </div>
-            @if($errors->has('deskripsi_en'))
-            <div class="alert">{{ $errors->first('deskripsi_en')}}</div>
-            @endif
-          </div>
-          <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Deskripsi ID <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <textarea id="textarea" required="required" name="deskripsi_id" class="form-control col-md-7 col-xs-12">{{ $getProduk->deskripsi_id }}</textarea>
+              <textarea id="textarea" required="required" name="deskripsi_ID" class="form-control col-md-7 col-xs-12">{{ $getProduk->deskripsi_ID }}</textarea>
             </div>
-            @if($errors->has('deskripsi_id'))
-            <div class="alert">{{ $errors->first('deskripsi_id')}}</div>
+            @if($errors->has('deskripsi_ID'))
+            <div class="alert">{{ $errors->first('deskripsi_ID')}}</div>
+            @endif
+          </div>
+          <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Deskripsi EN <span class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <textarea id="textarea" required="required" name="deskripsi_EN" class="form-control col-md-7 col-xs-12">{{ $getProduk->deskripsi_EN }}</textarea>
+            </div>
+            @if($errors->has('deskripsi_EN'))
+            <div class="alert">{{ $errors->first('deskripsi_EN')}}</div>
+            @endif
+          </div>
+          <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Ingredient <span class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <textarea id="textarea" required="required" name="ingredient" class="form-control col-md-7 col-xs-12">{{ $getProduk->ingredient }}</textarea>
+            </div>
+            @if($errors->has('ingredient'))
+            <div class="alert">{{ $errors->first('ingredient')}}</div>
+            @endif
+          </div>
+          <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Nutrition Fact <span class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <textarea id="textarea" required="required" name="nutrition_fact" class="form-control col-md-7 col-xs-12">{{ $getProduk->nutrition_fact }}</textarea>
+            </div>
+            @if($errors->has('nutrition_fact'))
+            <div class="alert">{{ $errors->first('nutrition_fact')}}</div>
             @endif
           </div>
           <div class="item form-group">

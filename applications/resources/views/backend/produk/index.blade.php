@@ -69,7 +69,7 @@
             <td>{{ $no }}</td>
             <td>{{ $key->nama_produk }}</td>
             <td>{{ $key->nama_kategori }}</td>
-            <td>{{ $key->deskripsi_id }}</td>
+            <td>{{ $key->deskripsi_ID }}</td>
             <td>{{ $key->tanggal_post }}</td>
             <td>@if ($key->flag_publish == 1) Ya @else Tidak @endif</td>
             <td><a href="{{ route('produk.lihat', $key->id) }}" class="btn btn-xs btn-primary"><i class="fa fa-folder"></i> Lihat</a><a href="{{ route('produk.ubah', $key->id) }}" class="btn btn-xs btn-warning btn-sm"><i class="fa fa-pencil"></i> Ubah</a></td>
