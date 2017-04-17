@@ -41,12 +41,15 @@
 						<a href="">
 							Product
 						</a>
-
 						<div class="dropdown-hover-content">
 							<div class="list slide-hover">
 								<a href="">
 									Fresh Strips
 								</a>
+								<label class="icon">
+									<i class="fa fa-chevron-right" aria-hidden="true"></i>
+									<i class="fa fa-chevron-right" aria-hidden="true"></i>
+								</label>
 								<div class="slide-hover-content">
 									<div class="list">
 										<a href="">
@@ -85,6 +88,10 @@
 								<a href="">
 									Fresh Strips
 								</a>
+								<label class="icon">
+									<i class="fa fa-chevron-right" aria-hidden="true"></i>
+									<i class="fa fa-chevron-right" aria-hidden="true"></i>
+								</label>
 								<div class="slide-hover-content">
 									<div class="list">
 										<a href="">
@@ -141,10 +148,8 @@
 			</div>
 			<div class="connect-social">
 				<div class="social-wrapper">
-					<p class="social-wrapper-label">connect with us</p>
-					<img id="nav-social-icon-facebook" src="{{ asset('public\image\default\facebook-gray.png') }}">
-					<img id="nav-social-icon-twitter" src="{{ asset('public\image\default\twitter-gray.png') }}">
-					<img id="nav-social-icon-instagram" src="{{ asset('public\image\default\instagram-gray.png') }}">
+					<img src="{{ asset('public\image\default\lang-id-icon.png') }}">
+					<img src="{{ asset('public\image\default\lang-en-icon.png') }}">
 				</div>
 			</div>
 		</div>	
@@ -180,10 +185,10 @@
 	<div class="background-content background-content-first">
 		<div class="content-wrapper">
 			<div class="text-center">
-				<img src=" {{ asset('public\image\default\gofss.png') }}" style="width: 75%;">
+				<img class="pic-gofress" src="{{ asset('public\image\default\gofss.png') }}">
 			</div>
 
-			<div class="flag-title-wrapper">
+			<div class="flag-title-wrapper color">
 				<div class="vertical-align-midle">
 					<label class="circle-shape left"></label>
 					<label class="circle-shape left"></label>
@@ -216,14 +221,15 @@
 			</div>
 
 			<div class="slider-product">
+				@for($u=0; $u<=5; $u++)
 				<div class="item">
 					<div class="wrapper-product">
-						<div class="front">
+						<div class="front slider-product-front-animate">
 							<div class="vertical-align-middle">
-								<img src="{{ asset('public\image\default\pic-1.png') }}">
+								<img class="this-run-animate" src="{{ asset('public\image\default\pic-1.png') }}">
 							</div>
 						</div>
-						<div class="back">
+						<div class="back slider-product-back-animate">
 							<div class="vertical-align-middle">
 								@for($i=0; $i<=5; $i++)
 								<div class="col col-md-4">
@@ -234,6 +240,7 @@
 						</div>
 					</div>
 				</div>
+				@endfor
 			</div>
 
 			<div class="for-btn-see-more">
@@ -264,13 +271,13 @@
 				@for($i=0; $i<=15; $i++)
 				<div class="item">
 					<div class="wrapper-item">
-						<div class="img" style="background-image: url('{{ asset('picture/firstCampaign/background-rainbow.png') }}');">
+						<div class="wrapper-thumnail">
+							<img class="thumnail" src="{{ asset('public\image\default\promosion.png') }}">
 							<div class="wrapper-title">
-								<label>some asdsadas</label>
-								<img class="ribbon" src="{{ asset('public\image\default\ribbon.png') }}">
+								<label class="title">SOME TEXT IN HERE BLA BLA BLA</label>
 							</div>
 						</div>
-						<label>Lorem ipsum dolor sit amet  varius faucibus arcu, ut posuere massa fermentum quis. Etiam eu ipsum</label>
+						<label class="description">Lorem ipsum dolor sit amet  varius faucibus arcu, ut posuere massa fermentum quis. Etiam eu ipsum</label>
 					</div>
 				</div>
 				@endfor
@@ -281,7 +288,6 @@
 			</div>
 
 		</div>
-
 	</div>
 
 	<div class="background-content background-content-first">
@@ -319,7 +325,6 @@
 			</div>
 
 		</div>
-
 	</div>
 
 	<div class="background-content background-content-second">
@@ -340,6 +345,19 @@
 			</div>
 		</div>
 
+		<div class="content-wrapper">
+
+			<div class="for-btn-see-more">
+				<a class="btn-see-more" href="">Connect With Us</a>
+			</div>
+
+			<div style="text-align: center;">
+				<img src="{{ asset('public\image\default\facebook-white.png') }}">
+				<img src="{{ asset('public\image\default\twitter-white.png') }}">
+				<img src="{{ asset('public\image\default\instagram-white.png') }}">
+			</div>
+
+		</div>
 	</div>
 
 	<div class="background-content background-content-first">
@@ -365,24 +383,23 @@
 				<a class="btn-see-more" href="">More Location</a>
 			</div>
 		</div>
-
 	</div>
 
 	<div class="footer background-content background-content-second">
-		<div style="width: 80%; margin: 0 auto; padding-top: 80px;">
-			<div style="float: left;">
-				<ul style="list-style: none; margin: 0; padding: 0;">
-					<li style="display: inline-block; margin-right: 20px;">
+		<div class="content-wrapper wrapper-footer-link">
+			<div class="float-left">
+				<ul>
+					<li>
 						<a href="">
 							Home
 						</a>
 					</li>
-					<li style="display: inline-block; margin-right: 20px;">
+					<li>
 						<a href="">
 							About
 						</a>
 					</li>
-					<li style="display: inline-block; margin-right: 20px;">
+					<li>
 						<a href="">
 							Contact
 						</a>
@@ -390,21 +407,18 @@
 				</ul>
 			</div>
 
-			<div style="float: right;">
-				<img src="{{ asset('public\image\default\facebook-gray.png') }}">
-				<img src="{{ asset('public\image\default\twitter-gray.png') }}">
-				<img src="{{ asset('public\image\default\instagram-gray.png') }}">
+			<div class="float-right">
+				<img src="{{ asset('public\image\default\facebook-white.png') }}">
+				<img src="{{ asset('public\image\default\twitter-white.png') }}">
+				<img src="{{ asset('public\image\default\instagram-white.png') }}">
 			</div>
 
 			<div class="clearfix"></div>
 
-			<p style="text-align: right; margin-top: 40px;">© 2017 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore<br>magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+			<p class="copy-right">© 2017 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore<br>magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
 		</div>
 	</div>
 
-<style type="text/css">
-
-</style>
 	@yield('body-content')
 
 	<script type="text/javascript" src="{{ asset('plugin\jquery\jquery-3.2.0.min.js') }}"></script>

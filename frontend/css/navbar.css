@@ -2,7 +2,7 @@
 	position: fixed;
 	top: 0;
 	left: 0;
-	z-index: 2;
+	z-index: 15;
 	width: 100%;
 	height: 95px;
 	background-color: rgba(110,110,110,.1);
@@ -64,6 +64,10 @@
 	text-shadow: 1px 1px 10px grey;
 	transition: all .51s;
 }
+.nav .containt .nav-link-list .nav-link-list-ul .nav-link-list-li a:hover{
+	color: rgb(141,141,141);
+}
+
 
 .dropdown-hover .dropdown-hover-content{
 	visibility: hidden;
@@ -94,6 +98,18 @@
 
 .slide-hover{
 }
+.slide-hover .icon{
+	float: right;
+}
+.slide-hover .icon .fa{
+	margin: 0;
+	margin-left: -8px;
+	color: white;
+	transition: all .51s;
+}
+.slide-hover a:hover + .icon .fa{
+	color: rgb(141,141,141);
+}
 .slide-hover .slide-hover-content{
 	visibility: hidden;
 	opacity: 0;
@@ -117,20 +133,17 @@
 .nav .containt .connect-social{
 	float: right;
 	height: 95px;
+	transition: all .51s;
 }
 .nav .containt .connect-social .social-wrapper{
 	height: 95px;
 	display: table-cell;
 	vertical-align: middle;
-}
-.nav .containt .connect-social .social-wrapper p{
-	margin-bottom: 0px;
-	color: rgba(110,110,110,.8);
-	font-weight: bold;
-	font-size: 18px;
-	text-transform: uppercase;
+	transition: all .51s;
 }
 .nav .containt .connect-social .social-wrapper img{
 	cursor: pointer;
 	width: 30px;
+	transition: all .51s;
+	margin-left: 10px;
 }

@@ -15,13 +15,6 @@ $(document).ready(function() {
                     "height":"45px"
                 });
 
-               $(".social-wrapper-label").fadeOut();
-            	
-            	document.getElementById("nav-social-icon-facebook").setAttribute("src", "public/image/default/facebook-white.png");
-            	document.getElementById("nav-social-icon-twitter").setAttribute("src", "public/image/default/twitter-white.png");
-            	document.getElementById("nav-social-icon-instagram").setAttribute("src", "public/image/default/instagram-white.png");
-
-               // $(".nav-bar").css({"margin-top":"70px"});
             }
             else if (win.scrollTop() <= initNavbar) {
                $(".nav").css({
@@ -33,10 +26,6 @@ $(document).ready(function() {
                     "height":"95px"
                 });
 
-               $(".social-wrapper-label").fadeIn();
-            	document.getElementById("nav-social-icon-facebook").setAttribute("src", "public/image/default/facebook-gray.png");
-            	document.getElementById("nav-social-icon-twitter").setAttribute("src", "public/image/default/twitter-gray.png");
-            	document.getElementById("nav-social-icon-instagram").setAttribute("src", "public/image/default/instagram-gray.png");
             }
         });
     }
