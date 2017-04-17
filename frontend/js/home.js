@@ -1,17 +1,5 @@
 var win = $(window);
 
-function scrollWin() {
-	
-	if(win.width() > 960){
-    	var y = 300;
-	}
-
-	$('html,body').stop().animate({
-	    scrollTop: '+=' + y
-	});
-
-}
-
 $(document).ready(function() {
  
   	$(".slider").owlCarousel({
@@ -49,6 +37,12 @@ $(document).ready(function() {
   $(".slider-product").on("click", ".slider-product-back-animate", function (event) {
       $(this).fadeOut();
       $(this).prev().fadeIn();
+  });
+
+  $(".scroldown-wrapper").on("click", ".scroldown", function (event) {
+      $('html, body').animate({
+          scrollTop: $("#scroll-to-here").offset().top
+      }, 2000);
   });
 
 })
