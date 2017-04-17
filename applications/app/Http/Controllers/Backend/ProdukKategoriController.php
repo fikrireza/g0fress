@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Produk;
 use App\Models\ProdukKategori;
 use App\Models\User;
+use App\Models\LogAkses;
 
 use DB;
 use Auth;
@@ -81,6 +82,12 @@ class ProdukKategoriController extends Controller
       $save->actor = 1;
       $save->save();
 
+      $log = new LogAkses;
+      $log->actor = 1;
+      // $log->actor = Auth::user()->id;
+      $log->aksi = 'Menambahkan Produk Kategori Baru '.$request->nama_kategori;
+      $log->save();
+
       return redirect()->route('produkKategori.index')->with('berhasil', 'Berhasil Menambahkan Produk Kategori Baru');
     }
 
@@ -108,7 +115,6 @@ class ProdukKategoriController extends Controller
 
     public function edit(Request $request)
     {
-      // dd($request);
       $message = [
         'nama_kategori.required' => 'Wajib di isi',
         'nama_kategori.unique' => 'Kategori ini sudah ada',
@@ -170,8 +176,13 @@ class ProdukKategoriController extends Controller
         // $update->actor = Auth::user()->id;
         $update->actor = 1;
         $update->update();
-
       }
+
+      $log = new LogAkses;
+      $log->actor = 1;
+      // $log->actor = Auth::user()->id;
+      $log->aksi = 'Mengubah Produk Kategori '.$request->nama_kategori;
+      $log->save();
 
       return redirect()->route('produkKategori.index')->with('berhasil', 'Berhasil Menambahkan Produk Kategori Baru');
     }

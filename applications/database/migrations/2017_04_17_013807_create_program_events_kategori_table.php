@@ -17,8 +17,8 @@ class CreateProgramEventsKategoriTable extends Migration
           $table->increments('id');
           $table->string('judul_kategori_ID', 75)->unique();
           $table->string('judul_kategori_EN', 75);
-          $table->string('img_url');
-          $table->string('img_alt');
+          $table->string('img_url')->nullable();
+          $table->string('img_alt')->nullable();
           $table->integer('flag_publish')->unsigned()->default(0);
           $table->string('slug');
           $table->integer('actor')->unsigned();

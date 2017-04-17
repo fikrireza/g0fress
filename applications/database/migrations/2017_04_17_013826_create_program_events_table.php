@@ -20,9 +20,9 @@ class CreateProgramEventsTable extends Migration
           $table->string('judul_promosi_EN', 75);
           $table->text('deskripsi_ID');
           $table->text('deskripsi_EN');
-          $table->string('img_url');
-          $table->string('img_alt');
-          $table->string('video_url');
+          $table->string('img_url')->nullable();
+          $table->string('img_alt')->nullable();
+          $table->string('video_url')->nullable();
           $table->integer('show_homepage')->unsigned()->default(0);
           $table->date('tanggal_post');
           $table->integer('flag_publish')->unsigned()->default(0);
