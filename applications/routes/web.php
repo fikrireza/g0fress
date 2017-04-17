@@ -30,17 +30,25 @@ Route::get('/hello/pertanyaan-dari-kami', 'FirstCampaignController@pertanyaanPag
 Route::post('/hello/pertanyaan-dari-kami', 'FirstCampaignController@pertanyaanPageStore')->name('post.first-campaign-pertanyaan-dari-kami');
 Route::get('/hello/terimakasih', 'FirstCampaignController@thanksPage')->name('first-campaign-terimakasih');
 
+// Auth::routes()
+Route::get('admin/login', function () {
+  return view('backend/auth/login');
+})->name('login.pages');
+Route::get('logout-process', 'Auth\LoginController@logoutProcess')->name('logout');
+Route::post('login-process', 'Auth\LoginController@loginProcess')->name('login');
+// END Auth::routes()
+
 
 //----------------------- BACKEND -----------------------//
-Route::get('admin/dashboard', function(){
-    return view('backend.dashboard.index');
-});
+Route::group(['middleware' => ['isAdministrator']], function () {
+  Route::get('admin/dashboard', function(){
+      return view('backend.dashboard.index');
+  });
 
-Route::get('admin', function(){
-    return view('backend.auth.login');
+  Route::get('admin', function(){
+      return view('backend.auth.login');
+  });
 });
-
-Auth::routes();
 
 // Produk
 Route::get('admin/produk', 'Backend\ProdukController@index')->name('produk.index');

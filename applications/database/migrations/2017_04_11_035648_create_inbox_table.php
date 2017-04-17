@@ -15,7 +15,7 @@ class CreateInboxTable extends Migration
     {
         Schema::create('amd_inbox', function(Blueprint $table){
           $table->increments('id');
-          $table->string('nama');
+          $table->string('nama', 75);
           $table->string('subjek');
           $table->string('email');
           $table->text('pesan');

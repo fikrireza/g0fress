@@ -18,7 +18,7 @@ class CreateAfiliasiTable extends Migration
           $table->string('nama_afiliasi');
           $table->string('img_url');
           $table->string('img_alt');
-          $table->date('tanggal_post');
+          $table->string('link_url');
           $table->integer('flag_publish')->unsigned()->default(0);
           $table->integer('actor')->unsigned();
           $table->timestamps();

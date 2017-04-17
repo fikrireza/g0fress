@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateKategoriProdukTable extends Migration
+class CreateProgramEventsKategoriTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateKategoriProdukTable extends Migration
      */
     public function up()
     {
-        Schema::create('amd_produk_kategori', function(Blueprint $table){
+        Schema::create('amd_program_events_kategori', function(Blueprint $table){
           $table->increments('id');
-          $table->string('nama_kategori')->unique();
-          $table->text('deskripsi_ID');
-          $table->text('deskripsi_EN');
+          $table->string('judul_kategori_ID', 75)->unique();
+          $table->string('judul_kategori_EN', 75);
           $table->string('img_url');
           $table->string('img_alt');
-          $table->date('tanggal_post');
           $table->integer('flag_publish')->unsigned()->default(0);
           $table->string('slug');
           $table->integer('actor')->unsigned();

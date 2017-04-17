@@ -8,5 +8,5 @@ class Kontak extends Model
 {
     protected $table = 'amd_kontak';
 
-    protected $fillable = ['alamat','email','no_telp'];
+    protected $fillable = ['kantor_kategori','alamat','maps','email','no_telp','actor'];
 }

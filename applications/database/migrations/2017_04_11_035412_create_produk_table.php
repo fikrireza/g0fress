@@ -17,8 +17,10 @@ class CreateProdukTable extends Migration
           $table->increments('id');
           $table->integer('kategori_id')->unsigned();
           $table->string('nama_produk');
-          $table->text('deskripsi_en');
-          $table->text('deskripsi_id');
+          $table->text('deskripsi_ID');
+          $table->text('deskripsi_EN');
+          $table->text('ingredient');
+          $table->text('nutrition_fact');
           $table->string('img_url');
           $table->string('img_alt');
           $table->date('tanggal_post');

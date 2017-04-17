@@ -15,9 +15,12 @@ class CreateTentangTable extends Migration
     {
         Schema::create('amd_tentang', function(Blueprint $table){
           $table->increments('id');
-          $table->text('deskripsi_en');
-          $table->text('deskripsi_id');
+          $table->string('judul_ID', 75);
+          $table->string('judul_EN', 75);
+          $table->text('deskripsi_EN');
+          $table->text('deskripsi_ID');
           $table->string('img_url');
+          $table->string('img_alt');
           $table->integer('actor')->unsigned();
           $table->timestamps();
         });
