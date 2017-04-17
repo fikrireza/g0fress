@@ -11,12 +11,12 @@
     <?php /* CSRF Token */ ?>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('plugin\bootstrap-3.3.7\css\bootstrap.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('plugin\font-awesome\css\font-awesome.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('plugin/bootstrap-3.3.7/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('plugin/font-awesome/css/font-awesome.min.css') }}">
     
-    <link rel="stylesheet" type="text/css" href="{{ asset('frontend\css\navbar.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('frontend\css\footer.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('frontend\font\1-font-family.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/navbar.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/footer.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/font/1-font-family.css') }}">
     
     @yield('head-style')
 </head>
@@ -26,7 +26,10 @@
 		<div class="containt">
 			<div class="icon-nav">
 				<div class="icon-nav-wrapper">
-					<img src=" {{ asset('public\image\default\logo-gofress.png') }}">
+					<img src=" {{ asset('public/image/default/logo-gofress.png') }}">
+				</div>
+				<div class="bar slide-navbar-for-mobile open">
+					<i class="fa fa-bars" aria-hidden="true"></i>
 				</div>
 			</div>
 			<div class="nav-link-list">
@@ -147,8 +150,8 @@
 			</div>
 			<div class="connect-social">
 				<div class="social-wrapper">
-					<img src="{{ asset('public\image\default\lang-id-icon.png') }}">
-					<img src="{{ asset('public\image\default\lang-en-icon.png') }}">
+					<img src="{{ asset('public/image/default/lang-id-icon.png') }}">
+					<img src="{{ asset('public/image/default/lang-en-icon.png') }}">
 				</div>
 			</div>
 		</div>	
@@ -156,9 +159,9 @@
 
 	@yield('body-content')
 
-	<script type="text/javascript" src="{{ asset('plugin\jquery\jquery-3.2.0.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('plugin/jquery/jquery-3.2.0.min.js') }}"></script>
 	
-	<script src="{{ asset('frontend\js\navbar.js') }}"></script>
+	<script src="{{ asset('frontend/js/navbar.js') }}"></script>
 
 	@yield('footer-script')
 

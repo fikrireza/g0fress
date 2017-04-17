@@ -5,7 +5,7 @@
 	z-index: 15;
 	width: 100%;
 	height: 95px;
-	background-color: rgba(110,110,110,.1);
+	background-color: rgba(110,110,110,0);
 	transition: all .51s;
 }
 
@@ -29,6 +29,9 @@
 .nav .containt .icon-nav .icon-nav-wrapper img{
 	width: 165px;
 	transition: all .51s;
+}
+.nav .containt .icon-nav .bar{
+	display: none;
 }
 
 .nav .containt .nav-link-list{
@@ -68,7 +71,23 @@
 .nav .containt .nav-link-list .nav-link-list-ul .nav-link-list-li a:hover{
 	color: rgb(141,141,141);
 }
-
+.nav .containt .connect-social{
+	float: right;
+	height: 95px;
+	transition: all .51s;
+}
+.nav .containt .connect-social .social-wrapper{
+	height: 95px;
+	display: table-cell;
+	vertical-align: middle;
+	transition: all .51s;
+}
+.nav .containt .connect-social .social-wrapper img{
+	cursor: pointer;
+	width: 30px;
+	transition: all .51s;
+	margin-left: 10px;
+}
 
 .dropdown-hover .dropdown-hover-content{
 	visibility: hidden;
@@ -131,20 +150,70 @@
 	padding-right: 20px;
 	padding-left: 20px;
 }
-.nav .containt .connect-social{
-	float: right;
-	height: 95px;
-	transition: all .51s;
-}
-.nav .containt .connect-social .social-wrapper{
-	height: 95px;
-	display: table-cell;
-	vertical-align: middle;
-	transition: all .51s;
-}
-.nav .containt .connect-social .social-wrapper img{
-	cursor: pointer;
-	width: 30px;
-	transition: all .51s;
-	margin-left: 10px;
+
+
+
+@media (max-width: 480px) {
+	.nav{
+		background-color: rgba(28,217,217,1);
+		height: auto;
+		transition: all .51s;
+		height: 40px;
+	}
+	.nav .containt .icon-nav{
+		width: 100%;
+		margin: 10px auto;
+		height: auto;
+	}
+	.nav .containt .icon-nav .icon-nav-wrapper{
+		height: auto;
+		float: left;
+	}
+	.nav .containt .icon-nav .bar{
+		display: block;
+		float: right;
+		cursor: pointer;
+	}
+	.nav .containt .nav-link-list{
+		display: none;
+		position: relative;
+		height: auto;
+		float: left;
+		overflow-y: auto;
+		height: 420px;
+	}
+	.nav .containt .nav-link-list .nav-link-list-ul .nav-link-list-li{
+		display: block;
+		height: auto;
+	}
+	.nav .containt .connect-social{
+		display: none;
+		position: relative;
+		height: auto;
+		float: left;
+	}
+	.nav .containt .connect-social .social-wrapper{
+		display: block;
+		height: auto;
+		margin: 20px auto;
+	}
+
+	.dropdown-hover .dropdown-hover-content{
+		background-color: rgba(0,0,0,0);
+		box-shadow: none;
+	}
+	.dropdown-hover:hover .dropdown-hover-content{
+		position: relative;
+	}
+	.slide-hover .slide-hover-content{
+		background-color: rgba(0,0,0,0);
+		box-shadow: none;
+		left: 0%;
+		display: none;
+	}
+	.slide-hover:hover .slide-hover-content{
+		position: relative;
+		display: block;
+
+	}
 }
