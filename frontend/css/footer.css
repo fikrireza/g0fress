@@ -1,0 +1,28 @@
+.footer .wrapper-footer-link{
+	padding-top: 80px;
+}
+.footer .wrapper-footer-link .float-left{
+	float: left;
+}
+.footer .wrapper-footer-link .float-left ul{
+	list-style: none; 
+	margin: 0; 
+	padding: 0;
+}
+.footer .wrapper-footer-link .float-left ul li{
+	display: inline-block; 
+	margin-right: 20px;
+}
+.footer .wrapper-footer-link .float-left ul li a{
+	color: rgb(85,85,85);
+    font-family: 'AvenirNext';
+}
+.footer .wrapper-footer-link .float-right{
+	float: right;
+}
+.footer .wrapper-footer-link .copy-right{
+	text-align: right; 
+	margin-top: 40px;
+	color: rgb(85,85,85);
+    font-family: 'AvenirNext';
+}
