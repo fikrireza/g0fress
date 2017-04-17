@@ -63,6 +63,7 @@
 	font-size: 16px;
 	text-shadow: 1px 1px 10px grey;
 	transition: all .51s;
+    font-family: 'Nevis Bold';
 }
 .nav .containt .nav-link-list .nav-link-list-ul .nav-link-list-li a:hover{
 	color: rgb(141,141,141);
