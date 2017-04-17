@@ -31,7 +31,7 @@
 	<div class="position">
 		<div class="wrapper-content">
 			<label class="circle-shape left"></label>
-			<label class="wrapper-shape" onclick="scrollWin()">
+			<label class="wrapper-shape scroldown">
 				scroll down for more!
 			</label>
 			<label class="circle-shape right"></label>
@@ -42,7 +42,7 @@
 <div class="background-content background-content-first">
 	<div class="content-wrapper">
 		<div class="text-center">
-			<img class="pic-gofress" src="{{ asset('public/image/default/gofss.png') }}">
+			<img id="scroll-to-here" class="pic-gofress" src="{{ asset('public/image/default/gofss.png') }}">
 		</div>
 
 		<div class="flag-title-wrapper color">

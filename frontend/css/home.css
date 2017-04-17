@@ -426,6 +426,10 @@
 		background-repeat: no-repeat;
 		background-position: center middle;
 	}
+	.slider.owl-theme .owl-controls .owl-buttons{
+		display: none;
+	}
+
 	.background-content .content-wrapper{
 		width: 100%;
 	}
