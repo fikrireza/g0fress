@@ -20,9 +20,35 @@
 .footer .wrapper-footer-link .float-right{
 	float: right;
 }
+.footer .wrapper-footer-link .float-right img{
+    cursor: pointer;
+}
 .footer .wrapper-footer-link .copy-right{
 	text-align: right; 
 	margin-top: 40px;
 	color: rgb(85,85,85);
     font-family: 'AvenirNext';
+}
+
+
+@media (max-width: 480px) {
+	.footer .wrapper-footer-link{
+		padding: 30px 10px 0px;
+		position: relative;
+	}
+	.footer .wrapper-footer-link .float-left{
+		float: right;
+	}
+	.footer .wrapper-footer-link .float-left ul li{
+		margin-right: 0px;
+		margin-left: 10px;
+	}
+	.footer .wrapper-footer-link .float-right{
+		position: absolute;
+		bottom: -50px;
+		right: 10px;
+	}
+	.footer .wrapper-footer-link .copy-right{
+		margin-top: 15px;
+	}
 }

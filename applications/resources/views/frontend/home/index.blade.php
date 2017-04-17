@@ -5,7 +5,7 @@
 @endsection
 
 @section('head-style')
-<link rel="stylesheet" type="text/css" href="{{ asset('frontend\css\home.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/home.css') }}">
 
 <link rel="stylesheet" href="{{ asset('plugin/owl-carousel/owl.carousel.css') }}">
 <link rel="stylesheet" href="{{ asset('plugin/owl-carousel/owl.theme.css') }}">
@@ -42,7 +42,7 @@
 <div class="background-content background-content-first">
 	<div class="content-wrapper">
 		<div class="text-center">
-			<img class="pic-gofress" src="{{ asset('public\image\default\gofss.png') }}">
+			<img class="pic-gofress" src="{{ asset('public/image/default/gofss.png') }}">
 		</div>
 
 		<div class="flag-title-wrapper color">
@@ -83,14 +83,14 @@
 				<div class="wrapper-product">
 					<div class="front slider-product-front-animate">
 						<div class="vertical-align-middle">
-							<img class="this-run-animate" src="{{ asset('public\image\default\pic-1.png') }}">
+							<img class="this-run-animate" src="{{ asset('public/image/default/pic-1.png') }}">
 						</div>
 					</div>
 					<div class="back slider-product-back-animate">
 						<div class="vertical-align-middle">
 							@for($i=0; $i<=5; $i++)
-							<div class="col col-md-4">
-								<img src="{{ asset('public\image\default\pic-1.png') }}">
+							<div class="col col-md-4 col-sm-6 col-xs-6">
+								<img src="{{ asset('public/image/default/pic-1.png') }}">
 							</div>
 							@endfor
 						</div>
@@ -129,7 +129,7 @@
 			<div class="item">
 				<div class="wrapper-item">
 					<div class="wrapper-thumnail">
-						<img class="thumnail" src="{{ asset('public\image\default\promosion.png') }}">
+						<img class="thumnail" src="{{ asset('public/image/default/promosion.png') }}">
 						<div class="wrapper-title">
 							<label class="title">SOME TEXT IN HERE BLA BLA BLA</label>
 						</div>
@@ -167,7 +167,7 @@
 	<div class="content-wrapper">
 		<div class="lates-news-wrapper">
 			@for($i=0; $i<=2; $i++)
-			<div class="col-md-4">
+			<div class="col-md-4 col-sm-12 col-xs-12">
 				<div class="wrapper-news">
 					<h3>Title</h3>
 					<label>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in scelerisque massa, aliquam molestie lorem. Sed rhoncus, erat ac ornare cursus, tellus odio egestas urna, eu accumsan sapien sapien ipsum convallis, aliquet elit ut, pellentesque purus.... <a href="">Read More</a></label>
@@ -213,9 +213,9 @@
 		</div>
 
 		<div style="text-align: center;">
-			<img src="{{ asset('public\image\default\facebook-white.png') }}">
-			<img src="{{ asset('public\image\default\twitter-white.png') }}">
-			<img src="{{ asset('public\image\default\instagram-white.png') }}">
+			<img src="{{ asset('public/image/default/facebook-white.png') }}">
+			<img src="{{ asset('public/image/default/twitter-white.png') }}">
+			<img src="{{ asset('public/image/default/instagram-white.png') }}">
 		</div>
 
 	</div>
@@ -238,7 +238,7 @@
 			</div>
 		</div>
 
-		<img src="{{ asset('public\image\default\toko.png') }}" style="width: 100%; margin-top: 60px;">
+		<img src="{{ asset('public/image/default/toko.png') }}" style="width: 100%; margin-top: 60px;">
 
 		<div class="for-btn-see-more">
 			<a class="btn-see-more" href="">More Location</a>
@@ -269,9 +269,9 @@
 		</div>
 
 		<div class="float-right">
-			<img src="{{ asset('public\image\default\facebook-white.png') }}">
-			<img src="{{ asset('public\image\default\twitter-white.png') }}">
-			<img src="{{ asset('public\image\default\instagram-white.png') }}">
+			<img src="{{ asset('public/image/default/facebook-white.png') }}">
+			<img src="{{ asset('public/image/default/twitter-white.png') }}">
+			<img src="{{ asset('public/image/default/instagram-white.png') }}">
 		</div>
 
 		<div class="clearfix"></div>
@@ -284,6 +284,6 @@
 @section('footer-script')
 <script src="{{ asset('plugin/owl-carousel/owl.carousel.js') }}"></script>
 <script src="{{ asset('plugin/owl-carousel/owl.carousel.js') }}"></script>
-<script src="{{ asset('frontend\js\home.js') }}"></script>
+<script src="{{ asset('frontend/js/home.js') }}"></script>
 @endsection
 

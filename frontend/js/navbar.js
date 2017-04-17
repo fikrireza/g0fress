@@ -32,24 +32,31 @@ $(document).ready(function() {
     // end for dekstop
     
     // for mobile
-    // else if( win.width() < 720 ){
-    //     var initNavbar = 60;
-    //     // alert("success");
-    //     $(".hide-in-mobile").remove();
-    //     $(".magestore-bannerslider").remove();
-    //     $(".bar").css({"padding":"10px 0px"});
+    else if( win.width() < 720 ){
+     
+        $(".nav").on("click", ".slide-navbar-for-mobile", function (event) {
+            if ( $( this ).hasClass( "open" ) ){
+                $( ".nav" ).css({
+                    "height":"100%"
+                });
+                $(".nav-link-list,.connect-social").css({
+                    "display":"block"
+                });
+                $( this ).removeClass( "open" );
+            }
+            else{
+                $( ".nav" ).css({
+                    "height":"40px"
+                });
+                $(".nav-link-list,.connect-social").css({
+                    "display":"none"
+                });
+                $( this ).addClass( "open" );   
+            }
 
-    //     win.scroll(function () {
-    //         if (win.scrollTop() >= initNavbar) {
-    //            $(".header-nav").css({"position":"fixed", "top":"0"});
-    //            $(".nav-bar").css({"margin-top":"70px"});
-    //         }
-    //         else if (win.scrollTop() <= initNavbar) {
-    //            $(".header-nav").css({"position":"relative"});
-    //            $(".nav-bar").css({"margin-top":"0px"});
-    //         }
-    //     });
-    // }
+        });
+            
+    }
     // end for mobile
 
 });
