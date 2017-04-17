@@ -35,8 +35,8 @@ class ProdukKategoriController extends Controller
       $message = [
         'nama_kategori.required' => 'Wajib di isi',
         'nama_kategori.unique' => 'Ketogori ini sudah ada',
-        'deskripsi_en.required' => 'Wajib di isi',
-        'deskripsi_id.required' => 'Wajib di isi',
+        'deskripsi_EN.required' => 'Wajib di isi',
+        'deskripsi_ID.required' => 'Wajib di isi',
         'img_url.required' => 'Wajib di isi',
         'img_alt.required' => 'Wajib di isi',
         'tanggal_post.required' => 'Wajib di isi',
@@ -44,8 +44,8 @@ class ProdukKategoriController extends Controller
 
       $validator = Validator::make($request->all(), [
         'nama_kategori' => 'required|unique:amd_produk_kategori',
-        'deskripsi_en' => 'required',
-        'deskripsi_id' => 'required',
+        'deskripsi_EN' => 'required',
+        'deskripsi_ID' => 'required',
         // 'img_url' => 'required|image|mimes:jpeg,bmp,png|size:2000|dimensions:max_width=1000,max_height=2000',
         'img_url' => 'image|mimes:jpeg,bmp,png',
         'img_alt' => 'required',
@@ -70,8 +70,8 @@ class ProdukKategoriController extends Controller
 
       $save = new ProdukKategori;
       $save->nama_kategori = $request->nama_kategori;
-      $save->deskripsi_en = $request->deskripsi_en;
-      $save->deskripsi_id = $request->deskripsi_id;
+      $save->deskripsi_EN = $request->deskripsi_EN;
+      $save->deskripsi_ID = $request->deskripsi_ID;
       $save->img_url  = $img_url;
       $save->img_alt  = $request->img_alt;
       $save->tanggal_post = $request->tanggal_post;
