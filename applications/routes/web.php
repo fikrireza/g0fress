@@ -86,6 +86,10 @@ Route::get('admin/program-events-kategori/lihat/{id}', 'Backend\ProgramEventsKat
 Route::get('admin/program-events-kategori/ubah/{id}', 'Backend\ProgramEventsKategoriController@ubah')->name('programEventsKategori.ubah');
 Route::post('admin/program-events-kategori/ubah', 'Backend\ProgramEventsKategoriController@edit')->name('programEventsKategori.edit');
 
+
+// Inbox Message
+Route::get('admin/inbox', 'Backend\InboxController@index')->name('inbox.index');
+
 //----------------------- BACKEND -----------------------//
 
 
