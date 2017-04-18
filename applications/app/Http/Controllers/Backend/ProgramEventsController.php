@@ -115,7 +115,7 @@ class ProgramEventsController extends Controller
         $log = new LogAkses;
         $log->actor = 1;
         // $log->actor = Auth::user()->id;
-        $log->aksi = 'Menambah Program & Events Baru '.$request->nama_kategori;
+        $log->aksi = 'Menambah Program & Events Baru '.$request->judul_promosi_ID;
         $log->save();
 
         return redirect()->route('programEvent.index')->with('berhasil', 'Berhasil Menambahkan Program & Events Baru');
@@ -235,7 +235,7 @@ class ProgramEventsController extends Controller
         $log = new LogAkses;
         $log->actor = 1;
         // $log->actor = Auth::user()->id;
-        $log->aksi = 'Mengubah Program & Events '.$request->nama_kategori;
+        $log->aksi = 'Mengubah Program & Events '.$request->judul_promosi_ID;
         $log->save();
 
         return redirect()->route('programEvents.index')->with('berhasil', 'Berhasil Mengubah Program & Events');

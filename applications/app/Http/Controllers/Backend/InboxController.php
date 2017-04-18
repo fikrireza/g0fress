@@ -13,7 +13,7 @@ class InboxController extends Controller
 
     public function index()
     {
-        $getInbox = Inbox::orderBy('created_at', 'asc')->get();
+        $getInbox = Inbox::orderBy('created_at', 'desc')->get();
 
         return view('backend.inbox.index', compact('getInbox'));
     }

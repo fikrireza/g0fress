@@ -51,7 +51,7 @@
       <div class="menu_section">
         <h3>Extra</h3>
         <ul class="nav side-menu">
-          <li><a href="#"><i class="fa fa-inbox"></i> Akses Log </a></li>
+          <li class="{{ Route::currentRouteNamed('logAkses.index') ? 'active' : '' }}"><a href="{{ route('logAkses.index') }}"><i class="fa fa-inbox"></i> Akses Log </a></li>
           <li><a><i class="fa fa-windows"></i> Campaign <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
               <li><a href="#">Hello</a></li>

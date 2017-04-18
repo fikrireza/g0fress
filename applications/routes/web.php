@@ -90,6 +90,10 @@ Route::post('admin/program-events-kategori/ubah', 'Backend\ProgramEventsKategori
 // Inbox Message
 Route::get('admin/inbox', 'Backend\InboxController@index')->name('inbox.index');
 
+
+// Akses log
+Route::get('admin/logAkses', 'Backend\LogAksesController@index')->name('logAkses.index');
+
 //----------------------- BACKEND -----------------------//
 
 
