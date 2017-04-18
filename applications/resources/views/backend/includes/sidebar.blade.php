@@ -36,9 +36,10 @@
           </li>
           <li class="{{ Route::currentRouteNamed('news.index') ? 'active' : '' }}{{ Route::currentRouteNamed('news.tambah') ? 'active' : '' }}{{ Route::currentRouteNamed('news.lihat') ? 'active' : '' }}"><a href="{{ route('news.index') }}"><i class="fa fa-newspaper-o"></i> News </a></li>
 
-          <li><a><i class="fa fa-calendar"></i> Program & Events <span class="fa fa-chevron-down"></span></a>
-            <ul class="nav child_menu">
-              <li><a href="#">Program & Events</a></li>
+          <li class="{{ Route::currentRouteNamed('programEvents.index') ? 'active' : '' }}{{ Route::currentRouteNamed('programEvents.tambah') ? 'active' : '' }}">
+            <a><i class="fa fa-calendar"></i> Program & Events <span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu" style="{{ Route::currentRouteNamed('programEvents.index') ? 'display: block;' : '' }}{{ Route::currentRouteNamed('programEvents.tambah') ? 'display: block;' : '' }}">
+              <li class="{{ Route::currentRouteNamed('programEvents.index') ? 'current-page' : '' }}{{ Route::currentRouteNamed('programEvents.tambah') ? 'current-page' : '' }}"><a href="{{ route('programEvents.index') }}">Program & Events</a></li>
               <li><a href="#">Program & Events Kategori</a></li>
             </ul>
           </li>

@@ -73,6 +73,15 @@ Route::post('admin/news/tambah', 'Backend\NewsController@store')->name('news.sto
 Route::get('admin/news/lihat/{id}', 'Backend\NewsController@lihat')->name('news.lihat');
 Route::get('admin/news/ubah/{id}', 'Backend\NewsController@ubah')->name('news.ubah');
 Route::post('admin/news/ubah', 'Backend\NewsController@edit')->name('news.edit');
+
+// Program & Events
+Route::get('admin/program-events', 'Backend\ProgramEventsController@index')->name('programEvents.index');
+Route::get('admin/program-events/tambah', 'Backend\ProgramEventsController@tambah')->name('programEvents.tambah');
+Route::post('admin/program-events/tambah', 'Backend\ProgramEventsController@store')->name('programEvents.store');
+Route::get('admin/program-events/lihat/{id}', 'Backend\ProgramEventsController@lihat')->name('programEvents.lihat');
+Route::get('admin/program-events/ubah/{id}', 'Backend\ProgramEventsController@ubah')->name('programEvents.ubah');
+
+
 //----------------------- BACKEND -----------------------//
 
 
