@@ -78,26 +78,29 @@
 		</div>
 
 		<div class="slider-product">
-			@for($u=0; $u<=5; $u++)
+			@php ( $callKategory = App\Models\ProdukKategori::all() )
+
+			@foreach($callKategory as $listKategory)
 			<div class="item">
 				<div class="wrapper-product">
 					<div class="front slider-product-front-animate">
 						<div class="vertical-align-middle">
-							<img class="this-run-animate" src="{{ asset('public/image/default/pic-1.png') }}">
+							<img class="this-run-animate" src="{{ asset('images/produk') }}/{!! $listKategory->img_url !!}">
 						</div>
 					</div>
 					<div class="back slider-product-back-animate">
 						<div class="vertical-align-middle">
-							@for($i=0; $i<=5; $i++)
+							@php ( $callProduk = App\Models\Produk::where('kategori_id', $listKategory->id)->get() )
+							@foreach($callProduk as $listProduk)
 							<div class="col col-md-4 col-sm-6 col-xs-6">
-								<img src="{{ asset('public/image/default/pic-1.png') }}">
+								<img src="{{ asset('images/produk') }}/{!! $listProduk->img_url !!}">
 							</div>
-							@endfor
+							@endforeach
 						</div>
 					</div>
 				</div>
 			</div>
-			@endfor
+			@endforeach
 		</div>
 
 		<div class="for-btn-see-more">
