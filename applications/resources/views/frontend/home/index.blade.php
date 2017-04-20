@@ -88,16 +88,6 @@
 							<img class="this-run-animate" src="{{ asset('images/produk') }}/{!! $listKategory->img_url !!}">
 						</div>
 					</div>
-					<div class="back slider-product-back-animate">
-						<div class="vertical-align-middle">
-							@php ( $callProduk = App\Models\Produk::where('kategori_id', $listKategory->id)->get() )
-							@foreach($callProduk as $listProduk)
-							<div class="col col-md-4 col-sm-6 col-xs-6">
-								<img src="{{ asset('images/produk') }}/{!! $listProduk->img_url !!}">
-							</div>
-							@endforeach
-						</div>
-					</div>
 				</div>
 			</div>
 			@endforeach
@@ -158,7 +148,7 @@
 				<label class="circle-shape left"></label>
 			</div>
 			<div class="vertical-align-midle">
-				<label class="flag-title">Lates News</label>
+				<label class="flag-title">Latest News</label>
 			</div>
 			<div class="vertical-align-midle">
 				<label class="circle-shape right"></label>

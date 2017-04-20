@@ -87,7 +87,12 @@
 	width: 30px;
 	transition: all .51s;
 	margin-left: 10px;
+	transition: all .51s;
 }
+.nav .containt .connect-social .social-wrapper img:hover{
+	transform: scale(1.2,1.2);
+}
+
 
 .dropdown-hover .dropdown-hover-content{
 	visibility: hidden;
@@ -104,7 +109,7 @@
 }
 .dropdown-hover .dropdown-hover-content .list{
 	width: 200px;
-	padding: 10px;
+	padding: 5px 10px;
 	position: relative;
 }
 .dropdown-hover .dropdown-hover-content .list a{
@@ -112,7 +117,7 @@
 	text-decoration: none;
 	text-transform: uppercase;
 	font-weight: bold;
-	font-size: 16px;
+	font-size: 12px !important;
 	text-shadow: 1px 1px 10px grey;
 }
 
@@ -138,7 +143,7 @@
 	left: 100%;
 	background-color: rgb(82,209,239);
     box-shadow: -1px 4px 2px rgba(150,150,150,.48);
-    padding-top: 10px;
+    padding-top: 5px;
 }
 .slide-hover:hover .slide-hover-content{
 	visibility: visible;
@@ -147,8 +152,7 @@
 }
 .slide-hover .slide-hover-content .list{
 	width: 200px;
-	padding-right: 20px;
-	padding-left: 20px;
+	padding: 0px 20px 5px;
 }
 
 

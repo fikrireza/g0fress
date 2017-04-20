@@ -30,15 +30,6 @@ $(document).ready(function() {
  
     });
 
-  $(".slider-product").on("click", ".slider-product-front-animate", function (event) {
-      $(this).fadeOut();
-      $(this).next().fadeIn();
-  });
-  $(".slider-product").on("click", ".slider-product-back-animate", function (event) {
-      $(this).fadeOut();
-      $(this).prev().fadeIn();
-  });
-
   $(".scroldown-wrapper").on("click", ".scroldown", function (event) {
       $('html, body').animate({
           scrollTop: $("#scroll-to-here").offset().top

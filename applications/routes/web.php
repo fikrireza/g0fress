@@ -26,6 +26,11 @@ Route::get('/hello/pertanyaan-dari-kami', 'FirstCampaignController@pertanyaanPag
 Route::post('/hello/pertanyaan-dari-kami', 'FirstCampaignController@pertanyaanPageStore')->name('post.first-campaign-pertanyaan-dari-kami');
 Route::get('/hello/terimakasih', 'FirstCampaignController@thanksPage')->name('first-campaign-terimakasih');
 
+
+Route::get('/hello/syarat-ketentuan', function(){
+      return view('pages.firstCampaign.syarat-ketentuan');
+  });
+
 // Auth::routes()
 Route::get('admin/login', function () {
   return view('backend/auth/login');
