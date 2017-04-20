@@ -18,17 +18,15 @@
         <table style="width: 100%; background-image: url('{{ url('picture/firstCampaign/kupon.png') }}'); background-repeat: no-repeat; background-position: center;">
         	<tr><td style="height: 550px;">&nbsp;</td></tr>
           <tr>
-            <td style="text-align: center;"><label style="font-weight: bold; font-size: 20px;">213123c21c</label></td>
+            <td style="text-align: center;"><label style="font-weight: bold; font-size: 20px;">{{ $data[0]['kupon'] }}</label></td>
           </tr>
         </table>
 
-        <div>
-          <label style="font-weight: normal; font-size: 18px;">Tekan gambar diatas dan simpan gambarnya di handphonemu.</label>
-        </div>
-        
+        <br>
+
         <div style="text-align: center; margin: 10px auto 0px;">
           <label style="color: black; font-size: 12px; margin-bottom: 0px;">
-            <a href="" style="color: black; font-size: 12px; margin-bottom: 0px; text-decoration: none;">
+            <a href="{{ url('hello/syarat-ketentuan') }}" style="color: black; font-size: 12px; margin-bottom: 0px; text-decoration: none;">
               <img src="{{ url('picture/firstCampaign/icon-Ketentuan-&-Persyaratan.png') }}" style="width: 25px; position: relative; top: 7px;">
               Ketentuan & Persyaratan
             </a>
@@ -36,8 +34,5 @@
         </div>
       </div>
     </div>
-
-   
-
   </body>
 </html>

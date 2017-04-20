@@ -62,7 +62,7 @@ class FirstCampaignController extends Controller
 			// Cek inputan
 			$validator = Validator::make($request->all(), [
         'nama' => 'required',
-        'email' => 'required|email|unique:campaign_1',
+        'email' => 'required|email|unique:amd_campaign_1',
         'hp' => 'required',
         'kota' => 'required|not_in:--Pilih--',
         'pertanyaan_1' => 'required',
@@ -77,8 +77,8 @@ class FirstCampaignController extends Controller
       }
 
 			// Ambil Kupon yang masih berlaku
-			$kupon = DB::select('SELECT id, kupon FROM master_kupon
-													WHERE id NOT IN (SELECT kupon_id FROM campaign_1)
+			$kupon = DB::select('SELECT id, kupon FROM amd_master_kupon
+													WHERE id NOT IN (SELECT kupon_id FROM amd_campaign_1)
 													ORDER BY RAND() LIMIT 0,1');
 
 			// Simpan ke database
@@ -123,9 +123,9 @@ class FirstCampaignController extends Controller
 					return redirect()->route('first-campaign-sign-in');
 				}
 
-				$cekEmail = Campaign1::join('master_kupon', 'master_kupon.id', '=', 'campaign_1.kupon_id')
-															->select('master_kupon.kupon')
-															->where('campaign_1.email', '=', Auth::user()->email)->first();
+				$cekEmail = Campaign1::join('amd_master_kupon', 'amd_master_kupon.id', '=', 'amd_campaign_1.kupon_id')
+															->select('amd_master_kupon.kupon')
+															->where('amd_campaign_1.email', '=', Auth::user()->email)->first();
 
 				if(!$cekEmail)
 				{
