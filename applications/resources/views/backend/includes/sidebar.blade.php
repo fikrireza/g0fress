@@ -36,22 +36,22 @@
           </li>
           <li class="{{ Route::currentRouteNamed('news.index') ? 'active' : '' }}{{ Route::currentRouteNamed('news.tambah') ? 'active' : '' }}{{ Route::currentRouteNamed('news.lihat') ? 'active' : '' }}"><a href="{{ route('news.index') }}"><i class="fa fa-newspaper-o"></i> News </a></li>
 
-          <li class="{{ Route::currentRouteNamed('programEvents.index') ? 'active' : '' }}{{ Route::currentRouteNamed('programEvents.tambah') ? 'active' : '' }}">
+          <li class="{{ Route::currentRouteNamed('programEvents.index') ? 'active' : '' }}{{ Route::currentRouteNamed('programEvents.tambah') ? 'active' : '' }}{{ Route::currentRouteNamed('programEvents.lihat') ? 'active' : '' }}{{ Route::currentRouteNamed('programEventsKategori.index') ? 'active' : '' }}{{ Route::currentRouteNamed('programEventsKategori.tambah') ? 'active' : '' }}{{ Route::currentRouteNamed('programEventsKategori.lihat') ? 'active' : '' }}">
             <a><i class="fa fa-calendar"></i> Program & Events <span class="fa fa-chevron-down"></span></a>
-            <ul class="nav child_menu" style="{{ Route::currentRouteNamed('programEvents.index') ? 'display: block;' : '' }}{{ Route::currentRouteNamed('programEvents.tambah') ? 'display: block;' : '' }}">
-              <li class="{{ Route::currentRouteNamed('programEvents.index') ? 'current-page' : '' }}{{ Route::currentRouteNamed('programEvents.tambah') ? 'current-page' : '' }}"><a href="{{ route('programEvents.index') }}">Program & Events</a></li>
-              <li><a href="#">Program & Events Kategori</a></li>
+            <ul class="nav child_menu" style="{{ Route::currentRouteNamed('programEvents.index') ? 'display: block;' : '' }}{{ Route::currentRouteNamed('programEvents.tambah') ? 'display: block;' : '' }}{{ Route::currentRouteNamed('programEvents.lihat') ? 'display: block;' : '' }}{{ Route::currentRouteNamed('programEventsKategori.index') ? 'display: block;' : '' }}{{ Route::currentRouteNamed('programEventsKategori.tambah') ? 'display: block;' : '' }}{{ Route::currentRouteNamed('programEventsKategori.lihat') ? 'display: block;' : '' }}">
+              <li class="{{ Route::currentRouteNamed('programEvents.index') ? 'current-page' : '' }}{{ Route::currentRouteNamed('programEvents.tambah') ? 'current-page' : '' }}{{ Route::currentRouteNamed('programEvents.lihat') ? 'current-page' : '' }}"><a href="{{ route('programEvents.index') }}">Program & Events</a></li>
+              <li class="{{ Route::currentRouteNamed('programEventsKategori.index') ? 'current-page' : '' }}{{ Route::currentRouteNamed('programEventsKategori.tambah') ? 'current-page' : '' }}{{ Route::currentRouteNamed('programEventsKategori.lihat') ? 'current-page' : '' }}"><a href="{{ route('programEventsKategori.index') }}">Program & Events Kategori</a></li>
             </ul>
           </li>
 
           <li><a href="#"><i class="fa fa-building-o"></i> Kontak </a></li>
-          <li><a href="#"><i class="fa fa-inbox"></i> Inbox </a></li>
+          <li class="{{ Route::currentRouteNamed('inbox.index') ? 'active' : '' }}"><a href="{{ route('inbox.index') }}"><i class="fa fa-inbox"></i> Inbox </a></li>
         </ul>
       </div>
       <div class="menu_section">
         <h3>Extra</h3>
         <ul class="nav side-menu">
-          <li><a href="#"><i class="fa fa-inbox"></i> Akses Log </a></li>
+          <li class="{{ Route::currentRouteNamed('logAkses.index') ? 'active' : '' }}"><a href="{{ route('logAkses.index') }}"><i class="fa fa-inbox"></i> Akses Log </a></li>
           <li><a><i class="fa fa-windows"></i> Campaign <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
               <li><a href="#">Hello</a></li>

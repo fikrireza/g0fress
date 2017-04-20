@@ -11,10 +11,6 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 
 Route::get('/home', 'HomeController@index');
 
@@ -80,7 +76,23 @@ Route::get('admin/program-events/tambah', 'Backend\ProgramEventsController@tamba
 Route::post('admin/program-events/tambah', 'Backend\ProgramEventsController@store')->name('programEvents.store');
 Route::get('admin/program-events/lihat/{id}', 'Backend\ProgramEventsController@lihat')->name('programEvents.lihat');
 Route::get('admin/program-events/ubah/{id}', 'Backend\ProgramEventsController@ubah')->name('programEvents.ubah');
+Route::post('admin/program-events/ubah', 'Backend\ProgramEventsController@edit')->name('programEvents.edit');
 
+// Program & Events Kategori
+Route::get('admin/program-events-kategori', 'Backend\ProgramEventsKategoriController@index')->name('programEventsKategori.index');
+Route::get('admin/program-events-kategori/tambah', 'Backend\ProgramEventsKategoriController@tambah')->name('programEventsKategori.tambah');
+Route::post('admin/program-events-kategori/tambah', 'Backend\ProgramEventsKategoriController@store')->name('programEventsKategori.store');
+Route::get('admin/program-events-kategori/lihat/{id}', 'Backend\ProgramEventsKategoriController@lihat')->name('programEventsKategori.lihat');
+Route::get('admin/program-events-kategori/ubah/{id}', 'Backend\ProgramEventsKategoriController@ubah')->name('programEventsKategori.ubah');
+Route::post('admin/program-events-kategori/ubah', 'Backend\ProgramEventsKategoriController@edit')->name('programEventsKategori.edit');
+
+
+// Inbox Message
+Route::get('admin/inbox', 'Backend\InboxController@index')->name('inbox.index');
+
+
+// Akses log
+Route::get('admin/logAkses', 'Backend\LogAksesController@index')->name('logAkses.index');
 
 //----------------------- BACKEND -----------------------//
 
