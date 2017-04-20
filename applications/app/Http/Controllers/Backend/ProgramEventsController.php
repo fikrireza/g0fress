@@ -18,6 +18,17 @@ use Image;
 class ProgramEventsController extends Controller
 {
 
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     public function index()
     {
         $getProgramEvents = ProgramEvents::join('amd_program_events_kategori', 'amd_program_events_kategori.id', '=', 'amd_program_events.program_events_kategori_id')
@@ -88,8 +99,7 @@ class ProgramEventsController extends Controller
           $save->tanggal_post = $request->tanggal_post;
           $save->flag_publish = $flag_publish;
           $save->slug = str_slug($request->judul_promosi_ID,'-');
-          // $save->actor = Auth::user()->id;
-          $save->actor = 1;
+          $save->actor = Auth::user()->id;
           $save->save();
         }else{
           $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
@@ -107,14 +117,12 @@ class ProgramEventsController extends Controller
           $save->tanggal_post = $request->tanggal_post;
           $save->flag_publish = $flag_publish;
           $save->slug = str_slug($request->judul_promosi_ID,'-');
-          // $save->actor = Auth::user()->id;
-          $save->actor = 1;
+          $save->actor = Auth::user()->id;
           $save->save();
         }
 
         $log = new LogAkses;
-        $log->actor = 1;
-        // $log->actor = Auth::user()->id;
+        $log->actor = Auth::user()->id;
         $log->aksi = 'Menambah Program & Events Baru '.$request->judul_promosi_ID;
         $log->save();
 
@@ -208,8 +216,7 @@ class ProgramEventsController extends Controller
           $update->tanggal_post = $request->tanggal_post;
           $update->flag_publish = $flag_publish;
           $update->slug = str_slug($request->judul_promosi_ID,'-');
-          // $update->actor = Auth::user()->id;
-          $update->actor = 1;
+          $update->actor = Auth::user()->id;
           $update->update();
         }else{
           $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
@@ -227,14 +234,12 @@ class ProgramEventsController extends Controller
           $update->tanggal_post = $request->tanggal_post;
           $update->flag_publish = $flag_publish;
           $update->slug = str_slug($request->judul_promosi_ID,'-');
-          // $update->actor = Auth::user()->id;
-          $update->actor = 1;
+          $update->actor = Auth::user()->id;
           $update->update();
         }
 
         $log = new LogAkses;
-        $log->actor = 1;
-        // $log->actor = Auth::user()->id;
+        $log->actor = Auth::user()->id;
         $log->aksi = 'Mengubah Program & Events '.$request->judul_promosi_ID;
         $log->save();
 

@@ -17,6 +17,16 @@ use Image;
 
 class ProdukKategoriController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
 
     public function index()
     {
@@ -73,18 +83,16 @@ class ProdukKategoriController extends Controller
       $save->nama_kategori = $request->nama_kategori;
       $save->deskripsi_EN = $request->deskripsi_EN;
       $save->deskripsi_ID = $request->deskripsi_ID;
-      $save->img_url  = $img_url;
+      $save->img_url  = 'images/produk/'.$img_url;
       $save->img_alt  = $request->img_alt;
       $save->tanggal_post = $request->tanggal_post;
       $save->flag_publish = $flag_publish;
       $save->slug = str_slug($request->nama_kategori,'-');
-      // $save->actor = Auth::user()->id;
-      $save->actor = 1;
+      $save->actor = Auth::user()->id;
       $save->save();
 
       $log = new LogAkses;
-      $log->actor = 1;
-      // $log->actor = Auth::user()->id;
+      $log->actor = Auth::user()->id;
       $log->aksi = 'Menambahkan Produk Kategori Baru '.$request->nama_kategori;
       $log->save();
 
@@ -157,8 +165,7 @@ class ProdukKategoriController extends Controller
         $update->tanggal_post = $request->tanggal_post;
         $update->flag_publish = $flag_publish;
         $update->slug = str_slug($request->nama_kategori,'-');
-        // $update->actor = Auth::user()->id;
-        $update->actor = 1;
+        $update->actor = Auth::user()->id;
         $update->update();
       }else{
         $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
@@ -168,19 +175,17 @@ class ProdukKategoriController extends Controller
         $update->nama_kategori = $request->nama_kategori;
         $update->deskripsi_EN = $request->deskripsi_EN;
         $update->deskripsi_ID = $request->deskripsi_ID;
-        $update->img_url  = $img_url;
+        $update->img_url  = 'images/produk/'.$img_url;
         $update->img_alt  = $request->img_alt;
         $update->tanggal_post = $request->tanggal_post;
         $update->flag_publish = $flag_publish;
         $update->slug = str_slug($request->nama_kategori,'-');
-        // $update->actor = Auth::user()->id;
-        $update->actor = 1;
+        $update->actor = Auth::user()->id;
         $update->update();
       }
 
       $log = new LogAkses;
-      $log->actor = 1;
-      // $log->actor = Auth::user()->id;
+      $log->actor = Auth::user()->id;
       $log->aksi = 'Mengubah Produk Kategori '.$request->nama_kategori;
       $log->save();
 
