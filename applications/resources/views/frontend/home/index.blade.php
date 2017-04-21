@@ -197,9 +197,34 @@
 
 	<div class="content-wrapper">
 
-		<script src="//lightwidget.com/widgets/lightwidget.js"></script>
-		<iframe src="//lightwidget.com/widgets/5de3be6065da5d76a0ae9078a3c2ef48.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width: 100%; border: 0; overflow: hidden;"></iframe>
-
+		@if(!empty($items))
+			@php ($insCount=0)
+			@foreach($items as $key => $item)
+		<div class="insta-wrapper col-md-4 col-sm-12 col-xs-12">
+			<div class="insta-picture" style="background-image: url('{{ $item['images']['standard_resolution']['url'] }}');">
+				<div class="insta-contain-wrapper">
+					<div class="insta-contain">
+						<p>{{ $item['likes']['count'] }} <i class="fa fa-heart" aria-hidden="true"></i> || {{ $item['comments']['count'] }} <i class="fa fa-comment" aria-hidden="true"></i></p>
+						@if(isset($item['caption']['text']))
+							<p>{{ $item['caption']['text'] }}</p>
+						@endif
+						<a href="{{ $item['link'] }}">View</a>
+					</div>
+				</div>
+			</div>
+		</div>
+			@php 
+				$insCount++;
+				if($insCount == 6){
+					break;
+				}
+			@endphp
+			@endforeach
+		@else
+		<h1>Nothing</h1>
+		@endif
+		
+		<div class="clearfix"></div>
 
 		<div class="for-btn-see-more">
 			<a class="btn-see-more" href="">Connect With Us</a>
