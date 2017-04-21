@@ -14,20 +14,21 @@
   <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="x_panel">
       <div class="x_title">
-        <h2>Tambah Slider Image<small></small></h2>
+        <h2>Ubah Slider Image<small></small></h2>
         <ul class="nav panel_toolbox">
           <a href="{{ route('slider.index') }}" class="btn btn-primary btn-sm">Kembali</a>
         </ul>
         <div class="clearfix"></div>
       </div>
       <div class="x_content">
-        <form action="{{ route('slider.store') }}" method="POST" class="form-horizontal form-label-left" enctype="multipart/form-data" novalidate>
+        <form action="{{ route('slider.edit') }}" method="POST" class="form-horizontal form-label-left" enctype="multipart/form-data" novalidate>
           {{ csrf_field() }}
+          <input type="hidden" name="id" value="{{ $getSlider->id }}">
           <div class="item form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Gambar Slider <span class="required">*</span>
-            </label>
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Gambar Slider</label>
+            <span style="color:red; font-size:10px;">Biarkan Kosong Jika Tidak Ingin Mengubah Gambar</span>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="img_url" class="form-control col-md-7 col-xs-12" data-validate-length-range="1" name="img_url" required="required" type="file">
+              <input id="img_url" class="form-control col-md-7 col-xs-12" data-validate-length-range="1" name="img_url" type="file">
               <span style="color:red; font-size:10px;">Width: 100px; Heigh: 100px</span>
               @if($errors->has('img_url'))
                 <code><span style="color:red; font-size:10px;">{{ $errors->first('img_url')}}</span></code>
@@ -38,7 +39,7 @@
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Deskripsi Gambar <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="img_alt" class="form-control col-md-7 col-xs-12" data-validate-length-range="1" name="img_alt" placeholder="Contoh: Nama Produk Kategori" required="required" type="text" value="{{ old('img_alt') }}">
+              <input id="img_alt" class="form-control col-md-7 col-xs-12" data-validate-length-range="1" name="img_alt" placeholder="Contoh: Nama Produk Kategori" required="required" type="text" value="{{ $getSlider->img_alt }}">
               @if($errors->has('img_alt'))
                 <code><span style="color:red; font-size:10px;">{{ $errors->first('img_alt')}}</span></code>
               @endif
@@ -48,7 +49,7 @@
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Posisi <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="posisi" class="form-control col-md-7 col-xs-12" data-validate-length-range="1" name="posisi" placeholder="Contoh: 1, 2, 3 atau 4" type="text" value="{{ old('posisi') }}">
+              <input id="posisi" class="form-control col-md-7 col-xs-12" data-validate-length-range="1" name="posisi" placeholder="Contoh: 1, 2, 3 atau 4" type="text" value="{{ $getSlider->posisi }}">
               @if($errors->has('posisi'))
                 <code><span style="color:red; font-size:10px;">{{ $errors->first('posisi')}}</span></code>
               @endif
@@ -58,7 +59,7 @@
             <label class="control-label col-md-3 col-sm-3 col-xs-12">Tanggal Publish <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="tanggal_post" name="tanggal_post" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" value="{{ date('Y-m-d') }}">
+              <input id="tanggal_post" name="tanggal_post" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" value="{{ $getSlider->tanggal_post }}">
               @if($errors->has('tanggal_post'))
                 <code><span style="color:red; font-size:10px;">{{ $errors->first('tanggal_post')}}</span></code>
               @endif
@@ -69,14 +70,14 @@
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
               <label>
-                <input type="checkbox" class="flat" name="flag_publish" checked />
+                <input type="checkbox" class="flat" name="flag_publish" {{ ($getSlider->flag_publish == 1) ? 'checked' : ''}} />
               </label>
             </div>
           </div>
           <div class="ln_solid"></div>
           <div class="form-group">
             <div class="col-md-6 col-md-offset-3">
-              <a href="{{ route('produk.index') }}" class="btn btn-primary">Cancel</a>
+              <a href="{{ route('slider.index') }}" class="btn btn-primary">Cancel</a>
               <button id="send" type="submit" class="btn btn-success">Submit</button>
             </div>
           </div>
@@ -97,7 +98,6 @@
 <script src="{{ asset('backend/js/moment/moment.min.js') }}"></script>
 <script src="{{ asset('backend/js/datepicker/daterangepicker.js') }}"></script>
 <script>
-
   $('#tanggal_post').daterangepicker({
     singleDatePicker: true,
     calender_style: "picker_3",
