@@ -37,4 +37,20 @@
       <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
     </div>
   </div>
+
+<ul>
+  @foreach ( config('app.languages') as $bhs)
+		{{-- @if($user !== config('app.locale')) --}}
+			<li><a href="{!! url('language') !!}/{{ $bhs }}">{{ $bhs }}</a></li>
+		{{-- @endif --}}
+	@endforeach
+</ul>
+
+<table class="table">
+  <tr>
+    <td>@lang('site.title')</td>
+    <td>@lang('site.deskripsi')</td>
+  </tr>
+</table>
+
 @endsection

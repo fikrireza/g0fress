@@ -38,11 +38,7 @@ Route::get('logout-process', 'Auth\LoginController@logoutProcess')->name('logout
 
 Route::get('admin/login', 'Auth\LoginController@showLoginForm')->name('login.pages');
 
-Route::get('admin/slider', 'Backend\SliderHomeController@index')->name('slider.index');
-Route::get('admin/slider/tambah', 'Backend\SliderHomeController@tambah')->name('slider.tambah');
-Route::post('admin/slider/tambah', 'Backend\SliderHomeController@store')->name('slider.store');
-Route::get('admin/slider/ubah/{id}', 'Backend\SliderHomeController@ubah')->name('slider.ubah');
-Route::post('admin/slider/ubah', 'Backend\SliderHomeController@edit')->name('slider.edit');
+Route::get('language/{bhs}', 'HomeController@language')->where('lang', '[A-Za-z_-]+');
 
 //----------------------- BACKEND -----------------------//
 Route::group(['middleware' => ['isAdministrator']], function () {
@@ -96,7 +92,12 @@ Route::group(['middleware' => ['isAdministrator']], function () {
   // Akses log
   Route::get('admin/logAkses', 'Backend\LogAksesController@index')->name('logAkses.index');
 
-
+  // Slider Image Home
+  Route::get('admin/slider', 'Backend\SliderHomeController@index')->name('slider.index');
+  Route::get('admin/slider/tambah', 'Backend\SliderHomeController@tambah')->name('slider.tambah');
+  Route::post('admin/slider/tambah', 'Backend\SliderHomeController@store')->name('slider.store');
+  Route::get('admin/slider/ubah/{id}', 'Backend\SliderHomeController@ubah')->name('slider.ubah');
+  Route::post('admin/slider/ubah', 'Backend\SliderHomeController@edit')->name('slider.edit');
 
 });
 //----------------------- BACKEND -----------------------//

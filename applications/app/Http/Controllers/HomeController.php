@@ -2,27 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Jobs\ChangeLocale;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
+      /**
+     * Change language.
      *
-     * @return void
+     * @param  App\Jobs\ChangeLocaleCommand $changeLocale
+     * @param  String $lang
+     * @return Response
      */
-    public function __construct()
+    public function language( $bhs, ChangeLocale $changeLocale)
     {
-        $this->middleware('auth');
-    }
+      $bhs = in_array($bhs, config('app.languages')) ? $bhs : config('app.fallback_locale');
+      $changeLocale->lang = $bhs;
+      $this->dispatch($changeLocale);
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return view('home');
+      return redirect()->back();
     }
 }
