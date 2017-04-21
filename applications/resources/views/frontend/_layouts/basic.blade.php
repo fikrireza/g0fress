@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	
+
 	@yield('head-title')
 
 	<meta charset="utf-8">
@@ -13,11 +13,11 @@
 
     <link rel="stylesheet" type="text/css" href="{{ asset('plugin/bootstrap-3.3.7/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('plugin/font-awesome/css/font-awesome.min.css') }}">
-    
+
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/navbar.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/footer.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/font/1-font-family.css') }}">
-    
+
     @yield('head-style')
 </head>
 <body>
@@ -38,15 +38,15 @@
 				<ul class="nav-link-list-ul">
 					<li class="nav-link-list-li">
 						<a href="">
-							About
+							@lang('front/home.about')
 						</a>
 					</li>
 					<li class="nav-link-list-li dropdown-hover">
 						<a href="{{ route('frontend.produk') }}">
-							Product
+							@lang('front/home.product')
 						</a>
 						<div class="dropdown-hover-content">
-							@php 
+							@php
 								$date = new DateTime;
 								$format_date = $date->format('Y-m-d');
 								$callKategory = App\Models\ProdukKategori::where('flag_publish', '1')->whereDATE('tanggal_post', '<=', $format_date)->orderBy('id', 'desc')->get();
@@ -62,7 +62,7 @@
 									<i class="fa fa-chevron-right" aria-hidden="true"></i>
 								</label>
 								<div class="slide-hover-content">
-									@php 
+									@php
 										$callProduk = App\Models\Produk::where('kategori_id', $list->id)->where('flag_publish', '1')->whereDATE('tanggal_post', '<=', $format_date)->orderBy('id', 'desc')->get();
 									@endphp
 									@foreach($callProduk as $list)
@@ -79,28 +79,28 @@
 					</li>
 					<li class="nav-link-list-li">
 						<a href="">
-							Berita & Info
+							@lang('front/home.news')
 						</a>
 					</li>
 					<li class="nav-link-list-li">
 						<a href="">
-							Program & Events
+							@lang('front/home.program')
 						</a>
 					</li>
 					<li class="nav-link-list-li">
 						<a href="">
-							Contact	
+							@lang('front/home.contact')
 						</a>
 					</li>
 				</ul>
 			</div>
 			<div class="connect-social">
 				<div class="social-wrapper">
-					<img src="{{ asset('public/image/default/lang-id-icon.png') }}">
-					<img src="{{ asset('public/image/default/lang-en-icon.png') }}">
+					<a href="{!! url('bahasa/id') !!}"><img src="{{ asset('public/image/default/lang-id-icon.png') }}"></a>
+					<a href="{!! url('bahasa/en') !!}"><img src="{{ asset('public/image/default/lang-en-icon.png') }}"></a>
 				</div>
 			</div>
-		</div>	
+		</div>
 	</div>
 
 	@yield('body-content')
@@ -140,7 +140,7 @@
 	</div>
 
 	<script type="text/javascript" src="{{ asset('plugin/jquery/jquery-3.2.0.min.js') }}"></script>
-	
+
 	<script src="{{ asset('frontend/js/navbar.js') }}"></script>
 
 	@yield('footer-script')

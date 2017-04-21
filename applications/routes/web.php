@@ -38,8 +38,6 @@ Route::get('logout-process', 'Auth\LoginController@logoutProcess')->name('logout
 
 Route::get('admin/login', 'Auth\LoginController@showLoginForm')->name('login.pages');
 
-Route::get('language/{bhs}', 'HomeController@language')->where('lang', '[A-Za-z_-]+');
-
 //----------------------- BACKEND -----------------------//
 Route::group(['middleware' => ['isAdministrator']], function () {
   Route::get('admin/dashboard', function(){
@@ -106,6 +104,7 @@ Route::group(['middleware' => ['isAdministrator']], function () {
 
 // FRONTEND
 // Route::get('/', '')->name('');
+Route::get('bahasa/{bhs}', 'HomeController@language')->where('lang', '[A-Za-z_-]+');
 
 Route::get('/', 'Frontend\HomeController@index')->name('frontend.home');
 
