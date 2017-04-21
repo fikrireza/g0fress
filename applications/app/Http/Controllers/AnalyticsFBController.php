@@ -14,10 +14,10 @@ class AnalyticsFBController extends Controller
         'app_id' => '180780819104546',
         'app_secret' => '217bc574afae3a1eb3768846ad3df464',
         'default_graph_version' => 'v2.8',
-        'default_access_token' => 'EAACka1CBQyIBAJtcZCKZBBjQ6x5IwUfLviI25luR9YODcZCtabHTSS7ZC18oJVNiItfYviXHZBTbM3jcTuZAHRT06VgocpCd9l2LYhKjBcCz2eKYsMxgZBW4Ta8mCMeNRQAVUtYEniBmHSdyEi5Haml9rxcky8EJ0gZD',
+        'default_access_token' => 'EAACka1CBQyIBACmEsKtz6a8IGhGHfcwlmMZCDNhqdmYbZBuIpXR2a7YEKpvpphjfcl8nD6DehvTaXf8XQj5dyypdYRZAEyOcwJZA7iQXta4jyTT6ZCdEnfrTWvZAjixW2WiISZAs3AgCxg7SnH2N6EM4ZCFsAScsOjcZD',
         ]);
 
-      $fb->setDefaultAccessToken('EAACka1CBQyIBAJtcZCKZBBjQ6x5IwUfLviI25luR9YODcZCtabHTSS7ZC18oJVNiItfYviXHZBTbM3jcTuZAHRT06VgocpCd9l2LYhKjBcCz2eKYsMxgZBW4Ta8mCMeNRQAVUtYEniBmHSdyEi5Haml9rxcky8EJ0gZD');
+      $fb->setDefaultAccessToken('EAACka1CBQyIBACmEsKtz6a8IGhGHfcwlmMZCDNhqdmYbZBuIpXR2a7YEKpvpphjfcl8nD6DehvTaXf8XQj5dyypdYRZAEyOcwJZA7iQXta4jyTT6ZCdEnfrTWvZAjixW2WiISZAs3AgCxg7SnH2N6EM4ZCFsAScsOjcZD');
 
       $requestPageImpression = $fb->request('GET', '/amadeo.id/insights/page_impressions?since=1483228800&until=1490918400');
 
@@ -63,7 +63,7 @@ class AnalyticsFBController extends Controller
           var_dump($e->getResponse());
         } else {
           echo "<p><b>(" . $key . ")</b> HTTP status code: " . $response->getHttpStatusCode() . "<br />\n";
-          echo "Response: " . json_encode($response->getBody()) . "</p>\n\n";
+          echo "Response: " . stripslashes(json_encode($response->getBody())) . "</p>\n\n";
           echo "<hr />\n\n";
         }
       }

@@ -35,7 +35,6 @@
             </ul>
           </li>
           <li class="{{ Route::currentRouteNamed('news.index') ? 'active' : '' }}{{ Route::currentRouteNamed('news.tambah') ? 'active' : '' }}{{ Route::currentRouteNamed('news.lihat') ? 'active' : '' }}"><a href="{{ route('news.index') }}"><i class="fa fa-newspaper-o"></i> News </a></li>
-
           <li class="{{ Route::currentRouteNamed('programEvents.index') ? 'active' : '' }}{{ Route::currentRouteNamed('programEvents.tambah') ? 'active' : '' }}{{ Route::currentRouteNamed('programEvents.lihat') ? 'active' : '' }}{{ Route::currentRouteNamed('programEventsKategori.index') ? 'active' : '' }}{{ Route::currentRouteNamed('programEventsKategori.tambah') ? 'active' : '' }}{{ Route::currentRouteNamed('programEventsKategori.lihat') ? 'active' : '' }}">
             <a><i class="fa fa-calendar"></i> Program & Events <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu" style="{{ Route::currentRouteNamed('programEvents.index') ? 'display: block;' : '' }}{{ Route::currentRouteNamed('programEvents.tambah') ? 'display: block;' : '' }}{{ Route::currentRouteNamed('programEvents.lihat') ? 'display: block;' : '' }}{{ Route::currentRouteNamed('programEventsKategori.index') ? 'display: block;' : '' }}{{ Route::currentRouteNamed('programEventsKategori.tambah') ? 'display: block;' : '' }}{{ Route::currentRouteNamed('programEventsKategori.lihat') ? 'display: block;' : '' }}">
@@ -43,7 +42,7 @@
               <li class="{{ Route::currentRouteNamed('programEventsKategori.index') ? 'current-page' : '' }}{{ Route::currentRouteNamed('programEventsKategori.tambah') ? 'current-page' : '' }}{{ Route::currentRouteNamed('programEventsKategori.lihat') ? 'current-page' : '' }}"><a href="{{ route('programEventsKategori.index') }}">Program & Events Kategori</a></li>
             </ul>
           </li>
-
+          <li class="{{ Route::currentRouteNamed('slider.index') ? 'active' : '' }}{{ Route::currentRouteNamed('slider.tambah') ? 'active' : '' }}"><a href="{{ route('slider.index') }}"><i class="fa fa-image"></i> Slider Home </a></li>
           <li><a href="#"><i class="fa fa-building-o"></i> Kontak </a></li>
           <li class="{{ Route::currentRouteNamed('inbox.index') ? 'active' : '' }}"><a href="{{ route('inbox.index') }}"><i class="fa fa-inbox"></i> Inbox </a></li>
         </ul>
