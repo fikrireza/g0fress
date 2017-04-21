@@ -13,11 +13,6 @@
 
 @section('body-content')
 
-	@php 
-		$date = new DateTime;
-		$format_date = $date->format('Y-m-d');
-	@endphp
-
 <div class="slider">
 	<div class="item">
 		<div class="img" style="background-image: url('{{ asset('picture/firstCampaign/background-rainbow.png') }}');">
@@ -38,7 +33,7 @@
 		<div class="wrapper-content">
 			<label class="circle-shape left"></label>
 			<label class="wrapper-shape scroldown">
-				scroll down for more!
+				@lang('front/home.scroll-down')
 			</label>
 			<label class="circle-shape right"></label>
 		</div>
@@ -57,7 +52,7 @@
 				<label class="circle-shape left"></label>
 			</div>
 			<div class="vertical-align-midle">
-				<label class="flag-title">About Go Fress</label>
+				<label class="flag-title">@lang('front/home.About-Go-Fress')</label>
 			</div>
 			<div class="vertical-align-midle">
 				<label class="circle-shape right"></label>
@@ -75,7 +70,7 @@
 				<label class="circle-shape left"></label>
 			</div>
 			<div class="vertical-align-midle">
-				<label class="flag-title">Go Fress Product</label>
+				<label class="flag-title">@lang('front/home.Go-Fress-Product')</label>
 			</div>
 			<div class="vertical-align-midle">
 				<label class="circle-shape right"></label>
@@ -84,10 +79,6 @@
 		</div>
 
 		<div class="slider-product">
-			@php 
-				$callKategory = App\Models\ProdukKategori::where('flag_publish', '1')->whereDATE('tanggal_post', '<=', $format_date)->orderBy('id', 'desc')->get();
-			@endphp
-
 			@foreach($callKategory as $list)
 			<div class="item">
 				<div class="wrapper-product">
@@ -104,7 +95,7 @@
 		</div>
 
 		<div class="for-btn-see-more">
-			<a class="btn-see-more" href="">See More</a>
+			<a class="btn-see-more" href="">@lang('front/home.See-More')</a>
 		</div>
 	</div>
 </div>
@@ -128,9 +119,6 @@
 
 	<div class="content-wrapper">
 		<div class="slider-second">
-			@php 
-				$callProgramEvent = App\Models\ProgramEvents::where('show_homepage', 1)->where('flag_publish', '1')->whereDATE('tanggal_post', '<=', $format_date)->orderBy('id', 'desc')->limit(15)->get();
-			@endphp
 			@foreach($callProgramEvent as $list)
 			<div class="item">
 				<div class="wrapper-item">
@@ -138,18 +126,18 @@
 						<img class="thumnail" src="{{ $list->img_url }}" alt="{{ $list->img_alt }}">
 						<div class="wrapper-title">
 							<a href="{{ route('frontend.program-event.view', ['slug'=>$list->slug]) }}">
-								<label class="title">{{ $list->judul_promosi_ID }}</label>
+								<label class="title">{{ $list->judul }}</label>
 							</a>
 						</div>
 					</div>
-					<label class="description">{!! Str::words($list->deskripsi_ID, 20," <a href=".route('frontend.program-event.view', ['slug'=>$list->slug]) .">Read More</a>")  !!}</label>
+					<label class="description">{!! Str::words($list->deskripsi, 20," <a href=".route('frontend.program-event.view', ['slug'=>$list->slug]) .">Read More</a>")  !!}</label>
 				</div>
 			</div>
 			@endforeach
 		</div>
 
 		<div class="for-btn-see-more">
-			<a class="btn-see-more" href="">See More</a>
+			<a class="btn-see-more" href="">@lang('front/home.See-More')</a>
 		</div>
 
 	</div>
@@ -163,7 +151,7 @@
 				<label class="circle-shape left"></label>
 			</div>
 			<div class="vertical-align-midle">
-				<label class="flag-title">Latest News</label>
+				<label class="flag-title">@lang('front/home.Latest-News')</label>
 			</div>
 			<div class="vertical-align-midle">
 				<label class="circle-shape right"></label>
@@ -174,14 +162,11 @@
 
 	<div class="content-wrapper">
 		<div class="lates-news-wrapper">
-			@php 
-				$callNews = App\Models\News::where('show_homepage', 1)->where('flag_publish', '1')->whereDATE('tanggal_post', '<=', $format_date)->orderBy('id', 'desc')->limit(6)->get();
-			@endphp
 			@foreach($callNews as $list)
 			<div class="col-md-4 col-sm-12 col-xs-12">
 				<div class="wrapper-news">
-					<h3>{{ $list->judul_ID }}</h3>
-					<label>{!! Str::words($list->deskripsi_ID, 25," <a href=".route('frontend.berita.view', ['slug'=>$list->slug]) .">Read More</a>")  !!}</label>
+					<h3>{{ $list->judul }}</h3>
+					<label>{!! Str::words($list->deskripsi, 25," <a href=".route('frontend.berita.view', ['slug'=>$list->slug]) .">Read More</a>")  !!}</label>
 				</div>		
 			</div>
 			@endforeach
@@ -189,7 +174,7 @@
 		</div>
 
 		<div class="for-btn-see-more">
-			<a class="btn-see-more" href="">See More</a>
+			<a class="btn-see-more" href="">@lang('front/home.See-More')</a>
 		</div>
 
 	</div>
@@ -204,7 +189,7 @@
 				<label class="circle-shape left"></label>
 			</div>
 			<div class="vertical-align-midle">
-				<label class="flag-title">Stay Connected</label>
+				<label class="flag-title">@lang('front/home.Stay-Connected')</label>
 			</div>
 			<div class="vertical-align-midle">
 				<label class="circle-shape right"></label>
@@ -226,7 +211,7 @@
 						@if(isset($item['caption']['text']))
 							<p>{{ $item['caption']['text'] }}</p>
 						@endif
-						<a href="{{ $item['link'] }}">View</a>
+						<a href="{{ $item['link'] }}">@lang('front/home.view')</a>
 					</div>
 				</div>
 			</div>
@@ -245,7 +230,7 @@
 		<div class="clearfix"></div>
 
 		<div class="for-btn-see-more">
-			<a class="btn-see-more" href="">Connect With Us</a>
+			<a class="btn-see-more" href="">@lang('front/home.Connect-With-Us')</a>
 		</div>
 
 		<div style="text-align: center;">
@@ -266,7 +251,7 @@
 				<label class="circle-shape left"></label>
 			</div>
 			<div class="vertical-align-midle">
-				<label class="flag-title">Where to Find Us</label>
+				<label class="flag-title">@lang('front/home.Connect-With-Us')</label>
 			</div>
 			<div class="vertical-align-midle">
 				<label class="circle-shape right"></label>
@@ -277,7 +262,7 @@
 		<img src="{{ asset('public/image/default/toko.png') }}" style="width: 100%; margin-top: 60px;">
 
 		<div class="for-btn-see-more">
-			<a class="btn-see-more" href="">More Location</a>
+			<a class="btn-see-more" href="">@lang('front/home.More-Location')</a>
 		</div>
 	</div>
 </div>

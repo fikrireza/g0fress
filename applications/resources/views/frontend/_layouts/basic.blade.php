@@ -46,13 +46,8 @@
 							@lang('front/home.product')
 						</a>
 						<div class="dropdown-hover-content">
-							@php
-								$date = new DateTime;
-								$format_date = $date->format('Y-m-d');
-								$callKategory = App\Models\ProdukKategori::where('flag_publish', '1')->whereDATE('tanggal_post', '<=', $format_date)->orderBy('id', 'desc')->get();
-							@endphp
 
-							@foreach($callKategory as $list)
+							@foreach($navCallKategory as $list)
 							<div class="list slide-hover">
 								<a href="{{ route('frontend.produk') }}#{{ $list->slug }}">
 									{{ $list->nama_kategori }}
@@ -62,15 +57,14 @@
 									<i class="fa fa-chevron-right" aria-hidden="true"></i>
 								</label>
 								<div class="slide-hover-content">
-									@php
-										$callProduk = App\Models\Produk::where('kategori_id', $list->id)->where('flag_publish', '1')->whereDATE('tanggal_post', '<=', $format_date)->orderBy('id', 'desc')->get();
-									@endphp
-									@foreach($callProduk as $list)
+									@foreach($navCallProduk as $listSub)
+									@if($list->id == $listSub->kategori_id)
 									<div class="list">
-										<a href="{{ route('frontend.produk.view', ['slug'=>$list->slug]) }}">
-											{{ $list->nama_produk }}
+										<a href="{{ route('frontend.produk.view', ['slug'=>$listSub->slug]) }}">
+											{{ $listSub->nama_produk }}
 										</a>
 									</div>
+									@endif
 									@endforeach
 								</div>
 							</div>
@@ -111,17 +105,17 @@
 				<ul>
 					<li>
 						<a href="{{ route('frontend.home') }}">
-							Home
+							@lang('front/home.home')
 						</a>
 					</li>
 					<li>
 						<a href="">
-							About
+							@lang('front/home.about')
 						</a>
 					</li>
 					<li>
 						<a href="">
-							Contact
+							@lang('front/home.contact')
 						</a>
 					</li>
 				</ul>
@@ -135,7 +129,7 @@
 
 			<div class="clearfix"></div>
 
-			<p class="copy-right">© 2017 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore<br>magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+			<p class="copy-right">@lang('front/home.copy-right')</p>
 		</div>
 	</div>
 
