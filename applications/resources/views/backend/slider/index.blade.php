@@ -1,7 +1,7 @@
 @extends('backend.layout.master')
 
 @section('title')
-  <title>Aquasolve | Produk</title>
+  <title>Aquasolve | Slider Home</title>
 @endsection
 
 @section('headscript')
@@ -34,27 +34,26 @@
 
 <div class="page-title">
   <div class="title_left">
-    <h3>Semua Produk <small></small></h3>
+    <h3>Slider Home <small></small></h3>
   </div>
 </div>
 
 <div class="col-md-12 col-sm-12 col-xs-12">
   <div class="x_panel">
     <div class="x_title">
-      <h2>Produk </h2>
+      <h2>Slider Home </h2>
       <ul class="nav panel_toolbox">
-        <a href="{{ route('produk.tambah') }}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Tambah Produk</a>
+        <a href="{{ route('slider.tambah') }}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Tambah Slider</a>
       </ul>
       <div class="clearfix"></div>
     </div>
     <div class="x_content table-responsive">
-      <table id="produktabel" class="table table-striped table-bordered dt-responsive no-footer" width="100%">
+      <table id="slidertabel" class="table table-striped table-bordered dt-responsive no-footer" width="100%">
         <thead>
           <tr role="row">
             <th>No</th>
-            <th>Produk</th>
-            <th>Produk Kategori</th>
-            <th>Deskripsi</th>
+            <th>Image</th>
+            <th>Image Description</th>
             <th>Tanggal Post</th>
             <th>Publish</th>
             <th>Aksi</th>
@@ -64,7 +63,7 @@
           @php
             $no = 1;
           @endphp
-          @foreach ($getProduk as $key)
+          @foreach ($getSlider as $key)
           <tr>
             <td>{{ $no }}</td>
             <td>{{ $key->nama_produk }}</td>
@@ -95,6 +94,6 @@
 <script src="{{ asset('backend/vendors/pnotify/dist/pnotify.nonblock.js') }}"></script>
 
 <script type="text/javascript">
-  $('#produktabel').DataTable();
+  $('#slidertabel').DataTable();
 </script>
 @endsection

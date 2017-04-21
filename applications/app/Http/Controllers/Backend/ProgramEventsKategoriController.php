@@ -26,7 +26,7 @@ class ProgramEventsKategoriController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
 
     public function index()
     {
@@ -47,12 +47,14 @@ class ProgramEventsKategoriController extends Controller
           'judul_kategori_ID.unique' => 'Judul ini sudah ada',
           'judul_kategori_EN.required' => 'Wajib di isi',
           'img_url.image' => '.jpeg, .bmp, .png',
+          'img_alt.required' => 'Wajib di isi'
         ];
 
         $validator = Validator::make($request->all(), [
           'judul_kategori_ID' => 'required|unique:amd_program_events_kategori',
           'judul_kategori_EN' => 'required',
           'img_url' => 'image|mimes:jpeg,bmp,png',
+          'img_alt' => 'required',
         ], $message);
 
         if($validator->fails())
@@ -130,12 +132,14 @@ class ProgramEventsKategoriController extends Controller
           'judul_kategori_ID.unique' => 'Judul ini sudah ada',
           'judul_kategori_EN.required' => 'Wajib di isi',
           'img_url.image' => '.jpeg, .bmp, .png',
+          'img_alt.required'  => 'Wajib di isi',
         ];
 
         $validator = Validator::make($request->all(), [
           'judul_kategori_ID' => 'required|unique:amd_program_events_kategori,judul_kategori_ID,'.$request->id,
           'judul_kategori_EN' => 'required',
           'img_url' => 'image|mimes:jpeg,bmp,png',
+          'img_alt' => 'required',
         ], $message);
 
         if($validator->fails())
