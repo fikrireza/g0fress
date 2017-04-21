@@ -196,10 +196,66 @@
 	</div>
 
 	<div class="content-wrapper">
-
-		<script src="//lightwidget.com/widgets/lightwidget.js"></script>
-		<iframe src="//lightwidget.com/widgets/5de3be6065da5d76a0ae9078a3c2ef48.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width: 100%; border: 0; overflow: hidden;"></iframe>
-
+<style type="text/css">
+.insta-wrapper{
+	margin-bottom: 20px;
+}
+.insta-wrapper .insta-picture{
+	width: 100%;
+	height: 30vh;
+	position: relative;
+	background-size: cover;
+	cursor: pointer;
+}
+.insta-wrapper .insta-picture .insta-contain-wrapper{
+	width: 100%;
+	height: 30vh;
+	display: table;
+}
+.insta-wrapper .insta-picture .insta-contain-wrapper{
+	background-color: rgba(255,239,211,.8);
+	opacity: 0;
+	transition: all .51s;
+}
+.insta-wrapper .insta-picture .insta-contain-wrapper:hover{
+	opacity: 1;
+}
+.insta-wrapper .insta-picture .insta-contain-wrapper .insta-contain{
+	width: 100%;
+	height: 30vh;
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+</style>
+		@if(!empty($items))
+			@php ($insCount=0)
+			@foreach($items as $key => $item)
+		<div class="insta-wrapper col-md-4 col-sm-6 col-xs-6">
+			<div class="insta-picture" style="background-image: url('{{ $item['images']['standard_resolution']['url'] }}');">
+				<div class="insta-contain-wrapper">
+					<div class="insta-contain">
+						<p>{{ $item['likes']['count'] }} <i class="fa fa-heart" aria-hidden="true"></i> || {{ $item['comments']['count'] }} <i class="fa fa-comment" aria-hidden="true"></i></p>
+						@if(isset($item['caption']['text']))
+							<p>{{ $item['caption']['text'] }}</p>
+						@endif
+						<a href="{{ $item['link'] }}">View</a>
+					</div>
+				</div>
+			</div>
+		</div>
+			@php 
+				$insCount++;
+				if($insCount == 6){
+					break;
+				}
+			@endphp
+			@endforeach
+		@else
+		<h1>Nothing</h1>
+		@endif
+		
+		<div class="clearfix"></div>
 
 		<div class="for-btn-see-more">
 			<a class="btn-see-more" href="">Connect With Us</a>

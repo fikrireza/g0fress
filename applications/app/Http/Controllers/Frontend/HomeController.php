@@ -9,6 +9,13 @@ class HomeController extends Controller
 {
     //
     function index(){
-    	return view('frontend.home.index');
+
+    	$items = [];
+    	$client = new \GuzzleHttp\Client;
+	    $response = $client->get('https://www.instagram.com/dessurya/media');
+	    $items = json_decode((string) $response->getBody(), true)['items'];
+	    // dd($items);
+	    
+    	return view('frontend.home.index',compact('items'));
     }
 }
