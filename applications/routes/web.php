@@ -107,4 +107,12 @@ Route::group(['middleware' => ['isAdministrator']], function () {
 // FRONTEND
 // Route::get('/', '')->name('');
 
-Route::get('/', 'Frontend\HomeController@index')->name('frontend.home.index');
+Route::get('/', 'Frontend\HomeController@index')->name('frontend.home');
+
+Route::get('/produk', 'Frontend\HomeController@index')->name('frontend.produk');
+
+Route::get('/produk/{slug}', 'Frontend\HomeController@index')->name('frontend.produk.view');
+
+Route::get('/program-event/{slug}', 'Frontend\HomeController@index')->name('frontend.program-event.view');
+
+Route::get('/berita/{slug}', 'Frontend\HomeController@index')->name('frontend.berita.view');

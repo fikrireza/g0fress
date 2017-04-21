@@ -26,7 +26,9 @@
 		<div class="containt">
 			<div class="icon-nav">
 				<div class="icon-nav-wrapper">
-					<img src=" {{ asset('public/image/default/logo-gofress.png') }}">
+					<a href="{{ route('frontend.home') }}">
+						<img src=" {{ asset('public/image/default/logo-gofress.png') }}">
+					</a>
 				</div>
 				<div class="bar slide-navbar-for-mobile open">
 					<i class="fa fa-bars" aria-hidden="true"></i>
@@ -40,95 +42,39 @@
 						</a>
 					</li>
 					<li class="nav-link-list-li dropdown-hover">
-						<a href="">
+						<a href="{{ route('frontend.produk') }}">
 							Product
 						</a>
 						<div class="dropdown-hover-content">
+							@php 
+								$date = new DateTime;
+								$format_date = $date->format('Y-m-d');
+								$callKategory = App\Models\ProdukKategori::where('flag_publish', '1')->whereDATE('tanggal_post', '<=', $format_date)->orderBy('id', 'desc')->get();
+							@endphp
+
+							@foreach($callKategory as $list)
 							<div class="list slide-hover">
-								<a href="">
-									Fresh Strips
+								<a href="{{ route('frontend.produk') }}#{{ $list->slug }}">
+									{{ $list->nama_kategori }}
 								</a>
 								<label class="icon">
 									<i class="fa fa-chevron-right" aria-hidden="true"></i>
 									<i class="fa fa-chevron-right" aria-hidden="true"></i>
 								</label>
 								<div class="slide-hover-content">
+									@php 
+										$callProduk = App\Models\Produk::where('kategori_id', $list->id)->where('flag_publish', '1')->whereDATE('tanggal_post', '<=', $format_date)->orderBy('id', 'desc')->get();
+									@endphp
+									@foreach($callProduk as $list)
 									<div class="list">
-										<a href="">
-											Peppermint
+										<a href="{{ route('frontend.produk.view', ['slug'=>$list->slug]) }}">
+											{{ $list->nama_produk }}
 										</a>
 									</div>
-									<div class="list">
-										<a href="">
-											Orange
-										</a>
-									</div>
-									<div class="list">
-										<a href="">
-											Strawberry
-										</a>
-									</div>
-									<div class="list">
-										<a href="">
-											Grape
-										</a>
-									</div>
-									<div class="list">
-										<a href="">
-											Barley
-										</a>
-									</div>
-									<div class="list">
-										<a href="">
-											Spearmint
-										</a>
-									</div>
-									
+									@endforeach
 								</div>
 							</div>
-							<div class="list slide-hover">
-								<a href="">
-									Fresh Strips
-								</a>
-								<label class="icon">
-									<i class="fa fa-chevron-right" aria-hidden="true"></i>
-									<i class="fa fa-chevron-right" aria-hidden="true"></i>
-								</label>
-								<div class="slide-hover-content">
-									<div class="list">
-										<a href="">
-											Peppermint
-										</a>
-									</div>
-									<div class="list">
-										<a href="">
-											Orange
-										</a>
-									</div>
-									<div class="list">
-										<a href="">
-											Strawberry
-										</a>
-									</div>
-									<div class="list">
-										<a href="">
-											Grape
-										</a>
-									</div>
-									<div class="list">
-										<a href="">
-											Barley
-										</a>
-									</div>
-									<div class="list">
-										<a href="">
-											Spearmint
-										</a>
-									</div>
-									
-								</div>
-							</div>
-							
+							@endforeach
 						</div>
 					</li>
 					<li class="nav-link-list-li">
@@ -158,6 +104,40 @@
 	</div>
 
 	@yield('body-content')
+
+	<div class="footer background-content background-content-second">
+		<div class="content-wrapper wrapper-footer-link">
+			<div class="float-left">
+				<ul>
+					<li>
+						<a href="{{ route('frontend.home') }}">
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="">
+							About
+						</a>
+					</li>
+					<li>
+						<a href="">
+							Contact
+						</a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="float-right">
+				<img src="{{ asset('public/image/default/facebook-white.png') }}">
+				<img src="{{ asset('public/image/default/twitter-white.png') }}">
+				<img src="{{ asset('public/image/default/instagram-white.png') }}">
+			</div>
+
+			<div class="clearfix"></div>
+
+			<p class="copy-right">© 2017 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore<br>magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+		</div>
+	</div>
 
 	<script type="text/javascript" src="{{ asset('plugin/jquery/jquery-3.2.0.min.js') }}"></script>
 	
