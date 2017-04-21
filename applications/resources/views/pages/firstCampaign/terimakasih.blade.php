@@ -116,7 +116,8 @@
 		<h1>Terima Kasih!</h1>
 	</div>
 	<div class="thanks-body">
-		<label>Sebagai apresiasi kami, Anda berhak untuk mendapatkan 1 kemasan Gofress gratis dari kami.<br>Tunjukkan kupon dibawah ini di <img class="logo-alfamart" src="{{ asset('picture\firstCampaign\logo-alfamart.png') }}"></label>
+		<label>Silahkan Screenshoot Kupon dibawah ini dan <br>Tunjukkan di <img class="logo-alfamart" src="{{ asset('picture\firstCampaign\logo-alfamart.png') }}"> <br />
+		Untuk mendapatkan 1 PCS  Gofress Gratis !</label>
 
 		<div class="kupon-wrapper">
 			<img class="kupon-image" src="{{ asset('picture\firstCampaign\kupon.png') }}">
@@ -125,22 +126,15 @@
 			</div>
 		</div>
 
-		<div class="for-mobile">
-			<label>Tekan gambar diatas dan simpan gambarnya di handphonemu.</label>
-		</div>
-		
 		<div class="link-wrapper">
 			<label class="link-1">
-				<a href="">
+				<a href="{{ url('hello/syarat-ketentuan') }}">
 					<img src="{{ asset('picture\firstCampaign\icon-Ketentuan-&-Persyaratan.png') }}">
 					Ketentuan & Persyaratan
 				</a>
 			</label>
 			<label class="link-2">
-				<a href="">
-					<img src="{{ asset('picture\firstCampaign\icon-Print-Gambar.png') }}">
-					Print Gambar
-				</a>
+					Kami juga telah mengirimkan KUPON ini ke email mu.
 			</label>
 		</div>
 	</div>

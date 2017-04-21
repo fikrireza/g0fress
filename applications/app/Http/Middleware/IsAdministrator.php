@@ -16,9 +16,9 @@ class IsAdministrator
      */
     public function handle($request, Closure $next)
     {
-      if (!Auth::guest() && Auth::user()) {
+      if (session('status') === 'administrator' || Auth::user()) {
         return $next($request);
-        }
+      }
 
       return redirect()->route('login.pages');
     }

@@ -10,10 +10,10 @@ class SocialAccountService {
   public function createOrGetUser(ProviderUser $providerUser)
   {
     $account = SocialAccount::whereProvider('facebook')->whereProviderUserId($providerUser->getId())->first();
-    // dd($account);
+
     if($account){
       $set = User::find($account->user_id);
-      $set->seen = $set->seen + 1;
+      $set->login_count = $set->login_count + 1;
       $set->save();
 
       return $account->user;
@@ -34,9 +34,9 @@ class SocialAccountService {
           'email' => $email,
           'name'  => $providerUser->getName(),
           'avatar'  => $providerUser->getAvatar(),
-          // 3 adalah user
+          // 3 adalah user campaign1
           'role_id' => 3,
-          'seen' => 1,
+          'login_count' => 1,
         ]);
       }
 

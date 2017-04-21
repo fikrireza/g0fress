@@ -16,6 +16,15 @@ use Image;
 
 class NewsController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
 
     public function index()
@@ -81,8 +90,7 @@ class NewsController extends Controller
           $save->tanggal_post = $request->tanggal_post;
           $save->flag_publish = $flag_publish;
           $save->slug = str_slug($request->judul_ID,'-');
-          // $save->actor = Auth::user()->id;
-          $save->actor = 1;
+          $save->actor = Auth::user()->id;
           $save->save();
         }else{
           $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
@@ -93,21 +101,19 @@ class NewsController extends Controller
           $save->judul_EN = $request->judul_EN;
           $save->deskripsi_ID = $request->deskripsi_ID;
           $save->deskripsi_EN = $request->deskripsi_EN;
-          $save->img_url  = $img_url;
+          $save->img_url  = 'images/news/'.$img_url;
           $save->img_alt  = $request->img_alt;
           $save->video_url  = $request->video_url;
           $save->show_homepage = $show_homepage;
           $save->tanggal_post = $request->tanggal_post;
           $save->flag_publish = $flag_publish;
           $save->slug = str_slug($request->judul_ID,'-');
-          // $save->actor = Auth::user()->id;
-          $save->actor = 1;
+          $save->actor = Auth::user()->id;
           $save->save();
         }
 
         $log = new LogAkses;
-        $log->actor = 1;
-        // $log->actor = Auth::user()->id;
+        $log->actor = Auth::user()->id;
         $log->aksi = 'Menambahkan News '.$request->judul_ID;
         $log->save();
 
@@ -180,14 +186,13 @@ class NewsController extends Controller
         $update->judul_EN = $request->judul_EN;
         $update->deskripsi_ID = $request->deskripsi_ID;
         $update->deskripsi_EN = $request->deskripsi_EN;
-        $update->img_alt = $request->img_url;
+        $update->img_alt = $request->img_alt;
         $update->video_url  = $request->video_url;
         $update->show_homepage = $show_homepage;
         $update->tanggal_post = $request->tanggal_post;
         $update->flag_publish = $flag_publish;
         $update->slug = str_slug($request->judul_ID,'-');
-        // $update->actor = Auth::user()->id;
-        $update->actor = 1;
+        $update->actor = Auth::user()->id;
         $update->update();
       }else{
         $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
@@ -198,21 +203,19 @@ class NewsController extends Controller
         $update->judul_EN = $request->judul_EN;
         $update->deskripsi_ID = $request->deskripsi_ID;
         $update->deskripsi_EN = $request->deskripsi_EN;
-        $update->img_url  = $img_url;
+        $update->img_url  = 'images/news/'.$img_url;
         $update->img_alt  = $request->img_alt;
         $update->video_url  = $request->video_url;
         $update->show_homepage = $show_homepage;
         $update->tanggal_post = $request->tanggal_post;
         $update->flag_publish = $flag_publish;
         $update->slug = str_slug($request->judul_ID,'-');
-        // $update->actor = Auth::user()->id;
-        $update->actor = 1;
+        $update->actor = Auth::user()->id;
         $update->update();
       }
 
       $log = new LogAkses;
-      $log->actor = 1;
-      // $log->actor = Auth::user()->id;
+      $log->actor = Auth::user()->id;
       $log->aksi = 'Mengubah News '.$request->judul_ID;
       $log->save();
 

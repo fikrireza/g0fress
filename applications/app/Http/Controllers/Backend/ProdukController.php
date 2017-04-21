@@ -17,6 +17,17 @@ use Image;
 
 class ProdukController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
       $getProduk = Produk::join('amd_produk_kategori', 'amd_produk_kategori.id', '=', 'amd_produk.kategori_id')
@@ -89,13 +100,11 @@ class ProdukController extends Controller
       $save->tanggal_post = $request->tanggal_post;
       $save->flag_publish = $flag_publish;
       $save->slug = str_slug($request->nama_produk,'-');
-      // $save->actor = Auth::user()->id;
-      $save->actor = 1;
+      $save->actor = Auth::user()->id;
       $save->save();
 
       $log = new LogAkses;
-      $log->actor = 1;
-      // $log->actor = Auth::user()->id;
+      $log->actor = Auth::user()->id;
       $log->aksi = 'Menambahkan Produk Baru '.$request->nama_produk;
       $log->save();
 
@@ -182,8 +191,7 @@ class ProdukController extends Controller
         $update->tanggal_post = $request->tanggal_post;
         $update->flag_publish = $flag_publish;
         $update->slug = str_slug($request->nama_produk,'-');
-        // $update->actor = Auth::user()->id;
-        $update->actor = 1;
+        $update->actor = Auth::user()->id;
         $update->update();
       }else{
         $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
@@ -201,15 +209,13 @@ class ProdukController extends Controller
         $update->tanggal_post = $request->tanggal_post;
         $update->flag_publish = $flag_publish;
         $update->slug = str_slug($request->nama_produk,'-');
-        // $update->actor = Auth::user()->id;
-        $update->actor = 1;
+        $update->actor = Auth::user()->id;
         $update->update();
 
       }
 
       $log = new LogAkses;
-      $log->actor = 1;
-      // $log->actor = Auth::user()->id;
+      $log->actor = Auth::user()->id;
       $log->aksi = 'Mengubah Produk '.$request->nama_produk;
       $log->save();
 

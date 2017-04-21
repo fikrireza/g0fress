@@ -201,6 +201,11 @@
 							<option value="{{ $key->id }}" @if($key->id == old('kota')) selected @endif>{{ $key->nama_kota }}</option>
 							@endforeach
 						</select>
+						@if($errors->has('kota'))
+						<span class="input-group-addon">
+							<i class="fa fa-exclamation" aria-hidden="true"></i>
+						</span>
+						@endif
 					</div>
 				</div>
 			</div>

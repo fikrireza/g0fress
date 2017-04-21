@@ -30,6 +30,7 @@ return [
     */
 
     'host' => 'smtp.gmail.com',
+    // 'host' => 'mail.gofress.co.id',
 
     /*
     |--------------------------------------------------------------------------
@@ -43,6 +44,7 @@ return [
     */
 
     'port' => 587,
+    // 'port' => 145,
 
     /*
     |--------------------------------------------------------------------------
@@ -56,8 +58,8 @@ return [
     */
 
     'from' => [
-        'address' => 'fourline66@gmail.com',
-        'name' => 'Adam',
+        'address' => 'noreply@gofress.co.id',
+        'name' => 'Gofress',
     ],
 
     /*
@@ -71,7 +73,7 @@ return [
     |
     */
 
-    'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+    'encryption' => '',
 
     /*
     |--------------------------------------------------------------------------
@@ -85,8 +87,10 @@ return [
     */
 
     'username' => 'fourline66@gmail.com',
+    // 'username' => 'noreply@gofress.co.id',
 
     'password' => 'yejluynhqogvmfrc',
+    // 'password' => 'passwordnyaap4?',
 
     /*
     |--------------------------------------------------------------------------
