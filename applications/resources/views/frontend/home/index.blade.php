@@ -12,6 +12,12 @@
 @endsection
 
 @section('body-content')
+
+	@php 
+		$date = new DateTime;
+		$format_date = $date->format('Y-m-d');
+	@endphp
+
 <div class="slider">
 	<div class="item">
 		<div class="img" style="background-image: url('{{ asset('picture/firstCampaign/background-rainbow.png') }}');">
@@ -78,14 +84,18 @@
 		</div>
 
 		<div class="slider-product">
-			@php ( $callKategory = App\Models\ProdukKategori::all() )
+			@php 
+				$callKategory = App\Models\ProdukKategori::where('flag_publish', '1')->whereDATE('tanggal_post', '<=', $format_date)->orderBy('id', 'desc')->get();
+			@endphp
 
-			@foreach($callKategory as $listKategory)
+			@foreach($callKategory as $list)
 			<div class="item">
 				<div class="wrapper-product">
 					<div class="front slider-product-front-animate">
 						<div class="vertical-align-middle">
-							<img class="this-run-animate" src="{{ asset('images/produk') }}/{!! $listKategory->img_url !!}">
+							<a href="{{ route('frontend.produk') }}#{{ $list->slug }}">
+								<img class="this-run-animate" src="{{ asset('images/produk') }}/{!! $list->img_url !!}" alt="{!! $list->img_alt !!}">
+							</a>
 						</div>
 					</div>
 				</div>
@@ -118,19 +128,24 @@
 
 	<div class="content-wrapper">
 		<div class="slider-second">
-			@for($i=0; $i<=15; $i++)
+			@php 
+				$callProgramEvent = App\Models\ProgramEvents::where('show_homepage', 1)->where('flag_publish', '1')->whereDATE('tanggal_post', '<=', $format_date)->orderBy('id', 'desc')->limit(15)->get();
+			@endphp
+			@foreach($callProgramEvent as $list)
 			<div class="item">
 				<div class="wrapper-item">
 					<div class="wrapper-thumnail">
-						<img class="thumnail" src="{{ asset('public/image/default/promosion.png') }}">
+						<img class="thumnail" src="{{ $list->img_url }}" alt="{{ $list->img_alt }}">
 						<div class="wrapper-title">
-							<label class="title">SOME TEXT IN HERE BLA BLA BLA</label>
+							<a href="{{ route('frontend.program-event.view', ['slug'=>$list->slug]) }}">
+								<label class="title">{{ $list->judul_promosi_ID }}</label>
+							</a>
 						</div>
 					</div>
-					<label class="description">Lorem ipsum dolor sit amet  varius faucibus arcu, ut posuere massa fermentum quis. Etiam eu ipsum</label>
+					<label class="description">{!! Str::words($list->deskripsi_ID, 20," <a href=".route('frontend.program-event.view', ['slug'=>$list->slug]) .">Read More</a>")  !!}</label>
 				</div>
 			</div>
-			@endfor
+			@endforeach
 		</div>
 
 		<div class="for-btn-see-more">
@@ -159,14 +174,17 @@
 
 	<div class="content-wrapper">
 		<div class="lates-news-wrapper">
-			@for($i=0; $i<=2; $i++)
+			@php 
+				$callNews = App\Models\News::where('show_homepage', 1)->where('flag_publish', '1')->whereDATE('tanggal_post', '<=', $format_date)->orderBy('id', 'desc')->limit(6)->get();
+			@endphp
+			@foreach($callNews as $list)
 			<div class="col-md-4 col-sm-12 col-xs-12">
 				<div class="wrapper-news">
-					<h3>Title</h3>
-					<label>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in scelerisque massa, aliquam molestie lorem. Sed rhoncus, erat ac ornare cursus, tellus odio egestas urna, eu accumsan sapien sapien ipsum convallis, aliquet elit ut, pellentesque purus.... <a href="">Read More</a></label>
+					<h3>{{ $list->judul_ID }}</h3>
+					<label>{!! Str::words($list->deskripsi_ID, 25," <a href=".route('frontend.berita.view', ['slug'=>$list->slug]) .">Read More</a>")  !!}</label>
 				</div>		
 			</div>
-			@endfor
+			@endforeach
 			<div class="clearfix"></div>
 		</div>
 
@@ -264,39 +282,6 @@
 	</div>
 </div>
 
-<div class="footer background-content background-content-second">
-	<div class="content-wrapper wrapper-footer-link">
-		<div class="float-left">
-			<ul>
-				<li>
-					<a href="">
-						Home
-					</a>
-				</li>
-				<li>
-					<a href="">
-						About
-					</a>
-				</li>
-				<li>
-					<a href="">
-						Contact
-					</a>
-				</li>
-			</ul>
-		</div>
-
-		<div class="float-right">
-			<img src="{{ asset('public/image/default/facebook-white.png') }}">
-			<img src="{{ asset('public/image/default/twitter-white.png') }}">
-			<img src="{{ asset('public/image/default/instagram-white.png') }}">
-		</div>
-
-		<div class="clearfix"></div>
-
-		<p class="copy-right">© 2017 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore<br>magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
-	</div>
-</div>
 @endsection
 
 @section('footer-script')

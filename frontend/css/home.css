@@ -76,16 +76,23 @@
 	display: table-cell; 
 	vertical-align: middle; 
 	height: 60px;
+	cursor: pointer;
 	color: white;
 	font-size: 16px;
 	font-weight: normal;
     font-family: 'US101';
+}
+.slider-second .item .wrapper-item .wrapper-thumnail .wrapper-title a:hover{
+	text-decoration: none;
 }
 .slider-second .item .wrapper-item .description{
 	margin-top: 40px;
 	color: white;
     font-family: 'AvenirNext';
     font-weight: normal;
+}
+.slider-second .item .wrapper-item .description a{
+	color: white;
 }
 .slider-second.owl-theme .owl-controls .owl-buttons{
 	position: relative;
@@ -380,6 +387,7 @@
 	border-radius: 5px;
 	background-color: rgb(68,217,217);
 	padding: 10px 10px 20px;
+	margin-bottom: 50px;
 	position: relative;
 	-webkit-transition: 0.52s;
     -moz-transition: 0.52s;
