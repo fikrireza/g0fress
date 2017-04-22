@@ -97,6 +97,14 @@ Route::group(['middleware' => ['isAdministrator']], function () {
   Route::get('admin/slider/ubah/{id}', 'Backend\SliderHomeController@ubah')->name('slider.ubah');
   Route::post('admin/slider/ubah', 'Backend\SliderHomeController@edit')->name('slider.edit');
 
+  // Profile User
+  Route::get('admin/profile', 'Backend\ProfileController@index')->name('profile.index');
+  Route::post('admin/profile/password', 'Backend\ProfileController@changePassword')->name('profile.password');
+  Route::post('admin/profile', 'Backend\ProfileController@changeProfile')->name('profile.user');
+
+  // Users Management
+  Route::get('admin/users', 'Backend\UsersController@index')->name('users.index');
+
 });
 //----------------------- BACKEND -----------------------//
 

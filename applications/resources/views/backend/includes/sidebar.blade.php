@@ -9,7 +9,7 @@
     <!-- menu profile quick info -->
     <div class="profile">
       <div class="profile_pic">
-        <img src="{{ asset('backend/images/img.jpg') }}" alt="..." class="img-circle profile_img">
+        <img src="{{ asset('').'/'.Auth::user()->avatar }}" alt="..." class="img-circle profile_img">
       </div>
       <div class="profile_info">
         <span>Welcome,</span>
@@ -25,6 +25,7 @@
       <div class="menu_section">
         <h3>General</h3>
         <ul class="nav side-menu">
+          <li class="{{ Route::currentRouteNamed('admin.dashboard') ? 'active' : '' }}"><a href="{{ route('admin.dashboard') }}"><i class="fa fa-home"></i> Home </a></li>
           <li class="{{ Route::currentRouteNamed('produk.index') ? 'active' : '' }}{{ Route::currentRouteNamed('produk.tambah') ? 'active' : '' }}{{ Route::currentRouteNamed('produk.lihat') ? 'active' : '' }}{{ Route::currentRouteNamed('produk.ubah') ? 'active' : '' }}{{ Route::currentRouteNamed('produkKategori.index') ? 'active' : '' }}{{ Route::currentRouteNamed('produkKategori.tambah') ? 'active' : '' }}{{ Route::currentRouteNamed('produkKategori.lihat') ? 'active' : '' }}{{ Route::currentRouteNamed('produkKategori.ubah') ? 'active' : '' }}">
             <a>
               <i class="fa fa-beer"></i> Produk <span class="fa fa-chevron-down"></span>
@@ -56,6 +57,7 @@
               <li><a href="#">Hello</a></li>
             </ul>
           </li>
+          <li class="{{ Route::currentRouteNamed('usres.index') ? 'active' : '' }}"><a href="{{ route('users.index') }}"><i class="fa fa-users"></i> Users </a></li>
         </ul>
       </div>
 
