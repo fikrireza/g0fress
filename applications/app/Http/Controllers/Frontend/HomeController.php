@@ -19,10 +19,10 @@ class HomeController extends Controller
     //
     function index(){
 
-    	// $items = [];
-    	// $client = new \GuzzleHttp\Client;
-	    // $response = $client->get('https://www.instagram.com/dessurya/media');
-	    // $items = json_decode((string) $response->getBody(), true)['items'];
+    	$items = [];
+    	$client = new \GuzzleHttp\Client;
+	    $response = $client->get('https://www.instagram.com/dessurya/media');
+	    $items = json_decode((string) $response->getBody(), true)['items'];
 	    // dd($items);
 
     	$date = new DateTime;

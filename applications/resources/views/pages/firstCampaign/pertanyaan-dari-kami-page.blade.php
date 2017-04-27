@@ -19,7 +19,7 @@
 	margin-bottom: 15px;
     font-family: 'Gotham';
     font-weight: bold;
-    font-size: 28px;
+    font-size: 25px;
 }
 .question-wrapper .person-data-wrapper .row .col{
 	margin-bottom: 10px;
@@ -66,7 +66,7 @@
 	margin-bottom: 15px;
     font-family: 'Gotham';
     font-weight: bold;
-    font-size: 28px;
+    font-size: 25px;
 }
 .question-wrapper .question-content .question{
 	margin-bottom: 15px;
@@ -320,7 +320,7 @@
 
 			<div class="for-btn">
 				<input type="reset" name="Reset" class="btn-costum" value="Reset">
-				<input type="Submit" name="Submit" class="btn-costum" value="Submit" disabled>
+				<input type="Submit" name="Submit" class="btn-costum" value="Submit">
 			</div>
 		</div>
 	</form>
