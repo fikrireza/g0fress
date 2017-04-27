@@ -107,6 +107,11 @@ class FirstCampaignController extends Controller
 					'kupon' => $kupon[0]->kupon
 					]);
 
+				Mail::send('mails.campaign1_kupon', ['data' => $data], function ($message) use($data){
+						$message->from('no-reply@gofress.co.id', 'Gofress');
+						$message->to($data[0]['email'],$data[0]['nama']);
+						$message->subject('Hello Tukarkan Kupon Ini di Alfamart');
+				});
 
 				try{
 					Mail::send('mails.campaign1_kupon', ['data' => $data], function($message) use($data) {

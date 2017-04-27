@@ -1,6 +1,8 @@
 @extends('pages.firstCampaign.layout')
 
 @section('style')
+<link rel="stylesheet" type="text/css" href="{{ asset('plugin/bootstrap-3.3.7/css/bootstrap-social.css') }}" />
+
 <style type="text/css">
 .thanks-wrapper{
 	width: 60%;
@@ -15,7 +17,7 @@
 }
 .thanks-wrapper .thanks-head h1{
 	color: white;
-	font-size: 55px;
+	font-size: 47px;
 	margin: 10px auto;
 	font-family: 'Gotham';
     font-weight: bold;
@@ -24,6 +26,7 @@
 	width: 50%;
 	padding: 15px 0px;
 	margin: 0 auto;
+	text-align: center;
 }
 .thanks-wrapper .thanks-body label{
     font-family: 'Gotham';
@@ -54,6 +57,7 @@
 	display: none;
 }
 .thanks-wrapper .thanks-body .link-wrapper label{
+	text-align: center;
 	color: black;
 	font-size: 12px;
 	margin-bottom: 0px;
@@ -67,6 +71,11 @@
 }
 .thanks-wrapper .thanks-body .link-wrapper label a img{
 	width: 15px;
+}
+
+.thanks-wrapper .thanks-body .link-wrapper {
+	color: white;
+	text-align: center;
 }
 
 @media (max-width: 480px) {
@@ -116,7 +125,7 @@
 		<h1>Terima Kasih!</h1>
 	</div>
 	<div class="thanks-body">
-		<label>Silahkan Screenshoot Kupon dibawah ini dan <br>Tunjukkan di <img class="logo-alfamart" src="{{ asset('picture\firstCampaign\logo-alfamart.png') }}"> <br />
+		<label>Silahkan Screenshot Kupon dibawah ini dan <br>Tunjukkan di <img class="logo-alfamart" src="{{ asset('picture\firstCampaign\logo-alfamart.png') }}"> <br />
 		Untuk mendapatkan 1 PCS  Gofress Gratis !</label>
 
 		<div class="kupon-wrapper">
@@ -133,8 +142,15 @@
 					Ketentuan & Persyaratan
 				</a>
 			</label>
-			<label class="link-2">
+			<br>
+			<label class="link-3">
 					Kami juga telah mengirimkan KUPON ini ke email mu.
+			</label>
+			<br>
+			<label class="link-2">
+				Kembali ke <a href="http://facebook.com" target="_blank" class="btn btn-sm btn-social btn-facebook">
+					<span class="fa fa-facebook"></span>Facebook
+				</a>
 			</label>
 		</div>
 	</div>

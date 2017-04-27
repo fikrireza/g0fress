@@ -60,7 +60,7 @@
 		padding: 10px 20px;
 		overflow-y: auto;
 	}
-	
+
 }
 </style>
 @endsection
@@ -75,30 +75,25 @@
 
 		<p>A. PERIODE PROMO :</p>
 
-		<p>Periode mulai : . . . April 2017</p>
+		<p>Periode mulai : 26 April 2017</p>
 
 		<p>B. PERSYARATAN PESERTA :</p>
 
 		<p>1. Promosi ini terbuka untuk Warga Negara Indonesia yang bertempat tinggal di Indonesia
 		<p>2. Tertutup untuk karyawan, keluarga, agensi atau pihak ketiga lainnya dari Penyelenggara.
 
-		<p>C. MEKANISME: 
+		<p>C. MEKANISME:
 
 		<p>1. Isi data diri lengkap</p>
 		<p>2. Menjawab pertanyaan survey</p>
 		<p>3. Klik tombol “submit”</p>
 		<p>4. 2.000 orang pertama berkesempatan untuk mendapatkan sampling gratis dari Gofress</p>
 
-		<p>D. PEMILIHAN PEMENANG – tuliskan semua kriteria pemenang</p>
-
-		<p>1 .2000 (dua ribu) orang pertama yang lengkap data diri dan dapat di verifikasi data dirinya oleh pihak Gofress berhak mendapatkan 1 (satu) buah sampling gratis Gofress</p>
-		<p>2. Keputusan juri bersifat final dan tidak dapat diganggu gugat</p>
-
-		<p>E. HADIAH</p>
+		<p>D. HADIAH</p>
 		<p>1. Peserta tidak dapat memilih jenis rasa atau varian Gofress yang akan diberikan sebagai bagian dari sampling</p>
 		<p>2. Sampling gratis Gofess dapat diambil di Alfamart terdekat dengan menunjukan kode verifikasi yang akan muncul setelah melengkapi mekanisme.</p>
 
-		<p>G. KETENTUAN LAINNYA</p>
+		<p>E. KETENTUAN LAINNYA</p>
 
 		<p>1. Pihak penyelenggara berhak mendiskualifikasi peserta yang diduga melakukan kecurangan dalam bentuk apapun.</p>
 		<p>2. Penyelenggara tidak bertanggung jawab atas gangguan sinyal dan aplikasi yang rusak atau tertunda yang disebabkan karena kegagalan atau kerusakan sistem jaringan pengelenggara telkomunikasi terkait.</p>
@@ -108,7 +103,6 @@
 		<p>6. Jika karena alasan apapun pemberian hadiah tidak dapat berjalan sesuai rencana, Penyelenggara memiliki hak untuk memodifikasi ketentuan pemberian hadiah yang senilai dengan hadiah yang telah dijanjikan.</p>
 		<p>7. Promo ini tidak dipungut biaya apapun. Pajak ditanggung oleh Pihak Penyelenggara. Hati-hati penipuan</p>
 		<p>8. Penyelenggara tidak bertanggungjawab atas aplikasi yang hilang, rusak atau tertunda sebagai akibat dari kerusakan, kegagalan dan kejadian serupa lainnya yang terjadi pada jaringan, perangkat keras komputer, atau perangkat lunak komputer.</p>
-		<p>9. Penyelenggara berhak untuk mendiskualifikasi peserta / pemenang yang tidak memenuhi syarat dan ketentuan yang berlaku.</p>
 	</div>
 </div>
 @endsection

@@ -312,7 +312,7 @@
 				</div>
 				<div class="clearfix"></div>
 			</div>
-			
+
 			<div class="fb-wrapper">
 				<p>Like Our Fanpage</p>
 				<div class="fb-like" data-href="https://www.facebook.com/Gofress/" data-layout="button" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
