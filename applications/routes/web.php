@@ -17,7 +17,12 @@
 Route::get('loginCampaign', 'SocialAuthController@redirectFB')->name('redirectFB');
 Route::get('/callback', 'SocialAuthController@callBackFB')->name('callBackFB');
 
+
 Route::get('analytics', 'AnalyticsFBController@index')->name('analytics.index');
+
+
+Route::get('analytics/testing', 'AnalyticsFBController@testing')->name('analytics.testing');
+Route::get('analytics/get-json', 'AnalyticsFBController@getJson')->name('analytics.getJson');
 
 
 // First Campaign : kuisioner hello go fress

@@ -16,9 +16,10 @@
 }
 .question-wrapper .person-data-wrapper h1{
 	margin: 0;
-	margin-bottom: 10px;
+	margin-bottom: 15px;
     font-family: 'Gotham';
     font-weight: bold;
+    font-size: 28px;
 }
 .question-wrapper .person-data-wrapper .row .col{
 	margin-bottom: 10px;
@@ -62,9 +63,10 @@
 }
 .question-wrapper .question-content h1{
 	margin: 0;
-	margin-bottom: 10px;
+	margin-bottom: 15px;
     font-family: 'Gotham';
     font-weight: bold;
+    font-size: 28px;
 }
 .question-wrapper .question-content .question{
 	margin-bottom: 15px;
@@ -120,6 +122,15 @@
 .question-wrapper .question-content .for-btn .btn-costum:hover{
 	border: 2px solid rgba(255,255,255,.6);
     color: rgba(255,255,255,.6);
+}
+.question-wrapper .question-content .fb-wrapper{
+	width: 80%;
+	margin: 0 auto;
+	text-align: center;
+}
+.question-wrapper .question-content .fb-wrapper p{
+	font-weight: bold;
+	margin-bottom: 2px;
 }
 @media (max-width: 480px) {
 	/* update layout */
@@ -301,10 +312,15 @@
 				</div>
 				<div class="clearfix"></div>
 			</div>
+			
+			<div class="fb-wrapper">
+				<p>Like Our Fanpage</p>
+				<div class="fb-like" data-href="https://www.facebook.com/Gofress/" data-layout="button" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
+			</div>
 
 			<div class="for-btn">
 				<input type="reset" name="Reset" class="btn-costum" value="Reset">
-				<input type="Submit" name="Submit" class="btn-costum" value="Submit">
+				<input type="Submit" name="Submit" class="btn-costum" value="Submit" disabled>
 			</div>
 		</div>
 	</form>
@@ -320,4 +336,13 @@
 	  $(".select2").select2();
 	});
 	</script>
+
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/id_ID/sdk.js#xfbml=1&version=v2.9&appId=1260971250637650";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
 @endsection
