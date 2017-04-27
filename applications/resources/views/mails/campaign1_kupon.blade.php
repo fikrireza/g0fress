@@ -8,14 +8,14 @@
 
     <div style="width: 100%; margin: 0 auto;">
       <div style="text-align: center;">
-        <img src="{{ url('picture/firstCampaign/logo-gofress.png') }}">
-        <h1 style="color: white; font-size: 55px;">Terima Kasih!</h1>
+        <img src="{{ url('picture/firstCampaign/logo-gofress_email.png') }}">
+        <h1 style="color: white; font-size: 35px;">Terima Kasih!</h1>
       </div>
       <div style="min-width: 60%; max-width: 80%; padding: 15px 0px; margin: 0 auto; background: white; padding: 20px 50px;">
-        <label style="font-weight: bold; font-size: 20px; line-height: 1.5;">Sebagai apresiasi kami, Anda berhak untuk mendapatkan 1 kemasan Gofress gratis dari kami.<br>Tunjukkan kupon dibawah ini di</label>
+        <label style="font-weight: bold; font-size: 17px; line-height: 1.5;">Sebagai apresiasi kami, Anda berhak untuk mendapatkan 1 kemasan Gofress gratis dari kami.<br>Tunjukkan kupon dibawah ini di</label>
         <img style="display: block; margin: 10px 0px;" src="{{ url('picture/firstCampaign/logo-alfamart.png') }}">
 
-        <table style="width: 100%; background-image: url('{{ url('picture/firstCampaign/kupon.png') }}'); background-repeat: no-repeat; background-position: center;">
+        <table style="width: 100%; background-image: url('{{ url('picture/firstCampaign/kupon_email_1.png') }}'); background-repeat: no-repeat; background-position: center;">
         	<tr><td style="height: 550px;">&nbsp;</td></tr>
           <tr>
             <td style="text-align: center;"><label style="font-weight: bold; font-size: 20px;">{{ $data[0]['kupon'] }}</label></td>

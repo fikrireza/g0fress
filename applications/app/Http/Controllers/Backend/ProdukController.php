@@ -46,14 +46,15 @@ class ProdukController extends Controller
 
     public function store(Request $request)
     {
+      // dd($request);
       $message = [
         'kategori_id.required' => 'Wajib di isi',
         'nama_produk.required' => 'Wajib di isi',
         'nama_produk.unique' => 'Produk ini sudah ada',
         'deskripsi_EN.required' => 'Wajib di isi',
+        'deskripsi_EN.min' => 'Terlalu Singkat',
         'deskripsi_ID.required' => 'Wajib di isi',
-        // 'ingredient.required' => 'Wajib di isi',
-        // 'nutrition_fact.required' => 'Wajib di isi',
+        'deskripsi_ID.min' => 'Terlalu Singkat',
         'img_url.required' => 'Wajib di isi',
         'img_alt.required' => 'Wajib di isi',
         'tanggal_post.required' => 'Wajib di isi',
@@ -62,20 +63,20 @@ class ProdukController extends Controller
       $validator = Validator::make($request->all(), [
         'kategori_id' => 'required',
         'nama_produk' => 'required|unique:amd_produk',
-        'deskripsi_EN' => 'required',
-        'deskripsi_ID' => 'required',
-        // 'ingredient'  => 'required',
-        // 'nutrition_fact' => 'required',
+        'deskripsi_EN' => 'required|min:10',
+        'deskripsi_ID' => 'required|min:10',
         // 'img_url' => 'required|image|mimes:jpeg,bmp,png|size:2000|dimensions:max_width=1000,max_height=2000',
         'img_url' => 'image|mimes:jpeg,bmp,png',
         'img_alt' => 'required',
         'tanggal_post' => 'required'
       ], $message);
 
+
       if($validator->fails())
       {
         return redirect()->route('produk.tambah')->withErrors($validator)->withInput();
       }
+      dd($request);
 
 
       $image = $request->file('img_url');
