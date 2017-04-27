@@ -22,8 +22,13 @@ class SocialAuthController extends Controller
       return Socialite::driver('facebook')->redirect();
     }
 
-    public function callBackFB(SocialAccountService $service)
+    public function callBackFB(SocialAccountService $service, Request $request)
     {
+
+      if (! $request->input('code')) {
+          return redirect('/hello#')->withErrors('Login failed:');
+      }
+      
       // Cek jika user cancel the app
       if(isset($this->request['error'])) {
         return redirect()->to('/hello#');

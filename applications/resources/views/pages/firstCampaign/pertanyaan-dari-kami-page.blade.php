@@ -87,6 +87,11 @@
     font-family: 'Gotham';
     font-weight: bold;
 }
+.warning{
+	margin-left: 5px;
+	color: red;
+    font-family: 'Gotham';
+}
 .question-wrapper .question-content .question input[type="radio"],
 .question-wrapper .question-content .question input[type="checkbox"]{
     position: relative;
@@ -149,7 +154,7 @@
 	}
 	.question-wrapper .question-content .question .que-4-colm{
 		width: 50%;
-		padding-right: 20px;
+		padding-right: 10px;
 	}
 	input[type="text"]{
 		width: 100%;
@@ -168,8 +173,8 @@
 		<div class="person-data-wrapper">
 			<h1>Detail Anda</h1>
 			<div class="row">
-				<div class="col col-md-2 col-sm-3 col-xs-3"> Nama </div>
-				<div class="col col-md-4 col-sm-9 col-xs-9">
+				<div class="col col-md-2 col-sm-3 col-xs-4"> Nama </div>
+				<div class="col col-md-4 col-sm-9 col-xs-10">
 					<div class="input-group">
 						<input type="hidden" name="user_id" value="{{ $getProfil->id }}">
 						<input type="text" name="nama" class="form-control" value="{{ $getProfil->name }}" readonly="">
@@ -180,8 +185,8 @@
 						@endif
 					</div>
 				</div>
-				<div class="col col-md-2 col-sm-3 col-xs-3"> No Hp </div>
-				<div class="col col-md-4 col-sm-9 col-xs-9">
+				<div class="col col-md-2 col-sm-3 col-xs-4"> No Hp </div>
+				<div class="col col-md-4 col-sm-9 col-xs-10">
 					<div class="input-group">
 						<input type="text" name="hp" class="form-control" value="{{ old('hp') }}">
 						@if($errors->has('hp'))
@@ -191,20 +196,20 @@
 						@endif
 					</div>
 				</div>
-				<div class="col col-md-2 col-sm-3 col-xs-3"> Email </div>
-				<div class="col col-md-4 col-sm-9 col-xs-9">
+				<div class="col col-md-2 col-sm-3 col-xs-4"> Email </div>
+				<div class="col col-md-4 col-sm-9 col-xs-10">
 					<div class="input-group">
 						<input type="email" name="email" class="form-control" value="{{ $getProfil->email }}">
 						@if($errors->has('email'))
-						<span class="input-group-addon">
-							<i class="fa fa-exclamation" aria-hidden="true"></i>
-						</span>
-						{{ $errors->first('email')}}
+							<span class="input-group-addon">
+								<i class="fa fa-exclamation" aria-hidden="true"></i>
+							</span>
 						@endif
 					</div>
+					<label class="warning">{{ $errors->first('email')}}</label>
 				</div>
-				<div class="col col-md-2 col-sm-3 col-xs-3"> Kota </div>
-				<div class="col col-md-4 col-sm-9 col-xs-9">
+				<div class="col col-md-2 col-sm-3 col-xs-4"> Kota </div>
+				<div class="col col-md-4 col-sm-9 col-xs-10">
 					<div class="input-group">
 						<select name="kota" class="form-control select2">
 							<option value="--Pilih--">--Pilih--</option>

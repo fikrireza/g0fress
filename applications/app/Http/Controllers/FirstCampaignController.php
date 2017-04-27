@@ -54,7 +54,7 @@ class FirstCampaignController extends Controller
 		public function pertanyaanPageStore(Request $request)
 		{
 			$message = [
-				'email.unique' => 'Email telah terdaftar',
+				'email.unique' => $request->email.' telah terdaftar',
 				'hp.required'	=> 'Hp Wajib diisi',
 				'kota.required' => 'Kota wajib diisi'
 			];
@@ -76,43 +76,57 @@ class FirstCampaignController extends Controller
         return redirect()->route('first-campaign-pertanyaan-dari-kami')->withErrors($validator)->withInput();
       }
 
-			// Ambil Kupon yang masih berlaku
-			$kupon = DB::select('SELECT id, kupon FROM amd_master_kupon
-													WHERE id NOT IN (SELECT kupon_id FROM amd_campaign_1)
-													ORDER BY RAND() LIMIT 0,1');
+			DB::transaction(function() use($request) {
+				// Ambil Kupon yang masih berlaku
+				$kupon = DB::select('SELECT id, kupon FROM amd_master_kupon
+														WHERE id NOT IN (SELECT kupon_id FROM amd_campaign_1)
+														ORDER BY RAND() LIMIT 0,1');
 
-			// Simpan ke database
-			$set = new Campaign1;
-			$set->nama = $request->nama;
-			$set->email = $request->email;
-			$set->hp = $request->hp;
-			$set->kota = $request->kota;
-			$set->pertanyaan_1 = $request->pertanyaan_1;
-			$set->pertanyaan_2 = $request->pertanyaan_2;
-			$set->pertanyaan_3 = $request->pertanyaan_3;
-			$set->pertanyaan_4 = implode(',',$request->pertanyaan_4);
-			$set->kupon_id = $kupon[0]->id;
-			$set->save();
+				// Simpan ke database
+				$set = new Campaign1;
+				$set->nama = $request->nama;
+				$set->email = $request->email;
+				$set->hp = $request->hp;
+				$set->kota = $request->kota;
+				$set->pertanyaan_1 = $request->pertanyaan_1;
+				$set->pertanyaan_2 = $request->pertanyaan_2;
+				$set->pertanyaan_3 = $request->pertanyaan_3;
+				$set->pertanyaan_4 = implode(',',$request->pertanyaan_4);
+				$set->kupon_id = $kupon[0]->id;
+				$set->save();
 
-			$updateEmail = User::find($request->user_id);
-			$updateEmail->email = $request->email;
-			$updateEmail->update();
+				$updateEmail = User::find($request->user_id);
+				$updateEmail->email = $request->email;
+				$updateEmail->update();
 
-			// Kirim email
-			$data = array([
+
+				// Kirim email
+				$data = array([
 					'nama' => $request->nama,
-          'email' => $request->email,
-          'kupon' => $kupon[0]->kupon
-        ]);
+					'email' => $request->email,
+					'kupon' => $kupon[0]->kupon
+					]);
 
-			try{
-	      Mail::send('mails.campaign1_kupon', ['data' => $data], function($message) use($data) {
-	        $message->to($data[0]['email'], $data[0]['nama'])->subject('Hello Tukarkan Kupon Ini di Alfamart');
-	      });
-			}
-			catch(Exception $e){
 
-			}
+				try{
+					Mail::send('mails.campaign1_kupon', ['data' => $data], function($message) use($data) {
+						$message->to($data[0]['email'], $data[0]['nama'])->subject('Hello Tukarkan Kupon Ini di Alfamart');
+					});
+				}
+				catch(\Exception $e){
+					return redirect()->route('first-campaign-pertanyaan-dari-kami')
+														->withInput()
+														->with('gagal', 'Email Gagal Dikirim');
+					// dd($e->getMessage());
+				}
+				catch (\Swift_TransportException $e) {
+					return redirect()->route('first-campaign-pertanyaan-dari-kami')
+														->withInput()
+														->with('gagal', 'Email Gagal Dikirim');
+					// dd($e->getMessage());
+				}
+
+			});
 
 			return redirect()->route('first-campaign-terimakasih');
 		}

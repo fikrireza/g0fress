@@ -55,6 +55,14 @@ class Handler extends ExceptionHandler
           return response()->view('errors.missing', [], 404);
       }
 
+      // check http status code
+      if($this->isHttpException($e)){
+        if (view()->exists('errors.'.$e->getStatusCode()))
+        {
+            return response()->view('errors.'.$e->getStatusCode(), [], $e->getStatusCode());
+        }
+      }
+
       return parent::render($request, $e);
       //  return parent::render($request, $exception);
     }
