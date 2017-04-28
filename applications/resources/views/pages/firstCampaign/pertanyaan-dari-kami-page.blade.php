@@ -67,6 +67,7 @@
     font-family: 'Gotham';
     font-weight: bold;
     font-size: 25px;
+
 }
 .question-wrapper .question-content .question{
 	margin-bottom: 15px;
@@ -87,11 +88,6 @@
     font-family: 'Gotham';
     font-weight: bold;
 }
-.warning{
-	margin-left: 5px;
-	color: red;
-    font-family: 'Gotham';
-}
 .question-wrapper .question-content .question input[type="radio"],
 .question-wrapper .question-content .question input[type="checkbox"]{
     position: relative;
@@ -110,7 +106,10 @@
 	text-align: center;
 	margin-top: 25px;
 }
-.question-wrapper .question-content .for-btn .btn-costum{
+.question-wrapper .question-content .for-btn div{
+	margin: 20px auto;
+}
+.question-wrapper .question-content .for-btn div .btn-costum{
 	background-color: rgba(0,0,0,0);
     padding: 5px 20px;
     border: 2px solid rgb(255,255,255);
@@ -119,18 +118,36 @@
     font-weight: bold;
     transition: all .51s;
 }
-.question-wrapper .question-content .for-btn .btn-costum:hover{
+.question-wrapper .question-content .for-btn div .btn-costum:hover{
 	border: 2px solid rgba(255,255,255,.6);
     color: rgba(255,255,255,.6);
 }
 .question-wrapper .question-content .fb-wrapper{
-	width: 80%;
+	width: 50%;
+	height: 100vh;
 	margin: 0 auto;
 	text-align: center;
 }
-.question-wrapper .question-content .fb-wrapper p{
+.question-wrapper .question-content .fb-wrapper .vertical-middle{
+	width: 100%;
+	height: 100vh;
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+.question-wrapper .question-content .fb-wrapper .vertical-middle h1{
+	font-size: 32px;
 	font-weight: bold;
-	margin-bottom: 2px;
+	margin-top: 0px;
+	margin-bottom: 10px;
+}
+.question-wrapper .question-content .fb-wrapper .vertical-middle .fb-like{
+	margin: 20px auto;
+}
+@media (min-width: 980px) {
+	.question-wrapper{
+		/*overflow-y: hidden;*/
+	}
 }
 @media (max-width: 480px) {
 	/* update layout */
@@ -154,8 +171,20 @@
 	}
 	.question-wrapper .question-content .question .que-4-colm{
 		width: 50%;
-		padding-right: 10px;
+		padding-right: 20px;
 	}
+
+	.question-wrapper .question-content .fb-wrapper{
+		width: 90%;
+		margin: 0 auto;
+		text-align: center;
+	}
+	.question-wrapper .question-content .fb-wrapper .vertical-middle{
+		width: 90%;
+		margin: 0 auto;
+		text-align: center;
+	}
+
 	input[type="text"]{
 		width: 100%;
 		box-sizing: border-box;
@@ -173,8 +202,8 @@
 		<div class="person-data-wrapper">
 			<h1>Detail Anda</h1>
 			<div class="row">
-				<div class="col col-md-2 col-sm-3 col-xs-4"> Nama </div>
-				<div class="col col-md-4 col-sm-9 col-xs-10">
+				<div class="col col-md-2 col-sm-3 col-xs-3"> Nama </div>
+				<div class="col col-md-4 col-sm-9 col-xs-9">
 					<div class="input-group">
 						<input type="hidden" name="user_id" value="{{ $getProfil->id }}">
 						<input type="text" name="nama" class="form-control" value="{{ $getProfil->name }}" readonly="">
@@ -185,8 +214,8 @@
 						@endif
 					</div>
 				</div>
-				<div class="col col-md-2 col-sm-3 col-xs-4"> No Hp </div>
-				<div class="col col-md-4 col-sm-9 col-xs-10">
+				<div class="col col-md-2 col-sm-3 col-xs-3"> No Hp </div>
+				<div class="col col-md-4 col-sm-9 col-xs-9">
 					<div class="input-group">
 						<input type="text" name="hp" class="form-control" value="{{ old('hp') }}">
 						@if($errors->has('hp'))
@@ -196,20 +225,20 @@
 						@endif
 					</div>
 				</div>
-				<div class="col col-md-2 col-sm-3 col-xs-4"> Email </div>
-				<div class="col col-md-4 col-sm-9 col-xs-10">
+				<div class="col col-md-2 col-sm-3 col-xs-3"> Email </div>
+				<div class="col col-md-4 col-sm-9 col-xs-9">
 					<div class="input-group">
 						<input type="email" name="email" class="form-control" value="{{ $getProfil->email }}">
 						@if($errors->has('email'))
-							<span class="input-group-addon">
-								<i class="fa fa-exclamation" aria-hidden="true"></i>
-							</span>
+						<span class="input-group-addon">
+							<i class="fa fa-exclamation" aria-hidden="true"></i>
+						</span>
+						{{ $errors->first('email')}}
 						@endif
 					</div>
-					<label class="warning">{{ $errors->first('email')}}</label>
 				</div>
-				<div class="col col-md-2 col-sm-3 col-xs-4"> Kota </div>
-				<div class="col col-md-4 col-sm-9 col-xs-10">
+				<div class="col col-md-2 col-sm-3 col-xs-3"> Kota </div>
+				<div class="col col-md-4 col-sm-9 col-xs-9">
 					<div class="input-group">
 						<select name="kota" class="form-control select2">
 							<option value="--Pilih--">--Pilih--</option>
@@ -217,11 +246,6 @@
 							<option value="{{ $key->id }}" @if($key->id == old('kota')) selected @endif>{{ $key->nama_kota }}</option>
 							@endforeach
 						</select>
-						@if($errors->has('kota'))
-						<span class="input-group-addon">
-							<i class="fa fa-exclamation" aria-hidden="true"></i>
-						</span>
-						@endif
 					</div>
 				</div>
 			</div>
@@ -314,13 +338,19 @@
 			</div>
 
 			<div class="fb-wrapper">
-				<p>Like Our Fanpage</p>
-				<div class="fb-like" data-href="https://www.facebook.com/Gofress/" data-layout="button" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
+				<div class="vertical-middle">
+					<h1>Please like our Facebook fanpage in order to submit and get your free Gofress</h1>
+					<div class="fb-like" data-href="https://www.facebook.com/Gofress/" data-layout="button_count" data-action="like" data-size="large" data-show-faces="false" data-share="false"></div>
+				</div>
 			</div>
 
 			<div class="for-btn">
-				<input type="reset" name="Reset" class="btn-costum" value="Reset">
-				<input type="Submit" name="Submit" class="btn-costum" value="Submit">
+				<div>
+					<input type="reset" name="Reset" class="btn-costum" value="Reset">
+				</div>
+				<div>
+					<input id="submitForm" type="Submit" name="Submit" class="btn-costum" value="Submit" disabled>
+				</div>
 			</div>
 		</div>
 	</form>
@@ -338,20 +368,29 @@
 	</script>
 
 	<div id="fb-root"></div>
-	<script type="text/javascript">
+
+		
+
+	<script>
+
 	window.fbAsyncInit = function() {
 		FB.init({appId: '317377078681880', status: true, cookie: true, xfbml: true});
-		FB.Event.subscribe('edge.create', function(response) {
-		 	alert('You just liked '+response);
-		});
 	};
 
 	(function(d, s, id) {
 	  var js, fjs = d.getElementsByTagName(s)[0];
 	  if (d.getElementById(id)) return;
 	  js = d.createElement(s); js.id = id;
-	  js.src = "//connect.facebook.net/id_ID/all.js#xfbml=1&appId=317377078681880";
+	  js.src = "//connect.facebook.net/en_EN/all.js#xfbml=1&appId=317377078681880";
 	  fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));
+
 	</script>
+
+<!-- 
+app id 317377078681880
+page id 63453815867
+-->
+
+
 @endsection
