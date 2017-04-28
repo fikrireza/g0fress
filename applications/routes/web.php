@@ -110,6 +110,9 @@ Route::group(['middleware' => ['isAdministrator']], function () {
   // Users Management
   Route::get('admin/users', 'Backend\UsersController@index')->name('users.index');
 
+
+  Route::get('admin/campaign/hello', 'Backend\Campaign1Controller@index')->name('hello.index');
+
 });
 //----------------------- BACKEND -----------------------//
 

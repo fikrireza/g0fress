@@ -52,9 +52,9 @@
         <h3>Extra</h3>
         <ul class="nav side-menu">
           <li class="{{ Route::currentRouteNamed('logAkses.index') ? 'active' : '' }}"><a href="{{ route('logAkses.index') }}"><i class="fa fa-inbox"></i> Akses Log </a></li>
-          <li><a><i class="fa fa-windows"></i> Campaign <span class="fa fa-chevron-down"></span></a>
+          <li class="{{ Route::currentRouteNamed('hello.index') ? 'active' : '' }}"><a><i class="fa fa-windows"></i> Campaign <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-              <li><a href="#">Hello</a></li>
+              <li><a href="{{ route('hello.index') }}">Hello</a></li>
             </ul>
           </li>
           <li class="{{ Route::currentRouteNamed('usres.index') ? 'active' : '' }}"><a href="{{ route('users.index') }}"><i class="fa fa-users"></i> Users </a></li>
