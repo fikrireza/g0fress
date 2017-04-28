@@ -338,11 +338,20 @@
 	</script>
 
 	<div id="fb-root"></div>
-	<script>(function(d, s, id) {
+	<script type="text/javascript">
+	window.fbAsyncInit = function() {
+		FB.init({appId: '317377078681880', status: true, cookie: true, xfbml: true});
+		FB.Event.subscribe('edge.create', function(response) {
+		 	alert('You just liked '+response);
+		});
+	};
+
+	(function(d, s, id) {
 	  var js, fjs = d.getElementsByTagName(s)[0];
 	  if (d.getElementById(id)) return;
 	  js = d.createElement(s); js.id = id;
-	  js.src = "//connect.facebook.net/id_ID/sdk.js#xfbml=1&version=v2.9&appId=1260971250637650";
+	  js.src = "//connect.facebook.net/id_ID/all.js#xfbml=1&appId=317377078681880";
 	  fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));</script>
+	}(document, 'script', 'facebook-jssdk'));
+	</script>
 @endsection
