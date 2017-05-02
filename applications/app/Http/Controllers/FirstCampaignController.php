@@ -113,24 +113,6 @@ class FirstCampaignController extends Controller
 						$message->subject('Hello Tukarkan Kupon Ini di Alfamart');
 				});
 
-				try{
-					Mail::send('mails.campaign1_kupon', ['data' => $data], function($message) use($data) {
-						$message->to($data[0]['email'], $data[0]['nama'])->subject('Hello Tukarkan Kupon Ini di Alfamart');
-					});
-				}
-				catch(\Exception $e){
-					return redirect()->route('first-campaign-pertanyaan-dari-kami')
-														->withInput()
-														->with('gagal', 'Email Gagal Dikirim');
-					// dd($e->getMessage());
-				}
-				catch (\Swift_TransportException $e) {
-					return redirect()->route('first-campaign-pertanyaan-dari-kami')
-														->withInput()
-														->with('gagal', 'Email Gagal Dikirim');
-					// dd($e->getMessage());
-				}
-
 			});
 
 			return redirect()->route('first-campaign-terimakasih');
@@ -153,6 +135,24 @@ class FirstCampaignController extends Controller
 
         return view('pages.firstCampaign.terimakasih', compact('cekEmail'));
     }
+
+		public function testemail()
+		{					
+			$data = array([
+				'email'	=> 'fikrirezaa@gmail.com',
+				'nama'	=> 'Fikri Reza Alhadi',
+				'kupon' => 'TESTEMAIL',
+				]);
+
+			Mail::send('mails.campaign1_kupon', ['title' => 'Hello Tukarkan Kupon Ini di Alfamart', 'data' => $data], function ($message) use($data)
+			{
+				$message->from('no-reply@gofress.co.id', 'Gofress');
+				$message->to($data[0]['email'],$data[0]['nama']);
+				$message->subject('Hello Tukarkan Kupon Ini di Alfamart');
+			});
+
+			return "bisa";
+		}
 
 
 }
