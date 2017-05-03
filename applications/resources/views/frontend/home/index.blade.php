@@ -6,6 +6,7 @@
 
 @section('head-style')
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/home.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/events-list-item-normal.css') }}">
 
 <link rel="stylesheet" href="{{ asset('plugin/owl-carousel/owl.carousel.css') }}">
 <link rel="stylesheet" href="{{ asset('plugin/owl-carousel/owl.theme.css') }}">

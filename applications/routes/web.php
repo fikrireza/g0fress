@@ -140,6 +140,9 @@ Route::get('/produk', 'Frontend\HomeController@index')->name('frontend.produk');
 
 Route::get('/produk/{slug}', 'Frontend\HomeController@index')->name('frontend.produk.view');
 
-Route::get('/program-event/{slug}', 'Frontend\HomeController@index')->name('frontend.program-event.view');
+Route::get('/program-event', 'Frontend\EventsController@index')->name('frontend.program-event');
+Route::get('/program-event/more-events', 'Frontend\EventsController@indexEvents')->name('frontend.program-event.events');
+// Route::post('/program-event/more-events', 'Frontend\EventsController@indexEvents')->name('frontend.program-event.events');
+Route::get('/program-event/{slug}', 'Frontend\EventsController@index')->name('frontend.program-event.view');
 
 Route::get('/berita/{slug}', 'Frontend\HomeController@index')->name('frontend.berita.view');
