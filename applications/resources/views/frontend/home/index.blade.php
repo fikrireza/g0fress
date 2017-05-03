@@ -7,6 +7,7 @@
 @section('head-style')
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/home.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/events-list-item-normal.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/produk-slider-category.css') }}">
 
 <link rel="stylesheet" href="{{ asset('plugin/owl-carousel/owl.carousel.css') }}">
 <link rel="stylesheet" href="{{ asset('plugin/owl-carousel/owl.theme.css') }}">
@@ -96,7 +97,7 @@
 		</div>
 
 		<div class="for-btn-see-more">
-			<a class="btn-see-more" href="">@lang('front/home.See-More')</a>
+			<a class="btn-see-more" href="{{ route('frontend.produk') }}">@lang('front/home.See-More')</a>
 		</div>
 	</div>
 </div>

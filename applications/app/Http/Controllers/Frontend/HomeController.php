@@ -28,8 +28,9 @@ class HomeController extends Controller
     	$date = new DateTime;
 		$format_date = $date->format('Y-m-d');
 
-    	if (App::getLocale() == 'id') {
-    		$callKategory = ProdukKategori::select('nama_kategori', 'slug', 'img_url', 'img_alt')->where('flag_publish', '1')->whereDATE('tanggal_post', '<=', $format_date)->orderBy('id', 'desc')->get();
+		$callKategory = ProdukKategori::select('nama_kategori', 'slug', 'img_url', 'img_alt')->where('flag_publish', '1')->whereDATE('tanggal_post', '<=', $format_date)->orderBy('id', 'desc')->get();
+        
+        if (App::getLocale() == 'id') {
 
 			$callProgramEvent = ProgramEvents::select('judul_promosi_ID as judul', 'img_url', 'img_alt', 'slug', 'deskripsi_ID as deskripsi')->where('show_homepage', 1)->where('flag_publish', '1')->whereDATE('tanggal_post', '<=', $format_date)->orderBy('id', 'desc')->limit(15)->get();
 
@@ -37,7 +38,6 @@ class HomeController extends Controller
     	}
 
     	elseif (App::getLocale() == 'en') {
-    		$callKategory = ProdukKategori::select('nama_kategori', 'slug', 'img_url', 'img_alt')->where('flag_publish', '1')->whereDATE('tanggal_post', '<=', $format_date)->orderBy('id', 'desc')->get();
 
     		$callProgramEvent = ProgramEvents::select('judul_promosi_EN as judul', 'img_url', 'img_alt', 'slug', 'deskripsi_ID as deskripsi')->where('show_homepage', 1)->where('flag_publish', '1')->whereDATE('tanggal_post', '<=', $format_date)->orderBy('id', 'desc')->limit(15)->get();
 

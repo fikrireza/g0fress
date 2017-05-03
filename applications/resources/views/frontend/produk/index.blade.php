@@ -6,7 +6,11 @@
 
 @section('head-style')
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/public-sub-page.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/produk-slider-category.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/for-share-wrapper.css') }}">
+
+<link rel="stylesheet" href="{{ asset('plugin/owl-carousel/owl.carousel.css') }}">
+<link rel="stylesheet" href="{{ asset('plugin/owl-carousel/owl.theme.css') }}">
 @endsection
 
 @section('body-content')
@@ -16,8 +20,21 @@
 		
 	</div>
 </div>
-
-<div class="background-content background-content-first">
+<style type="text/css">
+.background-content.background-content-first.space-for-produk-owl,
+.background-content.background-content-second.space-for-produk-owl{
+	height: 50vh
+}
+.product-wrapper{
+	position: relative;
+}
+.product-wrapper .product-wrapper-position{
+	position: absolute; 
+	width: 100%; 
+	top:-95vh;
+}
+</style>
+<div class="background-content background-content-first space-for-produk-owl">
 	<div class="content-wrapper">
 
 		<div class="title-background">
@@ -40,14 +57,29 @@
 	</div>
 </div>
 
-<div class="background-content background-content-second">
+<div class="background-content background-content-second space-for-produk-owl">
 	<div class="content-wrapper">
 	</div>
 </div>
 
-<div class="background-content background-content-second">
-	<div class="content-wrapper">
-
+<div class="product-wrapper">
+	<div class="product-wrapper-position">
+		<div class="slider-product">
+			@foreach($callKategory as $list)
+			<div class="item">
+				<div class="wrapper-product">
+					<div class="front slider-product-front-animate">
+						<div class="vertical-align-middle">
+							<a href="{{ route('frontend.produk') }}#{{ $list->slug }}">
+								<img class="this-run-animate" src="{{ asset('images/produk') }}/{!! $list->img_url !!}" alt="{!! $list->img_alt !!}">
+							</a>
+							<p>{{ $list->slug }}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			@endforeach
+		</div>
 	</div>
 </div>
 
@@ -63,7 +95,7 @@
 <script src="{{ asset('plugin/bootstrap-3.3.7/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('plugin/owl-carousel/owl.carousel.js') }}"></script>
 <script src="{{ asset('plugin/owl-carousel/owl.carousel.js') }}"></script>
-<script src="{{ asset('frontend/js/events-index.js') }}"></script>
+<script src="{{ asset('frontend/js/produk-index.js') }}"></script>
 
 @endsection
 
