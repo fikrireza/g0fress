@@ -33,8 +33,8 @@ Route::get('/hello/terimakasih', 'FirstCampaignController@thanksPage')->name('fi
 Route::get('/hello/syarat-ketentuan', function(){
       return view('pages.firstCampaign.syarat-ketentuan');
   });
-
-
+Route::get('hello/test-email', 'FirstCampaignController@testemail');
+/* end first campaign : kuisioner hello go fress */
 
 // Auth::routes();
 Route::post('login-process', 'Auth\LoginController@loginProcess')->name('login');
@@ -110,8 +110,13 @@ Route::group(['middleware' => ['isAdministrator']], function () {
   // Users Management
   Route::get('admin/users', 'Backend\UsersController@index')->name('users.index');
 
-
+  // Campaign Hello
   Route::get('admin/campaign/hello', 'Backend\Campaign1Controller@index')->name('hello.index');
+  Route::get('admin/campaign/pertanyaan_1', 'Backend\Campaign1Controller@getPertanyaan_1')->name('hello.pertanyaan_1');
+  Route::get('admin/campaign/pertanyaan_2', 'Backend\Campaign1Controller@getPertanyaan_2')->name('hello.pertanyaan_2');
+  Route::get('admin/campaign/pertanyaan_3', 'Backend\Campaign1Controller@getPertanyaan_3')->name('hello.pertanyaan_3');
+  Route::get('admin/campaign/pertanyaan_4', 'Backend\Campaign1Controller@getPertanyaan_4')->name('hello.pertanyaan_4');
+
 
 });
 //----------------------- BACKEND -----------------------//
