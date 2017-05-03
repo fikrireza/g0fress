@@ -45,18 +45,18 @@
           <tr>
             <td><strong>Deskripsi ID</strong></td>
             <td>:</td>
-            <td>{{ $getNews->deskripsi_ID }}</td>
+            <td>{!! $getNews->deskripsi_ID !!}</td>
           </tr>
           <tr>
             <td><strong>Deskripsi EN</strong></td>
             <td>:</td>
-            <td>{{ $getNews->deskripsi_EN }}</td>
+            <td>{!! $getNews->deskripsi_EN !!}</td>
           </tr>
           <tr>
             <td><strong>Gambar Produk</strong></td>
             <td>:</td>
             <td>@if (!$getNews->img_url) -
-                @else <img src="{{ asset('images/news').'/'.$getNews->img_url }}" width="100%" /> @endif</td>
+                @else <img src="{{ asset('images/news').'/'.$getNews->img_url }}"/> @endif</td>
           </tr>
           <tr>
             <td><strong>Gambar alt</strong></td>
@@ -71,17 +71,17 @@
           <tr>
             <td><strong>Show Home Page</strong></td>
             <td>:</td>
-            <td>@if ($getNews->show_homepage == 1) Ya @else Tidak @endif</td>
+            <td>@if ($getNews->show_homepage == 1) <span class='label label-success'><i class="fa fa-thumbs-o-up"></i></span> @else <span class='label label-danger'><i class="fa fa-thumbs-o-down"></i></span> @endif</td>
           </tr>
           <tr>
             <td><strong>Tanggal Post</strong></td>
             <td>:</td>
-            <td>{{ $getNews->tanggal_post }}</td>
+            <td>{!! ($getNews->tanggal_post <= date('Y-m-d')) ? "<span class='label label-success'>$getNews->tanggal_post</span>" : "<span class='label label-danger'>$getNews->tanggal_post</span>" !!}</td>
           </tr>
           <tr>
             <td><strong>Publish</strong></td>
             <td>:</td>
-            <td>@if ($getNews->flag_publish == 1) Ya @else Tidak @endif</td>
+            <td>@if ($getNews->flag_publish == 1) <span class='label label-success'><i class="fa fa-thumbs-o-up"></i></span> @else <span class='label label-danger'><i class="fa fa-thumbs-o-down"></i></span> @endif</td>
           </tr>
         </tbody>
         </table>

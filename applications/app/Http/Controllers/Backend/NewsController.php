@@ -47,6 +47,8 @@ class NewsController extends Controller
           'judul_EN.required' => 'wajib di isi',
           'deskripsi_ID.required' => 'wajib di isi',
           'deskripsi_EN.required' => 'wajib di isi',
+          'img_url.image' => 'Format Gambar Tidak Sesuai',
+          'img_url.max' => 'File Size Terlalu Besar',
           'tanggal_post.required' => 'wajib di isi',
         ];
 
@@ -55,6 +57,7 @@ class NewsController extends Controller
           'judul_EN'  => 'required',
           'deskripsi_ID'  => 'required',
           'deskripsi_EN'  => 'required',
+          'img_url' => 'image|mimes:jpeg,bmp,png|max:2000',
           'tanggal_post'  => 'required',
         ], $message);
 
@@ -63,61 +66,61 @@ class NewsController extends Controller
           return redirect()->route('news.tambah')->withErrors($validator)->withInput();
         }
 
-        $image = $request->file('img_url');
+        DB::transaction(function () use($request) {
+          $image = $request->file('img_url');
 
-        if($request->flag_publish == 'on'){
-          $flag_publish = 1;
-        }else{
-          $flag_publish = 0;
-        }
+          if($request->flag_publish == 'on'){
+            $flag_publish = 1;
+          }else{
+            $flag_publish = 0;
+          }
 
-        if($request->show_homepage == 'on'){
-          $show_homepage = 1;
-        }else{
-          $show_homepage = 0;
-        }
+          if($request->show_homepage == 'on'){
+            $show_homepage = 1;
+          }else{
+            $show_homepage = 0;
+          }
 
-        if (!$image) {
-          $save = New News;
-          $save->judul_ID = $request->judul_ID;
-          $save->judul_EN = $request->judul_EN;
-          $save->deskripsi_ID = $request->deskripsi_ID;
-          $save->deskripsi_EN = $request->deskripsi_EN;
-          $save->img_url = '';
-          $save->img_alt = '';
-          $save->video_url  = $request->video_url;
-          $save->show_homepage = $show_homepage;
-          $save->tanggal_post = $request->tanggal_post;
-          $save->flag_publish = $flag_publish;
-          $save->slug = str_slug($request->judul_ID,'-');
-          $save->actor = Auth::user()->id;
-          $save->save();
-        }else{
-          $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
-          Image::make($image)->fit(472,270)->save('images/news/'. $img_url);
+          if (!$image) {
+            $save = New News;
+            $save->judul_ID = $request->judul_ID;
+            $save->judul_EN = $request->judul_EN;
+            $save->deskripsi_ID = $request->deskripsi_ID;
+            $save->deskripsi_EN = $request->deskripsi_EN;
+            $save->video_url  = $request->video_url;
+            $save->show_homepage = $show_homepage;
+            $save->tanggal_post = $request->tanggal_post;
+            $save->flag_publish = $flag_publish;
+            $save->slug = str_slug($request->judul_ID,'-');
+            $save->actor = Auth::user()->id;
+            $save->save();
+          }else{
+            $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
+            Image::make($image)->fit(472,270)->save('images/news/'. $img_url);
 
-          $save = new News;
-          $save->judul_ID = $request->judul_ID;
-          $save->judul_EN = $request->judul_EN;
-          $save->deskripsi_ID = $request->deskripsi_ID;
-          $save->deskripsi_EN = $request->deskripsi_EN;
-          $save->img_url  = 'images/news/'.$img_url;
-          $save->img_alt  = $request->img_alt;
-          $save->video_url  = $request->video_url;
-          $save->show_homepage = $show_homepage;
-          $save->tanggal_post = $request->tanggal_post;
-          $save->flag_publish = $flag_publish;
-          $save->slug = str_slug($request->judul_ID,'-');
-          $save->actor = Auth::user()->id;
-          $save->save();
-        }
+            $save = new News;
+            $save->judul_ID = $request->judul_ID;
+            $save->judul_EN = $request->judul_EN;
+            $save->deskripsi_ID = $request->deskripsi_ID;
+            $save->deskripsi_EN = $request->deskripsi_EN;
+            $save->img_url  = $img_url;
+            $save->img_alt  = $request->img_alt;
+            $save->video_url  = $request->video_url;
+            $save->show_homepage = $show_homepage;
+            $save->tanggal_post = $request->tanggal_post;
+            $save->flag_publish = $flag_publish;
+            $save->slug = str_slug($request->judul_ID,'-');
+            $save->actor = Auth::user()->id;
+            $save->save();
+          }
 
-        $log = new LogAkses;
-        $log->actor = Auth::user()->id;
-        $log->aksi = 'Menambahkan News '.$request->judul_ID;
-        $log->save();
+          $log = new LogAkses;
+          $log->actor = Auth::user()->id;
+          $log->aksi = 'Menambahkan News '.$request->judul_ID;
+          $log->save();
+        });
 
-        return redirect()->route('news.index')->with('berhasil', 'Berhasil Menambahkan News Baru');
+        return redirect()->route('news.index')->with('berhasil', 'Berhasil Menambahkan News '.$request->judul_ID);
     }
 
     public function lihat($id)
@@ -150,6 +153,8 @@ class NewsController extends Controller
         'judul_EN.required' => 'wajib di isi',
         'deskripsi_ID.required' => 'wajib di isi',
         'deskripsi_EN.required' => 'wajib di isi',
+        'img_url.image' => 'Format Gambar Tidak Sesuai',
+        'img_url.max' => 'File Size Terlalu Besar',
         'tanggal_post.required' => 'wajib di isi',
       ];
 
@@ -158,6 +163,7 @@ class NewsController extends Controller
         'judul_EN'  => 'required',
         'deskripsi_ID'  => 'required',
         'deskripsi_EN'  => 'required',
+        'img_url' => 'image|mimes:jpeg,bmp,png|max:2000',
         'tanggal_post'  => 'required',
       ], $message);
 
@@ -166,59 +172,61 @@ class NewsController extends Controller
         return redirect()->route('news.ubah', array('id' => $request->id))->withErrors($validator)->withInput();
       }
 
-      $image = $request->file('img_url');
+      DB::transaction(function () use($request) {
+        $image = $request->file('img_url');
 
-      if($request->flag_publish == 'on'){
-        $flag_publish = 1;
-      }else{
-        $flag_publish = 0;
-      }
+        if($request->flag_publish == 'on'){
+          $flag_publish = 1;
+        }else{
+          $flag_publish = 0;
+        }
 
-      if($request->show_homepage == 'on'){
-        $show_homepage = 1;
-      }else{
-        $show_homepage = 0;
-      }
+        if($request->show_homepage == 'on'){
+          $show_homepage = 1;
+        }else{
+          $show_homepage = 0;
+        }
 
-      if (!$image) {
-        $update = News::find($request->id);
-        $update->judul_ID = $request->judul_ID;
-        $update->judul_EN = $request->judul_EN;
-        $update->deskripsi_ID = $request->deskripsi_ID;
-        $update->deskripsi_EN = $request->deskripsi_EN;
-        $update->img_alt = $request->img_alt;
-        $update->video_url  = $request->video_url;
-        $update->show_homepage = $show_homepage;
-        $update->tanggal_post = $request->tanggal_post;
-        $update->flag_publish = $flag_publish;
-        $update->slug = str_slug($request->judul_ID,'-');
-        $update->actor = Auth::user()->id;
-        $update->update();
-      }else{
-        $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
-        Image::make($image)->fit(472,270)->save('images/news/'. $img_url);
+        if (!$image) {
+          $update = News::find($request->id);
+          $update->judul_ID = $request->judul_ID;
+          $update->judul_EN = $request->judul_EN;
+          $update->deskripsi_ID = $request->deskripsi_ID;
+          $update->deskripsi_EN = $request->deskripsi_EN;
+          $update->img_alt = $request->img_alt;
+          $update->video_url  = $request->video_url;
+          $update->show_homepage = $show_homepage;
+          $update->tanggal_post = $request->tanggal_post;
+          $update->flag_publish = $flag_publish;
+          $update->slug = str_slug($request->judul_ID,'-');
+          $update->actor = Auth::user()->id;
+          $update->update();
+        }else{
+          $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
+          Image::make($image)->fit(472,270)->save('images/news/'. $img_url);
 
-        $update = News::find($request->id);
-        $update->judul_ID = $request->judul_ID;
-        $update->judul_EN = $request->judul_EN;
-        $update->deskripsi_ID = $request->deskripsi_ID;
-        $update->deskripsi_EN = $request->deskripsi_EN;
-        $update->img_url  = 'images/news/'.$img_url;
-        $update->img_alt  = $request->img_alt;
-        $update->video_url  = $request->video_url;
-        $update->show_homepage = $show_homepage;
-        $update->tanggal_post = $request->tanggal_post;
-        $update->flag_publish = $flag_publish;
-        $update->slug = str_slug($request->judul_ID,'-');
-        $update->actor = Auth::user()->id;
-        $update->update();
-      }
+          $update = News::find($request->id);
+          $update->judul_ID = $request->judul_ID;
+          $update->judul_EN = $request->judul_EN;
+          $update->deskripsi_ID = $request->deskripsi_ID;
+          $update->deskripsi_EN = $request->deskripsi_EN;
+          $update->img_url  = $img_url;
+          $update->img_alt  = $request->img_alt;
+          $update->video_url  = $request->video_url;
+          $update->show_homepage = $show_homepage;
+          $update->tanggal_post = $request->tanggal_post;
+          $update->flag_publish = $flag_publish;
+          $update->slug = str_slug($request->judul_ID,'-');
+          $update->actor = Auth::user()->id;
+          $update->update();
+        }
 
-      $log = new LogAkses;
-      $log->actor = Auth::user()->id;
-      $log->aksi = 'Mengubah News '.$request->judul_ID;
-      $log->save();
+        $log = new LogAkses;
+        $log->actor = Auth::user()->id;
+        $log->aksi = 'Mengubah News '.$request->judul_ID;
+        $log->save();
+      });
 
-      return redirect()->route('news.index')->with('berhasil', 'Berhasil Mengubah News Baru');
+      return redirect()->route('news.index')->with('berhasil', 'Berhasil Mengubah News '.$request->judul_ID);
     }
 }
