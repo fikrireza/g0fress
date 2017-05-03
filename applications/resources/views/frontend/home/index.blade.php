@@ -167,7 +167,7 @@
 			<div class="col-md-4 col-sm-12 col-xs-12">
 				<div class="wrapper-news">
 					<h3>{{ $list->judul }}</h3>
-					<label>{!! Str::words($list->deskripsi, 25," <a href=".route('frontend.berita.view', ['slug'=>$list->slug]) .">Read More</a>")  !!}</label>
+					<label>{!! Str::words($list->deskripsi, 25," <a href=".route('frontend.news.view', ['slug'=>$list->slug]) .">Read More</a>")  !!}</label>
 				</div>		
 			</div>
 			@endforeach

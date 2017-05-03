@@ -136,13 +136,15 @@ Route::get('/', 'Frontend\HomeController@index')->name('frontend.home');
 Route::get('/news', 'Frontend\NewsController@index')->name('frontend.news');
 Route::get('/news/{slug}', 'Frontend\NewsController@view')->name('frontend.news.view');
 
-Route::get('/produk', 'Frontend\HomeController@index')->name('frontend.produk');
+Route::get('/produk', 'Frontend\ProdukController@index')->name('frontend.produk');
 
-Route::get('/produk/{slug}', 'Frontend\HomeController@index')->name('frontend.produk.view');
+Route::get('/produk/{slug}', 'Frontend\ProdukController@index')->name('frontend.produk.view');
 
 Route::get('/program-event', 'Frontend\EventsController@index')->name('frontend.program-event');
-Route::get('/program-event/more-events', 'Frontend\EventsController@indexEvents')->name('frontend.program-event.events');
-// Route::post('/program-event/more-events', 'Frontend\EventsController@indexEvents')->name('frontend.program-event.events');
-Route::get('/program-event/{slug}', 'Frontend\EventsController@index')->name('frontend.program-event.view');
 
-Route::get('/berita/{slug}', 'Frontend\HomeController@index')->name('frontend.berita.view');
+Route::get('/program-event/more-events', 'Frontend\EventsController@indexEvents')->name('frontend.program-event.events');
+
+Route::get('/program-event/more-events-vidio', 'Frontend\EventsController@indexEventsVidio')->name('frontend.program-event.events-vidio');
+
+Route::get('/program-event/event/{slug}', 'Frontend\EventsController@eventsView')->name('frontend.program-event.view');
+

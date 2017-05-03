@@ -6,7 +6,7 @@
 
 @section('head-style')
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/public-sub-page.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/events-list-item-normal-not-owl.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/events-list-item-vidio.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/for-share-wrapper.css') }}">
 
 @endsection
@@ -29,7 +29,7 @@
 					<label class="circle-shape left"></label>
 				</div>
 				<div class="vertical-align-midle">
-					<label class="flag-title">Program & Events</label>
+					<label class="flag-title">Videos</label>
 				</div>
 				<div class="vertical-align-midle">
 					<label class="circle-shape right"></label>
@@ -37,10 +37,11 @@
 				</div>
 			</div>
 		</div>
-		<div class="wrapper-events-list">
-			@include('frontend.events.ajax-events-list')
+		
+		<div class="wrapper-vidio">
+			@include('frontend.events.ajax-events-vidio-list')
 			
-			<div id="appendNextProgramEvent">
+			<div id="appendNext">
 			</div>
 
 			<div class="clearfix"></div>
@@ -53,7 +54,7 @@
 		</div>
 
 		<div class="for-btn-see-more">
-			<a id="callNextProgramEvent" class="btn-see-more">
+			<a id="callNext" class="btn-see-more">
 				load more
 			</a>
 		</div>
@@ -76,7 +77,7 @@
 
 <script type="text/javascript">
 	var page = 1;
-	$("#callNextProgramEvent").click(function(){
+	$("#callNext").click(function(){
 	    page++;
 	        loadMoreData(page);
 	});
@@ -95,11 +96,11 @@
 	        {
 	            if(!data.html){
 	                $('.ajax-load').hide();
-		            $('#callNextProgramEvent').hide();
+		            $('#callNext').hide();
 	                return;
 	            }
 	            $('.ajax-load').hide();
-	            $("#appendNextProgramEvent").append(data.html);
+	            $("#appendNext").append(data.html);
 	        })
 	        .fail(function(jqXHR, ajaxOptions, thrownError)
 	        {
