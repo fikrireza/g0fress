@@ -43,7 +43,14 @@
               <li class="{{ Route::currentRouteNamed('programEventsKategori.index') ? 'current-page' : '' }}{{ Route::currentRouteNamed('programEventsKategori.tambah') ? 'current-page' : '' }}{{ Route::currentRouteNamed('programEventsKategori.lihat') ? 'current-page' : '' }}"><a href="{{ route('programEventsKategori.index') }}">Program & Events Kategori</a></li>
             </ul>
           </li>
-          <li class="{{ Route::currentRouteNamed('slider.index') ? 'active' : '' }}{{ Route::currentRouteNamed('slider.tambah') ? 'active' : '' }}"><a href="{{ route('slider.index') }}"><i class="fa fa-image"></i> Slider Home </a></li>
+          <li class="{{ Route::currentRouteNamed('slider.index') ? 'active' : '' }}{{ Route::currentRouteNamed('slider.tambah') ? 'active' : '' }}{{ Route::currentRouteNamed('banner.index') ? 'active' : '' }}{{ Route::currentRouteNamed('banner.tambah') ? 'active' : '' }}">
+            <a><i class="fa fa-image"></i> Banner Slider <span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu">
+              <li class="{{ Route::currentRouteNamed('slider.index') ? 'current-page' : '' }}{{ Route::currentRouteNamed('slider.tambah') ? 'current-page' : '' }}"><a href="{{ route('slider.index') }}">Home Slider</a></li>
+              <li class="{{ Route::currentRouteNamed('banner.index') ? 'current-page' : '' }}{{ Route::currentRouteNamed('banner.tambah') ? 'current-page' : '' }}"><a href="{{ route('banner.index') }}">Head Banner</a></li>
+            </ul>
+
+          </li>
           <li><a href="#"><i class="fa fa-building-o"></i> Kontak </a></li>
           <li class="{{ Route::currentRouteNamed('inbox.index') ? 'active' : '' }}"><a href="{{ route('inbox.index') }}"><i class="fa fa-inbox"></i> Inbox </a></li>
         </ul>

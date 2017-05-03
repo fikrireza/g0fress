@@ -33,7 +33,7 @@
           <tbody>
 
           <tr>
-            <td><strong>Kategori</strong></td>
+            <td><strong>Kategori Produk</strong></td>
             <td>:</td>
             <td>{{ $getProdukKategori->nama_kategori }}</td>
           </tr>
@@ -45,42 +45,62 @@
           <tr>
             <td><strong>Deskripsi ID</strong></td>
             <td>:</td>
-            <td>{{ $getProduk->deskripsi_ID }}</td>
+            <td>{!! $getProduk->deskripsi_ID !!}</td>
           </tr>
           <tr>
             <td><strong>Deskripsi EN</strong></td>
             <td>:</td>
-            <td>{{ $getProduk->deskripsi_EN }}</td>
+            <td>{!! $getProduk->deskripsi_EN !!}</td>
           </tr>
           <tr>
             <td><strong>Ingredient</strong></td>
             <td>:</td>
-            <td>{{ $getProduk->ingredient }}</td>
+            <td>{!! $getProduk->ingredient !!}</td>
           </tr>
           <tr>
             <td><strong>Nutrition Fact</strong></td>
             <td>:</td>
-            <td>{{ $getProduk->nutrition_fact }}</td>
+            <td>{!! $getProduk->nutrition_fact !!}</td>
           </tr>
           <tr>
-            <td><strong>Gambar Produk</strong></td>
+            <td><strong>Gambar Produk Utama</strong></td>
             <td>:</td>
-            <td><img src="{{ asset('images/produk').'/'.$getProduk->img_url }}" width="100%" /></td>
+            <td><img src="{{ asset('images/produk').'/'.$getProduk->img_url }}"/></td>
           </tr>
           <tr>
-            <td><strong>Gambar alt</strong></td>
+            <td><strong>Deskripsi Gambar Utama</strong></td>
             <td>:</td>
             <td>{{ $getProduk->img_alt }}</td>
           </tr>
           <tr>
+            <td><strong>Gambar Produk Kanan</strong></td>
+            <td>:</td>
+            <td><img src="{{ asset('images/produk').'/'.$getProduk->img_url_kanan }}"/></td>
+          </tr>
+          <tr>
+            <td><strong>Deskripsi Gambar Kanan</strong></td>
+            <td>:</td>
+            <td>{{ $getProduk->img_alt_kanan }}</td>
+          </tr>
+          <tr>
+            <td><strong>Gambar Produk Kiri</strong></td>
+            <td>:</td>
+            <td><img src="{{ asset('images/produk').'/'.$getProduk->img_url_kiri }}"/></td>
+          </tr>
+          <tr>
+            <td><strong>Deskripsi Gambar Kiri</strong></td>
+            <td>:</td>
+            <td>{{ $getProduk->img_alt_kiri }}</td>
+          </tr>
+          <tr>
             <td><strong>Tanggal Post</strong></td>
             <td>:</td>
-            <td>{{ $getProduk->tanggal_post }}</td>
+            <td>{!! ($getProduk->tanggal_post <= date('Y-m-d')) ? "<span class='label label-success'>$getProduk->tanggal_post</span>" : "<span class='label label-danger'>$getProduk->tanggal_post</span>" !!}</td>
           </tr>
           <tr>
             <td><strong>Publish</strong></td>
             <td>:</td>
-            <td>@if ($getProduk->flag_publish == 1) Ya @else Tidak @endif</td>
+            <td>@if ($getProduk->flag_publish == 1) <span class='label label-success'><i class="fa fa-thumbs-o-up"></i></span> @else <span class='label label-danger'><i class="fa fa-thumbs-o-down"></i></span> @endif</td>
           </tr>
         </tbody>
         </table>
