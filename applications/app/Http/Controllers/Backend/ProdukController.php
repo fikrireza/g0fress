@@ -56,18 +56,32 @@ class ProdukController extends Controller
         'deskripsi_ID.required' => 'Wajib di isi',
         'deskripsi_ID.min' => 'Terlalu Singkat',
         'img_url.required' => 'Wajib di isi',
+        'img_url.image' => 'Format Gambar Tidak Sesuai',
+        'img_url.max' => 'File Size Terlalu Besar',
         'img_alt.required' => 'Wajib di isi',
+        'img_url_kanan.required' => 'Wajib di isi',
+        'img_url_kanan.image' => 'Format Gambar Tidak Sesuai',
+        'img_url_kanan.max' => 'File Size Terlalu Besar',
+        'img_alt_kanan.required' => 'Wajib di isi',
+        'img_url_kiri.required' => 'Wajib di isi',
+        'img_url_kiri.image' => 'Format Gambar Tidak Sesuai',
+        'img_url_kiri.max' => 'File Size Terlalu Besar',
+        'img_alt_kiri.required' => 'Wajib di isi',
         'tanggal_post.required' => 'Wajib di isi',
       ];
 
       $validator = Validator::make($request->all(), [
         'kategori_id' => 'required',
         'nama_produk' => 'required|unique:amd_produk',
-        'deskripsi_EN' => 'required|min:10',
-        'deskripsi_ID' => 'required|min:10',
+        'deskripsi_EN' => 'required|min:20',
+        'deskripsi_ID' => 'required|min:20',
         // 'img_url' => 'required|image|mimes:jpeg,bmp,png|size:2000|dimensions:max_width=1000,max_height=2000',
-        'img_url' => 'image|mimes:jpeg,bmp,png',
+        'img_url' => 'required|image|mimes:jpeg,bmp,png|max:2000',
+        'img_url_kanan' => 'required|image|mimes:jpeg,bmp,png|max:2000',
+        'img_url_kiri' => 'required|image|mimes:jpeg,bmp,png|max:2000',
         'img_alt' => 'required',
+        'img_alt_kanan' => 'required',
+        'img_alt_kiri' => 'required',
         'tanggal_post' => 'required'
       ], $message);
 
@@ -76,40 +90,53 @@ class ProdukController extends Controller
       {
         return redirect()->route('produk.tambah')->withErrors($validator)->withInput();
       }
-      dd($request);
+
+      DB::transaction(function () use($request) {
+        $image = $request->file('img_url');
+        $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
+        Image::make($image)->fit(472,270)->save('images/produk/'. $img_url);
+
+        $image_kanan = $request->file('img_url_kanan');
+        $img_url_kanan = str_slug($request->img_alt_kanan,'-'). '.' . $image_kanan->getClientOriginalExtension();
+        Image::make($image_kanan)->fit(472,270)->save('images/produk/'. $img_url_kanan);
+
+        $image_kiri = $request->file('img_url_kiri');
+        $img_url_kiri = str_slug($request->img_alt_kiri,'-'). '.' . $image_kiri->getClientOriginalExtension();
+        Image::make($image_kiri)->fit(472,270)->save('images/produk/'. $img_url_kiri);
+
+        if($request->flag_publish == 'on'){
+          $flag_publish = 1;
+        }else{
+          $flag_publish = 0;
+        }
+
+        $save = new Produk;
+        $save->kategori_id = $request->kategori_id;
+        $save->nama_produk = $request->nama_produk;
+        $save->deskripsi_EN = $request->deskripsi_EN;
+        $save->deskripsi_ID = $request->deskripsi_ID;
+        $save->ingredient = $request->ingredient;
+        $save->nutrition_fact = $request->nutrition_fact;
+        $save->img_url  = $img_url;
+        $save->img_alt  = $request->img_alt;
+        $save->img_url_kanan  = $img_url_kanan;
+        $save->img_alt_kanan  = $request->img_alt_kanan;
+        $save->img_url_kiri  = $img_url_kiri;
+        $save->img_alt_kiri  = $request->img_alt_kiri;
+        $save->tanggal_post = $request->tanggal_post;
+        $save->flag_publish = $flag_publish;
+        $save->slug = str_slug($request->nama_produk,'-');
+        $save->actor = Auth::user()->id;
+        $save->save();
+
+        $log = new LogAkses;
+        $log->actor = Auth::user()->id;
+        $log->aksi = 'Menambahkan Produk Baru '.$request->nama_produk;
+        $log->save();
+      });
 
 
-      $image = $request->file('img_url');
-      $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
-      Image::make($image)->fit(472,270)->save('images/produk/'. $img_url);
-
-      if($request->flag_publish == 'on'){
-        $flag_publish = 1;
-      }else{
-        $flag_publish = 0;
-      }
-
-      $save = new Produk;
-      $save->kategori_id = $request->kategori_id;
-      $save->nama_produk = $request->nama_produk;
-      $save->deskripsi_EN = $request->deskripsi_EN;
-      $save->deskripsi_ID = $request->deskripsi_ID;
-      $save->ingredient = $request->ingredient;
-      $save->nutrition_fact = $request->nutrition_fact;
-      $save->img_url  = $img_url;
-      $save->img_alt  = $request->img_alt;
-      $save->tanggal_post = $request->tanggal_post;
-      $save->flag_publish = $flag_publish;
-      $save->slug = str_slug($request->nama_produk,'-');
-      $save->actor = Auth::user()->id;
-      $save->save();
-
-      $log = new LogAkses;
-      $log->actor = Auth::user()->id;
-      $log->aksi = 'Menambahkan Produk Baru '.$request->nama_produk;
-      $log->save();
-
-      return redirect()->route('produk.index')->with('berhasil', 'Berhasil Menambahkan Produk Baru');
+      return redirect()->route('produk.index')->with('berhasil', 'Berhasil Menambahkan Produk '.$request->nama_produk);
     }
 
     public function lihat($id)
@@ -140,17 +167,21 @@ class ProdukController extends Controller
 
     public function edit(Request $request)
     {
-      // dd($request);
       $message = [
         'kategori_id.required' => 'Wajib di isi',
         'nama_produk.required' => 'Wajib di isi',
         'nama_produk.unique' => 'Produk ini sudah ada',
         'deskripsi_EN.required' => 'Wajib di isi',
         'deskripsi_ID.required' => 'Wajib di isi',
-        // 'ingredient.required' => 'Wajib di isi',
-        // 'nutrition_fact.required' => 'Wajib di isi',
-        'img_url.required' => 'Wajib di isi',
+        'img_url.image' => 'Format Gambar Tidak Sesuai',
+        'img_url.max' => 'File Size Terlalu Besar',
+        'img_url_kanan.image' => 'Format Gambar Tidak Sesuai',
+        'img_url_kanan.max' => 'File Size Terlalu Besar',
+        'img_url_kiri.image' => 'Format Gambar Tidak Sesuai',
+        'img_url_kiri.max' => 'File Size Terlalu Besar',
         'img_alt.required' => 'Wajib di isi',
+        'img_alt_kanan.required' => 'Wajib di isi',
+        'img_alt_kiri.required' => 'Wajib di isi',
         'tanggal_post.required' => 'Wajib di isi',
       ];
 
@@ -159,10 +190,12 @@ class ProdukController extends Controller
         'nama_produk' => 'required|unique:amd_produk,nama_produk,'.$request->id,
         'deskripsi_EN' => 'required',
         'deskripsi_ID' => 'required',
-        // 'ingredient'  => 'required',
-        // 'nutrition_fact' => 'required',
-        'img_url' => 'image|mimes:jpeg,bmp,png',
+        'img_url' => 'image|mimes:jpeg,bmp,png|max:2000',
+        'img_url_kanan' => 'image|mimes:jpeg,bmp,png|max:2000',
+        'img_url_kiri' => 'image|mimes:jpeg,bmp,png|max:2000',
         'img_alt' => 'required',
+        'img_alt_kanan' => 'required',
+        'img_alt_kiri' => 'required',
         'tanggal_post' => 'required'
       ], $message);
 
@@ -172,31 +205,16 @@ class ProdukController extends Controller
       }
 
 
-      $image = $request->file('img_url');
+      DB::transaction(function() use($request){
+        $image = $request->file('img_url');
+        $image_kanan = $request->file('img_url_kanan');
+        $image_kiri = $request->file('img_url_kiri');
 
-      if($request->flag_publish == null){
-        $flag_publish = 0;
-      }else{
-        $flag_publish = 1;
-      }
-
-      if (!$image) {
-        $update = Produk::find($request->id);
-        $update->kategori_id = $request->kategori_id;
-        $update->nama_produk = $request->nama_produk;
-        $update->deskripsi_EN = $request->deskripsi_EN;
-        $update->deskripsi_ID = $request->deskripsi_ID;
-        $update->ingredient = $request->ingredient;
-        $update->nutrition_fact = $request->nutrition_fact;
-        $update->img_alt  = $request->img_alt;
-        $update->tanggal_post = $request->tanggal_post;
-        $update->flag_publish = $flag_publish;
-        $update->slug = str_slug($request->nama_produk,'-');
-        $update->actor = Auth::user()->id;
-        $update->update();
-      }else{
-        $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
-        Image::make($image)->fit(472,270)->save('images/produk/'. $img_url);
+        if($request->flag_publish == null){
+          $flag_publish = 0;
+        }else{
+          $flag_publish = 1;
+        }
 
         $update = Produk::find($request->id);
         $update->kategori_id = $request->kategori_id;
@@ -205,21 +223,69 @@ class ProdukController extends Controller
         $update->deskripsi_ID = $request->deskripsi_ID;
         $update->ingredient = $request->ingredient;
         $update->nutrition_fact = $request->nutrition_fact;
-        $update->img_url  = $img_url;
         $update->img_alt  = $request->img_alt;
+        $update->img_alt_kanan  = $request->img_alt_kanan;
+        $update->img_alt_kiri  = $request->img_alt_kiri;
         $update->tanggal_post = $request->tanggal_post;
         $update->flag_publish = $flag_publish;
         $update->slug = str_slug($request->nama_produk,'-');
         $update->actor = Auth::user()->id;
-        $update->update();
 
-      }
+        if (!$image || !$image_kanan || !$image_kiri) {
+          $update->update();
+        }elseif($image && $image_kanan && $image_kiri){
+          $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
+          Image::make($image)->fit(472,270)->save('images/produk/'. $img_url);
 
-      $log = new LogAkses;
-      $log->actor = Auth::user()->id;
-      $log->aksi = 'Mengubah Produk '.$request->nama_produk;
-      $log->save();
+          $img_url_kanan = str_slug($request->img_alt_kanan,'-'). '.' . $image_kanan->getClientOriginalExtension();
+          Image::make($image_kanan)->fit(472,270)->save('images/produk/'. $img_url_kanan);
 
-      return redirect()->route('produk.index')->with('berhasil', 'Berhasil Menambahkan Produk Baru');
+          $img_url_kiri = str_slug($request->img_alt_kiri,'-'). '.' . $image_kiri->getClientOriginalExtension();
+          Image::make($image_kiri)->fit(472,270)->save('images/produk/'. $img_url_kiri);
+
+          $update->img_url  = $img_url;
+          $update->img_url_kanan  = $img_url_kanan;
+          $update->img_url_kiri  = $img_url_kiri;
+          $update->update();
+        }elseif($image_kanan && $image_kiri){
+          $img_url_kanan = str_slug($request->img_alt_kanan,'-'). '.' . $image_kanan->getClientOriginalExtension();
+          Image::make($image_kanan)->fit(472,270)->save('images/produk/'. $img_url_kanan);
+
+          $img_url_kiri = str_slug($request->img_alt_kiri,'-'). '.' . $image_kiri->getClientOriginalExtension();
+          Image::make($image_kiri)->fit(472,270)->save('images/produk/'. $img_url_kiri);
+
+          $update->img_url_kanan  = $img_url_kanan;
+          $update->img_url_kiri  = $img_url_kiri;
+          $update->update();
+        }elseif($image){
+          $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
+          Image::make($image)->fit(472,270)->save('images/produk/'. $img_url);
+
+          $update->img_url  = $img_url;
+          $update->update();
+        }elseif($image_kanan){
+          $img_url_kanan = str_slug($request->img_alt_kanan,'-'). '.' . $image_kanan->getClientOriginalExtension();
+          Image::make($image_kanan)->fit(472,270)->save('images/produk/'. $img_url_kanan);
+
+          $update->img_url_kanan  = $img_url_kanan;
+          $update->update();
+        }elseif($image_kiri){
+          $img_url_kiri = str_slug($request->img_alt_kiri,'-'). '.' . $image_kiri->getClientOriginalExtension();
+          Image::make($image_kiri)->fit(472,270)->save('images/produk/'. $img_url_kiri);
+
+          $update->img_url_kiri  = $img_url_kiri;
+          $update->update();
+        }else{
+          $update->update();
+        }
+
+        $log = new LogAkses;
+        $log->actor = Auth::user()->id;
+        $log->aksi = 'Mengubah Produk '.$request->nama_produk;
+        $log->save();
+
+      });
+
+      return redirect()->route('produk.index')->with('berhasil', 'Berhasil Mengubah Produk '.$request->nama_produk);
     }
 }
