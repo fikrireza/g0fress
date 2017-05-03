@@ -43,7 +43,10 @@
 	text-align: center;
 	margin: 40px auto;
 }
-
+.background-content .content-wrapper .wrapper-share a,
+.background-content .content-wrapper .wrapper-share a:hover{
+	text-decoration: none;
+}
 @media (max-width: 480px) {
 	.flag-title-wrapper.color.costume-light-blue .vertical-align-midle{
 		height: 50px;
