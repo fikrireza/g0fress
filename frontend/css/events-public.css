@@ -1,0 +1,8 @@
+.background-content.background-content-first.for-share-wrapper{
+	padding: 80px 0px;
+}
+@media (max-width: 480px) {
+	.background-content.background-content-first.for-share-wrapper{
+		padding: 40px 0px;
+	}
+}

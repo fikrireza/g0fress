@@ -5,7 +5,7 @@
 @endsection
 
 @section('head-style')
-<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/home.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/public-sub-page.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/news-view.css') }}">
 @endsection
 

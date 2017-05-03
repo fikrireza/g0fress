@@ -78,7 +78,7 @@
 						</a>
 					</li>
 					<li class="nav-link-list-li">
-						<a href="">
+						<a href="{{ route('frontend.program-event') }}">
 							@lang('front/home.program')
 						</a>
 					</li>

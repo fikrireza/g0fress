@@ -1,0 +1,43 @@
+.wrapper-events-list{
+	position: relative; 
+	width: 100%;
+	margin-top: 60px;
+}
+.wrapper-events-list .wrapper-item{
+	float: left; 
+	width: 25%; 
+	padding: .8%;
+	text-align: center;
+}
+.wrapper-events-list .wrapper-item .wrapper-thumnail .thumnail{
+	width: 100%;
+}
+.wrapper-events-list .wrapper-item .wrapper-thumnail .wrapper-title{
+	width: 90%;
+	margin: -80px auto 0px;
+	display: table;
+	height: 60px;
+}
+.wrapper-events-list .wrapper-item .wrapper-thumnail .wrapper-title .title{
+	display: table-cell; 
+	vertical-align: middle; 
+	height: 60px;
+	cursor: pointer;
+	color: white;
+	font-size: 16px;
+	font-weight: normal;
+    font-family: 'US101';
+}
+.wrapper-events-list .wrapper-item .wrapper-thumnail .wrapper-title a:hover{
+	text-decoration: none;
+}
+.wrapper-events-list .wrapper-item .description{
+	margin-top: 40px;
+	margin-bottom: 40px;
+	color: white;
+    font-family: 'AvenirNext';
+    font-weight: normal;
+}
+.wrapper-events-list .wrapper-item .description a{
+	color: white;
+}
