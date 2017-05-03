@@ -47,18 +47,22 @@ class ProdukKategoriController extends Controller
         'nama_kategori.required' => 'Wajib di isi',
         'nama_kategori.unique' => 'Ketogori ini sudah ada',
         'deskripsi_EN.required' => 'Wajib di isi',
+        'deskripsi_EN.min' => 'Terlalu Singkat',
         'deskripsi_ID.required' => 'Wajib di isi',
+        'deskripsi_ID.min' => 'Terlalu Singkat',
         'img_url.required' => 'Wajib di isi',
+        'img_url.image' => 'Format Gambar Tidak Sesuai',
+        'img_url.max' => 'File Size Terlalu Besar',
         'img_alt.required' => 'Wajib di isi',
         'tanggal_post.required' => 'Wajib di isi',
       ];
 
       $validator = Validator::make($request->all(), [
         'nama_kategori' => 'required|unique:amd_produk_kategori',
-        'deskripsi_EN' => 'required',
-        'deskripsi_ID' => 'required',
+        'deskripsi_EN' => 'required|min:20',
+        'deskripsi_ID' => 'required|min:20',
         // 'img_url' => 'required|image|mimes:jpeg,bmp,png|size:2000|dimensions:max_width=1000,max_height=2000',
-        'img_url' => 'image|mimes:jpeg,bmp,png',
+        'img_url' => 'required|image|mimes:jpeg,bmp,png|max:2000',
         'img_alt' => 'required',
         'tanggal_post' => 'required'
       ], $message);
@@ -83,7 +87,7 @@ class ProdukKategoriController extends Controller
       $save->nama_kategori = $request->nama_kategori;
       $save->deskripsi_EN = $request->deskripsi_EN;
       $save->deskripsi_ID = $request->deskripsi_ID;
-      $save->img_url  = 'images/produk/'.$img_url;
+      $save->img_url  = $img_url;
       $save->img_alt  = $request->img_alt;
       $save->tanggal_post = $request->tanggal_post;
       $save->flag_publish = $flag_publish;
@@ -96,7 +100,7 @@ class ProdukKategoriController extends Controller
       $log->aksi = 'Menambahkan Produk Kategori Baru '.$request->nama_kategori;
       $log->save();
 
-      return redirect()->route('produkKategori.index')->with('berhasil', 'Berhasil Menambahkan Produk Kategori Baru');
+      return redirect()->route('produkKategori.index')->with('berhasil', 'Berhasil Menambahkan Produk Kategori '.$request->nama_kategori);
     }
 
     public function lihat($id)
@@ -127,17 +131,20 @@ class ProdukKategoriController extends Controller
         'nama_kategori.required' => 'Wajib di isi',
         'nama_kategori.unique' => 'Kategori ini sudah ada',
         'deskripsi_ID.required' => 'Wajib di isi',
+        'deskripsi_ID.min' => 'Terlalu Singkat',
         'deskripsi_EN.required' => 'Wajib di isi',
-        'img_url.required' => 'Wajib di isi',
+        'deskripsi_EN.min' => 'Terlalu Singkat',
+        'img_url.image' => 'Format Gambar Tidak Sesuai',
+        'img_url.max' => 'File Size Terlalu Besar',
         'img_alt.required' => 'Wajib di isi',
         'tanggal_post.required' => 'Wajib di isi',
       ];
 
       $validator = Validator::make($request->all(), [
         'nama_kategori' => 'required|unique:amd_produk_kategori,nama_kategori,'.$request->id,
-        'deskripsi_ID' => 'required',
-        'deskripsi_EN' => 'required',
-        'img_url' => 'image|mimes:jpeg,bmp,png',
+        'deskripsi_ID' => 'required|min:20',
+        'deskripsi_EN' => 'required|min:20',
+        'img_url' => 'image|mimes:jpeg,bmp,png|max:2000',
         'img_alt' => 'required',
         'tanggal_post' => 'required'
       ], $message);
@@ -175,7 +182,7 @@ class ProdukKategoriController extends Controller
         $update->nama_kategori = $request->nama_kategori;
         $update->deskripsi_EN = $request->deskripsi_EN;
         $update->deskripsi_ID = $request->deskripsi_ID;
-        $update->img_url  = 'images/produk/'.$img_url;
+        $update->img_url  = $img_url;
         $update->img_alt  = $request->img_alt;
         $update->tanggal_post = $request->tanggal_post;
         $update->flag_publish = $flag_publish;
@@ -189,6 +196,6 @@ class ProdukKategoriController extends Controller
       $log->aksi = 'Mengubah Produk Kategori '.$request->nama_kategori;
       $log->save();
 
-      return redirect()->route('produkKategori.index')->with('berhasil', 'Berhasil Menambahkan Produk Kategori Baru');
+      return redirect()->route('produkKategori.index')->with('berhasil', 'Berhasil Mengubah Produk Kategori '.$request->nama_kategori);
     }
 }

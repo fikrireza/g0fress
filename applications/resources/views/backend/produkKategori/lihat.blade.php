@@ -40,17 +40,17 @@
           <tr>
             <td><strong>Deskripsi ID</strong></td>
             <td>:</td>
-            <td>{{ $getProdukKategori->deskripsi_ID }}</td>
+            <td>{!! $getProdukKategori->deskripsi_ID !!}</td>
           </tr>
           <tr>
             <td><strong>Deskripsi EN</strong></td>
             <td>:</td>
-            <td>{{ $getProdukKategori->deskripsi_EN }}</td>
+            <td>{!! $getProdukKategori->deskripsi_EN !!}</td>
           </tr>
           <tr>
             <td><strong>Gambar Produk</strong></td>
             <td>:</td>
-            <td><img src="{{ asset('images/produk').'/'.$getProdukKategori->img_url }}" width="100%" /></td>
+            <td><img src="{{ asset('images/produk').'/'.$getProdukKategori->img_url }}" /></td>
           </tr>
           <tr>
             <td><strong>Gambar alt</strong></td>
@@ -60,12 +60,12 @@
           <tr>
             <td><strong>Tanggal Post</strong></td>
             <td>:</td>
-            <td>{{ $getProdukKategori->tanggal_post }}</td>
+            <td>{!! ($getProdukKategori->tanggal_post <= date('Y-m-d')) ? "<span class='label label-success'>$getProdukKategori->tanggal_post</span>" : "<span class='label label-danger'>$getProdukKategori->tanggal_post</span>" !!}</td>
           </tr>
           <tr>
             <td><strong>Publish</strong></td>
             <td>:</td>
-            <td>@if ($getProdukKategori->flag_publish == 1) Ya @else Tidak @endif</td>
+            <td>@if ($getProdukKategori->flag_publish == 1) <span class='label label-success'><i class="fa fa-thumbs-o-up"></i></span> @else <span class='label label-danger'><i class="fa fa-thumbs-o-down"></i></span> @endif</td>
           </tr>
         </tbody>
         </table>
