@@ -9,6 +9,7 @@
 <link href="{{ asset('backend/vendors/iCheck/skins/flat/green.css')}}" rel="stylesheet">
 <link href="{{ asset('backend/vendors/switchery/dist/switchery.min.css') }}" rel="stylesheet">
 <script src="{{asset('backend/vendors/ckeditor/ckeditor.js')}}"></script>
+<script src="{{asset('backend/vendors/ckfinder/ckfinder.js')}}"></script>
 @endsection
 
 @section('content')
@@ -163,6 +164,7 @@
   });
   CKFinder.setupCKEditor( null, { basePath : '{{url('/')}}/plugins/ckfinder/'} );
   CKEDITOR.instances[deskripsi_ID].getData();
+  CKEDITOR.instances[deskripsi_EN].getData();
 </script>
 <script>
   $(".select2_single").select2({

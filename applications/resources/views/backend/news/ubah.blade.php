@@ -8,6 +8,8 @@
 <link href="{{ asset('backend/vendors/select2/dist/css/select2.min.css') }}" rel="stylesheet">
 <link href="{{ asset('backend/vendors/iCheck/skins/flat/green.css')}}" rel="stylesheet">
 <link href="{{ asset('backend/vendors/switchery/dist/switchery.min.css') }}" rel="stylesheet">
+<script src="{{asset('backend/vendors/ckeditor/ckeditor.js')}}"></script>
+<script src="{{asset('backend/vendors/ckfinder/ckfinder.js')}}"></script>
 @endsection
 
 @section('content')
@@ -31,7 +33,7 @@
             <div class="col-md-6 col-sm-6 col-xs-12">
               <input id="judul_ID" class="form-control col-md-7 col-xs-12" data-validate-length-range="1" name="judul_ID" placeholder="Contoh: Judul News" required="required" type="text" value="{{ $getNews->judul_ID }}">
             @if($errors->has('judul_ID'))
-            <code><span style="color:red; font-size:10px;">{{ $errors->first('judul_ID')}}</span></code>
+            <code><span style="color:red; font-size:12px;">{{ $errors->first('judul_ID')}}</span></code>
             @endif
             </div>
           </div>
@@ -41,7 +43,7 @@
             <div class="col-md-6 col-sm-6 col-xs-12">
               <input id="judul_EN" class="form-control col-md-7 col-xs-12" data-validate-length-range="1" name="judul_EN" placeholder="Eg: News Title" required="required" type="text" value="{{ $getNews->judul_EN }}">
               @if($errors->has('judul_EN'))
-                <code><span style="color:red; font-size:10px;">{{ $errors->first('judul_EN')}}</span></code>
+                <code><span style="color:red; font-size:12px;">{{ $errors->first('judul_EN')}}</span></code>
               @endif
             </div>
           </div>
@@ -49,9 +51,9 @@
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Deskripsi ID <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <textarea id="textarea" required="required" name="deskripsi_ID" class="form-control col-md-7 col-xs-12">{{ $getNews->deskripsi_ID }}</textarea>
+              <textarea id="deskripsi_ID" required="required" name="deskripsi_ID">{{ $getNews->deskripsi_ID }}</textarea>
               @if($errors->has('deskripsi_ID'))
-                <code><span style="color:red; font-size:10px;">{{ $errors->first('deskripsi_ID')}}</span></code>
+                <code><span style="color:red; font-size:12px;">{{ $errors->first('deskripsi_ID')}}</span></code>
               @endif
             </div>
           </div>
@@ -59,9 +61,9 @@
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Deskripsi EN <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <textarea id="textarea" required="required" name="deskripsi_EN" class="form-control col-md-7 col-xs-12">{{ $getNews->deskripsi_EN }}</textarea>
+              <textarea id="deskripsi_EN" required="required" name="deskripsi_EN">{{ $getNews->deskripsi_EN }}</textarea>
               @if($errors->has('deskripsi_EN'))
-                <code><span style="color:red; font-size:10px;">{{ $errors->first('deskripsi_EN')}}</span></code>
+                <code><span style="color:red; font-size:12px;">{{ $errors->first('deskripsi_EN')}}</span></code>
               @endif
             </div>
           </div>
@@ -73,7 +75,7 @@
               <input id="img_url" class="form-control col-md-7 col-xs-12" name="img_url" type="file">
               <span style="color:red; font-size:10px;">Width: 100px; Heigh: 100px</span>
               @if($errors->has('img_url'))
-                <code><span style="color:red; font-size:10px;">{{ $errors->first('img_url')}}</span></code>
+                <code><span style="color:red; font-size:12px;">{{ $errors->first('img_url')}}</span></code>
               @endif
             </div>
           </div>
@@ -83,7 +85,7 @@
             <div class="col-md-6 col-sm-6 col-xs-12">
               <input id="img_alt" class="form-control col-md-7 col-xs-12" data-validate-length-range="1" name="img_alt" placeholder="Contoh: Nama Produk" type="text" value="{{ $getNews->img_alt }}">
               @if($errors->has('img_alt'))
-                <code><span style="color:red; font-size:10px;">{{ $errors->first('img_alt')}}</span></code>
+                <code><span style="color:red; font-size:12px;">{{ $errors->first('img_alt')}}</span></code>
               @endif
             </div>
           </div>
@@ -93,7 +95,7 @@
             <div class="col-md-6 col-sm-6 col-xs-12">
               <input id="video_url" class="form-control col-md-7 col-xs-12" data-validate-length-range="1" name="video_url" placeholder="Contoh: Video Url" type="text" value="{{ $getNews->video_url }}">
               @if($errors->has('video_url'))
-                <code><span style="color:red; font-size:10px;">{{ $errors->first('video_url')}}</span></code>
+                <code><span style="color:red; font-size:12px;">{{ $errors->first('video_url')}}</span></code>
               @endif
             </div>
           </div>
@@ -149,6 +151,43 @@
 <script src="{{ asset('backend/vendors/switchery/dist/switchery.min.js')}}"></script>
 <script src="{{ asset('backend/js/moment/moment.min.js') }}"></script>
 <script src="{{ asset('backend/js/datepicker/daterangepicker.js') }}"></script>
+<script type="text/javascript">
+  CKEDITOR.replace('deskripsi_ID', {
+    toolbar: [
+    { name: 'document', groups: [ 'mode', 'document', 'doctools' ], items: [ 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates' ] },
+    { name: 'clipboard', groups: [ 'clipboard', 'undo' ], items: [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ] },
+    { name: 'editing', groups: [ 'find', 'selection', 'spellchecker' ], items: [ 'Find', 'Replace', '-', 'SelectAll', '-', 'Scayt' ] },
+    { name: 'forms', items: [ 'Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField' ] },
+    { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ], items: [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat' ] },
+    { name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ], items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl', 'Language' ] },
+    { name: 'links', items: [ 'Link', 'Unlink', 'Anchor' ] },
+    { name: 'insert', items: [ 'Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe' ] },
+    { name: 'styles', items: [ 'Styles', 'Format', 'Font', 'FontSize' ] },
+    { name: 'colors', items: [ 'TextColor', 'BGColor' ] },
+    { name: 'tools', items: [ 'Maximize', 'ShowBlocks' ] },
+    { name: 'others', items: [ '-' ] }
+  ]
+  });
+  CKEDITOR.replace('deskripsi_EN', {
+    toolbar: [
+    { name: 'clipboard', groups: [ 'clipboard', 'undo' ], items: [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ] },
+    { name: 'editing', groups: [ 'find', 'selection', 'spellchecker' ], items: [ 'Find', 'Replace', '-', 'SelectAll', '-', 'Scayt' ] },
+    { name: 'forms', items: [ 'Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField' ] },
+    { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ], items: [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat' ] },
+    { name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ], items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl', 'Language' ] },
+    { name: 'links', items: [ 'Link', 'Unlink', 'Anchor' ] },
+    { name: 'insert', items: [ 'Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe' ] },
+    { name: 'styles', items: [ 'Styles', 'Format', 'Font', 'FontSize' ] },
+    { name: 'colors', items: [ 'TextColor', 'BGColor' ] },
+    { name: 'tools', items: [ 'Maximize', 'ShowBlocks' ] },
+    { name: 'others', items: [ '-' ] }
+  ]
+  });
+
+  CKFinder.setupCKEditor( null, { basePath : '{{url('/')}}/backend/vendors/ckfinder/'} );
+  CKEDITOR.instances[deskripsi_ID].getData();
+  CKEDITOR.instances[deskripsi_EN].getData();
+</script>
 <script>
   $(".select2_single").select2({
     placeholder: "Pilih Kategori",
@@ -159,30 +198,6 @@
     singleDatePicker: true,
     calender_style: "picker_3",
     format: 'YYYY-MM-DD',
-  });
-
-  // initialize the validator function
-  validator.message.date = 'not a real date';
-
-  // validate a field on "blur" event, a 'select' on 'change' event & a '.reuired' classed multifield on 'keyup':
-  $('form')
-    .on('blur', 'input[required], input.optional, select.required', validator.checkField)
-    .on('change', 'select.required', validator.checkField)
-    .on('keypress', 'input[required][pattern]', validator.keypress);
-
-  $('form').submit(function(e) {
-    e.preventDefault();
-    var submit = true;
-
-    // evaluate the form using generic validaing
-    if (!validator.checkAll($(this))) {
-      submit = false;
-    }
-
-    if (submit)
-      this.submit();
-
-    return false;
   });
 </script>
 @endsection
