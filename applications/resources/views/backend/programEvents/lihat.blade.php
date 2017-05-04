@@ -54,17 +54,18 @@
           <tr>
             <td><strong>Deskripsi ID</strong></td>
             <td>:</td>
-            <td>{{ $getProgramEvents->deskripsi_ID }}</td>
+            <td>{!! $getProgramEvents->deskripsi_ID !!}</td>
           </tr>
           <tr>
             <td><strong>Deskripsi EN</strong></td>
             <td>:</td>
-            <td>{{ $getProgramEvents->deskripsi_EN }}</td>
+            <td>{!! $getProgramEvents->deskripsi_EN !!}</td>
           </tr>
           <tr>
             <td><strong>Gambar Produk</strong></td>
             <td>:</td>
-            <td><img src="{{ asset('').$getProgramEvents->img_url }}" /></td>
+            <td>@if ($getProgramEvents->img_url != null)
+              <img src="{{ asset('images/programEvent/').'/'.$getProgramEvents->img_url }}" class="thumbnail"/> @else - @endif</td>
           </tr>
           <tr>
             <td><strong>Gambar alt</strong></td>
@@ -72,19 +73,33 @@
             <td>{{ $getProgramEvents->img_alt }}</td>
           </tr>
           <tr>
+            <td><strong>Video Url</strong></td>
+            <td>:</td>
+            <td>{{ $getProgramEvents->video_url }}<br>
+              @php
+        				$url = $getProgramEvents->video_url;
+        				$step1=explode('v=', $url);
+        				$step2 =explode('&',$step1[1]);
+        				$vedio_id = $step2[0];
+        			@endphp
+        			<iframe class="youtube-embed" src="http://www.youtube.com/embed/{{ $vedio_id }}" frameborder="0" allowfullscreen></iframe>
+
+            </td>
+          </tr>
+          <tr>
             <td><strong>Show Home Page</strong></td>
             <td>:</td>
-            <td>{{ ($getProgramEvents->flag_publish == 1) ? 'Ya' : 'Tidak' }}</td>
+            <td>@if ($getProgramEvents->show_homepage == 1) <span class='label label-success'><i class="fa fa-thumbs-o-up"></i></span> @else <span class='label label-danger'><i class="fa fa-thumbs-o-down"></i></span> @endif</td>
           </tr>
           <tr>
             <td><strong>Tanggal Post</strong></td>
             <td>:</td>
-            <td>{{ $getProgramEvents->tanggal_post }}</td>
+            <td>{!! ($getProgramEvents->tanggal_post <= date('Y-m-d')) ? "<span class='label label-success'>$getProgramEvents->tanggal_post</span>" : "<span class='label label-danger'>$getProgramEvents->tanggal_post</span>" !!}</td>
           </tr>
           <tr>
             <td><strong>Publish</strong></td>
             <td>:</td>
-            <td>{{ ($getProgramEvents->flag_publish == 1) ? 'Ya' : 'Tidak'}}</td>
+            <td>@if ($getProgramEvents->flag_publish == 1) <span class='label label-success'><i class="fa fa-thumbs-o-up"></i></span> @else <span class='label label-danger'><i class="fa fa-thumbs-o-down"></i></span> @endif</td>
           </tr>
         </tbody>
         </table>

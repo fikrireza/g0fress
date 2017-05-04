@@ -48,23 +48,26 @@ class ProgramEventsController extends Controller
     public function store(Request $request)
     {
         $message = [
-          'program_events_kategori_id' => 'Wajib di isi',
+          'program_events_kategori_id.required' => 'Pilih Satu',
           'judul_promosi_ID.required' => 'Wajib di isi',
           'judul_promosi_ID.unique' => 'Judul ini sudah ada',
           'judul_promosi_EN.required' => 'Wajib di isi',
           'deskripsi_ID.required' => 'Wajib di isi',
+          'deskripsi_ID.min' => 'Terlalu Singkat',
           'deskripsi_EN.required' => 'Wajib di isi',
+          'deskripsi_EN.min' => 'Terlalu Singkat',
           'tanggal_post.required' => 'Wajib di isi',
-          'img_url.image' => '.jpeg, .bmp, .png',
+          'img_url.image' => 'Format Gambar Tidak Sesuai',
+          'img_url.max' => 'File Size Terlalu Besar'
         ];
 
         $validator = Validator::make($request->all(), [
           'program_events_kategori_id' => 'required',
           'judul_promosi_ID' => 'required|unique:amd_program_events',
           'judul_promosi_EN' => 'required',
-          'deskripsi_ID' => 'required',
-          'deskripsi_EN' => 'required',
-          'img_url' => 'image|mimes:jpeg,bmp,png',
+          'deskripsi_ID' => 'required|min:20',
+          'deskripsi_EN' => 'required|min:20',
+          'img_url' => 'image|mimes:jpeg,bmp,png|max:2000',
           'tanggal_post' => 'required'
         ], $message);
 
@@ -73,60 +76,64 @@ class ProgramEventsController extends Controller
           return redirect()->route('programEvents.tambah')->withErrors($validator)->withInput();
         }
 
-        $image = $request->file('img_url');
 
-        if($request->flag_publish == null){
-          $flag_publish = 0;
-        }else{
-          $flag_publish = 1;
-        }
+        DB::transaction(function() use($request){
+          $image = $request->file('img_url');
 
-        if($request->show_homepage == 'on'){
-          $show_homepage = 1;
-        }else{
-          $show_homepage = 0;
-        }
+          if($request->flag_publish == null){
+            $flag_publish = 0;
+          }else{
+            $flag_publish = 1;
+          }
 
-        if (!$image) {
-          $save = new ProgramEvents;
-          $save->program_events_kategori_id = $request->program_events_kategori_id;
-          $save->judul_promosi_ID = $request->judul_promosi_ID;
-          $save->judul_promosi_EN = $request->judul_promosi_EN;
-          $save->deskripsi_EN = $request->deskripsi_EN;
-          $save->deskripsi_ID = $request->deskripsi_ID;
-          $save->img_alt  = $request->img_alt;
-          $save->show_homepage = $show_homepage;
-          $save->tanggal_post = $request->tanggal_post;
-          $save->flag_publish = $flag_publish;
-          $save->slug = str_slug($request->judul_promosi_ID,'-');
-          $save->actor = Auth::user()->id;
-          $save->save();
-        }else{
-          $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
-          Image::make($image)->fit(472,270)->save('images/programEvent/'. $img_url);
+          if($request->show_homepage == 'on'){
+            $show_homepage = 1;
+          }else{
+            $show_homepage = 0;
+          }
 
-          $save = new ProgramEvents;
-          $save->program_events_kategori_id = $request->program_events_kategori_id;
-          $save->judul_promosi_ID = $request->judul_promosi_ID;
-          $save->judul_promosi_EN = $request->judul_promosi_EN;
-          $save->deskripsi_EN = $request->deskripsi_EN;
-          $save->deskripsi_ID = $request->deskripsi_ID;
-          $save->img_url  = 'images/programEvent/'.$img_url;
-          $save->img_alt  = $request->img_alt;
-          $save->show_homepage = $show_homepage;
-          $save->tanggal_post = $request->tanggal_post;
-          $save->flag_publish = $flag_publish;
-          $save->slug = str_slug($request->judul_promosi_ID,'-');
-          $save->actor = Auth::user()->id;
-          $save->save();
-        }
+          if (!$image) {
+            $save = new ProgramEvents;
+            $save->program_events_kategori_id = $request->program_events_kategori_id;
+            $save->judul_promosi_ID = $request->judul_promosi_ID;
+            $save->judul_promosi_EN = $request->judul_promosi_EN;
+            $save->deskripsi_EN = $request->deskripsi_EN;
+            $save->deskripsi_ID = $request->deskripsi_ID;
+            $save->img_alt  = $request->img_alt;
+            $save->show_homepage = $show_homepage;
+            $save->tanggal_post = $request->tanggal_post;
+            $save->flag_publish = $flag_publish;
+            $save->slug = str_slug($request->judul_promosi_ID,'-');
+            $save->actor = Auth::user()->id;
+            $save->save();
+          }else{
+            $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
+            Image::make($image)->fit(472,270)->save('images/programEvent/'. $img_url);
 
-        $log = new LogAkses;
-        $log->actor = Auth::user()->id;
-        $log->aksi = 'Menambah Program & Events Baru '.$request->judul_promosi_ID;
-        $log->save();
+            $save = new ProgramEvents;
+            $save->program_events_kategori_id = $request->program_events_kategori_id;
+            $save->judul_promosi_ID = $request->judul_promosi_ID;
+            $save->judul_promosi_EN = $request->judul_promosi_EN;
+            $save->deskripsi_EN = $request->deskripsi_EN;
+            $save->deskripsi_ID = $request->deskripsi_ID;
+            $save->img_url  = $img_url;
+            $save->img_alt  = $request->img_alt;
+            $save->show_homepage = $show_homepage;
+            $save->tanggal_post = $request->tanggal_post;
+            $save->flag_publish = $flag_publish;
+            $save->slug = str_slug($request->judul_promosi_ID,'-');
+            $save->actor = Auth::user()->id;
+            $save->save();
+          }
 
-        return redirect()->route('programEvent.index')->with('berhasil', 'Berhasil Menambahkan Program & Events Baru');
+          $log = new LogAkses;
+          $log->actor = Auth::user()->id;
+          $log->aksi = 'Menambah Program & Events Baru '.$request->judul_promosi_ID;
+          $log->save();
+        });
+
+
+        return redirect()->route('programEvents.index')->with('berhasil', 'Berhasil Menambahkan Program & Events '.$request->judul_promosi_ID);
 
     }
 
@@ -163,25 +170,27 @@ class ProgramEventsController extends Controller
 
     public function edit(Request $request)
     {
-        // dd($request);
         $message = [
-          'program_events_kategori_id' => 'Wajib di isi',
+          'program_events_kategori_id.required' => 'Pilih Satu',
           'judul_promosi_ID.required' => 'Wajib di isi',
           'judul_promosi_ID.unique' => 'Judul ini sudah ada',
           'judul_promosi_EN.required' => 'Wajib di isi',
           'deskripsi_ID.required' => 'Wajib di isi',
+          'deskripsi_ID.min' => 'Terlalu Singkat',
           'deskripsi_EN.required' => 'Wajib di isi',
+          'deskripsi_EN.min' => 'Terlalu Singkat',
           'tanggal_post.required' => 'Wajib di isi',
-          'img_url.image' => '.jpeg, .bmp, .png',
+          'img_url.image' => 'Format Gambar Tidak Sesuai',
+          'img_url.max' => 'File Size Terlalu Besar'
         ];
 
         $validator = Validator::make($request->all(), [
           'program_events_kategori_id' => 'required',
           'judul_promosi_ID' => 'required|unique:amd_program_events,judul_promosi_ID,'.$request->id,
           'judul_promosi_EN' => 'required',
-          'deskripsi_ID' => 'required',
-          'deskripsi_EN' => 'required',
-          'img_url' => 'image|mimes:jpeg,bmp,png',
+          'deskripsi_ID' => 'required|min:20',
+          'deskripsi_EN' => 'required|min:20',
+          'img_url' => 'image|mimes:jpeg,bmp,png|max:2000',
           'tanggal_post' => 'required'
         ], $message);
 
@@ -190,37 +199,20 @@ class ProgramEventsController extends Controller
           return redirect()->route('programEvents.ubah', array('id' => $request->id))->withErrors($validator)->withInput();
         }
 
-        $image = $request->file('img_url');
+        DB::transaction(function() use($request){
+          $image = $request->file('img_url');
 
-        if($request->flag_publish == null){
-          $flag_publish = 0;
-        }else{
-          $flag_publish = 1;
-        }
+          if($request->flag_publish == null){
+            $flag_publish = 0;
+          }else{
+            $flag_publish = 1;
+          }
 
-        if($request->show_homepage == 'on'){
-          $show_homepage = 1;
-        }else{
-          $show_homepage = 0;
-        }
-
-        if (!$image) {
-          $update = ProgramEvents::find($request->id);
-          $update->program_events_kategori_id = $request->program_events_kategori_id;
-          $update->judul_promosi_ID = $request->judul_promosi_ID;
-          $update->judul_promosi_EN = $request->judul_promosi_EN;
-          $update->deskripsi_EN = $request->deskripsi_EN;
-          $update->deskripsi_ID = $request->deskripsi_ID;
-          $update->img_alt  = $request->img_alt;
-          $update->show_homepage = $show_homepage;
-          $update->tanggal_post = $request->tanggal_post;
-          $update->flag_publish = $flag_publish;
-          $update->slug = str_slug($request->judul_promosi_ID,'-');
-          $update->actor = Auth::user()->id;
-          $update->update();
-        }else{
-          $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
-          Image::make($image)->fit(472,270)->save('images/programEvent/'. $img_url);
+          if($request->show_homepage == 'on'){
+            $show_homepage = 1;
+          }else{
+            $show_homepage = 0;
+          }
 
           $update = ProgramEvents::find($request->id);
           $update->program_events_kategori_id = $request->program_events_kategori_id;
@@ -228,22 +220,36 @@ class ProgramEventsController extends Controller
           $update->judul_promosi_EN = $request->judul_promosi_EN;
           $update->deskripsi_EN = $request->deskripsi_EN;
           $update->deskripsi_ID = $request->deskripsi_ID;
-          $update->img_url  = 'images/programEvent/'.$img_url;
           $update->img_alt  = $request->img_alt;
+          $update->video_url  = $request->video_url;
           $update->show_homepage = $show_homepage;
           $update->tanggal_post = $request->tanggal_post;
           $update->flag_publish = $flag_publish;
           $update->slug = str_slug($request->judul_promosi_ID,'-');
           $update->actor = Auth::user()->id;
-          $update->update();
-        }
 
-        $log = new LogAkses;
-        $log->actor = Auth::user()->id;
-        $log->aksi = 'Mengubah Program & Events '.$request->judul_promosi_ID;
-        $log->save();
+          if($request->remove_image == "on"){
+            $update->img_url = null;
+            $update->update();
+          }
+          elseif(!$image) {
+            $update->update();
+          }else{
+            $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
+            Image::make($image)->fit(472,270)->save('images/programEvent/'. $img_url);
 
-        return redirect()->route('programEvents.index')->with('berhasil', 'Berhasil Mengubah Program & Events');
+            $update->img_url  = $img_url;
+            $update->update();
+          }
+
+          $log = new LogAkses;
+          $log->actor = Auth::user()->id;
+          $log->aksi = 'Mengubah Program & Events '.$request->judul_promosi_ID;
+          $log->save();
+        });
+
+
+        return redirect()->route('programEvents.index')->with('berhasil', 'Berhasil Mengubah Program & Events '.$request->judul_promosi_ID);
 
     }
 }
