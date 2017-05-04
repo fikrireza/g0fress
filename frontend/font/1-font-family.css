@@ -18,3 +18,8 @@
     src: url('../font/AvenirNextLTPro-MediumCn.otf');
 }
 
+@font-face {
+    font-family: 'AvenirNextHeavy';
+    src: url('../font/AvenirNextLTPro-HeavyCn_0.otf');
+}
+
