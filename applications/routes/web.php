@@ -138,7 +138,9 @@ Route::get('/news/{slug}', 'Frontend\NewsController@view')->name('frontend.news.
 
 Route::get('/produk', 'Frontend\ProdukController@index')->name('frontend.produk');
 
-Route::get('/produk/{slug}', 'Frontend\ProdukController@index')->name('frontend.produk.view');
+Route::get('/produk/{slug}', 'Frontend\ProdukController@indexView')->name('frontend.produk.view');
+
+Route::get('/produk/callData/{id}', 'Frontend\ProdukController@callData')->name('frontend.produk.callData');
 
 Route::get('/program-event', 'Frontend\EventsController@index')->name('frontend.program-event');
 

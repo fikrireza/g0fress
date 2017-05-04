@@ -6,6 +6,7 @@
 
 @section('head-style')
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/public-sub-page.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/produk-index.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/produk-slider-category.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/for-share-wrapper.css') }}">
 
@@ -21,18 +22,7 @@
 	</div>
 </div>
 <style type="text/css">
-.background-content.background-content-first.space-for-produk-owl,
-.background-content.background-content-second.space-for-produk-owl{
-	height: 50vh
-}
-.product-wrapper{
-	position: relative;
-}
-.product-wrapper .product-wrapper-position{
-	position: absolute; 
-	width: 100%; 
-	top:-95vh;
-}
+
 </style>
 <div class="background-content background-content-first space-for-produk-owl">
 	<div class="content-wrapper">
@@ -70,10 +60,12 @@
 				<div class="wrapper-product">
 					<div class="front slider-product-front-animate">
 						<div class="vertical-align-middle">
-							<a href="{{ route('frontend.produk') }}#{{ $list->slug }}">
-								<img class="this-run-animate" src="{{ asset('images/produk') }}/{!! $list->img_url !!}" alt="{!! $list->img_alt !!}">
+							<a href="{{ route('frontend.produk.view', ['slug'=>$list->slug]) }}">
+								<img class="this-run-animate" src="{{ asset('images/produk/'.$list->img_url) }}" alt="{!! $list->img_alt !!}">
 							</a>
-							<p>{{ $list->slug }}</p>
+							<div class="deskripsi">
+								{{ $list->deskripsi }}
+							</div>
 						</div>
 					</div>
 				</div>

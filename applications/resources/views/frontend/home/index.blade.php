@@ -86,8 +86,8 @@
 				<div class="wrapper-product">
 					<div class="front slider-product-front-animate">
 						<div class="vertical-align-middle">
-							<a href="{{ route('frontend.produk') }}#{{ $list->slug }}">
-								<img class="this-run-animate" src="{{ asset('images/produk') }}/{!! $list->img_url !!}" alt="{!! $list->img_alt !!}">
+							<a href="{{ route('frontend.produk.view', ['slug'=>$list->slug]) }}">
+								<img class="this-run-animate" src="{{ asset('images/produk/'.$list->img_url) }}" alt="{!! $list->img_alt !!}">
 							</a>
 						</div>
 					</div>
