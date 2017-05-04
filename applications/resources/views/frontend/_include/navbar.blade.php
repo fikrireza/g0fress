@@ -36,7 +36,7 @@
 								@foreach($navCallProduk as $listSub)
 								@if($list->id == $listSub->kategori_id)
 								<div class="list">
-									<a href="{{ route('frontend.produk.view', ['slug'=>$listSub->slug]) }}">
+									<a href="{{ route('frontend.produk.view.spesik', ['slug'=>$list->slug, 'sdSlug'=>$listSub->slug]) }}">
 										{{ $listSub->nama_produk }}
 									</a>
 								</div>

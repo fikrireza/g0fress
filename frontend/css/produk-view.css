@@ -11,8 +11,11 @@
 	width: 100%;
 	height: auto;
 	cursor: pointer;
+	transition: all .51s;
 }
-
+.produk-view-wrapper .produk-item .produk-ditail:hover{
+	transform: scale(1.2,1.2);
+}
 .wrapper-for-detail-produk .wrapper-produk-show{
 	position: relative; 
 	width: 50%; 
@@ -62,4 +65,23 @@
 .wrapper-for-detail-produk .wrapper-produk-ditails-for-image .right{
 	right: -55px; 
 	width: 320px;
+}
+@media (max-width: 480px) {
+	.wrapper-for-detail-produk .wrapper-produk-show .produk-show{
+		width: 100%;
+		margin-top: 20px;
+		margin-bottom: -105px;
+	}
+	.wrapper-for-detail-produk .wrapper-produk-ditails-description,
+	.wrapper-for-detail-produk .wrapper-produk-ditails-description .ditails-description{
+		width: 90%;
+	}
+	.wrapper-for-detail-produk .wrapper-produk-ditails-description .ditails-description.left,
+	.wrapper-for-detail-produk .wrapper-produk-ditails-description .ditails-description.right{
+		padding: 0;
+	}
+	.wrapper-for-detail-produk .wrapper-produk-ditails-for-image,
+	.wrapper-for-detail-produk .wrapper-produk-ditails-for-image img{
+		display: none;
+	}
 }

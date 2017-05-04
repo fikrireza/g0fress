@@ -41,9 +41,11 @@
 		<div class="produk-view-wrapper">
 			<div class="row">
 				@foreach($callProduk as $list)
-				<div class="col-md-4">
+				<div class="col-md-4 col-sm-6 col-xs-6">
 					<div class="produk-item">
-						<img class="produk-ditail" src="{{ asset('images/produk/'.$list->img_url_produk) }}" alt="{{ $list->img_alt_produk }}" data-target="{{ route('frontend.produk.callData', ['id'=>$list->id_produk]) }}">
+						<a class="callThisData" href="#thisLoadData" data-target="{{ route('frontend.produk.callData', ['id'=>$list->id_produk]) }}">
+							<img class="produk-ditail" src="{{ asset('images/produk/'.$list->img_url_produk) }}" alt="{{ $list->img_alt_produk }}">
+						</a>
 					</div>
 				</div>
 				@endforeach
@@ -63,44 +65,13 @@
 	</div>
 </div>
 
+<div id="getSdSlug" data-slug="@if(isset($sdSlug)) {{ route('frontend.produk.callData', ['id'=>$sdSlug]) }} @endif" style="display: none;"></div>
+
 @endsection
 
 @section('footer-script')
 <script src="{{ asset('plugin/bootstrap-3.3.7/js/bootstrap.min.js') }}"></script>
-
-<script type="text/javascript">
-	$(".produk-ditail").click(function(){
-			var dataTarget =$(this).attr("data-target");
-			// alert(dataTarget);
-
-	        loadData(dataTarget);
-	});
-
-	function loadData(dataTarget){
-
-	  $.ajax(
-	        {
-	            url: dataTarget,
-	            type: "get",
-	            // beforeSend: function()
-	            // {
-	            //     $('.ajax-load').show();
-	            // }
-	        })
-	        .done(function(data)
-	        {
-	            // if(!data.html){
-	            //     $('.ajax-load').hide();
-		           //  $('#callNextProgramEvent').hide();
-	            //     return;
-	            // }
-	            $("#thisLoadData").html(data.html);
-	        })
-	        .fail(function(jqXHR, ajaxOptions, thrownError)
-	        {
-	              alert('server not responding...');
-	        });
-	}
-</script>
+<script src="{{ asset('frontend/js/click-scroll-animate.js') }}"></script>
+<script src="{{ asset('frontend/js/produk-view.js') }}"></script>
 @endsection
 
