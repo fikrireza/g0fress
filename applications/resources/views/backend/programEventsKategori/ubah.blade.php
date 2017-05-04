@@ -29,9 +29,9 @@
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Judul ID <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="judul_promosi_ID" class="form-control col-md-7 col-xs-12" data-validate-length-range="1" name="judul_kategori_ID" placeholder="Contoh: Judul Program Events Kategori" required="required" type="text" value="{{ $getProgramEventsKategori->judul_kategori_ID }}">
+              <input id="judul_promosi_ID" class="form-control col-md-7 col-xs-12" data-validate-length-range="1" name="judul_kategori_ID" placeholder="Contoh: Judul Program Events Kategori" required="required" type="text" value="{{ old('judul_kategori_ID', $getProgramEventsKategori->judul_kategori_ID) }}">
               @if($errors->has('judul_kategori_ID'))
-                <code><span style="color:red; font-size:10px;">{{ $errors->first('judul_kategori_ID')}}</span></code>
+                <code><span style="color:red; font-size:12px;">{{ $errors->first('judul_kategori_ID')}}</span></code>
               @endif
             </div>
           </div>
@@ -39,37 +39,50 @@
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Judul EN <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="judul_promosi_EN" class="form-control col-md-7 col-xs-12" data-validate-length-range="1" name="judul_kategori_EN" placeholder="Eg: Program Events Category Title" required="required" type="text" value="{{ $getProgramEventsKategori->judul_kategori_EN }}">
+              <input id="judul_promosi_EN" class="form-control col-md-7 col-xs-12" name="judul_kategori_EN" placeholder="Eg: Program Events Category Title" required="required" type="text" value="{{ old('judul_kategori_EN', $getProgramEventsKategori->judul_kategori_EN) }}">
               @if($errors->has('judul_kategori_EN'))
-                <code><span style="color:red; font-size:10px;">{{ $errors->first('judul_kategori_EN')}}</span></code>
+                <code><span style="color:red; font-size:12px;">{{ $errors->first('judul_kategori_EN')}}</span></code>
               @endif
             </div>
           </div>
+          <div class="ln_solid"></div>
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Gambar </label>
             <span style="color:red; font-size:10px;">Biarkan Kosong Jika Tidak Ingin Mengubah Gambar</span>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="img_url" class="form-control col-md-7 col-xs-12" data-validate-length-range="1" name="img_url" type="file">
+              <input id="img_url" class="form-control col-md-7 col-xs-12" name="img_url" type="file">
               <span style="color:red; font-size:10px;">Width: 100px; Heigh: 100px</span>
               @if($errors->has('img_url'))
-                <code><span style="color:red; font-size:10px;">{{ $errors->first('img_url')}}</span></code>
+                <code><span style="color:red; font-size:12px;">{{ $errors->first('img_url')}}</span></code>
               @endif
             </div>
           </div>
+          @if ($getProgramEventsKategori->img_url != null)
+          <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">Hapus Gambar </label>
+            <div class="col-md-1 col-sm-1 col-xs-12">
+              <label></label><input type="checkbox" class="flat" name="remove_image"/></label>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <img src="{{ asset('images/programEvent/').'/'.$getProgramEventsKategori->img_url }}" alt="" class="thumbnail">
+            </div>
+          </div>
+          @endif
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Deskripsi Gambar  </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="img_alt" class="form-control col-md-7 col-xs-12" data-validate-length-range="1" name="img_alt" placeholder="Contoh: Nama Judul Kategori" type="text" value="{{ $getProgramEventsKategori->img_alt }}">
+              <input id="img_alt" class="form-control col-md-7 col-xs-12" name="img_alt" placeholder="Contoh: Judul Kategori" type="text" value="{{ old('img_alt', $getProgramEventsKategori->img_alt) }}">
               @if($errors->has('img_alt'))
-                <code><span style="color:red; font-size:10px;">{{ $errors->first('img_alt')}}</span></code>
+                <code><span style="color:red; font-size:12px;">{{ $errors->first('img_alt')}}</span></code>
               @endif
             </div>
           </div>
+          <div class="ln_solid"></div>
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Publish </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
               <label>
-                <input type="checkbox" class="flat" name="flag_publish" {{ $getProgramEventsKategori->flag_publish == 1 ? 'checked="checked"' : '' }} />
+                <input type="checkbox" class="flat" name="flag_publish" @if(old('flag_publish', $getProgramEventsKategori->flag_publish)) checked @endif />
               </label>
             </div>
           </div>
@@ -107,30 +120,6 @@
     singleDatePicker: true,
     calender_style: "picker_3",
     format: 'YYYY-MM-DD',
-  });
-
-  // initialize the validator function
-  validator.message.date = 'not a real date';
-
-  // validate a field on "blur" event, a 'select' on 'change' event & a '.reuired' classed multifield on 'keyup':
-  $('form')
-    .on('blur', 'input[required], textarea, input.optional, select.required', validator.checkField)
-    .on('change', 'select.required', validator.checkField)
-    .on('keypress', 'input[required][pattern], textarea', validator.keypress);
-
-  $('form').submit(function(e) {
-    e.preventDefault();
-    var submit = true;
-
-    // evaluate the form using generic validaing
-    if (!validator.checkAll($(this))) {
-      submit = false;
-    }
-
-    if (submit)
-      this.submit();
-
-    return false;
   });
 </script>
 @endsection

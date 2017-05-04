@@ -30,7 +30,7 @@
             <div class="col-md-6 col-sm-6 col-xs-12">
               <input id="judul_promosi_ID" class="form-control col-md-7 col-xs-12" data-validate-length-range="1" name="judul_kategori_ID" placeholder="Contoh: Judul Program Events Kategori" required="required" type="text" value="{{ old('judul_kategori_ID') }}">
               @if($errors->has('judul_kategori_ID'))
-                <code><span style="color:red; font-size:10px;">{{ $errors->first('judul_kategori_ID')}}</span></code>
+                <code><span style="color:red; font-size:12px;">{{ $errors->first('judul_kategori_ID')}}</span></code>
               @endif
             </div>
           </div>
@@ -40,17 +40,18 @@
             <div class="col-md-6 col-sm-6 col-xs-12">
               <input id="judul_promosi_EN" class="form-control col-md-7 col-xs-12" data-validate-length-range="1" name="judul_kategori_EN" placeholder="Eg: Program Events Category Title" required="required" type="text" value="{{ old('judul_kategori_EN') }}">
               @if($errors->has('judul_kategori_EN'))
-                <code><span style="color:red; font-size:10px;">{{ $errors->first('judul_kategori_EN')}}</span></code>
+                <code><span style="color:red; font-size:12px;">{{ $errors->first('judul_kategori_EN')}}</span></code>
               @endif
             </div>
           </div>
+          <div class="ln_solid"></div>
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Gambar </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
               <input id="img_url" class="form-control col-md-7 col-xs-12" data-validate-length-range="1" name="img_url" type="file">
               <span style="color:red; font-size:10px;">Width: 100px; Heigh: 100px</span>
               @if($errors->has('img_url'))
-                <code><span style="color:red; font-size:10px;">{{ $errors->first('img_url')}}</span></code>
+                <code><span style="color:red; font-size:12px;">{{ $errors->first('img_url')}}</span></code>
               @endif
             </div>
           </div>
@@ -59,10 +60,11 @@
             <div class="col-md-6 col-sm-6 col-xs-12">
               <input id="img_alt" class="form-control col-md-7 col-xs-12" data-validate-length-range="1" name="img_alt" placeholder="Contoh: Judul Kategori" type="text" value="{{ old('img_alt') }}">
               @if($errors->has('img_alt'))
-                <code><span style="color:red; font-size:10px;">{{ $errors->first('img_alt')}}</span></code>
+                <code><span style="color:red; font-size:12px;">{{ $errors->first('img_alt')}}</span></code>
               @endif
             </div>
           </div>
+          <div class="ln_solid"></div>
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Publish </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
@@ -99,36 +101,6 @@
   $(".select2_single").select2({
     placeholder: "Pilih Kategori",
     allowClear: true
-  });
-
-  $('#tanggal_post').daterangepicker({
-    singleDatePicker: true,
-    calender_style: "picker_3",
-    format: 'YYYY-MM-DD',
-  });
-
-  // initialize the validator function
-  validator.message.date = 'not a real date';
-
-  // validate a field on "blur" event, a 'select' on 'change' event & a '.reuired' classed multifield on 'keyup':
-  $('form')
-    .on('blur', 'input[required], textarea, input.optional, select.required', validator.checkField)
-    .on('change', 'select.required', validator.checkField)
-    .on('keypress', 'input[required][pattern], textarea', validator.keypress);
-
-  $('form').submit(function(e) {
-    e.preventDefault();
-    var submit = true;
-
-    // evaluate the form using generic validaing
-    if (!validator.checkAll($(this))) {
-      submit = false;
-    }
-
-    if (submit)
-      this.submit();
-
-    return false;
   });
 </script>
 @endsection

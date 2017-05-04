@@ -50,7 +50,7 @@
             <td><strong>Gambar Produk</strong></td>
             <td>:</td>
             <td>@if ($getProgramEventsKategori->img_url != null)
-              <img src="{{ asset('').$getProgramEventsKategori->img_url }}" /> @else - @endif</td>
+              <img src="{{ asset('images/programEvent/').'/'.$getProgramEventsKategori->img_url }}" /> @else - @endif</td>
           </tr>
           <tr>
             <td><strong>Gambar alt</strong></td>
@@ -60,7 +60,7 @@
           <tr>
             <td><strong>Publish</strong></td>
             <td>:</td>
-            <td>{{ ($getProgramEventsKategori->flag_publish == 1) ? 'Ya' : 'Tidak'}}</td>
+            <td>@if ($getProgramEventsKategori->flag_publish == 1) <span class='label label-success'><i class="fa fa-thumbs-o-up"></i></span> @else <span class='label label-danger'><i class="fa fa-thumbs-o-down"></i></span> @endif</td>
           </tr>
         </tbody>
         </table>
