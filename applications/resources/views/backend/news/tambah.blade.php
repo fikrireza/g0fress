@@ -26,27 +26,27 @@
       <div class="x_content">
         <form action="{{ route('news.store') }}" method="POST" class="form-horizontal form-label-left" enctype="multipart/form-data" novalidate>
           {{ csrf_field() }}
-          <div class="item form-group">
+          <div class="item form-group {{ $errors->has('judul_ID') ? 'has-error' : ''}}">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Judul ID <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="judul_ID" class="form-control col-md-7 col-xs-12" data-validate-length-range="1" name="judul_ID" placeholder="Contoh: Judul News" required="required" type="text" value="{{ old('judul_ID') }}">
+              <input id="judul_ID" class="form-control col-md-7 col-xs-12" name="judul_ID" placeholder="Contoh: Judul News" required="required" type="text" value="{{ old('judul_ID') }}">
               @if($errors->has('judul_ID'))
                 <code><span style="color:red; font-size:12px;">{{ $errors->first('judul_ID')}}</span></code>
               @endif
             </div>
           </div>
-          <div class="item form-group">
+          <div class="item form-group {{ $errors->has('judul_EN') ? 'has-error' : ''}}">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Judul EN <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="judul_EN" class="form-control col-md-7 col-xs-12" data-validate-length-range="1" name="judul_EN" placeholder="Eg: News Title" required="required" type="text" value="{{ old('judul_EN') }}">
+              <input id="judul_EN" class="form-control col-md-7 col-xs-12" name="judul_EN" placeholder="Eg: News Title" required="required" type="text" value="{{ old('judul_EN') }}">
               @if($errors->has('judul_EN'))
                 <code><span style="color:red; font-size:12px;">{{ $errors->first('judul_EN')}}</span></code>
               @endif
             </div>
           </div>
-          <div class="item form-group">
+          <div class="item form-group {{ $errors->has('deskripsi_ID') ? 'has-error' : ''}}">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Deskripsi ID <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
@@ -56,7 +56,7 @@
               @endif
             </div>
           </div>
-          <div class="item form-group">
+          <div class="item form-group {{ $errors->has('deskripsi_EN') ? 'has-error' : ''}}">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Deskripsi EN <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
@@ -66,32 +66,32 @@
               @endif
             </div>
           </div>
-          <div class="item form-group">
+          <div class="item form-group {{ $errors->has('img_url') ? 'has-error' : ''}}">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Gambar
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="img_url" class="form-control col-md-7 col-xs-12" data-validate-length-range="1" name="img_url" type="file">
+              <input id="img_url" class="form-control col-md-7 col-xs-12" name="img_url" type="file">
               <span style="color:red; font-size:10px;">Width: 100px; Heigh: 100px</span>
               @if($errors->has('img_url'))
                 <code><span style="color:red; font-size:12px;">{{ $errors->first('img_url')}}</span></code>
               @endif
             </div>
           </div>
-          <div class="item form-group">
+          <div class="item form-group {{ $errors->has('img_alt') ? 'has-error' : ''}}">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Deskripsi Gambar
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="img_alt" class="form-control col-md-7 col-xs-12" data-validate-length-range="1" name="img_alt" placeholder="Contoh: Deskripsi Gambar" type="text" value="{{ old('img_alt') }}">
+              <input id="img_alt" class="form-control col-md-7 col-xs-12" name="img_alt" placeholder="Contoh: Deskripsi Gambar" type="text" value="{{ old('img_alt') }}">
               @if($errors->has('img_alt'))
                 <code><span style="color:red; font-size:12px;">{{ $errors->first('img_alt')}}</span></code>
               @endif
             </div>
           </div>
-          <div class="item form-group">
+          <div class="item form-group {{ $errors->has('video_url') ? 'has-error' : ''}}">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Video URL
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="video_url" class="form-control col-md-7 col-xs-12" data-validate-length-range="1" name="video_url" placeholder="Contoh: Video Url" type="text" value="{{ old('video_url') }}">
+              <input id="video_url" class="form-control col-md-7 col-xs-12" name="video_url" placeholder="Contoh: Video Url" type="text" value="{{ old('video_url') }}">
               @if($errors->has('video_url'))
                 <code><span style="color:red; font-size:12px;">{{ $errors->first('video_url')}}</span></code>
               @endif
@@ -106,7 +106,7 @@
               </label>
             </div>
           </div>
-          <div class="item form-group">
+          <div class="item form-group {{ $errors->has('tanggal_post') ? 'has-error' : ''}}">
             <label class="control-label col-md-3 col-sm-3 col-xs-12">Tanggal Publish <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
