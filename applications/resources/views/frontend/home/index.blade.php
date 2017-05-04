@@ -16,18 +16,12 @@
 @section('body-content')
 
 <div class="slider">
+	@foreach($callSlider as $list)
 	<div class="item">
-		<div class="img" style="background-image: url('{{ asset('picture/firstCampaign/background-rainbow.png') }}');">
+		<div class="img" style="background-image: url('{{ asset($list->img_url) }}');" title="{{ $list->img_alt }}">
 		</div>
 	</div>
-	<div class="item">
-		<div class="img" style="background-image: url('{{ asset('picture/firstCampaign/background-rainbow.png') }}');">
-		</div>
-	</div>
-	<div class="item">
-		<div class="img" style="background-image: url('{{ asset('picture/firstCampaign/background-rainbow.png') }}');">
-		</div>
-	</div>
+	@endforeach
 </div>
 
 <div class="scroldown-wrapper">
@@ -54,7 +48,7 @@
 				<label class="circle-shape left"></label>
 			</div>
 			<div class="vertical-align-midle">
-				<label class="flag-title">@lang('front/home.About-Go-Fress')</label>
+				<label class="flag-title">@lang('front/home.about-go-fress')</label>
 			</div>
 			<div class="vertical-align-midle">
 				<label class="circle-shape right"></label>
@@ -72,7 +66,7 @@
 				<label class="circle-shape left"></label>
 			</div>
 			<div class="vertical-align-midle">
-				<label class="flag-title">@lang('front/home.Go-Fress-Product')</label>
+				<label class="flag-title">@lang('front/home.go-fress-product')</label>
 			</div>
 			<div class="vertical-align-midle">
 				<label class="circle-shape right"></label>
@@ -97,7 +91,7 @@
 		</div>
 
 		<div class="for-btn-see-more">
-			<a class="btn-see-more" href="{{ route('frontend.produk') }}">@lang('front/home.See-More')</a>
+			<a class="btn-see-more" href="{{ route('frontend.produk') }}">@lang('front/publict.see-more')</a>
 		</div>
 	</div>
 </div>
@@ -139,7 +133,9 @@
 		</div>
 
 		<div class="for-btn-see-more">
-			<a class="btn-see-more" href="">@lang('front/home.See-More')</a>
+			<a class="btn-see-more" href="{{ route('frontend.program-event') }}">
+				@lang('front/publict.see-more')
+			</a>
 		</div>
 
 	</div>
@@ -153,7 +149,7 @@
 				<label class="circle-shape left"></label>
 			</div>
 			<div class="vertical-align-midle">
-				<label class="flag-title">@lang('front/home.Latest-News')</label>
+				<label class="flag-title">@lang('front/home.latest-news')</label>
 			</div>
 			<div class="vertical-align-midle">
 				<label class="circle-shape right"></label>
@@ -176,7 +172,7 @@
 		</div>
 
 		<div class="for-btn-see-more">
-			<a class="btn-see-more" href="">@lang('front/home.See-More')</a>
+			<a class="btn-see-more" href="">@lang('front/publict.see-more')</a>
 		</div>
 
 	</div>
@@ -191,7 +187,7 @@
 				<label class="circle-shape left"></label>
 			</div>
 			<div class="vertical-align-midle">
-				<label class="flag-title">@lang('front/home.Stay-Connected')</label>
+				<label class="flag-title">@lang('front/home.stay-connected')</label>
 			</div>
 			<div class="vertical-align-midle">
 				<label class="circle-shape right"></label>
@@ -213,7 +209,7 @@
 						@if(isset($item['caption']['text']))
 							<p>{{ $item['caption']['text'] }}</p>
 						@endif
-						<a href="{{ $item['link'] }}">@lang('front/home.view')</a>
+						<a href="{{ $item['link'] }}">@lang('front/publict.view')</a>
 					</div>
 				</div>
 			</div>
@@ -232,7 +228,7 @@
 		<div class="clearfix"></div>
 
 		<div class="for-btn-see-more">
-			<a class="btn-see-more" href="">@lang('front/home.Connect-With-Us')</a>
+			<a class="btn-see-more" href="">@lang('front/home.connect-with-us')</a>
 		</div>
 
 		<div style="text-align: center;">
@@ -253,7 +249,7 @@
 				<label class="circle-shape left"></label>
 			</div>
 			<div class="vertical-align-midle">
-				<label class="flag-title">@lang('front/home.Connect-With-Us')</label>
+				<label class="flag-title">@lang('front/home.connect-with-us')</label>
 			</div>
 			<div class="vertical-align-midle">
 				<label class="circle-shape right"></label>
@@ -264,7 +260,7 @@
 		<img src="{{ asset('public/image/default/toko.png') }}" style="width: 100%; margin-top: 60px;">
 
 		<div class="for-btn-see-more">
-			<a class="btn-see-more" href="">@lang('front/home.More-Location')</a>
+			<a class="btn-see-more" href="">@lang('front/home.more-location')</a>
 		</div>
 	</div>
 </div>

@@ -9,16 +9,14 @@ return [
 	'contact' => 'Kontak',
 	'scroll-down' => 'gulir kebawah!',
 
-	'About-Go-Fress' => 'Tentang Go Fress',
-	'Go-Fress-Product' => 'Go Fress Produk',
-	'Latest-News' => 'Berita Terbaru',
-	'Stay-Connected' => 'Tetap Terhubung',
-	'Connect-With-Us' => 'Terhubung Dengan Kami',
-	'Where-to-Find-Us' => 'Dimana Menemukan Kita',
-	'More-Location' => 'Lokasi Lain',
+	'about-go-fress' => 'Tentang Go Fress',
+	'go-fress-product' => 'Go Fress Produk',
+	'latest-news' => 'Berita Terbaru',
+	'stay-connected' => 'Tetap Terhubung',
+	'connect-with-us' => 'Terhubung Dengan Kami',
+	'where-to-find-us' => 'Dimana Menemukan Kita',
+	'more-location' => 'Lokasi Lain',
 	
 	'copy-right' => '© 2017 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore<br>magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
 
-	'view' => 'Lihat',
-	'See-More' => 'Lihat Selebihnya',
 ];

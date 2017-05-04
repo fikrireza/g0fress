@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\ProgramEvents;
 use App\Models\ProdukKategori;
 use App\Models\News;
+use App\Models\SliderHome;
 
 use App;
 use DB;
@@ -16,17 +17,17 @@ use DateTime;
 
 class HomeController extends Controller
 {
-    //
     function index(){
 
     	$items = [];
     	$client = new \GuzzleHttp\Client;
 	    $response = $client->get('https://www.instagram.com/dessurya/media');
 	    $items = json_decode((string) $response->getBody(), true)['items'];
-	    // dd($items);
 
     	$date = new DateTime;
 		$format_date = $date->format('Y-m-d');
+        
+        $callSlider = SliderHome::select('img_url', 'img_alt')->where('flag_publish', '1')->orderBy('posisi', 'asc')->get();
 
 		$callKategory = ProdukKategori::select('nama_kategori', 'slug', 'img_url', 'img_alt')->where('flag_publish', '1')->whereDATE('tanggal_post', '<=', $format_date)->orderBy('id', 'desc')->get();
         
@@ -46,6 +47,6 @@ class HomeController extends Controller
 
 	    
 	    
-    	return view('frontend.home.index',compact('items','callProgramEvent','callKategory','callNews'));
+    	return view('frontend.home.index',compact('items','callSlider','callProgramEvent','callKategory','callNews'));
     }
 }
