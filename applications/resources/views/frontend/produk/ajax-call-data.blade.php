@@ -11,13 +11,13 @@
 			<div class="ditails-description left">
 				<h2>nutrition information</h2>
 				<div class="ditails">
-					{{ $callProduk->nutrition_fact }}
+					{!! $callProduk->nutrition_fact !!}
 				</div>
 			</div>
 			<div class="ditails-description right">
 				<h2>ingredients</h2>
 				<div class="ditails">
-					{{ $callProduk->ingredient }}
+					{!! $callProduk->ingredient !!}
 				</div>
 			</div>
 		</div>

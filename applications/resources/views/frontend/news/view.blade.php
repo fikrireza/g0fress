@@ -13,7 +13,7 @@
 
 <div class="wrapper-banner">
 	<div class="banner" style="background-image: url(' {{ asset('picture/firstCampaign/background-rainbow.png') }}');">
-		
+
 	</div>
 </div>
 
@@ -41,8 +41,8 @@
 		</div>
 
 		<div class="description">
-			<img src="{{ asset($callNews->img_url) }}" alt="{{ $callNews->img_alt }}">
-			{{ $callNews->deskripsi }}
+			<img src="{{ asset('images/news').'/'.$callNews->img_url }}" alt="{{ $callNews->img_alt }}">
+			{!! $callNews->deskripsi !!}
 		</div>
 
 		<div class="clearfix"></div>
@@ -56,4 +56,3 @@
 
 @section('footer-script')
 @endsection
-
