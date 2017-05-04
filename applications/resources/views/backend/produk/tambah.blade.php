@@ -302,6 +302,7 @@
     singleDatePicker: true,
     calender_style: "picker_3",
     format: 'YYYY-MM-DD',
+    minDate: new Date(),
   });
 </script>
 @endsection
