@@ -12,8 +12,6 @@
 */
 
 
-// Route::get('/home', 'HomeController@index');
-
 Route::get('loginCampaign', 'SocialAuthController@redirectFB')->name('redirectFB');
 Route::get('/callback', 'SocialAuthController@callBackFB')->name('callBackFB');
 
@@ -121,6 +119,13 @@ Route::group(['middleware' => ['isAdministrator']], function () {
   Route::get('admin/campaign/pertanyaan_3', 'Backend\Campaign1Controller@getPertanyaan_3')->name('hello.pertanyaan_3');
   Route::get('admin/campaign/pertanyaan_4', 'Backend\Campaign1Controller@getPertanyaan_4')->name('hello.pertanyaan_4');
 
+  //Social Media
+  Route::get('admin/social-account', 'Backend\SocialMediaController@index')->name('social.index');
+  Route::get('admin/social-account/tambah', 'Backend\SocialMediaController@tambah')->name('social.tambah');
+  Route::post('admin/social-account/tambah', 'Backend\SocialMediaController@store')->name('social.store');
+  Route::get('admin/social-account/ubah/{id}', 'Backend\SocialMediaController@ubah')->name('social.ubah');
+  Route::post('admin/social-account/ubah', 'Backend\SocialMediaController@edit')->name('social.edit');
+
 
 });
 //----------------------- BACKEND -----------------------//
@@ -147,7 +152,7 @@ Route::get('/produk/callData/{id}', 'Frontend\ProdukController@callData')
 
 Route::get('/produk/{slug}', 'Frontend\ProdukController@indexView')
   ->name('frontend.produk.view');
-  
+
 Route::get('/produk/{slug}/{sdSlug}', 'Frontend\ProdukController@indexViewSpesifik')
   ->name('frontend.produk.view.spesik');
 
@@ -160,4 +165,3 @@ Route::get('/program-event/more-events-vidio', 'Frontend\EventsController@indexE
   ->name('frontend.program-event.events-vidio');
 Route::get('/program-event/event/{slug}', 'Frontend\EventsController@eventsView')
   ->name('frontend.program-event.view');
-
