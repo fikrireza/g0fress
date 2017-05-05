@@ -35,16 +35,32 @@
 			</div>
 		</div>
 
-		<form>
+		<form method="post" action="{{ route('frontend.contact.post') }}">
 			<div class="wrapper-content">
 				<div class="left">
-					<input type="text" class="form-control" placeholder="&#61447; Your Name" >
-					<input type="text" class="form-control" placeholder="&#xf0e0; Email Address" >
-					<input type="text" class="form-control" placeholder="&#xf095; Phone Number" >
+					{{ csrf_field() }}
+					<input type="text" class="form-control" name="nama" placeholder="&#61447; Your Name" value="{{ old('nama') }}">
+					@if($errors->has('nama'))
+						<code><span style="color:red; font-size:12px;">{{ $errors->first('nama')}}</span></code>
+					@endif
+					<input type="text" class="form-control" name="email" placeholder="&#xf0e0; Email Address" value="{{ old('email') }}">
+					@if($errors->has('email'))
+						<code><span style="color:red; font-size:12px;">{{ $errors->first('email')}}</span></code>
+					@endif
+					<input type="text" class="form-control" name="telp" placeholder="&#xf095; Phone Number" value="{{ old('telp') }}">
+					@if($errors->has('telp'))
+						<code><span style="color:red; font-size:12px;">{{ $errors->first('telp')}}</span></code>
+					@endif
 				</div>
 				<div class="right">
-					<input type="text" class="form-control" placeholder="&#xf27a; Subject" >
-					<textarea class="form-control" rows="3" placeholder="Messages"></textarea>
+					<input type="text" class="form-control" name="subjek" placeholder="&#xf27a; Subject" value="{{ old('subjek') }}">
+					@if($errors->has('subjek'))
+						<code><span style="color:red; font-size:12px;">{{ $errors->first('subjek')}}</span></code>
+					@endif
+					<textarea class="form-control" rows="3" name="pesan" placeholder="Messages">{{ old('pesan') }}</textarea>
+					@if($errors->has('pesan'))
+						<code><span style="color:red; font-size:12px;">{{ $errors->first('pesan')}}</span></code>
+					@endif
 				</div>
 				<div class="clearfix"></div>
 				<button class="submit" type="submit">
@@ -63,6 +79,7 @@
 
 	<div class="content-wrapper">
 		<div class="wrapper-content">
+			@if ($getKontak->isEmpty())
 			<div class="left">
 				<h3 class="title">
 					Title
@@ -81,6 +98,19 @@
 				</div>
 				<p class="phone"><i class="fa fa-phone" aria-hidden="true"></i> 000-0000000</p>
 			</div>
+			@else
+			@foreach ($getKontak as $key)
+			<div class="left">
+				<h3 class="title">
+					{{ $key->kantor_kategori}}
+				</h3>
+				<div class="description">
+					{!! $key->alamat !!}
+				</div>
+				<p class="phone"><i class="fa fa-phone" aria-hidden="true"></i> {{ $key->no_telp }}</p>
+			</div>
+			@endforeach
+			@endif
 			<div class="clearfix"></div>
 		</div>
 	</div>

@@ -8,5 +8,5 @@ class Inbox extends Model
 {
     protected $table = 'amd_inbox';
 
-    protected $fillable = ['nama','subjek','email','pesan'];
+    protected $fillable = ['nama','subjek','telp','email','pesan'];
 }

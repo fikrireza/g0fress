@@ -145,38 +145,25 @@ Route::group(['middleware' => ['isAdministrator']], function () {
 // Route::get('/', '')->name('');
 Route::get('bahasa/{bhs}', 'HomeController@language')->where('lang', '[A-Za-z_-]+');
 
-Route::get('/', 'Frontend\HomeController@index')
-  ->name('frontend.home');
+Route::get('/', 'Frontend\HomeController@index')->name('frontend.home');
 
-Route::get('/contact', 'Frontend\ContactController@index')
-  ->name('frontend.contact');
+Route::get('/contact', 'Frontend\ContactController@index')->name('frontend.contact');
+Route::post('/contact', 'Frontend\ContactController@store')->name('frontend.contact.post');
 
-Route::get('/about', 'Frontend\AboutController@index')
-  ->name('frontend.about');
+Route::get('/about', 'Frontend\AboutController@index')->name('frontend.about');
 
-Route::get('/news', 'Frontend\NewsController@index')
-  ->name('frontend.news');
-Route::get('/news/{slug}', 'Frontend\NewsController@view')
-  ->name('frontend.news.view');
+// News
+Route::get('/news', 'Frontend\NewsController@index')->name('frontend.news');
+Route::get('/news/{slug}', 'Frontend\NewsController@view')->name('frontend.news.view');
 
-Route::get('/produk', 'Frontend\ProdukController@index')
-  ->name('frontend.produk');
+// Produk
+Route::get('/produk', 'Frontend\ProdukController@index')->name('frontend.produk');
+Route::get('/produk/callData/{id}', 'Frontend\ProdukController@callData')->name('frontend.produk.callData');
+Route::get('/produk/{slug}', 'Frontend\ProdukController@indexView')->name('frontend.produk.view');
+Route::get('/produk/{slug}/{sdSlug}', 'Frontend\ProdukController@indexViewSpesifik')->name('frontend.produk.view.spesik');
 
-Route::get('/produk/callData/{id}', 'Frontend\ProdukController@callData')
-  ->name('frontend.produk.callData');
-
-Route::get('/produk/{slug}', 'Frontend\ProdukController@indexView')
-  ->name('frontend.produk.view');
-
-Route::get('/produk/{slug}/{sdSlug}', 'Frontend\ProdukController@indexViewSpesifik')
-  ->name('frontend.produk.view.spesik');
-
-
-Route::get('/program-event', 'Frontend\EventsController@index')
-  ->name('frontend.program-event');
-Route::get('/program-event/more-events', 'Frontend\EventsController@indexEvents')
-  ->name('frontend.program-event.events');
-Route::get('/program-event/more-events-vidio', 'Frontend\EventsController@indexEventsVidio')
-  ->name('frontend.program-event.events-vidio');
-Route::get('/program-event/event/{slug}', 'Frontend\EventsController@eventsView')
-  ->name('frontend.program-event.view');
+// Program & Event
+Route::get('/program-event', 'Frontend\EventsController@index')->name('frontend.program-event');
+Route::get('/program-event/more-events', 'Frontend\EventsController@indexEvents')->name('frontend.program-event.events');
+Route::get('/program-event/more-events-vidio', 'Frontend\EventsController@indexEventsVidio')->name('frontend.program-event.events-vidio');
+Route::get('/program-event/event/{slug}', 'Frontend\EventsController@eventsView')->name('frontend.program-event.view');
