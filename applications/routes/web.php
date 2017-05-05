@@ -136,6 +136,14 @@ Route::group(['middleware' => ['isAdministrator']], function () {
   Route::get('admin/kontak/ubah/{id}', 'Backend\KontakController@ubah')->name('kontak.ubah');
   Route::post('admin/kontak/ubah', 'Backend\KontakController@edit')->name('kontak.edit');
 
+  // Tentang
+  Route::get('admin/tentang', 'Backend\TentangController@index')->name('tentang.index');
+  Route::get('admin/tentang/tambah', 'Backend\TentangController@tambah')->name('tentang.tambah');
+  Route::post('admin/tentang/tambah', 'Backend\TentangController@store')->name('tentang.store');
+  Route::get('admin/tentang/ubah/{id}', 'Backend\TentangController@ubah')->name('tentang.ubah');
+  Route::post('admin/tentang/ubah', 'Backend\TentangController@edit')->name('tentang.edit');
+
+
 });
 //----------------------- BACKEND -----------------------//
 

@@ -56,6 +56,14 @@
           <li class="{{ Route::currentRouteNamed('kontak.index') ? 'active' : '' }}{{ Route::currentRouteNamed('kontak.tambah') ? 'active' : '' }}{{ Route::currentRouteNamed('kontak.ubah') ? 'active' : '' }}">
             <a href="{{ route('kontak.index')}}"><i class="fa fa-building-o"></i> Kontak </a>
           </li>
+          <li class="{{ Route::currentRouteNamed('tentang.index') ? 'active' : '' }}{{ Route::currentRouteNamed('tentang.tambah') ? 'active' : '' }}{{ Route::currentRouteNamed('tentang.ubah') ? 'active' : '' }}">
+            <a><i class="fa fa-bookmark"></i> Tentang <span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu">
+              <li class="{{ Route::currentRouteNamed('tentang.index') ? 'current-page' : '' }}{{ Route::currentRouteNamed('tentang.tambah') ? 'current-page' : '' }}{{ Route::currentRouteNamed('tentang.ubah') ? 'current-page' : '' }}"><a href="{{ route('tentang.index') }}">Visi & Misi</a></li>
+              <li class="{{ Route::currentRouteNamed('banner.index') ? 'current-page' : '' }}{{ Route::currentRouteNamed('banner.tambah') ? 'current-page' : '' }}{{ Route::currentRouteNamed('banner.ubah') ? 'current-page' : '' }}"><a href="{{ route('banner.index') }}">Certificate & Achievement </a></li>
+            </ul>
+
+          </li>
           <li class="{{ Route::currentRouteNamed('inbox.index') ? 'active' : '' }}"><a href="{{ route('inbox.index') }}"><i class="fa fa-inbox"></i> Inbox </a></li>
           <li class="{{ Route::currentRouteNamed('social.index') ? 'active' : '' }}{{ Route::currentRouteNamed('social.tambah') ? 'active' : '' }}{{ Route::currentRouteNamed('social.ubah') ? 'active' : '' }}"><a href="{{ route('social.index') }}"><i class="fa fa-share-alt"></i> Social Media </a></li>
         </ul>
