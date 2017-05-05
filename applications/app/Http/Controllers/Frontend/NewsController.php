@@ -18,16 +18,65 @@ class NewsController extends Controller
     	$date = new DateTime;
 		$format_date = $date->format('Y-m-d');
 
-    	$callNews = News::select('judul_ID as judul', 'deskripsi_ID as deskripsi', 'slug', 'tanggal_post' ,'img_url','img_alt')->where('flag_publish', '1')->whereDATE('tanggal_post', '<=', $format_date)->orderBy('id', 'desc')->paginate(2);
+        if (App::getLocale() == 'id') {
+            $callNewsJudul = 'judul_ID as judul';
+            $callNewsDeskripsi = 'deskripsi_ID as deskripsi';
 
-		$callNewsList = News::select('judul_ID as judul', 'slug', 'tanggal_post')->where('flag_publish', '1')->whereDATE('tanggal_post', '<=', $format_date)->orderBy('tanggal_post', 'desc')->get();
+            $callNewsListJudul = 'judul_ID as judul';
+        }
+        else if (App::getLocale() == 'en') {
+            $callNewsJudul = 'judul_EN as judul';
+            $callNewsDeskripsi = 'deskripsi_EN as deskripsi';
+            
+            $callNewsListJudul = 'judul_EN as judul';
+        }
+
+    	$callNews = News::select(
+                $callNewsJudul, 
+                $callNewsDeskripsi, 
+                'slug', 
+                'tanggal_post',
+                'img_url',
+                'img_alt'
+            )
+            ->where('flag_publish', '1')
+            ->whereDATE('tanggal_post', '<=', $format_date)
+            ->orderBy('id', 'desc')
+            ->paginate(2);
+
+		$callNewsList = News::select(
+                $callNewsListJudul, 
+                'slug', 
+                'tanggal_post'
+            )
+            ->where('flag_publish', '1')
+            ->whereDATE('tanggal_post', '<=', $format_date)
+            ->orderBy('tanggal_post', 'desc')
+            ->get();
 
     	return view('frontend.news.index',compact('callNews','callNewsList'));
     }
     function view($slug){
 
-    	$callNews = News::select('judul_ID as judul', 'deskripsi_ID as deskripsi', 'tanggal_post' ,'img_url','img_alt')->where('slug', $slug)->first();
-    	// dd($callNews);
+        if (App::getLocale() == 'id') {
+            $callNewsJudul = 'judul_ID as judul';
+            $callNewsDeskripsi = 'deskripsi_ID as deskripsi';
+        }
+        else if (App::getLocale() == 'en') {
+            $callNewsJudul = 'judul_EN as judul';
+            $callNewsDeskripsi = 'deskripsi_EN as deskripsi';
+        }
+
+    	$callNews = News::select(
+                $callNewsJudul, 
+                $callNewsDeskripsi, 
+                'tanggal_post',
+                'img_url',
+                'img_alt'
+            )
+            ->where('slug', $slug)
+            ->first();
+
     	return view('frontend.news.view',compact('callNews'));
     }
 

@@ -32,7 +32,9 @@
 					<label class="circle-shape left"></label>
 				</div>
 				<div class="vertical-align-midle">
-					<label class="flag-title">Program & Events</label>
+					<label class="flag-title">
+						@lang('front/publict.program')
+					</label>
 				</div>
 				<div class="vertical-align-midle">
 					<label class="circle-shape right"></label>
@@ -60,7 +62,9 @@
 		</div>
 
 		<div class="for-btn-see-more">
-			<a class="btn-see-more" href="{{ route('frontend.program-event.events') }}">@lang('front/home.See-More')</a>
+			<a class="btn-see-more" href="{{ route('frontend.program-event.events') }}">
+				@lang('front/publict.see-more')
+			</a>
 		</div>
 
 		<div class="clearfix"></div>
@@ -81,7 +85,9 @@
 					<label class="circle-shape left"></label>
 				</div>
 				<div class="vertical-align-midle">
-					<label class="flag-title">Vidio</label>
+					<label class="flag-title">
+						@lang('front/publict.vidio')
+					</label>
 				</div>
 				<div class="vertical-align-midle">
 					<label class="circle-shape right"></label>
@@ -119,7 +125,7 @@
 
 		<div class="for-btn-see-more">
 			<a class="btn-see-more" href="{{ route('frontend.program-event.events-vidio') }}">
-				@lang('front/home.See-More')
+				@lang('front/publict.see-more')
 			</a>
 		</div>
 	</div>

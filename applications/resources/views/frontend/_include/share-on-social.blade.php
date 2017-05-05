@@ -5,7 +5,9 @@
 			<label class="circle-shape left"></label>
 		</div>
 		<div class="vertical-align-midle">
-			<label class="flag-title">Share With Your Friend!</label>
+			<label class="flag-title">
+				@lang('front/publict.share-with-your-friend')
+			</label>
 		</div>
 		<div class="vertical-align-midle">
 			<label class="circle-shape right"></label>

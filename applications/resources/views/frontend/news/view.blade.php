@@ -27,7 +27,9 @@
 					<label class="circle-shape left"></label>
 				</div>
 				<div class="vertical-align-midle">
-					<label class="flag-title">{{ $callNews->judul }}</label>
+					<label class="flag-title">
+						{{ $callNews->judul }}
+					</label>
 				</div>
 				<div class="vertical-align-midle">
 					<label class="circle-shape right"></label>

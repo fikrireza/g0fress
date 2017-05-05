@@ -29,7 +29,9 @@
 					<label class="circle-shape left"></label>
 				</div>
 				<div class="vertical-align-midle">
-					<label class="flag-title">Videos</label>
+					<label class="flag-title">
+						@lang('front/publict.vidio')
+					</label>
 				</div>
 				<div class="vertical-align-midle">
 					<label class="circle-shape right"></label>
@@ -55,7 +57,7 @@
 
 		<div class="for-btn-see-more">
 			<a id="callNext" class="btn-see-more">
-				load more
+				@lang('front/publict.load-more')
 			</a>
 		</div>
 

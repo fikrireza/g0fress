@@ -9,13 +9,17 @@
 	<div class="content-wrapper">
 		<div class="wrapper-produk-ditails-description">
 			<div class="ditails-description left">
-				<h2>nutrition information</h2>
+				<h2>
+					@lang('front/produk.nutrition-information')
+				</h2>
 				<div class="ditails">
 					{{ $callProduk->nutrition_fact }}
 				</div>
 			</div>
 			<div class="ditails-description right">
-				<h2>ingredients</h2>
+				<h2>
+					@lang('front/produk.ingredients')
+				</h2>
 				<div class="ditails">
 					{{ $callProduk->ingredient }}
 				</div>

@@ -19,7 +19,24 @@ class ProdukController extends Controller
     	$date = new DateTime;
 		$format_date = $date->format('Y-m-d');
 
-		$callKategory = ProdukKategori::select('nama_kategori', 'slug', 'img_url', 'img_alt', 'deskripsi_ID as deskripsi')->where('flag_publish', '1')->whereDATE('tanggal_post', '<=', $format_date)->orderBy('id', 'desc')->get();
+		if (App::getLocale() == 'id') {
+            $callKategoryDeskripsi = 'deskripsi_ID as deskripsi';
+        }
+        else if (App::getLocale() == 'en') {
+            $callKategoryDeskripsi = 'deskripsi_ID as deskripsi';
+        }
+
+		$callKategory = ProdukKategori::select(
+				'nama_kategori', 
+				'slug', 
+				'img_url', 
+				'img_alt', 
+				$callKategoryDeskripsi
+			)
+			->where('flag_publish', '1')
+			->whereDATE('tanggal_post', '<=', $format_date)
+			->orderBy('id', 'desc')
+			->get();
 
 
     	return view('frontend.produk.index',compact('callKategory'));
