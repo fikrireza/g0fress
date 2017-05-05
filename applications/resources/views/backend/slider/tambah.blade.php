@@ -24,43 +24,49 @@
         <form action="{{ route('slider.store') }}" method="POST" class="form-horizontal form-label-left" enctype="multipart/form-data" novalidate>
           {{ csrf_field() }}
           <div class="item form-group">
+            <label class="col-md-3"></label>
+            <div class="col-md-6">
+              <span style="color:blue; font-size:11px;">Width: 100px; Heigh: 100px</span>
+            </div>
+          </div>
+          <div class="item form-group {{ $errors->has('img_url') ? 'has-error' : ''}}">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Gambar Slider <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="img_url" class="form-control col-md-7 col-xs-12" data-validate-length-range="1" name="img_url" required="required" type="file">
-              <span style="color:red; font-size:10px;">Width: 100px; Heigh: 100px</span>
+              <input id="img_url" class="form-control col-md-7 col-xs-12" name="img_url" required="required" type="file">
               @if($errors->has('img_url'))
-                <code><span style="color:red; font-size:10px;">{{ $errors->first('img_url')}}</span></code>
+                <code><span style="color:red; font-size:12px;">{{ $errors->first('img_url')}}</span></code>
               @endif
             </div>
           </div>
-          <div class="item form-group">
+          <div class="item form-group {{ $errors->has('img_alt') ? 'has-error' : ''}}">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Deskripsi Gambar <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="img_alt" class="form-control col-md-7 col-xs-12" data-validate-length-range="1" name="img_alt" placeholder="Contoh: Nama Produk Kategori" required="required" type="text" value="{{ old('img_alt') }}">
+              <input id="img_alt" class="form-control col-md-7 col-xs-12" name="img_alt" placeholder="Contoh: Nama Produk Kategori" required="required" type="text" value="{{ old('img_alt') }}">
               @if($errors->has('img_alt'))
-                <code><span style="color:red; font-size:10px;">{{ $errors->first('img_alt')}}</span></code>
+                <code><span style="color:red; font-size:12px;">{{ $errors->first('img_alt')}}</span></code>
               @endif
             </div>
           </div>
-          <div class="item form-group">
+          <div class="ln_solid"></div>
+          <div class="item form-group {{ $errors->has('posisi') ? 'has-error' : ''}}">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Posisi <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="posisi" class="form-control col-md-7 col-xs-12" data-validate-length-range="1" name="posisi" placeholder="Contoh: 1, 2, 3 atau 4" type="text" value="{{ old('posisi') }}">
+              <input id="posisi" class="form-control col-md-7 col-xs-12" name="posisi" placeholder="Contoh: 0, 1, 2, 3 dst" type="text" value="{{ old('posisi') }}">
               @if($errors->has('posisi'))
-                <code><span style="color:red; font-size:10px;">{{ $errors->first('posisi')}}</span></code>
+                <code><span style="color:red; font-size:12px;">{{ $errors->first('posisi')}}</span></code>
               @endif
             </div>
           </div>
-          <div class="item form-group">
+          <div class="item form-group {{ $errors->has('tanggal_post') ? 'has-error' : ''}}">
             <label class="control-label col-md-3 col-sm-3 col-xs-12">Tanggal Publish <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
               <input id="tanggal_post" name="tanggal_post" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" value="{{ date('Y-m-d') }}">
               @if($errors->has('tanggal_post'))
-                <code><span style="color:red; font-size:10px;">{{ $errors->first('tanggal_post')}}</span></code>
+                <code><span style="color:red; font-size:12px;">{{ $errors->first('tanggal_post')}}</span></code>
               @endif
             </div>
           </div>
@@ -91,7 +97,6 @@
 
 
 @section('script')
-<script src="{{ asset('backend/vendors/validator/validator.min.js') }}"></script>
 <script src="{{ asset('backend/vendors/iCheck/icheck.min.js')}}"></script>
 <script src="{{ asset('backend/vendors/switchery/dist/switchery.min.js')}}"></script>
 <script src="{{ asset('backend/js/moment/moment.min.js') }}"></script>
@@ -102,30 +107,7 @@
     singleDatePicker: true,
     calender_style: "picker_3",
     format: 'YYYY-MM-DD',
-  });
-
-  // initialize the validator function
-  validator.message.date = 'not a real date';
-
-  // validate a field on "blur" event, a 'select' on 'change' event & a '.reuired' classed multifield on 'keyup':
-  $('form')
-    .on('blur', 'input[required], textarea, input.optional, select.required', validator.checkField)
-    .on('change', 'select.required', validator.checkField)
-    .on('keypress', 'input[required][pattern], textarea', validator.keypress);
-
-  $('form').submit(function(e) {
-    e.preventDefault();
-    var submit = true;
-
-    // evaluate the form using generic validaing
-    if (!validator.checkAll($(this))) {
-      submit = false;
-    }
-
-    if (submit)
-      this.submit();
-
-    return false;
+    minDate: new Date(),
   });
 </script>
 @endsection

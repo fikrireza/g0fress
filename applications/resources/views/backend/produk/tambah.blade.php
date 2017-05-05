@@ -26,7 +26,7 @@
       <div class="x_content">
         <form action="{{ route('produk.store') }}" method="POST" class="form-horizontal form-label-left" enctype="multipart/form-data" novalidate>
           {{ csrf_field() }}
-          <div class="item form-group">
+          <div class="item form-group {{ $errors->has('kategori_id') ? 'has-error' : ''}}">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Kategori Produk <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
@@ -41,18 +41,18 @@
               @endif
             </div>
           </div>
-          <div class="item form-group">
+          <div class="item form-group {{ $errors->has('nama_produk') ? 'has-error' : ''}}">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nama Produk <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="1" name="nama_produk" placeholder="Contoh: Nama Produk" required="required" type="text" value="{{ old('nama_produk') }}">
+              <input id="name" class="form-control col-md-7 col-xs-12" name="nama_produk" placeholder="Contoh: Nama Produk" required="required" type="text" value="{{ old('nama_produk') }}">
               @if($errors->has('nama_produk'))
                 <code><span style="color:red; font-size:12px;">{{ $errors->first('nama_produk')}}</span></code>
               @endif
             </div>
           </div>
           <div class="ln_solid"></div>
-          <div class="item form-group">
+          <div class="item form-group {{ $errors->has('deskripsi_ID') ? 'has-error' : ''}}">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Deskripsi ID <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
@@ -62,7 +62,7 @@
               @endif
             </div>
           </div>
-          <div class="item form-group">
+          <div class="item form-group {{ $errors->has('deskripsi_EN') ? 'has-error' : ''}}">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Deskripsi EN <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
@@ -72,7 +72,7 @@
               @endif
             </div>
           </div>
-          <div class="item form-group">
+          <div class="item form-group {{ $errors->has('ingredient') ? 'has-error' : ''}}">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Ingredient <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
@@ -82,7 +82,7 @@
               @endif
             </div>
           </div>
-          <div class="item form-group">
+          <div class="item form-group {{ $errors->has('nutrition_fact') ? 'has-error' : ''}}">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Nutrition Fact <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
@@ -94,17 +94,22 @@
           </div>
           <div class="ln_solid"></div>
           <div class="item form-group">
+            <label class="col-md-3"></label>
+            <div class="col-md-6">
+              <span style="color:blue; font-size:11px;">Width: 100px; Heigh: 100px</span>
+            </div>
+          </div>
+          <div class="item form-group {{ $errors->has('img_url') ? 'has-error' : ''}}">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Gambar Produk Utama <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
               <input id="img_url" class="form-control col-md-7 col-xs-12" name="img_url" required="required" type="file">
-              <span style="color:red; font-size:10px;">Width: 100px; Heigh: 100px</span>
               @if($errors->has('img_url'))
                 <code><span style="color:red; font-size:12px;">{{ $errors->first('img_url')}}</span></code>
               @endif
             </div>
           </div>
-          <div class="item form-group">
+          <div class="item form-group {{ $errors->has('img_alt') ? 'has-error' : ''}}">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Deskripsi Gambar Utama <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
@@ -116,17 +121,22 @@
           </div>
           <div class="ln_solid"></div>
           <div class="item form-group">
+            <label class="col-md-3"></label>
+            <div class="col-md-6">
+              <span style="color:blue; font-size:11px;">Width: 100px; Heigh: 100px</span>
+            </div>
+          </div>
+          <div class="item form-group {{ $errors->has('img_url_kanan') ? 'has-error' : ''}}">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Gambar Produk Kanan <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
               <input id="img_url_kanan" class="form-control col-md-7 col-xs-12" name="img_url_kanan" required="required" type="file">
-              <span style="color:red; font-size:10px;">Width: 100px; Heigh: 100px</span>
               @if($errors->has('img_url_kanan'))
                 <code><span style="color:red; font-size:12px;">{{ $errors->first('img_url_kanan')}}</span></code>
               @endif
             </div>
           </div>
-          <div class="item form-group">
+          <div class="item form-group {{ $errors->has('img_alt_kanan') ? 'has-error' : ''}}">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Deskripsi Gambar Kanan <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
@@ -138,17 +148,22 @@
           </div>
           <div class="ln_solid"></div>
           <div class="item form-group">
+            <label class="col-md-3"></label>
+            <div class="col-md-6">
+              <span style="color:blue; font-size:11px;">Width: 100px; Heigh: 100px</span>
+            </div>
+          </div>
+          <div class="item form-group {{ $errors->has('img_url_kiri') ? 'has-error' : ''}}">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Gambar Produk Kiri <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
               <input id="img_url_kiri" class="form-control col-md-7 col-xs-12" name="img_url_kiri" required="required" type="file">
-              <span style="color:red; font-size:10px;">Width: 100px; Heigh: 100px</span>
               @if($errors->has('img_url_kiri'))
                 <code><span style="color:red; font-size:12px;">{{ $errors->first('img_url_kiri')}}</span></code>
               @endif
             </div>
           </div>
-          <div class="item form-group">
+          <div class="item form-group {{ $errors->has('img_alt_kiri') ? 'has-error' : ''}}">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Deskripsi Gambar Kiri <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
@@ -159,7 +174,7 @@
             </div>
           </div>
           <div class="ln_solid"></div>
-          <div class="item form-group">
+          <div class="item form-group {{ $errors->has('tanggal_post') ? 'has-error' : ''}}">
             <label class="control-label col-md-3 col-sm-3 col-xs-12">Tanggal Publish <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
@@ -209,12 +224,10 @@
       { name: 'clipboard', groups: [ 'clipboard', 'undo' ], items: [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ] },
       { name: 'editing', groups: [ 'find', 'selection', 'spellchecker' ], items: [ 'Find', 'Replace', '-', 'SelectAll', '-', 'Scayt' ] },
       { name: 'forms', items: [ 'Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField' ] },
-      '/',
       { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ], items: [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat' ] },
       { name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ], items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl', 'Language' ] },
       { name: 'links', items: [ 'Link', 'Unlink', 'Anchor' ] },
       { name: 'insert', items: [ 'Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe' ] },
-      '/',
       { name: 'styles', items: [ 'Styles', 'Format', 'Font', 'FontSize' ] },
       { name: 'colors', items: [ 'TextColor', 'BGColor' ] },
       { name: 'tools', items: [ 'Maximize', 'ShowBlocks' ] },
@@ -228,12 +241,10 @@
       { name: 'clipboard', groups: [ 'clipboard', 'undo' ], items: [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ] },
       { name: 'editing', groups: [ 'find', 'selection', 'spellchecker' ], items: [ 'Find', 'Replace', '-', 'SelectAll', '-', 'Scayt' ] },
       { name: 'forms', items: [ 'Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField' ] },
-      '/',
       { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ], items: [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat' ] },
       { name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ], items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl', 'Language' ] },
       { name: 'links', items: [ 'Link', 'Unlink', 'Anchor' ] },
       { name: 'insert', items: [ 'Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe' ] },
-      '/',
       { name: 'styles', items: [ 'Styles', 'Format', 'Font', 'FontSize' ] },
       { name: 'colors', items: [ 'TextColor', 'BGColor' ] },
       { name: 'tools', items: [ 'Maximize', 'ShowBlocks' ] },
@@ -247,12 +258,10 @@
       { name: 'clipboard', groups: [ 'clipboard', 'undo' ], items: [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ] },
       { name: 'editing', groups: [ 'find', 'selection', 'spellchecker' ], items: [ 'Find', 'Replace', '-', 'SelectAll', '-', 'Scayt' ] },
       { name: 'forms', items: [ 'Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField' ] },
-      '/',
       { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ], items: [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat' ] },
       { name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ], items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl', 'Language' ] },
       { name: 'links', items: [ 'Link', 'Unlink', 'Anchor' ] },
       { name: 'insert', items: [ 'Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe' ] },
-      '/',
       { name: 'styles', items: [ 'Styles', 'Format', 'Font', 'FontSize' ] },
       { name: 'colors', items: [ 'TextColor', 'BGColor' ] },
       { name: 'tools', items: [ 'Maximize', 'ShowBlocks' ] },
@@ -266,12 +275,10 @@
       { name: 'clipboard', groups: [ 'clipboard', 'undo' ], items: [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ] },
       { name: 'editing', groups: [ 'find', 'selection', 'spellchecker' ], items: [ 'Find', 'Replace', '-', 'SelectAll', '-', 'Scayt' ] },
       { name: 'forms', items: [ 'Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField' ] },
-      '/',
       { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ], items: [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat' ] },
       { name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ], items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl', 'Language' ] },
       { name: 'links', items: [ 'Link', 'Unlink', 'Anchor' ] },
       { name: 'insert', items: [ 'Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe' ] },
-      '/',
       { name: 'styles', items: [ 'Styles', 'Format', 'Font', 'FontSize' ] },
       { name: 'colors', items: [ 'TextColor', 'BGColor' ] },
       { name: 'tools', items: [ 'Maximize', 'ShowBlocks' ] },
@@ -295,6 +302,7 @@
     singleDatePicker: true,
     calender_style: "picker_3",
     format: 'YYYY-MM-DD',
+    minDate: new Date(),
   });
 </script>
 @endsection

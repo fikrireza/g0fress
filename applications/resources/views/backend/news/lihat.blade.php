@@ -66,7 +66,17 @@
           <tr>
             <td><strong>Video URL</strong></td>
             <td>:</td>
-            <td>@if (!$getNews->video_url) - @else {{ $getNews->video_url }} @endif</td>
+            <td>@if (!$getNews->video_url) - @else {{ $getNews->video_url }} @endif <br>
+              @if ($getNews->video_url != null)
+                  @php
+                    $url = $getNews->video_url;
+                    $step1=explode('v=', $url);
+                    $step2 =explode('&',$step1[1]);
+                    $vedio_id = $step2[0];
+                  @endphp
+                  <iframe class="youtube-embed" src="http://www.youtube.com/embed/{{ $vedio_id }}" frameborder="0" allowfullscreen></iframe>
+              @endif
+            </td>
           </tr>
           <tr>
             <td><strong>Show Home Page</strong></td>

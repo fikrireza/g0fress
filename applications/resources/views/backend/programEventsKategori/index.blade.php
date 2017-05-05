@@ -65,7 +65,7 @@
           <tr>
             <td>{{ $no }}</td>
             <td>{{ $key->judul_kategori_ID }}</td>
-            <td>@if ($key->flag_publish == 1) Ya @else Tidak @endif</td>
+            <td>@if ($key->flag_publish == 1) <span class='label label-success'><i class="fa fa-thumbs-o-up"></i></span> @else <span class='label label-danger'><i class="fa fa-thumbs-o-down"></i></span> @endif</td>
             <td><a href="{{ route('programEventsKategori.lihat', $key->id) }}" class="btn btn-xs btn-primary"><i class="fa fa-folder"></i> Lihat</a><a href="{{ route('programEventsKategori.ubah', $key->id) }}" class="btn btn-xs btn-warning btn-sm"><i class="fa fa-pencil"></i> Ubah</a></td>
           </tr>
           @php

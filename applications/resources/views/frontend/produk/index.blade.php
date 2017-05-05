@@ -18,7 +18,7 @@
 
 <div class="wrapper-banner">
 	<div class="banner" style="background-image: url(' {{ asset('picture/firstCampaign/background-rainbow.png') }}');">
-		
+
 	</div>
 </div>
 <style type="text/css">
@@ -66,7 +66,7 @@
 								<img class="this-run-animate" src="{{ asset('images/produk/'.$list->img_url) }}" alt="{!! $list->img_alt !!}">
 							</a>
 							<div class="deskripsi">
-								{{ $list->deskripsi }}
+								{!! $list->deskripsi !!}
 							</div>
 						</div>
 					</div>
@@ -92,4 +92,3 @@
 <script src="{{ asset('frontend/js/produk-index.js') }}"></script>
 
 @endsection
-

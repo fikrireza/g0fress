@@ -18,7 +18,7 @@
 <div class="slider">
 	@foreach($callSlider as $list)
 	<div class="item">
-		<div class="img" style="background-image: url('{{ asset($list->img_url) }}');" title="{{ $list->img_alt }}">
+		<div class="img" style="background-image: url('{{ asset('images/slider').'/'.$list->img_url }}');" title="{{ $list->img_alt }}">
 		</div>
 	</div>
 	@endforeach
@@ -165,7 +165,7 @@
 				<div class="wrapper-news">
 					<h3>{{ $list->judul }}</h3>
 					<label>{!! Str::words($list->deskripsi, 25," <a href=".route('frontend.news.view', ['slug'=>$list->slug]) .">Read More</a>")  !!}</label>
-				</div>		
+				</div>
 			</div>
 			@endforeach
 			<div class="clearfix"></div>
@@ -214,7 +214,7 @@
 				</div>
 			</div>
 		</div>
-			@php 
+			@php
 				$insCount++;
 				if($insCount == 6){
 					break;
@@ -224,7 +224,7 @@
 		@else
 		<h1>Nothing</h1>
 		@endif
-		
+
 		<div class="clearfix"></div>
 
 		<div class="for-btn-see-more">
@@ -272,4 +272,3 @@
 <script src="{{ asset('plugin/owl-carousel/owl.carousel.js') }}"></script>
 <script src="{{ asset('frontend/js/home.js') }}"></script>
 @endsection
-

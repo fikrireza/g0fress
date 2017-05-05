@@ -13,7 +13,7 @@
 
 <div class="wrapper-banner">
 	<div class="banner" style="background-image: url(' {{ asset('picture/firstCampaign/background-rainbow.png') }}');">
-		
+
 	</div>
 </div>
 
@@ -90,7 +90,7 @@
 			@foreach($callNews as $list)
 			<div class="wrapper-news">
 				<div class="picture">
-					<img src="{{ asset($list->img_url) }}" alt="{{ $list->img_alt }}">
+					<img src="{{ asset('images/news').'/'.$list->img_url }}" alt="{{ $list->img_alt }}">
 				</div>
 				<div class="content">
 					<h2 class="title">{{ $list->judul }}</h2>
@@ -122,4 +122,3 @@
 @section('footer-script')
 <script src="{{ asset('plugin/bootstrap-3.3.7/js/bootstrap.min.js') }}"></script>
 @endsection
-

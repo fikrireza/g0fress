@@ -31,74 +31,104 @@
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Judul ID <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="judul_ID" class="form-control col-md-7 col-xs-12" data-validate-length-range="1" name="judul_ID" placeholder="Contoh: Judul News" required="required" type="text" value="{{ $getNews->judul_ID }}">
+              <input id="judul_ID" class="form-control col-md-7 col-xs-12" name="judul_ID" placeholder="Contoh: Judul News" required="required" type="text" value="{{ old('judul_ID', $getNews->judul_ID) }}">
             @if($errors->has('judul_ID'))
             <code><span style="color:red; font-size:12px;">{{ $errors->first('judul_ID')}}</span></code>
             @endif
             </div>
           </div>
-          <div class="item form-group">
+          <div class="item form-group {{ $errors->has('judul_EN') ? 'has-error' : '' }}">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Judul EN <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="judul_EN" class="form-control col-md-7 col-xs-12" data-validate-length-range="1" name="judul_EN" placeholder="Eg: News Title" required="required" type="text" value="{{ $getNews->judul_EN }}">
+              <input id="judul_EN" class="form-control col-md-7 col-xs-12" name="judul_EN" placeholder="Eg: News Title" required="required" type="text" value="{{ old('judul_EN', $getNews->judul_EN) }}">
               @if($errors->has('judul_EN'))
                 <code><span style="color:red; font-size:12px;">{{ $errors->first('judul_EN')}}</span></code>
               @endif
             </div>
           </div>
-          <div class="item form-group">
+          <div class="ln_solid"></div>
+          <div class="item form-group {{ $errors->has('deskripsi_ID') ? 'has-error' : '' }}">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Deskripsi ID <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <textarea id="deskripsi_ID" required="required" name="deskripsi_ID">{{ $getNews->deskripsi_ID }}</textarea>
+              <textarea id="deskripsi_ID" required="required" name="deskripsi_ID">{{ old('deskripsi_ID', $getNews->deskripsi_ID) }}</textarea>
               @if($errors->has('deskripsi_ID'))
                 <code><span style="color:red; font-size:12px;">{{ $errors->first('deskripsi_ID')}}</span></code>
               @endif
             </div>
           </div>
-          <div class="item form-group">
+          <div class="item form-group {{ $errors->has('deskripsi_EN') ? 'has-error' : '' }}">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Deskripsi EN <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <textarea id="deskripsi_EN" required="required" name="deskripsi_EN">{{ $getNews->deskripsi_EN }}</textarea>
+              <textarea id="deskripsi_EN" required="required" name="deskripsi_EN">{{ old('deskripsi_EN', $getNews->deskripsi_EN) }}</textarea>
               @if($errors->has('deskripsi_EN'))
                 <code><span style="color:red; font-size:12px;">{{ $errors->first('deskripsi_EN')}}</span></code>
               @endif
             </div>
           </div>
+          <div class="ln_solid"></div>
           <div class="item form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Gambar Produk
+            <label class="col-md-3"></label>
+            <div class="col-md-6">
+              <span style="color:blue; font-size:11px;">Biarkan Kosong Jika Tidak Ingin Mengubah Gambar</span>
+            </div>
+          </div>
+          <div class="item form-group {{ $errors->has('img_url') ? 'has-error' : '' }}">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Gambar News & Info
             </label>
-            <span style="color:red; font-size:10px;">Biarkan Kosong Jika Tidak Ingin Mengubah Gambar</span>
             <div class="col-md-6 col-sm-6 col-xs-12">
               <input id="img_url" class="form-control col-md-7 col-xs-12" name="img_url" type="file">
-              <span style="color:red; font-size:10px;">Width: 100px; Heigh: 100px</span>
+              <span style="color:blue; font-size:10px;">Width: 100px; Heigh: 100px</span>
               @if($errors->has('img_url'))
                 <code><span style="color:red; font-size:12px;">{{ $errors->first('img_url')}}</span></code>
               @endif
             </div>
           </div>
+          @if ($getNews->img_url != null)
           <div class="item form-group">
+            <label class="col-md-3"></label>
+            <div class="col-md-6">
+              <img src="{{ asset('images/news/').'/'.$getNews->img_url }}" alt="" class="thumbnail">
+            </div>
+          </div>
+          @endif
+          <div class="item form-group {{ $errors->has('img_alt') ? 'has-error' : '' }}">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Deskripsi Gambar
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="img_alt" class="form-control col-md-7 col-xs-12" data-validate-length-range="1" name="img_alt" placeholder="Contoh: Nama Produk" type="text" value="{{ $getNews->img_alt }}">
+              <input id="img_alt" class="form-control col-md-7 col-xs-12" name="img_alt" placeholder="Contoh: Nama Produk" type="text" value="{{ old('img_alt', $getNews->img_alt) }}">
               @if($errors->has('img_alt'))
                 <code><span style="color:red; font-size:12px;">{{ $errors->first('img_alt')}}</span></code>
               @endif
             </div>
           </div>
-          <div class="item form-group">
+          <div class="item form-group {{ $errors->has('video_url') ? 'has-error' : '' }}">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Video URL
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="video_url" class="form-control col-md-7 col-xs-12" data-validate-length-range="1" name="video_url" placeholder="Contoh: Video Url" type="text" value="{{ $getNews->video_url }}">
+              <input id="video_url" class="form-control col-md-7 col-xs-12" name="video_url" placeholder="Contoh: https://www.youtube.com/watch?v=aPdNFMN1unU" type="text" value="{{ old('video_url', $getNews->video_url) }}">
               @if($errors->has('video_url'))
                 <code><span style="color:red; font-size:12px;">{{ $errors->first('video_url')}}</span></code>
               @endif
             </div>
           </div>
+          @if ($getNews->video_url != null)
+          <div class="item form-group">
+            <label class="col-md-3"></label>
+            <div class="col-md-6">
+              @php
+                $url = $getNews->video_url;
+                $step1=explode('v=', $url);
+                $step2 =explode('&',$step1[1]);
+                $vedio_id = $step2[0];
+              @endphp
+              <iframe class="youtube-embed" src="http://www.youtube.com/embed/{{ $vedio_id }}" frameborder="0" allowfullscreen></iframe>
+            </div>
+          </div>
+          @endif
+          <div class="ln_solid"></div>
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Show Homepage
             </label>
@@ -112,7 +142,7 @@
             <label class="control-label col-md-3 col-sm-3 col-xs-12">Tanggal Publish <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="tanggal_post" name="tanggal_post" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" value="{{ $getNews->tanggal_post }}">
+              <input id="tanggal_post" name="tanggal_post" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" value="{{ old('tanggal_post', $getNews->tanggal_post) }}">
               @if($errors->has('tanggal_post'))
                 <code><span style="color:red; font-size:10px;">{{ $errors->first('tanggal_post')}}</span></code>
               @endif

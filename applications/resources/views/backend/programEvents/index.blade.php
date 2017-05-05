@@ -70,10 +70,10 @@
             <td>{{ $no }}</td>
             <td>{{ $key->judul_promosi_ID }}</td>
             <td>{{ $key->judul_kategori_ID }}</td>
-            <td>{{ $key->deskripsi_ID }}</td>
-            <td>@if ($key->show_homepage == 1) Ya @else Tidak @endif</td>
-            <td>{{ $key->tanggal_post }}</td>
-            <td>@if ($key->flag_publish == 1) Ya @else Tidak @endif</td>
+            <td>{!! $key->deskripsi_ID !!}</td>
+            <td>@if ($key->show_homepage == 1) <span class='label label-success'><i class="fa fa-thumbs-o-up"></i></span> @else <span class='label label-danger'><i class="fa fa-thumbs-o-down"></i></span> @endif</td>
+            <td>{!! ($key->tanggal_post <= date('Y-m-d')) ? "<span class='label label-success'>$key->tanggal_post</span>" : "<span class='label label-danger'>$key->tanggal_post</span>" !!}</td>
+            <td>@if ($key->flag_publish == 1) <span class='label label-success'><i class="fa fa-thumbs-o-up"></i></span> @else <span class='label label-danger'><i class="fa fa-thumbs-o-down"></i></span> @endif</td>
             <td><a href="{{ route('programEvents.lihat', $key->id) }}" class="btn btn-xs btn-primary"><i class="fa fa-folder"></i> Lihat</a><a href="{{ route('programEvents.ubah', $key->id) }}" class="btn btn-xs btn-warning btn-sm"><i class="fa fa-pencil"></i> Ubah</a></td>
           </tr>
           @php

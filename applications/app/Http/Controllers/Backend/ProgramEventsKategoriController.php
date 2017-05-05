@@ -44,17 +44,17 @@ class ProgramEventsKategoriController extends Controller
     {
         $message = [
           'judul_kategori_ID.required' => 'Wajib di isi',
+          'judul_kategori_ID.max' => 'Terlalu Panjang',
           'judul_kategori_ID.unique' => 'Judul ini sudah ada',
           'judul_kategori_EN.required' => 'Wajib di isi',
-          'img_url.image' => '.jpeg, .bmp, .png',
-          'img_alt.required' => 'Wajib di isi'
+          'img_url.image' => 'Format Gambar Tidak Sesuai',
+          'img_url.max' => 'File Size Terlalu Besar'
         ];
 
         $validator = Validator::make($request->all(), [
-          'judul_kategori_ID' => 'required|unique:amd_program_events_kategori',
+          'judul_kategori_ID' => 'required|unique:amd_program_events_kategori|max:30',
           'judul_kategori_EN' => 'required',
-          'img_url' => 'image|mimes:jpeg,bmp,png',
-          'img_alt' => 'required',
+          'img_url' => 'image|mimes:jpeg,bmp,png|max:2000'
         ], $message);
 
         if($validator->fails())
@@ -62,44 +62,47 @@ class ProgramEventsKategoriController extends Controller
           return redirect()->route('programEventsKategori.tambah')->withErrors($validator)->withInput();
         }
 
-        $image = $request->file('img_url');
+        DB::transaction(function() use($request){
+          $image = $request->file('img_url');
 
-        if($request->flag_publish == null){
-          $flag_publish = 0;
-        }else{
-          $flag_publish = 1;
-        }
+          if($request->flag_publish == null){
+            $flag_publish = 0;
+          }else{
+            $flag_publish = 1;
+          }
 
-        if (!$image) {
-          $save = new ProgramEventsKategori;
-          $save->judul_kategori_ID = $request->judul_kategori_ID;
-          $save->judul_kategori_EN = $request->judul_kategori_EN;
-          $save->img_alt  = $request->img_alt;
-          $save->flag_publish = $flag_publish;
-          $save->slug = str_slug($request->judul_kategori_ID,'-');
-          $save->actor = Auth::user()->id;
-          $save->save();
-        }else{
-          $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
-          Image::make($image)->fit(472,270)->save('images/programEvent/'. $img_url);
+          if (!$image) {
+            $save = new ProgramEventsKategori;
+            $save->judul_kategori_ID = $request->judul_kategori_ID;
+            $save->judul_kategori_EN = $request->judul_kategori_EN;
+            $save->img_alt  = $request->img_alt;
+            $save->flag_publish = $flag_publish;
+            $save->slug = str_slug($request->judul_kategori_ID,'-');
+            $save->actor = Auth::user()->id;
+            $save->save();
+          }else{
+            $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
+            Image::make($image)->fit(472,270)->save('images/programEvent/'. $img_url);
 
-          $save = new ProgramEventsKategori;
-          $save->judul_kategori_ID = $request->judul_kategori_ID;
-          $save->judul_kategori_EN = $request->judul_kategori_EN;
-          $save->img_url  = 'images/programEvent/'.$img_url;
-          $save->img_alt  = $request->img_alt;
-          $save->flag_publish = $flag_publish;
-          $save->slug = str_slug($request->judul_kategori_ID,'-');
-          $save->actor = Auth::user()->id;
-          $save->save();
-        }
+            $save = new ProgramEventsKategori;
+            $save->judul_kategori_ID = $request->judul_kategori_ID;
+            $save->judul_kategori_EN = $request->judul_kategori_EN;
+            $save->img_url  = $img_url;
+            $save->img_alt  = $request->img_alt;
+            $save->flag_publish = $flag_publish;
+            $save->slug = str_slug($request->judul_kategori_ID,'-');
+            $save->actor = Auth::user()->id;
+            $save->save();
+          }
 
-        $log = new LogAkses;
-        $log->actor = Auth::user()->id;
-        $log->aksi = 'Menambah Program & Events Kategori Baru '.$request->nama_kategori;
-        $log->save();
+          $log = new LogAkses;
+          $log->actor = Auth::user()->id;
+          $log->aksi = 'Menambah Program & Events Kategori Baru '.$request->judul_kategori_ID;
+          $log->save();
+        });
 
-        return redirect()->route('programEventsKategori.index')->with('berhasil', 'Berhasil Menambahkan Program & Events Baru');
+
+        return redirect()->route('programEventsKategori.index')->with('berhasil', 'Berhasil Menambahkan Program & Events '.$request->judul_kategori_ID);
     }
 
     public function lihat($id)
@@ -131,15 +134,14 @@ class ProgramEventsKategoriController extends Controller
           'judul_kategori_ID.required' => 'Wajib di isi',
           'judul_kategori_ID.unique' => 'Judul ini sudah ada',
           'judul_kategori_EN.required' => 'Wajib di isi',
-          'img_url.image' => '.jpeg, .bmp, .png',
-          'img_alt.required'  => 'Wajib di isi',
+          'img_url.image' => 'Format Gambar Tidak Sesuai',
+          'img_url.max' => 'File Size Terlalu Besar'
         ];
 
         $validator = Validator::make($request->all(), [
           'judul_kategori_ID' => 'required|unique:amd_program_events_kategori,judul_kategori_ID,'.$request->id,
           'judul_kategori_EN' => 'required',
-          'img_url' => 'image|mimes:jpeg,bmp,png',
-          'img_alt' => 'required',
+          'img_url' => 'image|mimes:jpeg,bmp,png|max:2000'
         ], $message);
 
         if($validator->fails())
@@ -147,15 +149,15 @@ class ProgramEventsKategoriController extends Controller
           return redirect()->route('programEventsKategori.ubah', array('id' => $request->id))->withErrors($validator)->withInput();
         }
 
-        $image = $request->file('img_url');
+        DB::transaction(function() use($request){
+          $image = $request->file('img_url');
 
-        if($request->flag_publish == null){
-          $flag_publish = 0;
-        }else{
-          $flag_publish = 1;
-        }
+          if($request->flag_publish == null){
+            $flag_publish = 0;
+          }else{
+            $flag_publish = 1;
+          }
 
-        if (!$image) {
           $update = ProgramEventsKategori::find($request->id);
           $update->judul_kategori_ID = $request->judul_kategori_ID;
           $update->judul_kategori_EN = $request->judul_kategori_EN;
@@ -163,27 +165,26 @@ class ProgramEventsKategoriController extends Controller
           $update->flag_publish = $flag_publish;
           $update->slug = str_slug($request->judul_kategori_ID,'-');
           $update->actor = Auth::user()->id;
-          $update->update();
-        }else{
-          $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
-          Image::make($image)->fit(472,270)->save('images/programEvent/'. $img_url);
 
-          $update = ProgramEventsKategori::find($request->id);
-          $update->judul_kategori_ID = $request->judul_kategori_ID;
-          $update->judul_kategori_EN = $request->judul_kategori_EN;
-          $update->img_url  = 'images/programEvent/'.$img_url;
-          $update->img_alt  = $request->img_alt;
-          $update->flag_publish = $flag_publish;
-          $update->slug = str_slug($request->judul_kategori_ID,'-');
-          $update->actor = Auth::user()->id;
-          $update->update();
-        }
+          if($request->remove_image == 'on'){
+            $update->img_url = null;
+            $update->update();
+          }elseif (!$image) {
+            $update->update();
+          }else{
+            $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
+            Image::make($image)->fit(472,270)->save('images/programEvent/'. $img_url);
 
-        $log = new LogAkses;
-        $log->actor = Auth::user()->id;
-        $log->aksi = 'Mengubah Program & Events Kategori '.$request->judul_kategori_ID;
-        $log->save();
+            $update->img_url  = $img_url;
+            $update->update();
+          }
 
-        return redirect()->route('programEventsKategori.index')->with('berhasil', 'Berhasil Mengubah Program & Events Kategori');
+          $log = new LogAkses;
+          $log->actor = Auth::user()->id;
+          $log->aksi = 'Mengubah Program & Events Kategori '.$request->judul_kategori_ID;
+          $log->save();
+        });
+
+        return redirect()->route('programEventsKategori.index')->with('berhasil', 'Berhasil Mengubah Program & Events Kategori '.$request->judul_kategori_ID);
     }
 }
