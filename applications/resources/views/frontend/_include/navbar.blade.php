@@ -13,7 +13,7 @@
 		<div class="nav-link-list">
 			<ul class="nav-link-list-ul">
 				<li class="nav-link-list-li">
-					<a href="">
+					<a href="{{ route('frontend.about') }}">
 						@lang('front/publict.about')
 					</a>
 				</li>
@@ -58,7 +58,7 @@
 					</a>
 				</li>
 				<li class="nav-link-list-li">
-					<a href="">
+					<a href="{{ route('frontend.contact') }}">
 						@lang('front/publict.contact')
 					</a>
 				</li>

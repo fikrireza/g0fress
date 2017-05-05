@@ -1,0 +1,94 @@
+@extends('frontend._layouts.basic')
+
+@section('head-title')
+<title>Go Fress - Contact Us</title>
+@endsection
+
+@section('head-style')
+<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/public-sub-page.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/contact.css') }}">
+@endsection
+
+@section('body-content')
+
+<div class="background-content background-content-second">
+	<div class="content-wrapper">
+	</div>
+</div>
+
+<div class="background-content background-content-first spaces-top">
+	<div class="content-wrapper">
+
+		<div class="flag-title-wrapper color">
+			<div class="vertical-align-midle">
+				<label class="circle-shape left"></label>
+				<label class="circle-shape left"></label>
+			</div>
+			<div class="vertical-align-midle">
+				<label class="flag-title">
+					Contact Us
+				</label>
+			</div>
+			<div class="vertical-align-midle">
+				<label class="circle-shape right"></label>
+				<label class="circle-shape right"></label>
+			</div>
+		</div>
+
+		<form>
+			<div class="wrapper-content">
+				<div class="left">
+					<input type="text" class="form-control" placeholder="&#61447; Your Name" >
+					<input type="text" class="form-control" placeholder="&#xf0e0; Email Address" >
+					<input type="text" class="form-control" placeholder="&#xf095; Phone Number" >
+				</div>
+				<div class="right">
+					<input type="text" class="form-control" placeholder="&#xf27a; Subject" >
+					<textarea class="form-control" rows="3" placeholder="Messages"></textarea>
+				</div>
+				<div class="clearfix"></div>
+				<button class="submit" type="submit">
+					Submit
+				</button>
+				<div class="clearfix"></div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<div class="background-content background-content-first">
+	<div class="wrapper-maps">
+		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.4499759798864!2d106.68074231476972!3d-6.335711195414996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69e504a69b23ab%3A0x3a02d749206e7d74!2sPT+Aquasolve+Sanaria!5e0!3m2!1sid!2sid!4v1493956624404" frameborder="0" scrolling="no" style="border:0" allowfullscreen></iframe>
+	</div>
+
+	<div class="content-wrapper">
+		<div class="wrapper-content">
+			<div class="left">
+				<h3 class="title">
+					Title
+				</h3>
+				<div class="description">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in scelerisque massa, aliquam molestie lorem. Sed rhoncus, erat ac ornare cursus, tellus odio egestas urna, eu accumsan sapien sapien molestie nulla. Etiam dignissim malesuada vulputate. Nulla at nunc sapien. Proin mollis ligula sapien, in euismod nisl cursus ut. In at quam orci. Cras pharetra eros sed rhoncus feugiat. Nam ligula ante, consectetur eget sagittis at, eleifend vel tortor. Etiam varius faucibus arcu, ut posuere massa fermentum quis. Etiam eu ipsum convallis, aliquet elit ut, pellentesque purus. Curabitur in felis pulvinar, feugiat tellus eu, elementum enim. Curabitur accumsan eu mauris vel vulputate.
+				</div>
+				<p class="phone"><i class="fa fa-phone" aria-hidden="true"></i> 000-0000000</p>
+			</div>
+			<div class="right">
+				<h3 class="title">
+					Title
+				</h3>
+				<div class="description">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in scelerisque massa, aliquam molestie lorem. Sed rhoncus, erat ac ornare cursus, tellus odio egestas urna, eu accumsan sapien sapien molestie nulla. Etiam dignissim malesuada vulputate. Nulla at nunc sapien. Proin mollis ligula sapien, in euismod nisl cursus ut. In at quam orci. Cras pharetra eros sed rhoncus feugiat. Nam ligula ante, consectetur eget sagittis at, eleifend vel tortor. Etiam varius faucibus arcu, ut posuere massa fermentum quis. Etiam eu ipsum convallis, aliquet elit ut, pellentesque purus. Curabitur in felis pulvinar, feugiat tellus eu, elementum enim. Curabitur accumsan eu mauris vel vulputate.
+				</div>
+				<p class="phone"><i class="fa fa-phone" aria-hidden="true"></i> 000-0000000</p>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</div>
+
+@endsection
+
+@section('footer-script')
+<script src="{{ asset('plugin/bootstrap-3.3.7/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('frontend/js/contact.js') }}"></script>
+@endsection

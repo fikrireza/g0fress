@@ -13,7 +13,6 @@
 
 <div class="wrapper-banner">
 	<div class="banner" style="background-image: url(' {{ asset('picture/firstCampaign/background-rainbow.png') }}');">
-
 	</div>
 </div>
 

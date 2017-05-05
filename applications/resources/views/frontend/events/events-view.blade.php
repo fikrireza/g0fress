@@ -42,7 +42,7 @@
 		</div>
 
 		<div class="description">
-			<img src="{{ asset($callProgramEvent->img_url) }}" alt="{{ $callProgramEvent->img_alt }}">
+			<img src="{{ asset('images/programEvent/'.$callProgramEvent->img_url) }}" alt="{{ $callProgramEvent->img_alt }}">
 			{{ $callProgramEvent->deskripsi }}
 		</div>
 
