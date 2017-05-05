@@ -18,7 +18,7 @@
 <div class="slider">
 	@foreach($callSlider as $list)
 	<div class="item">
-		<div class="img" style="background-image: url('{{ asset('images/slider').'/'.$list->img_url }}');" title="{{ $list->img_alt }}">
+		<div class="img" style="background-image: url('{{ asset('images/slider/'.$list->img_url) }}');" title="{{ $list->img_alt }}">
 		</div>
 	</div>
 	@endforeach
@@ -119,7 +119,7 @@
 			<div class="item">
 				<div class="wrapper-item">
 					<div class="wrapper-thumnail">
-						<img class="thumnail" src="{{ $list->img_url }}" alt="{{ $list->img_alt }}">
+						<img class="thumnail" src="{{ asset('images/programEvent/'.$list->img_url) }}" alt="{{ $list->img_alt }}">
 						<div class="wrapper-title">
 							<a href="{{ route('frontend.program-event.view', ['slug'=>$list->slug]) }}">
 								<label class="title">{{ $list->judul }}</label>
@@ -228,7 +228,9 @@
 		<div class="clearfix"></div>
 
 		<div class="for-btn-see-more">
-			<a class="btn-see-more" href="">@lang('front/home.connect-with-us')</a>
+			<label class="btn-see-more">
+				@lang('front/home.connect-with-us')
+			</label>
 		</div>
 
 		<div style="text-align: center;">
@@ -249,7 +251,7 @@
 				<label class="circle-shape left"></label>
 			</div>
 			<div class="vertical-align-midle">
-				<label class="flag-title">@lang('front/home.connect-with-us')</label>
+				<label class="flag-title">@lang('front/home.where-to-find-us')</label>
 			</div>
 			<div class="vertical-align-midle">
 				<label class="circle-shape right"></label>
@@ -259,9 +261,6 @@
 
 		<img src="{{ asset('public/image/default/toko.png') }}" style="width: 100%; margin-top: 60px;">
 
-		<div class="for-btn-see-more">
-			<a class="btn-see-more" href="">@lang('front/home.more-location')</a>
-		</div>
 	</div>
 </div>
 

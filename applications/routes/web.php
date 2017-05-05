@@ -134,6 +134,12 @@ Route::get('bahasa/{bhs}', 'HomeController@language')->where('lang', '[A-Za-z_-]
 Route::get('/', 'Frontend\HomeController@index')
   ->name('frontend.home');
 
+Route::get('/contact', 'Frontend\ContactController@index')
+  ->name('frontend.contact');
+
+Route::get('/about', 'Frontend\AboutController@index')
+  ->name('frontend.about');
+
 Route::get('/news', 'Frontend\NewsController@index')
   ->name('frontend.news');
 Route::get('/news/{slug}', 'Frontend\NewsController@view')

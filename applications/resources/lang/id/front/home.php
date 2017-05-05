@@ -8,6 +8,4 @@ return [
 	'stay-connected' => 'Tetap Terhubung',
 	'connect-with-us' => 'Terhubung Dengan Kami',
 	'where-to-find-us' => 'Dimana Menemukan Kita',
-	'more-location' => 'Lokasi Lain',
-	
 ];

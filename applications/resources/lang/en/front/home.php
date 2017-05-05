@@ -8,6 +8,4 @@ return [
 	'stay-connected' => 'Stay Connected',
 	'connect-with-us' => 'Connect With Us',
 	'where-to-find-us' => 'Where to Find Us',
-	'more-location' => 'More Location',
-
 ];
