@@ -68,7 +68,7 @@
             @foreach ($getSocial as $key)
             <tr>
               <td>{{ $no }}</td>
-              <td><img src="{{ asset('images/sosmed').'/'.$key->img_url}}" alt="" class="thumbnail"></td>
+              <td class="text-center"><img src="{{ asset('images/sosmed').'/'.$key->img_url}}"></td>
               <td>{{ $key->url_account }}</td>
               <td>@if ($key->flag_publish == 1) <span class='label label-success'><i class="fa fa-thumbs-o-up"></i></span> @else <span class='label label-danger'><i class="fa fa-thumbs-o-down"></i></span> @endif</td>
               <td><a href="{{ route('social.ubah', $key->id) }}" class="btn btn-xs btn-warning btn-sm"><i class="fa fa-pencil"></i> Ubah</a></td>

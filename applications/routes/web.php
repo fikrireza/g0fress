@@ -129,6 +129,12 @@ Route::group(['middleware' => ['isAdministrator']], function () {
   Route::get('admin/social-account/ubah/{id}', 'Backend\SocialMediaController@ubah')->name('social.ubah');
   Route::post('admin/social-account/ubah', 'Backend\SocialMediaController@edit')->name('social.edit');
 
+  // Kontak
+  Route::get('admin/kontak', 'Backend\KontakController@index')->name('kontak.index');
+  Route::get('admin/kontak/tambah', 'Backend\KontakController@tambah')->name('kontak.tambah');
+  Route::post('admin/kontak/tambah', 'Backend\KontakController@store')->name('kontak.store');
+  Route::get('admin/kontak/ubah/{id}', 'Backend\KontakController@ubah')->name('kontak.ubah');
+  Route::post('admin/kontak/ubah', 'Backend\KontakController@edit')->name('kontak.edit');
 
 });
 //----------------------- BACKEND -----------------------//
