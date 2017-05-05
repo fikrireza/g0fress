@@ -19,10 +19,48 @@ class EventsController extends Controller
     	$date = new DateTime;
 		$format_date = $date->format('Y-m-d');
 
-    	$callProgramEvent = ProgramEvents::select('judul_promosi_ID as judul', 'img_url', 'img_alt', 'slug', 'deskripsi_ID as deskripsi')->where('flag_publish', '1')->whereDATE('tanggal_post', '<=', $format_date)->whereNull('video_url')->orderBy('id', 'desc')->limit(15)->get();
+        if (App::getLocale() == 'id') {
+            $callProgramEventJudul = 'judul_promosi_ID as judul';
+            $callProgramEventDeskripsi = 'deskripsi_ID as deskripsi';
 
-    	$callProgramEventVidio = ProgramEvents::select('judul_promosi_ID as judul', 'video_url', 'img_alt', 'slug', 'deskripsi_ID as deskripsi')->where('flag_publish', '1')->whereDATE('tanggal_post', '<=', $format_date)->whereNotNull('video_url')->orderBy('id', 'desc')->limit(8)->get();
+            $callProgramEventVidioJudul = 'judul_promosi_ID as judul';
+            $callProgramEventVidioDeskripsi = 'deskripsi_ID as deskripsi';
+        }
+        else if (App::getLocale() == 'en') {
+            $callProgramEventJudul = 'judul_promosi_EN as judul';
+            $callProgramEventDeskripsi = 'deskripsi_EN as deskripsi';
 
+            $callProgramEventVidioJudul = 'judul_promosi_EN as judul';
+            $callProgramEventVidioDeskripsi = 'deskripsi_EN as deskripsi';
+        }
+        
+    	$callProgramEvent = ProgramEvents::select(
+                $callProgramEventJudul, 
+                'img_url', 
+                'img_alt', 
+                'slug', 
+                $callProgramEventDeskripsi
+            )
+            ->where('flag_publish', '1')
+            ->whereDATE('tanggal_post', '<=', $format_date)
+            ->whereNull('video_url')
+            ->orderBy('id', 'desc')
+            ->limit(15)
+            ->get();
+
+    	$callProgramEventVidio = ProgramEvents::select(
+                $callProgramEventVidioJudul, 
+                'video_url', 
+                'img_alt', 
+                'slug', 
+                $callProgramEventVidioDeskripsi
+            )
+            ->where('flag_publish', '1')
+            ->whereDATE('tanggal_post', '<=', $format_date)
+            ->whereNotNull('video_url')
+            ->orderBy('id', 'desc')
+            ->limit(8)
+            ->get();
 
     	return view('frontend.events.index',compact('callProgramEvent','callProgramEventVidio'));
     }
@@ -32,7 +70,27 @@ class EventsController extends Controller
     	$date = new DateTime;
 		$format_date = $date->format('Y-m-d');
 		
-		$callProgramEvent = ProgramEvents::select('judul_promosi_ID as judul', 'img_url', 'img_alt', 'slug', 'deskripsi_ID as deskripsi')->where('flag_publish', '1')->whereDATE('tanggal_post', '<=', $format_date)->whereNull('video_url')->orderBy('id', 'desc')->paginate(8);
+        if (App::getLocale() == 'id') {
+            $callProgramEventJudul = 'judul_promosi_ID as judul';
+            $callProgramEventDeskripsi = 'deskripsi_ID as deskripsi';
+        }
+        else if (App::getLocale() == 'en') {
+            $callProgramEventJudul = 'judul_promosi_EN as judul';
+            $callProgramEventDeskripsi = 'deskripsi_EN as deskripsi';
+        }
+
+		$callProgramEvent = ProgramEvents::select(
+                $callProgramEventJudul, 
+                'img_url', 
+                'img_alt', 
+                'slug', 
+                $callProgramEventDeskripsi
+            )
+            ->where('flag_publish', '1')
+            ->whereDATE('tanggal_post', '<=', $format_date)
+            ->whereNull('video_url')
+            ->orderBy('id', 'desc')
+            ->paginate(8);
 		
     	if ($request->ajax()) {
     		$view = view('frontend.events.ajax-events-list',compact('callProgramEvent'))->render();
@@ -43,8 +101,26 @@ class EventsController extends Controller
     }
 
     function eventsView($slug){
+        
+        if (App::getLocale() == 'id') {
+            $callProgramEventJudul = 'judul_promosi_ID as judul';
+            $callProgramEventDeskripsi = 'deskripsi_ID as deskripsi';
+        }
+        else if (App::getLocale() == 'en') {
+            $callProgramEventJudul = 'judul_promosi_EN as judul';
+            $callProgramEventDeskripsi = 'deskripsi_EN as deskripsi';
+        }
 
-    	$callProgramEvent = ProgramEvents::select('judul_promosi_ID as judul', 'img_url', 'img_alt', 'deskripsi_ID as deskripsi','tanggal_post', 'video_url')->where('slug', $slug)->first();
+    	$callProgramEvent = ProgramEvents::select(
+                $callProgramEventJudul, 
+                'img_url', 
+                'img_alt', 
+                $callProgramEventDeskripsi,
+                'tanggal_post', 
+                'video_url'
+            )
+            ->where('slug', $slug)
+            ->first();
 
     	if ($callProgramEvent->video_url == null) {
 	    	return view('frontend.events.events-view',compact('callProgramEvent'));
@@ -60,7 +136,27 @@ class EventsController extends Controller
     	$date = new DateTime;
 		$format_date = $date->format('Y-m-d');
 		
-		$callProgramEventVidio = ProgramEvents::select('judul_promosi_ID as judul', 'video_url', 'img_alt', 'slug', 'deskripsi_ID as deskripsi')->where('flag_publish', '1')->whereDATE('tanggal_post', '<=', $format_date)->whereNotNull('video_url')->orderBy('id', 'desc')->paginate(8);
+        if (App::getLocale() == 'id') {
+            $callProgramEventVidioJudul = 'judul_promosi_ID as judul';
+            $callProgramEventVidioDeskripsi = 'deskripsi_ID as deskripsi';
+        }
+        else if (App::getLocale() == 'en') {
+            $callProgramEventVidioJudul = 'judul_promosi_EN as judul';
+            $callProgramEventVidioDeskripsi = 'deskripsi_EN as deskripsi';
+        }
+
+		$callProgramEventVidio = ProgramEvents::select(
+            $callProgramEventVidioJudul, 
+            'video_url', 
+            'img_alt', 
+            'slug', 
+            $callProgramEventVidioDeskripsi
+        )
+        ->where('flag_publish', '1')
+        ->whereDATE('tanggal_post', '<=', $format_date)
+        ->whereNotNull('video_url')
+        ->orderBy('id', 'desc')
+        ->paginate(8);
 		
     	if ($request->ajax()) {
     		$view = view('frontend.events.ajax-events-vidio-list',compact('callProgramEventVidio'))->render();

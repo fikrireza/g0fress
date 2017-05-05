@@ -34,7 +34,9 @@
 					<label class="circle-shape left"></label>
 				</div>
 				<div class="vertical-align-midle">
-					<label class="flag-title">Go Fress Products</label>
+					<label class="flag-title">
+						@lang('front/home.go-fress-product')
+					</label>
 				</div>
 				<div class="vertical-align-midle">
 					<label class="circle-shape right"></label>

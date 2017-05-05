@@ -27,7 +27,9 @@
 					<label class="circle-shape left"></label>
 				</div>
 				<div class="vertical-align-midle">
-					<label class="flag-title">@lang('front/event-index.berita-dan-info')</label>
+					<label class="flag-title">
+						@lang('front/news-index.berita-dan-info')
+					</label>
 				</div>
 				<div class="vertical-align-midle">
 					<label class="circle-shape right"></label>
@@ -38,13 +40,17 @@
 
 		<div class="sub-col">
 			<div class="wrapper-sub-col">
-				<h2 class="title">@lang('front/publict.follow-us-on')</h2>
+				<h2 class="title">
+					@lang('front/news-index.follow-us-on')
+				</h2>
 				<img src="{{ asset('public/image/default/socmed-logo-fb.png') }}">
 				<img src="{{ asset('public/image/default/socmed-logo-twit.png') }}">
 				<img src="{{ asset('public/image/default/socmed-logo-insta.png') }}">
 			</div>
 			<div class="wrapper-sub-col">
-				<h2 class="title">archive</h2>
+				<h2 class="title">
+					@lang('front/news-index.archive')
+				</h2>
 				<ul id="accordionList">
 				@php
 					$month = '';
@@ -96,7 +102,7 @@
 					</div>
 					<br>
 					<a class="btn-read-more" href="{{ route('frontend.news.view', ['slug'=>$list->slug]) }}">
-						read more
+						@lang('front/publict.read-more')
 					</a>
 				</div>
 				<div class="clearfix"></div>

@@ -4,17 +4,17 @@
 			<ul>
 				<li>
 					<a href="{{ route('frontend.home') }}">
-						@lang('front/home.home')
+						@lang('front/publict.home')
 					</a>
 				</li>
 				<li>
 					<a href="">
-						@lang('front/home.about')
+						@lang('front/publict.about')
 					</a>
 				</li>
 				<li>
 					<a href="">
-						@lang('front/home.contact')
+						@lang('front/publict.contact')
 					</a>
 				</li>
 			</ul>
@@ -28,6 +28,6 @@
 
 		<div class="clearfix"></div>
 
-		<p class="copy-right">@lang('front/home.copy-right')</p>
+		<p class="copy-right">@lang('front/publict.copy-right')</p>
 	</div>
 </div>

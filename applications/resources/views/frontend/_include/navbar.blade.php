@@ -14,12 +14,12 @@
 			<ul class="nav-link-list-ul">
 				<li class="nav-link-list-li">
 					<a href="">
-						@lang('front/home.about')
+						@lang('front/publict.about')
 					</a>
 				</li>
 				<li class="nav-link-list-li dropdown-hover">
 					<a href="{{ route('frontend.produk') }}">
-						@lang('front/home.product')
+						@lang('front/publict.product')
 					</a>
 					<div class="dropdown-hover-content">
 
@@ -49,17 +49,17 @@
 				</li>
 				<li class="nav-link-list-li">
 					<a href="{{ route('frontend.news') }}">
-						@lang('front/home.news')
+						@lang('front/publict.news')
 					</a>
 				</li>
 				<li class="nav-link-list-li">
 					<a href="{{ route('frontend.program-event') }}">
-						@lang('front/home.program')
+						@lang('front/publict.program')
 					</a>
 				</li>
 				<li class="nav-link-list-li">
 					<a href="">
-						@lang('front/home.contact')
+						@lang('front/publict.contact')
 					</a>
 				</li>
 			</ul>
