@@ -103,6 +103,9 @@ Route::group(['middleware' => ['isAdministrator']], function () {
   // Web Head Banner
   Route::get('admin/banner', 'Backend\BannerController@index')->name('banner.index');
   Route::get('admin/banner/tambah', 'Backend\BannerController@tambah')->name('banner.tambah');
+  Route::post('admin/banner/tambah', 'Backend\BannerController@store')->name('banner.store');
+  Route::get('admin/banner/ubah/{id}', 'Backend\BannerController@ubah')->name('banner.ubah');
+  Route::post('admin/banner/ubah', 'Backend\BannerController@edit')->name('banner.edit');
 
   // Profile User
   Route::get('admin/profile', 'Backend\ProfileController@index')->name('profile.index');

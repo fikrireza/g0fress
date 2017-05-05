@@ -1,7 +1,7 @@
 @extends('backend.layout.master')
 
 @section('title')
-<title>Aquasolve | Tambah Slider Image</title>
+<title>Gofress | Ubah Slider Image</title>
 @endsection
 
 @section('headscript')
@@ -104,7 +104,6 @@
 
 
 @section('script')
-<script src="{{ asset('backend/vendors/validator/validator.min.js') }}"></script>
 <script src="{{ asset('backend/vendors/iCheck/icheck.min.js')}}"></script>
 <script src="{{ asset('backend/vendors/switchery/dist/switchery.min.js')}}"></script>
 <script src="{{ asset('backend/js/moment/moment.min.js') }}"></script>
@@ -114,30 +113,6 @@
     singleDatePicker: true,
     calender_style: "picker_3",
     format: 'YYYY-MM-DD',
-  });
-
-  // initialize the validator function
-  validator.message.date = 'not a real date';
-
-  // validate a field on "blur" event, a 'select' on 'change' event & a '.reuired' classed multifield on 'keyup':
-  $('form')
-    .on('blur', 'input[required], textarea, input.optional, select.required', validator.checkField)
-    .on('change', 'select.required', validator.checkField)
-    .on('keypress', 'input[required][pattern], textarea', validator.keypress);
-
-  $('form').submit(function(e) {
-    e.preventDefault();
-    var submit = true;
-
-    // evaluate the form using generic validaing
-    if (!validator.checkAll($(this))) {
-      submit = false;
-    }
-
-    if (submit)
-      this.submit();
-
-    return false;
   });
 </script>
 @endsection

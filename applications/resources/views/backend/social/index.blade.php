@@ -1,7 +1,7 @@
 @extends('backend.layout.master')
 
 @section('title')
-  <title>Aquasolve | Social Media</title>
+  <title>Gofress | Social Media</title>
 @endsection
 
 @section('headscript')

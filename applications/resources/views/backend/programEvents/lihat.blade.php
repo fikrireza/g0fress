@@ -1,7 +1,7 @@
 @extends('backend.layout.master')
 
 @section('title')
-  <title>Aquasolve | Lihat Program & Events</title>
+  <title>Gofress | Lihat Program & Events</title>
 @endsection
 
 @section('headscript')
