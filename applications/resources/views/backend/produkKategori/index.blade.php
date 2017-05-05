@@ -1,7 +1,7 @@
 @extends('backend.layout.master')
 
 @section('title')
-  <title>Aquasolve | Produk Kategori</title>
+  <title>Gofress | Produk Kategori</title>
 @endsection
 
 @section('headscript')

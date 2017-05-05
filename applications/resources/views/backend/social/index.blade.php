@@ -1,7 +1,7 @@
 @extends('backend.layout.master')
 
 @section('title')
-  <title>Gofress | Program & Events Kategori</title>
+  <title>Gofress | Social Media</title>
 @endsection
 
 @section('headscript')
@@ -32,48 +32,54 @@
 </div>
 @endif
 
-<div class="page-title">
-  <div class="title_left">
-    <h3>Semua Program & Events Kategori<small></small></h3>
+<div class="row">
+  <div class="page-title">
+    <div class="title_left">
+      <h3>Social Media <small></small></h3>
+    </div>
   </div>
 </div>
 
-<div class="col-md-12 col-sm-12 col-xs-12">
-  <div class="x_panel">
-    <div class="x_title">
-      <h2>Program & Events Kategori</h2>
-      <ul class="nav panel_toolbox">
-        <a href="{{ route('programEventsKategori.tambah') }}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Tambah Program & Events Kategori</a>
-      </ul>
-      <div class="clearfix"></div>
-    </div>
-    <div class="x_content table-responsive">
-      <table id="programEventstabel" class="table table-striped table-bordered dt-responsive no-footer" width="100%">
-        <thead>
-          <tr role="row">
-            <th>No</th>
-            <th>Kategori Program Events</th>
-            <th>Publish</th>
-            <th>Aksi</th>
-          </tr>
-        </thead>
-        <tbody>
-          @php
-            $no = 1;
-          @endphp
-          @foreach ($getProgramEventsKategori as $key)
-          <tr>
-            <td>{{ $no }}</td>
-            <td>{{ $key->judul_kategori_ID }}</td>
-            <td>@if ($key->flag_publish == 1) <span class='label label-success'><i class="fa fa-thumbs-o-up"></i></span> @else <span class='label label-danger'><i class="fa fa-thumbs-o-down"></i></span> @endif</td>
-            <td><a href="{{ route('programEventsKategori.lihat', $key->id) }}" class="btn btn-xs btn-primary"><i class="fa fa-folder"></i> Lihat</a><a href="{{ route('programEventsKategori.ubah', $key->id) }}" class="btn btn-xs btn-warning btn-sm"><i class="fa fa-pencil"></i> Ubah</a></td>
-          </tr>
-          @php
-            $no++;
-          @endphp
-          @endforeach
-        </tbody>
-      </table>
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Social Media </h2>
+        <ul class="nav panel_toolbox">
+          <a href="{{ route('social.tambah') }}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Tambah Social Media</a>
+        </ul>
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content table-responsive">
+        <table id="sosmedtabel" class="table table-striped table-bordered dt-responsive no-footer" width="100%">
+          <thead>
+            <tr role="row">
+              <th>No</th>
+              <th>Image Icon</th>
+              <th>Url</th>
+              <th>Publish</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            @php
+              $no = 1;
+            @endphp
+            @foreach ($getSocial as $key)
+            <tr>
+              <td>{{ $no }}</td>
+              <td><img src="{{ asset('images/sosmed').'/'.$key->img_url}}" alt="" class="thumbnail"></td>
+              <td>{{ $key->url_account }}</td>
+              <td>@if ($key->flag_publish == 1) <span class='label label-success'><i class="fa fa-thumbs-o-up"></i></span> @else <span class='label label-danger'><i class="fa fa-thumbs-o-down"></i></span> @endif</td>
+              <td><a href="{{ route('social.ubah', $key->id) }}" class="btn btn-xs btn-warning btn-sm"><i class="fa fa-pencil"></i> Ubah</a></td>
+            </tr>
+            @php
+              $no++;
+            @endphp
+            @endforeach
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
@@ -89,6 +95,6 @@
 <script src="{{ asset('backend/vendors/pnotify/dist/pnotify.nonblock.js') }}"></script>
 
 <script type="text/javascript">
-  $('#programEventstabel').DataTable();
+  $('#sosmedtabel').DataTable();
 </script>
 @endsection

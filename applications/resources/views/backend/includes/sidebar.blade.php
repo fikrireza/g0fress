@@ -1,7 +1,7 @@
 <div class="col-md-3 left_col menu_fixed">
   <div class="left_col scroll-view">
     <div class="navbar nav_title" style="border: 0;">
-      <a href="index.html" class="site_title"> <span>Aquasolve Dashboard</span></a>
+      <a href="{{ route('admin.dashboard') }}" class="site_title"> <span>Gofress Dashboard</span></a>
     </div>
 
     <div class="clearfix"></div>
@@ -9,7 +9,7 @@
     <!-- menu profile quick info -->
     <div class="profile">
       <div class="profile_pic">
-        <img src="{{ asset('').'/'.Auth::user()->avatar }}" alt="..." class="img-circle profile_img">
+        <img src="{{ asset('images/users').'/'.Auth::user()->avatar }}" alt="..." class="img-circle profile_img">
       </div>
       <div class="profile_info">
         <span>Welcome,</span>
@@ -25,7 +25,7 @@
       <div class="menu_section">
         <h3>General</h3>
         <ul class="nav side-menu">
-          <li class="{{ Route::currentRouteNamed('admin.dashboard') ? 'active' : '' }}"><a href="{{ route('admin.dashboard') }}"><i class="fa fa-home"></i> Home </a></li>
+          <li class="{{ Route::currentRouteNamed('admin.dashboard') ? 'active' : '' }}"><a href="{{ route('admin.dashboard') }}"><i class="fa fa-home"></i> Beranda </a></li>
           <li class="{{ Route::currentRouteNamed('produk.index') ? 'active' : '' }}{{ Route::currentRouteNamed('produk.tambah') ? 'active' : '' }}{{ Route::currentRouteNamed('produk.lihat') ? 'active' : '' }}{{ Route::currentRouteNamed('produk.ubah') ? 'active' : '' }}{{ Route::currentRouteNamed('produkKategori.index') ? 'active' : '' }}{{ Route::currentRouteNamed('produkKategori.tambah') ? 'active' : '' }}{{ Route::currentRouteNamed('produkKategori.lihat') ? 'active' : '' }}{{ Route::currentRouteNamed('produkKategori.ubah') ? 'active' : '' }}">
             <a>
               <i class="fa fa-beer"></i> Produk <span class="fa fa-chevron-down"></span>
@@ -45,16 +45,17 @@
               <li class="{{ Route::currentRouteNamed('programEventsKategori.index') ? 'current-page' : '' }}{{ Route::currentRouteNamed('programEventsKategori.tambah') ? 'current-page' : '' }}{{ Route::currentRouteNamed('programEventsKategori.lihat') ? 'current-page' : '' }}"><a href="{{ route('programEventsKategori.index') }}">Program & Events Kategori</a></li>
             </ul>
           </li>
-          <li class="{{ Route::currentRouteNamed('slider.index') ? 'active' : '' }}{{ Route::currentRouteNamed('slider.tambah') ? 'active' : '' }}{{ Route::currentRouteNamed('banner.index') ? 'active' : '' }}{{ Route::currentRouteNamed('banner.tambah') ? 'active' : '' }}">
+          <li class="{{ Route::currentRouteNamed('slider.index') ? 'active' : '' }}{{ Route::currentRouteNamed('slider.tambah') ? 'active' : '' }}{{ Route::currentRouteNamed('banner.index') ? 'active' : '' }}{{ Route::currentRouteNamed('banner.tambah') ? 'active' : '' }}{{ Route::currentRouteNamed('banner.ubah') ? 'active' : '' }}">
             <a><i class="fa fa-image"></i> Banner Slider <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
               <li class="{{ Route::currentRouteNamed('slider.index') ? 'current-page' : '' }}{{ Route::currentRouteNamed('slider.tambah') ? 'current-page' : '' }}"><a href="{{ route('slider.index') }}">Home Slider</a></li>
-              <li class="{{ Route::currentRouteNamed('banner.index') ? 'current-page' : '' }}{{ Route::currentRouteNamed('banner.tambah') ? 'current-page' : '' }}"><a href="{{ route('banner.index') }}">Head Banner</a></li>
+              <li class="{{ Route::currentRouteNamed('banner.index') ? 'current-page' : '' }}{{ Route::currentRouteNamed('banner.tambah') ? 'current-page' : '' }}{{ Route::currentRouteNamed('banner.ubah') ? 'current-page' : '' }}"><a href="{{ route('banner.index') }}">Banner </a></li>
             </ul>
 
           </li>
           <li><a href="#"><i class="fa fa-building-o"></i> Kontak </a></li>
           <li class="{{ Route::currentRouteNamed('inbox.index') ? 'active' : '' }}"><a href="{{ route('inbox.index') }}"><i class="fa fa-inbox"></i> Inbox </a></li>
+          <li class="{{ Route::currentRouteNamed('social.index') ? 'active' : '' }}{{ Route::currentRouteNamed('social.tambah') ? 'active' : '' }}{{ Route::currentRouteNamed('social.ubah') ? 'active' : '' }}"><a href="{{ route('social.index') }}"><i class="fa fa-share-alt"></i> Social Media </a></li>
         </ul>
       </div>
       <div class="menu_section">

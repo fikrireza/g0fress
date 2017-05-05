@@ -41,14 +41,15 @@ class ProfileController extends Controller
         $messages = [
           'oldpass.required' => "Isi password lama anda.",
           'newpass.required' => "Isi password baru anda.",
-          'newpass.confirmed' => "Isi konfirmasi password baru anda dengan benar.",
+          'newpass.min' => "Terlalu Singkat.",
           'newpass_confirmation.required' => "Isi konfirmasi password baru anda.",
+          'newpass_confirmation.confirmed' => "Password Tidak Cocok.",
         ];
 
         $validator = Validator::make($request->all(), [
           'oldpass' => 'required',
-          'newpass' => 'required|confirmed',
-          'newpass_confirmation' => 'required'
+          'newpass' => 'required|min:8',
+          'newpass_confirmation' => 'required|same:newpass'
         ], $messages);
 
         if ($validator->fails()) {
@@ -72,15 +73,17 @@ class ProfileController extends Controller
         $message = [
           'name.required' => 'Wajib di isi',
           'email.unique' => 'Email ini sudah digunakan',
-          'email.email' => 'Format Email',
-          'avatar.image' => 'Format .jpeg, .bmp, .png',
+          'email.email' => 'Format harus Email',
+          'avatar.image' => 'Format Gambar Tidak Sesuai',
+          'avatar.max' => 'File Size Terlalu Besar',
         ];
 
         $validator = Validator::make($request->all(), [
           'name' => 'required',
           'email' => 'required|email|unique:amd_users,email,'.$request->id,
-          'img_url' => 'image|mimes:jpeg,bmp,png',
+          'avatar' => 'image|mimes:jpeg,bmp,png|max:1000',
         ], $message);
+
 
         if($validator->fails())
         {
@@ -102,7 +105,7 @@ class ProfileController extends Controller
           $update = User::find($request->id);
           $update->name = $request->name;
           $update->email = $request->email;
-          $update->avatar  = 'images/users/'.$img_url;
+          $update->avatar  = $img_url;
           $update->update();
         }
 

@@ -1,7 +1,7 @@
 @extends('backend.layout.master')
 
 @section('title')
-  <title>Aquasolve | News</title>
+  <title>Gofress | Profil</title>
 @endsection
 
 @section('headscript')
@@ -75,6 +75,12 @@
           </div>
         </div>
         <div class="item form-group">
+          <label class="control-label col-md-2 col-sm-2 col-xs-12"></label>
+          <div class="col-md-8 col-sm-8 col-xs-12">
+            <img src="{{ asset('images/users').'/'.$getUser->avatar }}" class="thumbnail">
+          </div>
+        </div>
+        <div class="item form-group">
           <label class="control-label col-md-2 col-sm-2 col-xs-12">Email</label>
           <div class="col-md-8 col-sm-8 col-xs-12">
             <input id="email" type="email" name="email" value="{{ $getUser->email }}" class="form-control col-md-7 col-xs-12">
@@ -100,35 +106,35 @@
         <div class="item form-group {{ $errors->has('oldpass') ? 'has-error' : '' }}">
           <label class="col-sm-3 control-label">Password Lama</label>
           <div class="col-sm-6">
-            <input od="oldpass" name="oldpass" type="password" placeholder="Password Lama" data-validate-length="8,20" class="form-control" required="required" @if(!$errors->has('oldpass'))
+            <input od="oldpass" name="oldpass" type="password" placeholder="Password Lama" class="form-control" required="required" @if(!$errors->has('oldpass'))
               value="{{ old('oldpass') }}"@endif>
             <input name="id" type="hidden" class="form-control" value="{{ Auth::user()->id }}">
             @if($errors->has('oldpass'))
-              <code><span style="color:red; font-size:10px;">{{ $errors->first('oldpass') }}</span></code>
+              <code><span style="color:blue; font-size:12px;">{{ $errors->first('oldpass') }}</span></code>
             @endif
             @if(Session::has('erroroldpass'))
-              <code><span style="color:red; font-size:10px;">{{ Session::get('erroroldpass') }}</span></code>
+              <code><span style="color:blue; font-size:12px;">{{ Session::get('erroroldpass') }}</span></code>
             @endif
           </div>
         </div>
         <div class="item form-group {{ $errors->has('newpass') ? 'has-error' : '' }} ">
           <label class="col-sm-3 control-label">Password Baru</label>
           <div class="col-sm-6">
-            <input name="newpass" type="password" data-validate-length="8,15" class="form-control" required="required"  placeholder="Password Baru Minimal 8 Karakter" @if(!$errors->has('newpass'))
+            <input name="newpass" type="password" class="form-control" required="required"  placeholder="Password Baru Minimal 8 Karakter" @if(!$errors->has('newpass'))
               value="{{ old('newpass') }}"@endif>
             @if($errors->has('newpass'))
-              <code><span style="color:red; font-size:10px;">{{ $errors->first('newpass') }}</span></code>
+              <code><span style="color:blue; font-size:12px;">{{ $errors->first('newpass') }}</span></code>
             @endif
           </div>
         </div>
         <div class="item form-group {{ $errors->has('newpass_confirmation') ? 'has-error' : '' }}">
           <label class="col-sm-3 control-label">Konfirmasi Password Baru</label>
           <div class="col-sm-6">
-            <input name="newpass_confirmation" type="password" data-validate-linked="newpass" class="form-control" required="required" placeholder="Konfirmasi Password Baru"
+            <input name="newpass_confirmation" type="password" class="form-control" required="required" placeholder="Konfirmasi Password Baru"
             @if(!$errors->has('newpass_confirmation'))
               value="{{ old('newpass_confirmation') }}"@endif>
             @if($errors->has('newpass_confirmation'))
-              <code><span style="color:red; font-size:10px;">{{ $errors->first('newpass_confirmation') }}</span></code>
+              <code><span style="color:blue; font-size:12px;">{{ $errors->first('newpass_confirmation') }}</span></code>
             @endif
           </div>
         </div>
@@ -140,29 +146,4 @@
   </div>
 </div>
 
-@endsection
-
-@section('script')
-<script src="{{ asset('backend/vendors/validator/validator.min.js') }}"></script>
-<script type="text/javascript">
-$('form')
-  .on('blur', 'input[required], textarea, input.optional, select.required', validator.checkField)
-  .on('change', 'select.required', validator.checkField)
-  .on('keypress', 'input[required][pattern], textarea', validator.keypress);
-
-$('form').submit(function(e) {
-  e.preventDefault();
-  var submit = true;
-
-  // evaluate the form using generic validaing
-  if (!validator.checkAll($(this))) {
-    submit = false;
-  }
-
-  if (submit)
-    this.submit();
-
-  return false;
-});
-</script>
 @endsection
