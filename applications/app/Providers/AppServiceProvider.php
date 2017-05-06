@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Schema;
 use DateTime;
 use App\Models\ProdukKategori;
 use App\Models\Produk;
+use App\Models\Inbox;
+
+use Auth;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -27,6 +30,11 @@ class AppServiceProvider extends ServiceProvider
 
         view()->share('navCallKategory', $navCallKategory);
         view()->share('navCallProduk', $navCallProduk);
+
+        // Notifikasi New Inbox
+        $getNotifInbox = Inbox::where('read', 0)->orderBy('created_at', 'desc')->get();
+        view()->share('getNotifInbox', $getNotifInbox);
+
     }
 
     /**
