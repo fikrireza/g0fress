@@ -113,7 +113,7 @@
           </div>
           <div class="item form-group">
             <label class="col-md-3"></label>
-            <div class="col-md-6">
+            <div class="col-md-6 col-sm-6 col-xs-12">
               <img src="{{ asset('images/produk/').'/'.$getProduk->img_url }}" alt="" class="thumbnail">
             </div>
           </div>

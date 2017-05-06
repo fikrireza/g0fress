@@ -10,14 +10,32 @@
 
 @section('content')
 
+@if(Session::has('berhasil'))
+<script>
+  window.setTimeout(function() {
+    $(".alert-success").fadeTo(700, 0).slideUp(700, function(){
+        $(this).remove();
+    });
+  }, 5000);
+</script>
 <div class="row">
-  <div class="page-title">
-    <div class="title_left">
-      <h3>Kontak <small></small></h3>
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="alert alert-success alert-dismissible fade in" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+      </button>
+      <strong>{{ Session::get('berhasil') }}</strong>
     </div>
   </div>
 </div>
+@endif
 
+<div class="page-title">
+  <div class="title_left">
+    <h3>Kontak <small></small></h3>
+  </div>
+</div>
+
+<div class="clearfix"></div>
 <div class="row">
   <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="x_panel">

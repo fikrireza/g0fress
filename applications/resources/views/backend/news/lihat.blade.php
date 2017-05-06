@@ -5,8 +5,6 @@
 @endsection
 
 @section('headscript')
-<link href="{{ asset('backend/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css') }}" rel="stylesheet">
-<link href="{{ asset('backend/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -28,10 +26,9 @@
         </ul>
         <div class="clearfix"></div>
       </div>
-      <div class="x_content">
+      <div class="x_content table-responsive">
         <table class="table table-hover">
           <tbody>
-
           <tr>
             <td><strong>Judul ID</strong></td>
             <td>:</td>

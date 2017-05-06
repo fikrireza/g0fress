@@ -28,10 +28,9 @@
         </ul>
         <div class="clearfix"></div>
       </div>
-      <div class="x_content">
+      <div class="x_content table-responsive">
         <table class="table table-hover">
           <tbody>
-
           <tr>
             <td><strong>Kategori Produk</strong></td>
             <td>:</td>

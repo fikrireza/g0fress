@@ -19,43 +19,46 @@
   </div>
 </div>
 
-<div class="col-md-12 col-sm-12 col-xs-12">
-  <div class="x_panel">
-    <div class="x_title">
-      <h2>Inbox </h2>
-      <div class="clearfix"></div>
-    </div>
-    <div class="x_content table-responsive">
-      <table id="inboxtabel" class="table table-striped table-bordered dt-responsive no-footer" width="100%">
-        <thead>
-          <tr role="row">
-            <th>No</th>
-            <th>Nama</th>
-            <th>Subjek</th>
-            <th>Email</th>
-            <th>Pesan</th>
-            <th>Diterima</th>
-          </tr>
-        </thead>
-        <tbody>
-          @php
-            $no = 1;
-          @endphp
-          @foreach ($getInbox as $key)
-          <tr>
-            <td>{{ $no }}</td>
-            <td>{{ $key->nama }}</td>
-            <td>{{ $key->subjek }}</td>
-            <td>{{ $key->email }}</td>
-            <td>{{ $key->pesan }}</td>
-            <td>{{ $key->created_at }}</td>
-          </tr>
-          @php
-            $no++;
-          @endphp
-          @endforeach
-        </tbody>
-      </table>
+<div class="clearfix"></div>
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Inbox </h2>
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content table-responsive">
+        <table id="inboxtabel" class="table table-striped table-bordered no-footer" width="100%">
+          <thead>
+            <tr role="row">
+              <th>No</th>
+              <th>Nama</th>
+              <th>Subjek</th>
+              <th>Email</th>
+              <th>Pesan</th>
+              <th>Diterima</th>
+            </tr>
+          </thead>
+          <tbody>
+            @php
+              $no = 1;
+            @endphp
+            @foreach ($getInbox as $key)
+            <tr>
+              <td>{{ $no }}</td>
+              <td>{{ $key->nama }}</td>
+              <td>{{ $key->subjek }}</td>
+              <td>{{ $key->email }}</td>
+              <td>{{ $key->pesan }}</td>
+              <td>{{ $key->created_at }}</td>
+            </tr>
+            @php
+              $no++;
+            @endphp
+            @endforeach
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>

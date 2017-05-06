@@ -96,4 +96,88 @@ class TentangController extends Controller
         return redirect()->route('tentang.index')->with('berhasil', 'Berhasil Menambahkan tentang');
 
     }
+
+    public function ubah($id)
+    {
+        $getTentang = Tentang::find($id);
+
+        if(!$getTentang){
+          abort('backend.errors.404');
+        }
+
+        return view('backend.tentang.ubah', compact('getTentang'));
+    }
+
+
+    public function edit(Request $request)
+    {
+        $message = [
+          'deskripsi_EN.required' => 'Wajib di isi',
+          'deskripsi_EN.min' => 'Terlalu Singkat',
+          'deskripsi_ID.required' => 'Wajib di isi',
+          'deskripsi_ID.min' => 'Terlalu Singkat',
+          'visi_deskripsi_EN.required' => 'Wajib di isi',
+          'visi_deskripsi_EN.min' => 'Terlalu Singkat',
+          'visi_deskripsi_ID.required' => 'Wajib di isi',
+          'visi_deskripsi_ID.min' => 'Terlalu Singkat',
+          'misi_deskripsi_EN.required' => 'Wajib di isi',
+          'misi_deskripsi_EN.min' => 'Terlalu Singkat',
+          'misi_deskripsi_ID.required' => 'Wajib di isi',
+          'misi_deskripsi_ID.min' => 'Terlalu Singkat',
+          'img_url.image' => 'Format Gambar Tidak Sesuai',
+          'img_url.max' => 'File Size Terlalu Besar',
+          'img_url.dimensions' => 'Ukuran yg di terima 1920px x 781px',
+          'img_alt.required' => 'Wajib di isi',
+        ];
+
+        $validator = Validator::make($request->all(), [
+          'deskripsi_EN' => 'required|min:20',
+          'deskripsi_ID' => 'required|min:20',
+          'visi_deskripsi_EN' => 'required|min:20',
+          'visi_deskripsi_ID' => 'required|min:20',
+          'misi_deskripsi_EN' => 'required|min:20',
+          'misi_deskripsi_ID' => 'required|min:20',
+          'img_url' => 'image|mimes:jpeg,bmp,png|max:2000|dimensions:max_width=1920,max_height=781',
+          'img_alt' => 'required',
+        ], $message);
+
+
+        if($validator->fails())
+        {
+            return redirect()->route('tentang.ubah')->withErrors($validator)->withInput();
+        }
+
+        DB::transaction(function() use($request){
+          $image = $request->file('img_url');
+
+          $update = Tentang::find($request->id);
+          $update->deskripsi_EN = $request->deskripsi_EN;
+          $update->deskripsi_ID = $request->deskripsi_ID;
+          $update->visi_deskripsi_EN = $request->visi_deskripsi_EN;
+          $update->visi_deskripsi_ID = $request->visi_deskripsi_ID;
+          $update->misi_deskripsi_EN = $request->misi_deskripsi_EN;
+          $update->misi_deskripsi_ID = $request->misi_deskripsi_ID;
+          $update->img_alt  = $request->img_alt;
+          $update->slug = 'tentang';
+          $update->actor = Auth::user()->id;
+
+          if(!$image){
+            $update->update();
+          }else{
+            $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
+            Image::make($image)->fit(1920,781)->save('images/tentang/'. $img_url);
+            
+            $update->img_url  = $img_url;
+            $update->update();
+          }
+
+          $log = new LogAkses;
+          $log->actor = Auth::user()->id;
+          $log->aksi = 'Mengubah Tentang ';
+          $log->save();
+        });
+
+        return redirect()->route('tentang.index')->with('berhasil', 'Berhasil Mengubah tentang');
+
+    }
 }

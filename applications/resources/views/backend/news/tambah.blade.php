@@ -46,6 +46,7 @@
               @endif
             </div>
           </div>
+          <div class="ln_solid"></div>
           <div class="item form-group {{ $errors->has('deskripsi_ID') ? 'has-error' : ''}}">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Deskripsi ID <span class="required">*</span>
             </label>
@@ -66,6 +67,7 @@
               @endif
             </div>
           </div>
+          <div class="ln_solid"></div>
           <div class="item form-group {{ $errors->has('img_url') ? 'has-error' : ''}}">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Gambar
             </label>
@@ -97,6 +99,7 @@
               @endif
             </div>
           </div>
+          <div class="ln_solid"></div>
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Show Homepage
             </label>
@@ -196,6 +199,7 @@
     singleDatePicker: true,
     calender_style: "picker_3",
     format: 'YYYY-MM-DD',
+    minDate: new Date(),
   });
 </script>
 @endsection

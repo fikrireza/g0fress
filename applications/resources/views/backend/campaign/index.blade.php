@@ -41,8 +41,7 @@
       <div class="x_title">
         <h2>Situasi apa yang membuat bau mulut?</h2>
         <ul class="nav navbar-right panel_toolbox">
-          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-          </li>
+          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
         </ul>
         <div class="clearfix"></div>
       </div>
@@ -50,19 +49,25 @@
         <table class="" style="width:100%">
           <tr>
             <td>
-              <canvas id="pertanyaan_1" height="150" width="150" style="margin: 15px 10px 10px 0"></canvas>
-            </td>
-            <td>
-              <table class="tile_info">
+              <table class="table table-striped table-bordered" width="100%">
+                <thead>
+                  <tr>
+                    <th>Jawaban</th>
+                    <th>Nilai</th>
+                  </tr>
+                </thead>
+                <tbody>
                 @foreach ($pertanyaan_1 as $jumlah1)
                 <tr>
-                  <td>
-                    <p><i class="fa fa-square"></i>{{ $jumlah1->pertanyaan_1 }}</p>
-                  </td>
-                  <td>: {{ $jumlah1->jumlah }}</td>
+                  <td>{{ $jumlah1->pertanyaan_1 }}</td>
+                  <td>{{ $jumlah1->jumlah }}</td>
                 </tr>
                 @endforeach
+                </tbody>
               </table>
+            </td>
+            <td>
+              <canvas id="pertanyaan_1" height="150" width="200" style="margin: 15px 10px 10px 0"></canvas>
             </td>
           </tr>
         </table>
@@ -74,10 +79,7 @@
       <div class="x_title">
         <h2>Cara mengatasi bau mulut?</h2>
         <ul class="nav navbar-right panel_toolbox">
-          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-          </li>
-          <li><a class="close-link"><i class="fa fa-close"></i></a>
-          </li>
+          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
         </ul>
         <div class="clearfix"></div>
       </div>
@@ -85,19 +87,25 @@
         <table class="">
           <tr>
             <td>
-              <canvas id="pertanyaan_2" height="150" width="150" style="margin: 15px 10px 10px 0"></canvas>
-            </td>
-            <td>
-              <table class="tile_info">
+              <table class="table table-striped table-bordered" width="100%">
+                <thead>
+                  <tr>
+                    <th>Jawaban</th>
+                    <th>Nilai</th>
+                  </tr>
+                </thead>
+                <tbody>
                 @foreach ($pertanyaan_2 as $jumlah2)
                 <tr>
-                  <td>
-                    <p><i class="fa fa-square"></i>{{ $jumlah2->pertanyaan_2 }}</p>
-                  </td>
-                  <td>: {{ $jumlah2->jumlah }}</td>
+                  <td>{{ $jumlah2->pertanyaan_2 }}</td>
+                  <td> {{ $jumlah2->jumlah }}</td>
                 </tr>
                 @endforeach
+                </tbody>
               </table>
+            </td>
+            <td>
+              <canvas id="pertanyaan_2" height="150" width="200" style="margin: 15px 10px 10px 0"></canvas>
             </td>
           </tr>
         </table>
@@ -109,31 +117,33 @@
       <div class="x_title">
         <h2>Sudah pernah coba Gofress</h2>
         <ul class="nav navbar-right panel_toolbox">
-          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-          </li>
-          <li><a class="close-link"><i class="fa fa-close"></i></a>
-          </li>
+          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
         </ul>
         <div class="clearfix"></div>
       </div>
       <div class="x_content table-responsive">
-        {{-- <canvas id="pertanyaan_3"></canvas> --}}
         <table class="" style="width:100%">
           <tr>
             <td>
-              <canvas id="pertanyaan_3" height="150" width="150" style="margin: 15px 10px 10px 0"></canvas>
-            </td>
-            <td>
-              <table class="tile_info">
+              <table class="table table-striped table-bordered" width="100%">
+                <thead>
+                  <tr>
+                    <th>Jawaban</th>
+                    <th>Nilai</th>
+                  </tr>
+                </thead>
+                <tbody>
                 @foreach ($pertanyaan_3 as $jumlah3)
                 <tr>
-                  <td>
-                    <p><i class="fa fa-square"></i>{{ $jumlah3->pertanyaan_3 }}</p>
-                  </td>
-                  <td>: {{ $jumlah3->jumlah }}</td>
+                  <td> {{ $jumlah3->pertanyaan_3 }} </td>
+                  <td> {{ $jumlah3->jumlah }}</td>
                 </tr>
                 @endforeach
+                </tbody>
               </table>
+            </td>
+            <td>
+              <canvas id="pertanyaan_3" height="150" width="250" style="margin: 15px 10px 10px 0"></canvas>
             </td>
           </tr>
         </table>
@@ -145,30 +155,33 @@
       <div class="x_title">
         <h2>Tahukah kamu di mana Gofress bisa dibeli?</h2>
         <ul class="nav navbar-right panel_toolbox">
-          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-          </li>
-          <li><a class="close-link"><i class="fa fa-close"></i></a>
-          </li>
+          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
         </ul>
         <div class="clearfix"></div>
       </div>
       <div class="x_content table-responsive">
-        <table class="" style="width:100%">
+        <table class="table" style="width:100%">
           <tr>
             <td>
-              <canvas id="pertanyaan_4" height="180" width="250" style="margin: 0 0 0 0"></canvas>
-            </td>
-            <td>
-              <table class="tile_info">
+              <table class="table table-striped table-bordered" width="100%">
+                <thead>
+                  <tr role="row">
+                    <th>Jawaban</th>
+                    <th>Nilai</th>
+                  </tr>
+                </thead>
+                <tbody>
                 @foreach ($pertanyaan_4 as $key => $value)
                 <tr>
-                  <td>
-                    <p><i class="fa fa-square"></i>{{ $key }}</p>
-                  </td>
-                  <td>: {{ $value }}</td>
+                  <td>{{ $key }} </td>
+                  <td>{{ $value }}</td>
                 </tr>
                 @endforeach
+                </tbody>
               </table>
+            </td>
+            <td>
+              <canvas id="pertanyaan_4" height="180" width="250" style="margin: 0 0 0 0"></canvas>
             </td>
           </tr>
         </table>
@@ -177,53 +190,55 @@
   </div>
 </div>
 
-<div class="col-md-12 col-sm-12 col-xs-12">
-  <div class="x_panel">
-    <div class="x_title">
-      <h2>Hasil Campaign Hello</h2>
-      <div class="clearfix"></div>
-    </div>
-    <div class="table-responsive">
-      <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive">
-        <thead>
-          <tr role="row">
-            <th>No</th>
-            <th>Nama</th>
-            <th>Email</th>
-            <th>Hp</th>
-            <th>Kota</th>
-            <th>Pertanyaan 1</th>
-            <th>Pertanyaan 2</th>
-            <th>Pertanyaan 3</th>
-            <th>Pertanyaan 4</th>
-            <th>Kupon</th>
-            <th>Tanggal</th>
-          </tr>
-        </thead>
-        <tbody>
-          @php
-            $no = 1;
-          @endphp
-          @foreach ($getCampaign as $key)
-          <tr>
-            <td>{{ $no }}</td>
-            <td>{{ $key->nama }}</td>
-            <td>{{ $key->email }}</td>
-            <td>{{ $key->hp }}</td>
-            <td>{{ $key->nama_kota }}</td>
-            <td>{{ $key->pertanyaan_1 }}</td>
-            <td>{{ $key->pertanyaan_2 }}</td>
-            <td>{{ $key->pertanyaan_3 }}</td>
-            <td>{{ $key->pertanyaan_4 }}</td>
-            <td>{{ $key->kupon }}</td>
-            <td>{{ $key->created_at }}</td>
-          </tr>
-          @php
-            $no++;
-          @endphp
-          @endforeach
-        </tbody>
-      </table>
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Hasil Campaign Hello</h2>
+        <div class="clearfix"></div>
+      </div>
+      <div class="table-responsive">
+        <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive">
+          <thead>
+            <tr role="row">
+              <th>No</th>
+              <th>Nama</th>
+              <th>Email</th>
+              <th>Hp</th>
+              <th>Kota</th>
+              <th>Pertanyaan 1</th>
+              <th>Pertanyaan 2</th>
+              <th>Pertanyaan 3</th>
+              <th>Pertanyaan 4</th>
+              <th>Kupon</th>
+              <th>Tanggal</th>
+            </tr>
+          </thead>
+          <tbody>
+            @php
+              $no = 1;
+            @endphp
+            @foreach ($getCampaign as $key)
+            <tr>
+              <td>{{ $no }}</td>
+              <td>{{ $key->nama }}</td>
+              <td>{{ $key->email }}</td>
+              <td>{{ $key->hp }}</td>
+              <td>{{ $key->nama_kota }}</td>
+              <td>{{ $key->pertanyaan_1 }}</td>
+              <td>{{ $key->pertanyaan_2 }}</td>
+              <td>{{ $key->pertanyaan_3 }}</td>
+              <td>{{ $key->pertanyaan_4 }}</td>
+              <td>{{ $key->kupon }}</td>
+              <td>{{ $key->created_at }}</td>
+            </tr>
+            @php
+              $no++;
+            @endphp
+            @endforeach
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
@@ -277,7 +292,8 @@
                   className: "btn-sm"
                 },
               ],
-              responsive: true
+              responsive: true,
+              pageLength: 25
             });
           }
         };

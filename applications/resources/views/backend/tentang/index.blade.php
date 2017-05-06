@@ -32,19 +32,18 @@
 </div>
 @endif
 
-<div class="row">
-  <div class="page-title">
-    <div class="title_left">
-      <h3>Tentang <small></small></h3>
-    </div>
+<div class="page-title">
+  <div class="title_left">
+    <h3>Tentang <small>Visi & Misi</small></h3>
   </div>
 </div>
 
+<div class="clearfix"></div>
 <div class="row">
   <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="x_panel">
       <div class="x_title">
-        <h2>Tentang </h2>
+        <h2>Tentang</h2>
         <ul class="nav panel_toolbox">
           @if ($getTentang->isEmpty())
           <a href="{{ route('tentang.tambah') }}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Tambah Tentang</a>
@@ -53,34 +52,43 @@
         <div class="clearfix"></div>
       </div>
       <div class="x_content table-responsive">
-        <table id="tentangtable" class="table table-striped table-bordered dt-responsive no-footer" width="100%">
-          <thead>
-            <tr role="row">
-              <th>No</th>
-              <th>Tentang</th>
-              <th>Visi</th>
-              <th>Misi</th>
-              <th>Aksi</th>
-            </tr>
-          </thead>
-          <tbody>
-            @php
-              $no = 1;
-            @endphp
-            @foreach ($getTentang as $key)
-            <tr>
-              <td>{{ $no }}</td>
-              <td>{!! $key->deskripsi_ID !!}</td>
-              <td>{!! $key->visi_deskripsi_ID !!}</td>
-              <td>{!! $key->misi_deskripsi_ID !!}</td>
-              <td><a href="{{ route('tentang.ubah', $key->id) }}" class="btn btn-xs btn-warning btn-sm"><i class="fa fa-pencil"></i> Ubah</a></td>
-            </tr>
-            @php
-              $no++;
-            @endphp
-            @endforeach
-          </tbody>
-        </table>
+        <div class="col-md-8 col-lg-8 col-sm-7">
+            <blockquote>
+              {!! $getTentang[0]->visi_deskripsi_ID!!}
+              <footer>Visi Indonesia</footer>
+            </blockquote>
+
+            <blockquote class="blockquote-reverse">
+              {!! $getTentang[0]->visi_deskripsi_EN !!}
+              <footer>Visi Inggris</footer>
+            </blockquote>
+        </div>
+        <div class="col-md-4 col-lg-4 col-sm-5">
+          {!! $getTentang[0]->deskripsi_ID !!}
+          {!! $getTentang[0]->deskripsi_EN !!}
+        </div>
+
+        <div class="clearfix"></div>
+        <div class="col-md-8 col-lg-8 col-sm-7">
+            <blockquote>
+              {!! $getTentang[0]->misi_deskripsi_ID!!}
+              <footer>Misi Indonesia</footer>
+            </blockquote>
+
+            <blockquote class="blockquote-reverse">
+              {!! $getTentang[0]->misi_deskripsi_EN !!}
+              <footer>Misi Inggris</footer>
+            </blockquote>
+        </div>
+        <hr>
+        <div class="col-md-12 col-sm-12">
+            <h2>Distribution Maps</h2>
+            <img src="{{ asset('images/tentang').'/'.$getTentang[0]->img_url }}" class="thumbnail">
+        </div>
+        <div class="col-md-12">
+          <a href="{{ route('tentang.ubah', $getTentang[0]->id) }}" class="btn btn-large btn-warning btn-sm pull-right"><i class="fa fa-pencil"></i> Ubah</a>
+        </div>
+
       </div>
     </div>
   </div>

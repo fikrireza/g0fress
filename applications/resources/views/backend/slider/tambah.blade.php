@@ -6,7 +6,6 @@
 
 @section('headscript')
 <link href="{{ asset('backend/vendors/iCheck/skins/flat/green.css')}}" rel="stylesheet">
-<link href="{{ asset('backend/vendors/switchery/dist/switchery.min.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -24,7 +23,7 @@
         <form action="{{ route('slider.store') }}" method="POST" class="form-horizontal form-label-left" enctype="multipart/form-data" novalidate>
           {{ csrf_field() }}
           <div class="item form-group">
-            <label class="col-md-3"></label>
+            {{-- <label class="col-md-3"></label> --}}
             <div class="col-md-6">
               <span style="color:blue; font-size:11px;">Width: 100px; Heigh: 100px</span>
             </div>
@@ -82,7 +81,7 @@
           <div class="ln_solid"></div>
           <div class="form-group">
             <div class="col-md-6 col-md-offset-3">
-              <a href="{{ route('produk.index') }}" class="btn btn-primary">Cancel</a>
+              <a href="{{ route('slider.index') }}" class="btn btn-primary">Cancel</a>
               <button id="send" type="submit" class="btn btn-success">Submit</button>
             </div>
           </div>
@@ -98,7 +97,6 @@
 
 @section('script')
 <script src="{{ asset('backend/vendors/iCheck/icheck.min.js')}}"></script>
-<script src="{{ asset('backend/vendors/switchery/dist/switchery.min.js')}}"></script>
 <script src="{{ asset('backend/js/moment/moment.min.js') }}"></script>
 <script src="{{ asset('backend/js/datepicker/daterangepicker.js') }}"></script>
 <script>

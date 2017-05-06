@@ -1,7 +1,7 @@
 @extends('backend.layout.master')
 
 @section('title')
-  <title>Gofress | Tambah Tentang</title>
+  <title>Gofress | Ubah Tentang</title>
 @endsection
 
 @section('headscript')
@@ -14,20 +14,21 @@
   <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="x_panel">
       <div class="x_title">
-        <h2>Tambah Tentang<small></small></h2>
+        <h2>Ubah Tentang<small></small></h2>
         <ul class="nav panel_toolbox">
           <a href="{{ route('tentang.index') }}" class="btn btn-primary btn-sm">Kembali</a>
         </ul>
         <div class="clearfix"></div>
       </div>
       <div class="x_content">
-        <form action="{{ route('tentang.store') }}" method="POST" class="form-horizontal form-label-left" enctype="multipart/form-data" novalidate>
+        <form action="{{ route('tentang.edit') }}" method="POST" class="form-horizontal form-label-left" enctype="multipart/form-data" novalidate>
           {{ csrf_field() }}
           <div class="item form-group {{ $errors->has('deskripsi_ID') ? 'has-error' : ''}}">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Tentang Deskripsi ID <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <textarea id="deskripsi_ID" required="required" name="deskripsi_ID" placeholder="Deskripsi Indonesia">{{ old('deskripsi_ID') }}</textarea>
+              <input type="hidden" name="id" value="{{ $getTentang->id }}">
+              <textarea id="deskripsi_ID" required="required" name="deskripsi_ID" placeholder="Deskripsi Indonesia">{{ old('deskripsi_ID', $getTentang->deskripsi_ID) }}</textarea>
               @if($errors->has('deskripsi_ID'))
                 <code><span style="color:red; font-size:12px;">{{ $errors->first('deskripsi_ID')}}</span></code>
               @endif
@@ -37,7 +38,7 @@
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Tentang Deskripsi EN <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <textarea id="deskripsi_EN" required="required" name="deskripsi_EN" placeholder="English Description">{{ old('deskripsi_EN')}}</textarea>
+              <textarea id="deskripsi_EN" required="required" name="deskripsi_EN" placeholder="English Description">{{ old('deskripsi_EN', $getTentang->deskripsi_EN)}}</textarea>
               @if($errors->has('deskripsi_EN'))
                 <code><span style="color:red; font-size:12px;">{{ $errors->first('deskripsi_EN')}}</span></code>
               @endif
@@ -48,7 +49,7 @@
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Visi Deskripsi ID <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <textarea id="visi_deskripsi_ID" required="required" name="visi_deskripsi_ID" placeholder="Deskripsi Indonesia">{{ old('visi_deskripsi_ID') }}</textarea>
+              <textarea id="visi_deskripsi_ID" required="required" name="visi_deskripsi_ID" placeholder="Deskripsi Indonesia">{{ old('visi_deskripsi_ID', $getTentang->visi_deskripsi_ID) }}</textarea>
               @if($errors->has('visi_deskripsi_ID'))
                 <code><span style="color:red; font-size:12px;">{{ $errors->first('visi_deskripsi_ID')}}</span></code>
               @endif
@@ -58,7 +59,7 @@
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Visi Deskripsi EN <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <textarea id="visi_deskripsi_EN" required="required" name="visi_deskripsi_EN" placeholder="English Description">{{ old('visi_deskripsi_EN')}}</textarea>
+              <textarea id="visi_deskripsi_EN" required="required" name="visi_deskripsi_EN" placeholder="English Description">{{ old('visi_deskripsi_EN', $getTentang->visi_deskripsi_EN)}}</textarea>
               @if($errors->has('visi_deskripsi_EN'))
                 <code><span style="color:red; font-size:12px;">{{ $errors->first('visi_deskripsi_EN')}}</span></code>
               @endif
@@ -69,7 +70,7 @@
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Misi Deskripsi ID <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <textarea id="misi_deskripsi_ID" required="required" name="misi_deskripsi_ID" placeholder="Deskripsi Indonesia">{{ old('misi_deskripsi_ID') }}</textarea>
+              <textarea id="misi_deskripsi_ID" required="required" name="misi_deskripsi_ID" placeholder="Deskripsi Indonesia">{{ old('misi_deskripsi_ID', $getTentang->misi_deskripsi_ID) }}</textarea>
               @if($errors->has('misi_deskripsi_ID'))
                 <code><span style="color:red; font-size:12px;">{{ $errors->first('misi_deskripsi_ID')}}</span></code>
               @endif
@@ -79,7 +80,7 @@
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Misi Deskripsi EN <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <textarea id="misi_deskripsi_EN" required="required" name="misi_deskripsi_EN" placeholder="English Description">{{ old('misi_deskripsi_EN')}}</textarea>
+              <textarea id="misi_deskripsi_EN" required="required" name="misi_deskripsi_EN" placeholder="English Description">{{ old('misi_deskripsi_EN', $getTentang->misi_deskripsi_EN)}}</textarea>
               @if($errors->has('misi_deskripsi_EN'))
                 <code><span style="color:red; font-size:12px;">{{ $errors->first('misi_deskripsi_EN')}}</span></code>
               @endif
@@ -96,11 +97,17 @@
               @endif
             </div>
           </div>
+          <div class="item form-group">
+            <label class="col-md-3"></label>
+            <div class="col-md-6">
+              <img src="{{ asset('images/tentang/').'/'.$getTentang->img_url }}" alt="" class="thumbnail">
+            </div>
+          </div>
           <div class="item form-group {{ $errors->has('img_alt') ? 'has-error' : ''}}">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Deskripsi Gambar
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="img_alt" class="form-control col-md-7 col-xs-12" name="img_alt" placeholder="Contoh: Deskripsi Gambar" type="text" value="{{ old('img_alt') }}">
+              <input id="img_alt" class="form-control col-md-7 col-xs-12" name="img_alt" placeholder="Contoh: Deskripsi Gambar" type="text" value="{{ old('img_alt', $getTentang->img_alt) }}">
               @if($errors->has('img_alt'))
                 <code><span style="color:red; font-size:12px;">{{ $errors->first('img_alt')}}</span></code>
               @endif

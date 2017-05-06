@@ -102,7 +102,7 @@
           <div class="ln_solid"></div>
           <div class="form-group">
             <div class="col-md-6 col-md-offset-3">
-              <a href="{{ route('produk.index') }}" class="btn btn-primary">Cancel</a>
+              <a href="{{ route('produkKategori.index') }}" class="btn btn-primary">Cancel</a>
               <button id="send" type="submit" class="btn btn-success">Submit</button>
             </div>
           </div>
@@ -176,6 +176,7 @@
     singleDatePicker: true,
     calender_style: "picker_3",
     format: 'YYYY-MM-DD',
+    minDate: new Date(),
   });
 </script>
 @endsection
