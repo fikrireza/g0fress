@@ -229,4 +229,46 @@ class NewsController extends Controller
 
       return redirect()->route('news.index')->with('berhasil', 'Berhasil Mengubah News '.$request->judul_ID);
     }
+
+    public function publish($id)
+    {
+        $getNews = News::find($id);
+
+        if(!$getNews){
+          return view('backend.errors.404');
+        }
+
+        if ($getNews->flag_publish == 1) {
+          $getNews->flag_publish = 0;
+          $getNews->update();
+
+          return redirect()->route('news.index')->with('berhasil', 'Berhasil Unpublish '.$getNews->judul_ID);
+        }else{
+          $getNews->flag_publish = 1;
+          $getNews->update();
+
+          return redirect()->route('news.index')->with('berhasil', 'Berhasil Publish '.$getNews->judul_ID);
+        }
+    }
+
+    public function homepage($id)
+    {
+        $getNews = News::find($id);
+
+        if(!$getNews){
+          return view('backend.errors.404');
+        }
+
+        if ($getNews->show_homepage == 1) {
+          $getNews->show_homepage = 0;
+          $getNews->update();
+
+          return redirect()->route('news.index')->with('berhasil', 'Berhasil Unshown '.$getNews->judul_ID);
+        }else{
+          $getNews->show_homepage = 1;
+          $getNews->update();
+
+          return redirect()->route('news.index')->with('berhasil', 'Berhasil Show Home Page '.$getNews->judul_ID);
+        }
+    }
 }

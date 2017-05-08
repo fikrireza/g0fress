@@ -288,4 +288,25 @@ class ProdukController extends Controller
 
       return redirect()->route('produk.index')->with('berhasil', 'Berhasil Mengubah Produk '.$request->nama_produk);
     }
+
+    public function publish($id)
+    {
+        $getProduk = Produk::find($id);
+
+        if(!$getProduk){
+          return view('backend.errors.404');
+        }
+
+        if ($getProduk->flag_publish == 1) {
+          $getProduk->flag_publish = 0;
+          $getProduk->update();
+
+          return redirect()->route('produk.index')->with('berhasil', 'Berhasil Unpublish '.$getProduk->nama_produk);
+        }else{
+          $getProduk->flag_publish = 1;
+          $getProduk->update();
+
+          return redirect()->route('produk.index')->with('berhasil', 'Berhasil Publish '.$getProduk->nama_produk);
+        }
+    }
 }

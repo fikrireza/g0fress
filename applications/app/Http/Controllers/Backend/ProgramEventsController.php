@@ -252,4 +252,46 @@ class ProgramEventsController extends Controller
         return redirect()->route('programEvents.index')->with('berhasil', 'Berhasil Mengubah Program & Events '.$request->judul_promosi_ID);
 
     }
+
+    public function publish($id)
+    {
+        $getProgramEvents = ProgramEvents::find($id);
+
+        if(!$getProgramEvents){
+          return view('backend.errors.404');
+        }
+
+        if ($getProgramEvents->flag_publish == 1) {
+          $getProgramEvents->flag_publish = 0;
+          $getProgramEvents->update();
+
+          return redirect()->route('programEvents.index')->with('berhasil', 'Berhasil Unpublish '.$getProgramEvents->judul_promosi_ID);
+        }else{
+          $getProgramEvents->flag_publish = 1;
+          $getProgramEvents->update();
+
+          return redirect()->route('programEvents.index')->with('berhasil', 'Berhasil Publish '.$getProgramEvents->judul_promosi_ID);
+        }
+    }
+
+    public function homepage($id)
+    {
+        $getProgramEvents = ProgramEvents::find($id);
+
+        if(!$getProgramEvents){
+          return view('backend.errors.404');
+        }
+
+        if ($getProgramEvents->show_homepage == 1) {
+          $getProgramEvents->show_homepage = 0;
+          $getProgramEvents->update();
+
+          return redirect()->route('programEvents.index')->with('berhasil', 'Berhasil Unshow '.$getProgramEvents->judul_promosi_ID);
+        }else{
+          $getProgramEvents->show_homepage = 1;
+          $getProgramEvents->update();
+
+          return redirect()->route('programEvents.index')->with('berhasil', 'Berhasil Show '.$getProgramEvents->judul_promosi_ID);
+        }
+    }
 }

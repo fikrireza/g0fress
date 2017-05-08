@@ -187,4 +187,26 @@ class ProgramEventsKategoriController extends Controller
 
         return redirect()->route('programEventsKategori.index')->with('berhasil', 'Berhasil Mengubah Program & Events Kategori '.$request->judul_kategori_ID);
     }
+
+    public function publish($id)
+    {
+        $getProgramEventsKategori = programEventsKategori::find($id);
+
+        if(!$getProgramEventsKategori){
+          return view('backend.errors.404');
+        }
+
+        if ($getProgramEventsKategori->flag_publish == 1) {
+          $getProgramEventsKategori->flag_publish = 0;
+          $getProgramEventsKategori->update();
+
+          return redirect()->route('programEventsKategori.index')->with('berhasil', 'Berhasil Unpublish Banner Slider '.$getProgramEventsKategori->judul_kategori_ID);
+        }else{
+          $getProgramEventsKategori->flag_publish = 1;
+          $getProgramEventsKategori->update();
+
+          return redirect()->route('programEventsKategori.index')->with('berhasil', 'Berhasil Publish Banner Slider '.$getProgramEventsKategori->judul_kategori_ID);
+        }
+    }
+    
 }
