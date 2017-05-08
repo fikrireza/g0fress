@@ -26,7 +26,7 @@
 			</div>
 			<div class="vertical-align-midle">
 				<label class="flag-title">
-					Contact Us
+					@lang('front/contact.contact-us')
 				</label>
 			</div>
 			<div class="vertical-align-midle">
@@ -39,25 +39,25 @@
 			<div class="wrapper-content">
 				<div class="odd-even">
 					{{ csrf_field() }}
-					<input type="text" class="form-control" name="nama" placeholder="&#61447; Your Name" value="{{ old('nama') }}">
+					<input type="text" class="form-control" name="nama" placeholder="&#61447; @lang('front/contact.your-name')" value="{{ old('nama') }}">
 					@if($errors->has('nama'))
 						<code><span style="color:red; font-size:12px;">{{ $errors->first('nama')}}</span></code>
 					@endif
-					<input type="text" class="form-control" name="email" placeholder="&#xf0e0; Email Address" value="{{ old('email') }}">
+					<input type="text" class="form-control" name="email" placeholder="&#xf0e0; @lang('front/contact.email-address')" value="{{ old('email') }}">
 					@if($errors->has('email'))
 						<code><span style="color:red; font-size:12px;">{{ $errors->first('email')}}</span></code>
 					@endif
-					<input type="text" class="form-control" name="telp" placeholder="&#xf095; Phone Number" value="{{ old('telp') }}">
+					<input type="text" class="form-control" name="telp" placeholder="&#xf095; @lang('front/contact.phone-number')" value="{{ old('telp') }}">
 					@if($errors->has('telp'))
 						<code><span style="color:red; font-size:12px;">{{ $errors->first('telp')}}</span></code>
 					@endif
 				</div>
 				<div class="odd-even">
-					<input type="text" class="form-control" name="subjek" placeholder="&#xf27a; Subject" value="{{ old('subjek') }}">
+					<input type="text" class="form-control" name="subjek" placeholder="&#xf27a; @lang('front/contact.subject')" value="{{ old('subjek') }}">
 					@if($errors->has('subjek'))
 						<code><span style="color:red; font-size:12px;">{{ $errors->first('subjek')}}</span></code>
 					@endif
-					<textarea class="form-control" rows="3" name="pesan" placeholder="Messages">{{ old('pesan') }}</textarea>
+					<textarea class="form-control" rows="3" name="pesan" placeholder="@lang('front/contact.messages')">{{ old('pesan') }}</textarea>
 					@if($errors->has('pesan'))
 						<code><span style="color:red; font-size:12px;">{{ $errors->first('pesan')}}</span></code>
 					@endif
