@@ -54,6 +54,11 @@
 	color: rgb(112,123,123);
 
 }
+.wrapper-show-image img{
+	height: 160px; 
+	width: auto;
+	margin-top: 40px;
+}
 @media (max-width: 480px) {
 	.background-content{
 		padding-bottom: 40px;
@@ -69,5 +74,10 @@
 	}
 	.wrapper-vision-mision .wrapper-item .wrapper-content .wrapper-description .content .description{
 		font-size: 11px;
+	}
+	.wrapper-show-image img{
+		height: auto; 
+		width: 80%;
+		margin-top: 20px;
 	}
 }

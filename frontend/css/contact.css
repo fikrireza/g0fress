@@ -71,7 +71,8 @@
 	.background-content.background-content-first.spaces-top{
 		padding-top: 40px;
 	}
-	.background-content .content-wrapper .wrapper-content .odd-even{
+	.background-content .content-wrapper .wrapper-content .odd-even:nth-child(odd),
+	.background-content .content-wrapper .wrapper-content .odd-even:nth-child(even){
 		width: 100%;
 		padding: 0;
 	}
