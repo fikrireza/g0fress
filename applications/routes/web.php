@@ -41,6 +41,10 @@ Route::get('logout-process', 'Auth\LoginController@logoutProcess')->name('logout
 
 Route::get('admin/login', 'Auth\LoginController@showLoginForm')->name('login.pages');
 
+//Verify User CMS
+Route::get('admin/verify/{confirmation_code}', 'Backend\UserController@verify')->name('verify.index');
+Route::post('admin/verify', 'Backend\UserController@store')->name('verify.store');
+
 //----------------------- BACKEND -----------------------//
 Route::group(['middleware' => ['isAdministrator']], function () {
   Route::get('admin/dashboard', function(){
@@ -121,9 +125,6 @@ Route::group(['middleware' => ['isAdministrator']], function () {
   Route::post('admin/profile/password', 'Backend\ProfileController@changePassword')->name('profile.password');
   Route::post('admin/profile', 'Backend\ProfileController@changeProfile')->name('profile.user');
 
-  // Users Management
-  Route::get('admin/users', 'Backend\UsersController@index')->name('users.index');
-
   // Campaign Hello
   Route::get('admin/campaign/hello', 'Backend\Campaign1Controller@index')->name('hello.index');
   Route::get('admin/campaign/pertanyaan_1', 'Backend\Campaign1Controller@getPertanyaan_1')->name('hello.pertanyaan_1');
@@ -154,13 +155,18 @@ Route::group(['middleware' => ['isAdministrator']], function () {
   Route::get('admin/tentang/ubah/{id}', 'Backend\TentangController@ubah')->name('tentang.ubah');
   Route::post('admin/tentang/ubah', 'Backend\TentangController@edit')->name('tentang.edit');
 
-
+  // Tentang sertifikat dan achievements
   Route::get('admin/tentang-galeri', 'Backend\TentangController@indexGaleri')->name('tentangGaleri.index');
   Route::get('admin/tentang-galeri/upload', 'Backend\TentangController@tambahGaleri')->name('tentangGaleri.tambah');
   Route::post('admin/tentang-galeri/upload', 'Backend\TentangController@uploadGaleri')->name('tentangGaleri.store');
   Route::get('admin/tentang-galeri/ubah/{id}', 'Backend\TentangController@ubahGaleri')->name('tentangGaleri.ubah');
   Route::post('admin/tentang-galeri/ubah', 'Backend\TentangController@editGaleri')->name('tentangGaleri.edit');
   Route::get('admin/tentang-galeri/delete/{id}', 'Backend\TentangController@deleteGaleri')->name('tentangGaleri.delete');
+
+  // User
+  Route::get('admin/users', 'Backend\UserController@index')->name('users.index');
+  Route::get('admin/users/reset/{id}', 'Backend\UserController@reset')->name('users.reset');
+  Route::post('admin/users', 'Backend\UserController@new')->name('users.new');
 
 });
 //----------------------- BACKEND -----------------------//

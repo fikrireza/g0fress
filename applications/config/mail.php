@@ -4,15 +4,15 @@ return [
 
     // Gofress Email
     'driver' => 'smtp',
-    'host' => 'mail.gofress.co.id',
+    'host' => 'smtp.gmail.com',
     'port' => 587,
     'from' => [
-        'address' => 'no-reply@gofress.co.id',
+        'address' => 'noreply.gofress@gmail.com',
         'name' => 'Gofress',
     ],
     'encryption' => '',
-    'username' => 'no-reply@gofress.co.id',
-    'password' => 'WtHYszk4',
+    'username' => 'noreply.gofress@gmail.com',
+    'password' => '*Ku-99L!',
 
     /*
     // Gmail Email

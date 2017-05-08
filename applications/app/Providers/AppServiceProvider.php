@@ -71,7 +71,7 @@ class AppServiceProvider extends ServiceProvider
 
         // for sosmed
         $callSosMed = SocialMedia::select(
-            'img_url', 
+            'img_url',
             'url_account'
         )
         ->where('flag_publish', '1')

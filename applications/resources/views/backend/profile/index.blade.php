@@ -5,8 +5,6 @@
 @endsection
 
 @section('headscript')
-<link href="{{ asset('backend/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css') }}" rel="stylesheet">
-<link href="{{ asset('backend/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css') }}" rel="stylesheet">
 <link href="{{ asset('backend/vendors/pnotify/dist/pnotify.css') }}" rel="stylesheet">
 <link href="{{ asset('backend/vendors/pnotify/dist/pnotify.nonblock.css') }}" rel="stylesheet">
 @endsection
@@ -18,7 +16,7 @@
     $(".alert-success").fadeTo(700, 0).slideUp(700, function(){
         $(this).remove();
     });
-  }, 5000);
+  }, 7000);
 </script>
 <div class="row">
   <div class="col-md-12 col-sm-12 col-xs-12">

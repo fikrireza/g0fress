@@ -77,7 +77,7 @@
               <li><a href="{{ route('hello.index') }}">Hello</a></li>
             </ul>
           </li>
-          <li class="{{ Route::currentRouteNamed('usres.index') ? 'active' : '' }}"><a href="{{ route('users.index') }}"><i class="fa fa-users"></i> Users </a></li>
+          <li class="{{ Route::currentRouteNamed('users.index') ? 'active' : '' }}"><a href="{{ route('users.index') }}"><i class="fa fa-users"></i> Users </a></li>
         </ul>
       </div>
 

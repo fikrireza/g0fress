@@ -8,16 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Aquasolve | Login</title>
+    <title>Aquasolve | Verify Akun</title>
 
-    <!-- Bootstrap -->
     <link href="{{ asset('backend/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
-    <!-- Font Awesome -->
     <link href="{{ asset('backend/vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
-    <!-- Animate.css -->
-    <link href="https://colorlib.com/polygon/gentelella/css/animate.min.css" rel="stylesheet">
 
-    <!-- Custom Theme Style -->
     <link href="{{ asset('backend/css/custom.min.css') }}" rel="stylesheet">
   </head>
 
@@ -32,7 +27,7 @@
       }, 5000);
       </script>
       <div class="row">
-        <div class="col-md-4 col-sm-4 col-xs-12 col-md-offset-4">
+        <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="alert alert-danger alert-dismissible fade in" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
             </button>
@@ -45,17 +40,21 @@
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
-            <form action="{{ route('login') }}" method="POST">
-              <h1>Login Form</h1>
+            <form action="{{ route('verify.store') }}" method="POST">
+              <h1>Verifikasi Akun</h1>
               {{ csrf_field() }}
+              <input type="hidden" name="confirmation_code" value="{{ $getUser->confirmation_code }}">
               <div class="form-group has-feedback {{ $errors->has('email') ? 'has-error' : '' }}">
-                <input name="email" type="text" class="form-control" placeholder="Email" value="{{ old('email') }}">
+                <input name="email" type="text" class="form-control" placeholder="Email" value="{{ old('email', $getUser->email) }}" readonly="">
                 @if ($errors->has('email'))
                   <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                 @endif
               </div>
               <div class="form-group has-feedback {{ $errors->has('password') ? 'has-error' : '' }}">
                 <input name="password" type="password" class="form-control" placeholder="Password" value="{{ old('password') }}">
+                @if($errors->has('password'))
+                  <code><span style="color:red; font-size:12px;">{{ $errors->first('password')}}</span></code>
+                @endif
                 @if ($errors->has('password'))
                   <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 @endif
