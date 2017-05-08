@@ -31,7 +31,8 @@ class ProdukController extends Controller
 				'slug', 
 				'img_url', 
 				'img_alt', 
-				$callKategoryDeskripsi
+				$callKategoryDeskripsi,
+				DB::raw('(select count(kategori_id) from amd_produk where amd_produk.kategori_id = amd_produk_kategori.id and amd_produk.flag_publish = 1) as count_kategori_id_and_flag_publish')
 			)
 			->where('flag_publish', '1')
 			->whereDATE('tanggal_post', '<=', $format_date)

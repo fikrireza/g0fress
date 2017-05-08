@@ -37,7 +37,7 @@
 
 		<form method="post" action="{{ route('frontend.contact.post') }}">
 			<div class="wrapper-content">
-				<div class="left">
+				<div class="odd-even">
 					{{ csrf_field() }}
 					<input type="text" class="form-control" name="nama" placeholder="&#61447; Your Name" value="{{ old('nama') }}">
 					@if($errors->has('nama'))
@@ -52,7 +52,7 @@
 						<code><span style="color:red; font-size:12px;">{{ $errors->first('telp')}}</span></code>
 					@endif
 				</div>
-				<div class="right">
+				<div class="odd-even">
 					<input type="text" class="form-control" name="subjek" placeholder="&#xf27a; Subject" value="{{ old('subjek') }}">
 					@if($errors->has('subjek'))
 						<code><span style="color:red; font-size:12px;">{{ $errors->first('subjek')}}</span></code>
@@ -80,7 +80,7 @@
 	<div class="content-wrapper">
 		<div class="wrapper-content">
 			@if ($getKontak->isEmpty())
-			<div class="left">
+			<div class="odd-even">
 				<h3 class="title">
 					Title
 				</h3>
@@ -89,7 +89,7 @@
 				</div>
 				<p class="phone"><i class="fa fa-phone" aria-hidden="true"></i> 000-0000000</p>
 			</div>
-			<div class="right">
+			<div class="odd-even">
 				<h3 class="title">
 					Title
 				</h3>
@@ -100,7 +100,7 @@
 			</div>
 			@else
 			@foreach ($getKontak as $key)
-			<div class="left">
+			<div class="odd-even">
 				<h3 class="title">
 					{{ $key->kantor_kategori}}
 				</h3>

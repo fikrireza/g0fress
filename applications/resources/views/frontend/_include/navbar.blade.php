@@ -24,6 +24,7 @@
 					<div class="dropdown-hover-content">
 
 						@foreach($navCallKategory as $list)
+						@if($list->count_kategori_id_and_flag_publish != 0)
 						<div class="list slide-hover">
 							<a href="{{ route('frontend.produk.view', ['slug'=>$list->slug]) }}">
 								{{ $list->nama_kategori }}
@@ -44,6 +45,7 @@
 								@endforeach
 							</div>
 						</div>
+						@endif
 						@endforeach
 					</div>
 				</li>
