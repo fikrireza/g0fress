@@ -57,16 +57,15 @@ class AppServiceProvider extends ServiceProvider
         $url = Request::getRequestUri();
         $thisUrl = explode('/', $url);
         $checkThis = $thisUrl[2];
-
-        $callBanner = Banner::where('halaman', $checkThis)->first();
-        if(!$callBanner){
-            $forBanner = 'picture/firstCampaign/background-rainbow.png';
-        }
-        else{
-            $forBanner = 'images/banner/'.$callBanner->img_url;
-        }
-
+        
         if($checkThis != "" || $checkThis == "contact"){
+            $callBanner = Banner::where('halaman', $checkThis)->first();
+            if(!$callBanner){
+                $forBanner = 'picture/firstCampaign/background-rainbow.png';
+            }
+            else{
+                $forBanner = 'images/banner/'.$callBanner->img_url;
+            }
             view()->share('forBanner', $forBanner);
         }
 
