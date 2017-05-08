@@ -10,6 +10,7 @@ use App\Models\ProdukKategori;
 use App\Models\Produk;
 use App\Models\Inbox;
 use App\Models\Banner;
+use App\Models\SocialMedia;
 
 use Auth;
 use DB;
@@ -68,6 +69,15 @@ class AppServiceProvider extends ServiceProvider
         if($checkThis != "" || $checkThis == "contact"){
             view()->share('forBanner', $forBanner);
         }
+
+        // for sosmed
+        $callSosMed = SocialMedia::select(
+            'img_url', 
+            'url_account'
+        )
+        ->where('flag_publish', '1')
+        ->get();
+        view()->share('callSosMed', $callSosMed);
 
     }
 

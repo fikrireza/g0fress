@@ -20,8 +20,8 @@
 .footer .wrapper-footer-link .float-right{
 	float: right;
 }
-.footer .wrapper-footer-link .float-right img{
-    cursor: pointer;
+.footer .wrapper-footer-link .float-right a{
+    text-decoration: none;
 }
 .footer .wrapper-footer-link .copy-right{
 	text-align: right; 
