@@ -17,8 +17,7 @@
 @section('body-content')
 
 <div class="wrapper-banner">
-	<div class="banner" style="background-image: url(' {{ asset('picture/firstCampaign/background-rainbow.png') }}');">
-
+	<div class="banner" style="background-image: url(' {{ asset($forBanner) }}');">
 	</div>
 </div>
 <style type="text/css">
@@ -58,6 +57,7 @@
 	<div class="product-wrapper-position">
 		<div class="slider-product">
 			@foreach($callKategory as $list)
+			@if($list->count_kategori_id_and_flag_publish != 0)
 			<div class="item">
 				<div class="wrapper-product">
 					<div class="front slider-product-front-animate">
@@ -72,6 +72,7 @@
 					</div>
 				</div>
 			</div>
+			@endif
 			@endforeach
 		</div>
 	</div>

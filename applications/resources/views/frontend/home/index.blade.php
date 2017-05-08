@@ -76,6 +76,7 @@
 
 		<div class="slider-product">
 			@foreach($callKategory as $list)
+			@if($list->count_kategori_id_and_flag_publish != 0)
 			<div class="item">
 				<div class="wrapper-product">
 					<div class="front slider-product-front-animate">
@@ -87,6 +88,7 @@
 					</div>
 				</div>
 			</div>
+			@endif
 			@endforeach
 		</div>
 

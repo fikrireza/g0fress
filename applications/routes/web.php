@@ -176,7 +176,7 @@ Route::get('/', 'Frontend\HomeController@index')->name('frontend.home');
 Route::get('/contact', 'Frontend\ContactController@index')->name('frontend.contact');
 Route::post('/contact', 'Frontend\ContactController@store')->name('frontend.contact.post');
 
-Route::get('/about', 'Frontend\AboutController@index')->name('frontend.about');
+Route::get('/tentang', 'Frontend\AboutController@index')->name('frontend.about');
 
 // News
 Route::get('/news', 'Frontend\NewsController@index')->name('frontend.news');
@@ -189,7 +189,7 @@ Route::get('/produk/{slug}', 'Frontend\ProdukController@indexView')->name('front
 Route::get('/produk/{slug}/{sdSlug}', 'Frontend\ProdukController@indexViewSpesifik')->name('frontend.produk.view.spesik');
 
 // Program & Event
-Route::get('/program-event', 'Frontend\EventsController@index')->name('frontend.program-event');
-Route::get('/program-event/more-events', 'Frontend\EventsController@indexEvents')->name('frontend.program-event.events');
-Route::get('/program-event/more-events-vidio', 'Frontend\EventsController@indexEventsVidio')->name('frontend.program-event.events-vidio');
-Route::get('/program-event/event/{slug}', 'Frontend\EventsController@eventsView')->name('frontend.program-event.view');
+Route::get('/program-events', 'Frontend\EventsController@index')->name('frontend.program-event');
+Route::get('/program-events/more-events', 'Frontend\EventsController@indexEvents')->name('frontend.program-event.events');
+Route::get('/program-events/more-events-vidio', 'Frontend\EventsController@indexEventsVidio')->name('frontend.program-event.events-vidio');
+Route::get('/program-events/event/{slug}', 'Frontend\EventsController@eventsView')->name('frontend.program-event.view');

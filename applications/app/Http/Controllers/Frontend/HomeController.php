@@ -29,8 +29,19 @@ class HomeController extends Controller
         
         $callSlider = SliderHome::select('img_url', 'img_alt')->where('flag_publish', '1')->orderBy('posisi', 'asc')->get();
 
-		$callKategory = ProdukKategori::select('nama_kategori', 'slug', 'img_url', 'img_alt')->where('flag_publish', '1')->whereDATE('tanggal_post', '<=', $format_date)->orderBy('id', 'desc')->get();
-        
+		$callKategory = ProdukKategori::select(
+            'nama_kategori', 
+            'slug', 
+            'img_url', 
+            'img_alt',
+            DB::raw('(select count(kategori_id) from amd_produk where amd_produk.kategori_id = amd_produk_kategori.id and amd_produk.flag_publish = 1) as count_kategori_id_and_flag_publish')
+
+        )
+        ->where('flag_publish', '1')
+        ->whereDATE('tanggal_post', '<=', $format_date)
+        ->orderBy('id', 'desc')
+        ->get();
+
         if (App::getLocale() == 'id') {
             $callProgramEventJudul = 'judul_promosi_ID as judul';
             $callProgramEventDeskripsi = 'deskripsi_ID as deskripsi';
@@ -38,7 +49,6 @@ class HomeController extends Controller
             $callNewsJudul = 'judul_ID as judul';
             $callNewsDeskripsi = 'deskripsi_ID as deskripsi';
         }
-
         elseif (App::getLocale() == 'en') {
             $callProgramEventJudul = 'judul_promosi_EN as judul';
             $callProgramEventDeskripsi = 'deskripsi_EN as deskripsi';
