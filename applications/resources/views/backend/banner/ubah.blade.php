@@ -66,7 +66,6 @@
                 <option value="produk" {{ $getBanner->halaman == 'produk' ? 'selected' : '' }}>Produk</option>
                 <option value="news" {{ $getBanner->halaman == 'news' ? 'selected' : '' }}>News</option>
                 <option value="program-events" {{ $getBanner->halaman == 'program-events' ? 'selected' : '' }}>Program & Events</option>
-                <option value="contact"  {{ $getBanner->halaman == 'contact' ? 'selected' : '' }}>Contact</option>
               </select>
               @if($errors->has('posisi'))
                 <code><span style="color:red; font-size:12px;">{{ $errors->first('posisi')}}</span></code>

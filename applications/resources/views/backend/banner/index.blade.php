@@ -71,7 +71,7 @@
               <td><img style="display: block;" src="{{ url('images/banner/').'/'.$key->img_url }}" alt="" class="thumbnail"></td>
               <td>{{ $key->img_alt }}</td>
               <td>{{ $key->halaman }}</td>
-              <td><a href="{{ route('banner.ubah', $key->id) }}" class="btn btn-xs btn-warning btn-sm"><i class="fa fa-pencil"></i> Ubah</a></td>
+              <td><a href="{{ route('banner.ubah', $key->id) }}" class="btn btn-xs btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="Ubah"><i class="fa fa-pencil"></i> </a></td>
             </tr>
             @php
               $no++;

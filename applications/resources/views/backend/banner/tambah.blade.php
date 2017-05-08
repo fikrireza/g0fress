@@ -61,7 +61,6 @@
                 <option value="produk" {{ old('halaman') == 'produk' ? 'selected' : '' }}>Produk</option>
                 <option value="news" {{ old('halaman') == 'news' ? 'selected' : '' }}>News</option>
                 <option value="program-events" {{ old('halaman') == 'program-events' ? 'selected' : '' }}>Program & Events</option>
-                <option value="contact" {{ old('halaman') == 'contact' ? 'selected' : '' }}>Contact</option>
               </select>
               @if($errors->has('halaman'))
                 <code><span style="color:red; font-size:12px;">{{ $errors->first('halaman')}}</span></code>

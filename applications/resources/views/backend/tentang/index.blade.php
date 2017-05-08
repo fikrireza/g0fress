@@ -50,16 +50,19 @@
         <div class="clearfix"></div>
       </div>
       <div class="x_content table-responsive">
+        @if($getTentang != null)
+          
+        @else
         <div class="col-md-8 col-lg-8 col-sm-7">
-            <blockquote>
-              {!! $getTentang[0]->visi_deskripsi_ID!!}
-              <footer>Visi Indonesia</footer>
-            </blockquote>
+          <blockquote>
+            {!! $getTentang[0]->visi_deskripsi_ID!!}
+            <footer>Visi Indonesia</footer>
+          </blockquote>
 
-            <blockquote class="blockquote-reverse">
-              {!! $getTentang[0]->visi_deskripsi_EN !!}
-              <footer>Visi Inggris</footer>
-            </blockquote>
+          <blockquote class="blockquote-reverse">
+            {!! $getTentang[0]->visi_deskripsi_EN !!}
+            <footer>Visi Inggris</footer>
+          </blockquote>
         </div>
         <div class="col-md-4 col-lg-4 col-sm-5">
           {!! $getTentang[0]->deskripsi_ID !!}
@@ -68,25 +71,26 @@
 
         <div class="clearfix"></div>
         <div class="col-md-8 col-lg-8 col-sm-7">
-            <blockquote>
-              {!! $getTentang[0]->misi_deskripsi_ID!!}
-              <footer>Misi Indonesia</footer>
-            </blockquote>
+          <blockquote>
+            {!! $getTentang[0]->misi_deskripsi_ID!!}
+            <footer>Misi Indonesia</footer>
+          </blockquote>
 
-            <blockquote class="blockquote-reverse">
-              {!! $getTentang[0]->misi_deskripsi_EN !!}
-              <footer>Misi Inggris</footer>
-            </blockquote>
+          <blockquote class="blockquote-reverse">
+            {!! $getTentang[0]->misi_deskripsi_EN !!}
+            <footer>Misi Inggris</footer>
+          </blockquote>
         </div>
         <hr>
         <div class="col-md-12 col-sm-12">
-            <h2>Distribution Maps</h2>
-            <img src="{{ asset('images/tentang').'/'.$getTentang[0]->img_url }}" class="thumbnail">
+          <h2>Distribution Maps</h2>
+          <img src="{{ asset('images/tentang').'/'.$getTentang[0]->img_url }}" class="thumbnail">
         </div>
         <div class="col-md-12">
           <a href="{{ route('tentang.ubah', $getTentang[0]->id) }}" class="btn btn-large btn-warning btn-sm pull-right"><i class="fa fa-pencil"></i> Ubah</a>
         </div>
 
+        @endif
       </div>
     </div>
   </div>
