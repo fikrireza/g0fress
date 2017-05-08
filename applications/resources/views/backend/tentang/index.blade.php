@@ -44,28 +44,30 @@
         <h2>Tentang</h2>
         <ul class="nav panel_toolbox">
           @if ($getTentang->isEmpty())
-          <a href="{{ route('tentang.tambah') }}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Tambah Tentang</a>
+          <a href="{{ route('tentang.tambah') }}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Tambah</a>
           @endif
         </ul>
         <div class="clearfix"></div>
       </div>
       <div class="x_content table-responsive">
-        @if($getTentang != null)
-          
+        @if($getTentang->isEmpty())
+
         @else
         <div class="col-md-8 col-lg-8 col-sm-7">
           <blockquote>
             {!! $getTentang[0]->visi_deskripsi_ID!!}
-            <footer>Visi Indonesia</footer>
+            <footer>Visi ID</footer>
           </blockquote>
 
           <blockquote class="blockquote-reverse">
             {!! $getTentang[0]->visi_deskripsi_EN !!}
-            <footer>Visi Inggris</footer>
+            <footer>Visi EN</footer>
           </blockquote>
         </div>
         <div class="col-md-4 col-lg-4 col-sm-5">
+          <b>Deskripsi ID</b>
           {!! $getTentang[0]->deskripsi_ID !!}
+          <b>Deskripsi EN</b>
           {!! $getTentang[0]->deskripsi_EN !!}
         </div>
 
@@ -73,12 +75,12 @@
         <div class="col-md-8 col-lg-8 col-sm-7">
           <blockquote>
             {!! $getTentang[0]->misi_deskripsi_ID!!}
-            <footer>Misi Indonesia</footer>
+            <footer>Misi ID</footer>
           </blockquote>
 
           <blockquote class="blockquote-reverse">
             {!! $getTentang[0]->misi_deskripsi_EN !!}
-            <footer>Misi Inggris</footer>
+            <footer>Misi EN</footer>
           </blockquote>
         </div>
         <hr>
@@ -100,8 +102,4 @@
 @section('script')
 <script src="{{ asset('backend/vendors/pnotify/dist/pnotify.js') }}"></script>
 <script src="{{ asset('backend/vendors/pnotify/dist/pnotify.nonblock.js') }}"></script>
-
-<script type="text/javascript">
-  $('#tentangtable').DataTable();
-</script>
 @endsection

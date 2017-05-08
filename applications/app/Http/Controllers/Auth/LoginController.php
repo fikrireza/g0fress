@@ -65,23 +65,23 @@ class LoginController extends Controller
           return redirect()->route('login.pages')->withErrors($validator)->withInput();
         }
 
-        if(Auth::attempt(['email' => $request->email, 'password' => $request->password]))
+        if(Auth::attempt(['email' => $request->email, 'password' => $request->password, 'confirmed'=>1]))
         {
-          $user = Auth::User();
-          $set = User::find(Auth::user()->id);
-          $getCounter = $set->login_count;
-          $set->login_count = $getCounter+1;
-          $set->save();
+            $user = Auth::User();
+            $set = User::find(Auth::user()->id);
+            $getCounter = $set->login_count;
+            $set->login_count = $getCounter+1;
+            $set->save();
 
-          if($getCounter = 0){
-            return redirect()->with('firstLogin', 'Selamat Datang. Ubah Password Anda');
-          }else{
-            return redirect()->route('admin.dashboard');
-          }
+            if($getCounter = 0){
+              return redirect()->with('firstLogin', 'Selamat Datang. Ubah Password Anda');
+            }else{
+              return redirect()->route('admin.dashboard');
+            }
         }
         else
         {
-          return redirect()->route('login.pages')->with('filedLogin', 'Periksa Kembali Email atau Password Anda.')->withInput();
+            return redirect()->route('login.pages')->with('filedLogin', 'Periksa Kembali Email atau Password Anda.')->withInput();
         }
     }
 

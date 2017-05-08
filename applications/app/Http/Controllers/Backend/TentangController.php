@@ -22,7 +22,7 @@ class TentangController extends Controller
     public function index()
     {
         $getTentang = Tentang::get();
-
+// dd($getTentang);
         return view('backend.tentang.index', compact('getTentang'));
     }
 
