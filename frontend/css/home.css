@@ -199,7 +199,12 @@
 	vertical-align: middle;
 	text-align: center;
 }
-
+.wrapper-connect-with-us{
+	text-align: center;
+}
+.wrapper-connect-with-us a{
+	text-decoration: none;
+}
 @media (max-width: 480px) {
 	.slider{
 		margin-top: 40px;

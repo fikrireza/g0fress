@@ -19,6 +19,9 @@
 	border-bottom: 2px solid rgb(111,122,122);
     font-family: 'US101';
 }
+.background-content .content-wrapper .sub-col .wrapper-sub-col a{
+	text-decoration: none;
+}
 .background-content .content-wrapper .sub-col .wrapper-sub-col img{
 	width: 80px;
 }

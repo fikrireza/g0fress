@@ -21,9 +21,11 @@
 		</div>
 
 		<div class="float-right">
-			<img src="{{ asset('public/image/default/facebook-white.png') }}">
-			<img src="{{ asset('public/image/default/twitter-white.png') }}">
-			<img src="{{ asset('public/image/default/instagram-white.png') }}">
+			@foreach($callSosMed as $list)
+			<a href="{{ $list->url_account }}">
+				<img src="{{ asset('images/sosmed/'.$list->img_url) }}">
+			</a>
+			@endforeach
 		</div>
 
 		<div class="clearfix"></div>

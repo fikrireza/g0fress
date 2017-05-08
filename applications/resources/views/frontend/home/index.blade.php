@@ -235,10 +235,12 @@
 			</label>
 		</div>
 
-		<div style="text-align: center;">
-			<img src="{{ asset('public/image/default/facebook-white.png') }}">
-			<img src="{{ asset('public/image/default/twitter-white.png') }}">
-			<img src="{{ asset('public/image/default/instagram-white.png') }}">
+		<div class="wrapper-connect-with-us">
+			@foreach($callSosMed as $list)
+			<a href="{{ $list->url_account }}">
+				<img src="{{ asset('images/sosmed/'.$list->img_url) }}">
+			</a>
+			@endforeach
 		</div>
 
 	</div>

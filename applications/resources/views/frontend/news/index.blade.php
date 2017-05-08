@@ -42,9 +42,11 @@
 				<h2 class="title">
 					@lang('front/news-index.follow-us-on')
 				</h2>
-				<img src="{{ asset('public/image/default/socmed-logo-fb.png') }}">
-				<img src="{{ asset('public/image/default/socmed-logo-twit.png') }}">
-				<img src="{{ asset('public/image/default/socmed-logo-insta.png') }}">
+				@foreach($callSosMed as $list)
+				<a href="{{ $list->url_account }}">
+					<img src="{{ asset('images/sosmed/'.$list->img_url) }}">
+				</a>
+				@endforeach
 			</div>
 			<div class="wrapper-sub-col">
 				<h2 class="title">
