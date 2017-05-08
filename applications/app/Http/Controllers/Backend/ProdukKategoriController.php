@@ -198,4 +198,26 @@ class ProdukKategoriController extends Controller
 
       return redirect()->route('produkKategori.index')->with('berhasil', 'Berhasil Mengubah Produk Kategori '.$request->nama_kategori);
     }
+
+    public function publish($id)
+    {
+        $getProdukKategori = ProdukKategori::find($id);
+
+        if(!$getProdukKategori){
+          return view('backend.errors.404');
+        }
+
+        if ($getProdukKategori->flag_publish == 1) {
+          $getProdukKategori->flag_publish = 0;
+          $getProdukKategori->update();
+
+          return redirect()->route('produkKategori.index')->with('berhasil', 'Berhasil Unpublish '.$getProdukKategori->nama_kategori);
+        }else{
+          $getProdukKategori->flag_publish = 1;
+          $getProdukKategori->update();
+
+          return redirect()->route('produkKategori.index')->with('berhasil', 'Berhasil Publish '.$getProdukKategori->nama_kategori);
+        }
+    }
+
 }

@@ -5,8 +5,6 @@
 @endsection
 
 @section('headscript')
-<link href="{{ asset('backend/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css') }}" rel="stylesheet">
-<link href="{{ asset('backend/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css') }}" rel="stylesheet">
 <link href="{{ asset('backend/vendors/pnotify/dist/pnotify.css') }}" rel="stylesheet">
 <link href="{{ asset('backend/vendors/pnotify/dist/pnotify.nonblock.css') }}" rel="stylesheet">
 @endsection
@@ -93,14 +91,9 @@
     </div>
   </div>
 </div>
-
 @endsection
 
 @section('script')
-<script src="{{ asset('backend/vendors/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('backend/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
-<script src="{{ asset('backend/vendors/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
-<script src="{{ asset('backend/vendors/datatables.net-scroller/js/datatables.scroller.min.js') }}"></script>
 <script src="{{ asset('backend/vendors/pnotify/dist/pnotify.js') }}"></script>
 <script src="{{ asset('backend/vendors/pnotify/dist/pnotify.nonblock.js') }}"></script>
 

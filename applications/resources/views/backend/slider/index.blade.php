@@ -1,7 +1,7 @@
 @extends('backend.layout.master')
 
 @section('title')
-  <title>Gofress | Slider Home</title>
+  <title>Gofress | Banner Slider</title>
 @endsection
 
 @section('headscript')
@@ -31,9 +31,72 @@
 </div>
 @endif
 
+<div class="modal fade modal-unpublish" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content alert-danger">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel2">Unpublish Banner Slider</h4>
+      </div>
+      <div class="modal-body">
+        <h4>Yakin ?</h4>
+        <p>Tidak akan menampilkan Banner Slider</p>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-primary" id="setUnpublish">Ya</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal fade modal-publish" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel2">Publish Banner Slider</h4>
+      </div>
+      <div class="modal-body">
+        <h4>Yakin ?</h4>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-primary" id="setPublish">Ya</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade modal-hapus" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content alert-danger">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel2">Hapus Banner Slider</h4>
+      </div>
+      <div class="modal-body">
+        <h4>Yakin Hapus?</h4>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-primary" id="setHapus">Hapus</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
 <div class="page-title">
   <div class="title_left">
-    <h3>Slider Home <small></small></h3>
+    <h3>Banner Slider <small></small></h3>
   </div>
 </div>
 
@@ -42,9 +105,9 @@
   <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="x_panel">
       <div class="x_title">
-        <h2>Slider Home </h2>
+        <h2>Banner Slider </h2>
         <ul class="nav panel_toolbox">
-          <a href="{{ route('slider.tambah') }}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Tambah Slider</a>
+          <a href="{{ route('slider.tambah') }}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Tambah</a>
         </ul>
         <div class="clearfix"></div>
       </div>
@@ -55,7 +118,7 @@
               <th>No</th>
               <th>Image</th>
               <th>Image Description</th>
-              <th>Image Position</th>
+              {{-- <th>Image Position</th> --}}
               <th>Tanggal Post</th>
               <th>Publish</th>
               <th>Aksi</th>
@@ -70,10 +133,17 @@
               <td>{{ $no }}</td>
               <td><img style="display: block;" src="{{ url('images/slider/').'/'.$key->img_url }}" alt="" class="thumbnail"></td>
               <td>{{ $key->img_alt }}</td>
-              <td>{{ $key->posisi }}</td>
-              <td>{!! ($key->tanggal_post <= date('Y-m-d')) ? "<span class='label label-success'>$key->tanggal_post</span>" : "<span class='label label-danger'>$key->tanggal_post</span>" !!}</td>
-              <td>@if ($key->flag_publish == 1) <span class='label label-success'><i class="fa fa-thumbs-o-up"></i></span> @else <span class='label label-danger'><i class="fa fa-thumbs-o-down"></i></span> @endif</td>
-              <td><a href="{{ route('slider.ubah', $key->id) }}" class="btn btn-xs btn-warning btn-sm"><i class="fa fa-pencil"></i> Ubah</a></td>
+              {{-- <td>{{ $key->posisi }}</td> --}}
+              <td>{!! ($key->tanggal_post <= date('Y-m-d')) ? "<span class='label label-success'>$key->tanggal_post</span>" : "<span class='label label-danger' data-toggle='tooltip' data-placement='top' title='Posting Otomatis'>$key->tanggal_post</span>" !!}</td>
+              <td>@if ($key->flag_publish == 1)
+                    <a href="" class="unpublish" data-value="{{ $key->id }}" data-toggle="modal" data-target=".modal-unpublish"><span class="label label-success" data-toggle="tooltip" data-placement="top" title="Publish"><i class="fa fa-thumbs-o-up"></i></span></a>
+                  @else
+                    <a href="" class="publish" data-value="{{ $key->id }}" data-toggle="modal" data-target=".modal-publish"><span class="label label-danger" data-toggle="tooltip" data-placement="top" title="Unpublish"><i class="fa fa-thumbs-o-down"></i></span></a>
+                  @endif
+              </td>
+              <td><a href="{{ route('slider.ubah', $key->id) }}" class="btn btn-xs btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="Ubah"><i class="fa fa-pencil"></i> </a>
+                <a href="" class="hapus" data-value="{{ $key->id }}" data-toggle="modal" data-target=".modal-hapus"><span class="btn btn-xs btn-danger delete" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-close"></i> </span></a>
+              </td>
             </tr>
             @php
               $no++;
@@ -100,5 +170,28 @@
   $('#slidertabel').DataTable({
     "ordering": false
   });
+
+  $(function(){
+    $('a.unpublish').click(function(){
+      var a = $(this).data('value');
+      $('#setUnpublish').attr('href', "{{ url('/') }}/admin/slider/publish/"+a);
+    });
+  });
+
+  $(function(){
+    $('a.publish').click(function(){
+      var a = $(this).data('value');
+      $('#setPublish').attr('href', "{{ url('/') }}/admin/slider/publish/"+a);
+    });
+  });
+
+  $(function(){
+    $('a.hapus').click(function(){
+      var a = $(this).data('value');
+      $('#setHapus').attr('href', "{{ url('/') }}/admin/slider/delete/"+a);
+    });
+  });
+
+
 </script>
 @endsection

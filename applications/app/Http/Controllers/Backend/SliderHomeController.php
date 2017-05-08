@@ -13,6 +13,7 @@ use Auth;
 use DB;
 use Validator;
 use Image;
+use File;
 
 class SliderHomeController extends Controller
 {
@@ -183,6 +184,48 @@ class SliderHomeController extends Controller
       // });
 
       return redirect()->route('slider.index')->with('berhasil', 'Berhasil Mengubah Slider');
+    }
+
+    public function publish($id)
+    {
+        $getSlider = SliderHome::find($id);
+
+        if(!$getSlider){
+          return view('backend.errors.404');
+        }
+
+        if ($getSlider->flag_publish == 1) {
+          $getSlider->flag_publish = 0;
+          $getSlider->update();
+
+          return redirect()->route('slider.index')->with('berhasil', 'Berhasil Unpublish');
+        }else{
+          $getSlider->flag_publish = 1;
+          $getSlider->update();
+
+          return redirect()->route('slider.index')->with('berhasil', 'Berhasil Publish');
+        }
+    }
+
+    public function delete($id)
+    {
+        $getSlider = SliderHome::find($id);
+
+        if(!$getSlider){
+          return view('backend.errors.404');
+        }
+
+        DB::transaction(function() use($getSlider){
+          File::delete('images/slider/' .$getSlider->img_url);
+          $getSlider->delete();
+
+          $log = new LogAkses;
+          $log->actor = Auth::user()->id;
+          $log->aksi = 'Menghapus Slider '.$getSlider->img_url;
+          $log->save();
+        });
+
+        return redirect()->route('slider.index')->with('berhasil', 'Berhasil menghapus banner slider');
     }
 
 }

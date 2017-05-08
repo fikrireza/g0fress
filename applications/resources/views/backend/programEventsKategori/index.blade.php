@@ -32,6 +32,48 @@
 </div>
 @endif
 
+<div class="modal fade modal-unpublish" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content alert-danger">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel2">Unpublish Program & Event Kategori</h4>
+      </div>
+      <div class="modal-body">
+        <h4>Yakin ?</h4>
+        <p>Tidak akan menampilkan Program & Event Kategori</p>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-primary" id="setUnpublish">Ya</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal fade modal-publish" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel2">Publish Program & Event Kategori</h4>
+      </div>
+      <div class="modal-body">
+        <h4>Yakin ?</h4>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-primary" id="setPublish">Ya</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
 <div class="page-title">
   <div class="title_left">
     <h3>Semua Program & Events Kategori<small></small></h3>
@@ -45,7 +87,7 @@
       <div class="x_title">
         <h2>Program & Events Kategori</h2>
         <ul class="nav panel_toolbox">
-          <a href="{{ route('programEventsKategori.tambah') }}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Tambah Program & Events Kategori</a>
+          <a href="{{ route('programEventsKategori.tambah') }}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Tambah</a>
         </ul>
         <div class="clearfix"></div>
       </div>
@@ -67,8 +109,14 @@
             <tr>
               <td>{{ $no }}</td>
               <td>{{ $key->judul_kategori_ID }}</td>
-              <td>@if ($key->flag_publish == 1) <span class='label label-success'><i class="fa fa-thumbs-o-up"></i></span> @else <span class='label label-danger'><i class="fa fa-thumbs-o-down"></i></span> @endif</td>
-              <td><a href="{{ route('programEventsKategori.lihat', $key->id) }}" class="btn btn-xs btn-primary"><i class="fa fa-folder"></i> Lihat</a><a href="{{ route('programEventsKategori.ubah', $key->id) }}" class="btn btn-xs btn-warning btn-sm"><i class="fa fa-pencil"></i> Ubah</a></td>
+              <td>@if ($key->flag_publish == 1)
+                    <a href="" class="unpublish" data-value="{{ $key->id }}" data-toggle="modal" data-target=".modal-unpublish"><span class="label label-success" data-toggle="tooltip" data-placement="top" title="Publish"><i class="fa fa-thumbs-o-up"></i></span></a>
+                  @else
+                    <a href="" class="publish" data-value="{{ $key->id }}" data-toggle="modal" data-target=".modal-publish"><span class="label label-danger" data-toggle="tooltip" data-placement="top" title="Unpublish"><i class="fa fa-thumbs-o-down"></i></span></a>
+                  @endif
+              </td>
+              <td><a href="{{ route('programEventsKategori.lihat', $key->id) }}" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="Lihat"><i class="fa fa-folder"></i> </a>
+                <a href="{{ route('programEventsKategori.ubah', $key->id) }}" class="btn btn-xs btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="Ubah"><i class="fa fa-pencil"></i> </a></td>
             </tr>
             @php
               $no++;
@@ -93,5 +141,19 @@
 
 <script type="text/javascript">
   $('#programEventstabel').DataTable();
+
+  $(function(){
+    $('a.unpublish').click(function(){
+      var a = $(this).data('value');
+      $('#setUnpublish').attr('href', "{{ url('/') }}/admin/program-events-kategori/publish/"+a);
+    });
+  });
+
+  $(function(){
+    $('a.publish').click(function(){
+      var a = $(this).data('value');
+      $('#setPublish').attr('href', "{{ url('/') }}/admin/program-events-kategori/publish/"+a);
+    });
+  });
 </script>
 @endsection

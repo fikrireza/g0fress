@@ -54,6 +54,7 @@ Route::group(['middleware' => ['isAdministrator']], function () {
   Route::get('admin/produk/lihat/{id}', 'Backend\ProdukController@lihat')->name('produk.lihat');
   Route::get('admin/produk/ubah/{id}', 'Backend\ProdukController@ubah')->name('produk.ubah');
   Route::post('admin/produk/ubah', 'Backend\ProdukController@edit')->name('produk.edit');
+  Route::get('admin/produk/publish/{id}', 'Backend\ProdukController@publish')->name('produk.publish');
 
   // Produk Kategori
   Route::get('admin/produk-kategori', 'Backend\ProdukKategoriController@index')->name('produkKategori.index');
@@ -62,6 +63,7 @@ Route::group(['middleware' => ['isAdministrator']], function () {
   Route::get('admin/produk-kategori/lihat/{id}', 'Backend\ProdukKategoriController@lihat')->name('produkKategori.lihat');
   Route::get('admin/produk-kategori/ubah/{id}', 'Backend\ProdukKategoriController@ubah')->name('produkKategori.ubah');
   Route::post('admin/produk-kategori/ubah', 'Backend\ProdukKategoriController@edit')->name('produkKategori.edit');
+  Route::get('admin/produk-kategori/publish/{id}', 'Backend\ProdukKategoriController@publish')->name('produkKategori.publish');
 
   // News
   Route::get('admin/news', 'Backend\NewsController@index')->name('news.index');
@@ -70,6 +72,8 @@ Route::group(['middleware' => ['isAdministrator']], function () {
   Route::get('admin/news/lihat/{id}', 'Backend\NewsController@lihat')->name('news.lihat');
   Route::get('admin/news/ubah/{id}', 'Backend\NewsController@ubah')->name('news.ubah');
   Route::post('admin/news/ubah', 'Backend\NewsController@edit')->name('news.edit');
+  Route::get('admin/news/publish/{id}', 'Backend\NewsController@publish')->name('news.publish');
+  Route::get('admin/news/homepage/{id}', 'Backend\NewsController@homepage')->name('news.homepage');
 
   // Program & Events
   Route::get('admin/program-events', 'Backend\ProgramEventsController@index')->name('programEvents.index');
@@ -78,6 +82,8 @@ Route::group(['middleware' => ['isAdministrator']], function () {
   Route::get('admin/program-events/lihat/{id}', 'Backend\ProgramEventsController@lihat')->name('programEvents.lihat');
   Route::get('admin/program-events/ubah/{id}', 'Backend\ProgramEventsController@ubah')->name('programEvents.ubah');
   Route::post('admin/program-events/ubah', 'Backend\ProgramEventsController@edit')->name('programEvents.edit');
+  Route::get('admin/program-events/publish/{id}', 'Backend\ProgramEventsController@publish')->name('programEvents.publish');
+  Route::get('admin/program-events/homepage/{id}', 'Backend\ProgramEventsController@homepage')->name('programEvents.homepage');
 
   // Program & Events Kategori
   Route::get('admin/program-events-kategori', 'Backend\ProgramEventsKategoriController@index')->name('programEventsKategori.index');
@@ -86,6 +92,7 @@ Route::group(['middleware' => ['isAdministrator']], function () {
   Route::get('admin/program-events-kategori/lihat/{id}', 'Backend\ProgramEventsKategoriController@lihat')->name('programEventsKategori.lihat');
   Route::get('admin/program-events-kategori/ubah/{id}', 'Backend\ProgramEventsKategoriController@ubah')->name('programEventsKategori.ubah');
   Route::post('admin/program-events-kategori/ubah', 'Backend\ProgramEventsKategoriController@edit')->name('programEventsKategori.edit');
+  Route::get('admin/program-events-kategori/publish/{id}', 'Backend\ProgramEventsKategoriController@publish')->name('programEventsKategori.publish');
 
   // Inbox Message
   Route::get('admin/inbox', 'Backend\InboxController@index')->name('inbox.index');
@@ -99,6 +106,8 @@ Route::group(['middleware' => ['isAdministrator']], function () {
   Route::post('admin/slider/tambah', 'Backend\SliderHomeController@store')->name('slider.store');
   Route::get('admin/slider/ubah/{id}', 'Backend\SliderHomeController@ubah')->name('slider.ubah');
   Route::post('admin/slider/ubah', 'Backend\SliderHomeController@edit')->name('slider.edit');
+  Route::get('admin/slider/publish/{id}', 'Backend\SliderHomeController@publish')->name('slider.publish');
+  Route::get('admin/slider/delete/{id}', 'Backend\SliderHomeController@delete')->name('slider.delete');
 
   // Web Head Banner
   Route::get('admin/banner', 'Backend\BannerController@index')->name('banner.index');
@@ -128,6 +137,8 @@ Route::group(['middleware' => ['isAdministrator']], function () {
   Route::post('admin/social-account/tambah', 'Backend\SocialMediaController@store')->name('social.store');
   Route::get('admin/social-account/ubah/{id}', 'Backend\SocialMediaController@ubah')->name('social.ubah');
   Route::post('admin/social-account/ubah', 'Backend\SocialMediaController@edit')->name('social.edit');
+  Route::get('admin/social-account/publish/{id}', 'Backend\SocialMediaController@publish')->name('social.pubish');
+  Route::get('admin/social-account/delete/{id}', 'Backend\SocialMediaController@delete')->name('social.delete');
 
   // Kontak
   Route::get('admin/kontak', 'Backend\KontakController@index')->name('kontak.index');
@@ -143,6 +154,13 @@ Route::group(['middleware' => ['isAdministrator']], function () {
   Route::get('admin/tentang/ubah/{id}', 'Backend\TentangController@ubah')->name('tentang.ubah');
   Route::post('admin/tentang/ubah', 'Backend\TentangController@edit')->name('tentang.edit');
 
+
+  Route::get('admin/tentang-galeri', 'Backend\TentangController@indexGaleri')->name('tentangGaleri.index');
+  Route::get('admin/tentang-galeri/upload', 'Backend\TentangController@tambahGaleri')->name('tentangGaleri.tambah');
+  Route::post('admin/tentang-galeri/upload', 'Backend\TentangController@uploadGaleri')->name('tentangGaleri.store');
+  Route::get('admin/tentang-galeri/ubah/{id}', 'Backend\TentangController@ubahGaleri')->name('tentangGaleri.ubah');
+  Route::post('admin/tentang-galeri/ubah', 'Backend\TentangController@editGaleri')->name('tentangGaleri.edit');
+  Route::get('admin/tentang-galeri/delete/{id}', 'Backend\TentangController@deleteGaleri')->name('tentangGaleri.delete');
 
 });
 //----------------------- BACKEND -----------------------//

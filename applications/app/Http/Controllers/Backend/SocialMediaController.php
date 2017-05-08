@@ -12,6 +12,7 @@ use Auth;
 use Image;
 use DB;
 use Validator;
+use File;
 
 class SocialMediaController extends Controller
 {
@@ -151,6 +152,48 @@ class SocialMediaController extends Controller
       });
 
       return redirect()->route('social.index')->with('berhasil', 'Berhasil Mengubah Social Media '.$request->nama);
+    }
+
+    public function publish($id)
+    {
+        $getSocial = SocialMedia::find($id);
+
+        if(!$getSocial){
+          return view('backend.errors.404');
+        }
+
+        if ($getSocial->flag_publish == 1) {
+          $getSocial->flag_publish = 0;
+          $getSocial->update();
+
+          return redirect()->route('social.index')->with('berhasil', 'Berhasil Unpublish Media Social '.$getSocial->nama);
+        }else{
+          $getSocial->flag_publish = 1;
+          $getSocial->update();
+
+          return redirect()->route('social.index')->with('berhasil', 'Berhasil Publish Media Social '.$getSocial->nama);
+        }
+    }
+
+    public function delete($id)
+    {
+        $getSocial = SocialMedia::find($id);
+
+        if(!$getSocial){
+          return view('backend.errors.404');
+        }
+
+        DB::transaction(function() use($getSocial){
+          File::delete('images/tentang/' .$getSocial->img_url);
+          $getSocial->delete();
+
+          $log = new LogAkses;
+          $log->actor = Auth::user()->id;
+          $log->aksi = 'Menghapus Social Media '.$getSocial->img_url;
+          $log->save();
+        });
+
+        return redirect()->route('social.index')->with('berhasil', 'Berhasil menghapus social media');
     }
 
 }
