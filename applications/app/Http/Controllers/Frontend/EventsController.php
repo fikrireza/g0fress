@@ -33,12 +33,12 @@ class EventsController extends Controller
             $callProgramEventVidioJudul = 'judul_promosi_EN as judul';
             $callProgramEventVidioDeskripsi = 'deskripsi_EN as deskripsi';
         }
-        
+
     	$callProgramEvent = ProgramEvents::select(
-                $callProgramEventJudul, 
-                'img_url', 
-                'img_alt', 
-                'slug', 
+                $callProgramEventJudul,
+                'img_url',
+                'img_alt',
+                'slug',
                 $callProgramEventDeskripsi
             )
             ->where('flag_publish', '1')
@@ -49,10 +49,10 @@ class EventsController extends Controller
             ->get();
 
     	$callProgramEventVidio = ProgramEvents::select(
-                $callProgramEventVidioJudul, 
-                'video_url', 
-                'img_alt', 
-                'slug', 
+                $callProgramEventVidioJudul,
+                'video_url',
+                'img_alt',
+                'slug',
                 $callProgramEventVidioDeskripsi
             )
             ->where('flag_publish', '1')
@@ -64,12 +64,12 @@ class EventsController extends Controller
 
     	return view('frontend.events.index',compact('callProgramEvent','callProgramEventVidio'));
     }
-    
+
     function indexEvents(Request $request){
 
     	$date = new DateTime;
 		$format_date = $date->format('Y-m-d');
-		
+
         if (App::getLocale() == 'id') {
             $callProgramEventJudul = 'judul_promosi_ID as judul';
             $callProgramEventDeskripsi = 'deskripsi_ID as deskripsi';
@@ -80,10 +80,10 @@ class EventsController extends Controller
         }
 
 		$callProgramEvent = ProgramEvents::select(
-                $callProgramEventJudul, 
-                'img_url', 
-                'img_alt', 
-                'slug', 
+                $callProgramEventJudul,
+                'img_url',
+                'img_alt',
+                'slug',
                 $callProgramEventDeskripsi
             )
             ->where('flag_publish', '1')
@@ -91,7 +91,7 @@ class EventsController extends Controller
             ->whereNull('video_url')
             ->orderBy('id', 'desc')
             ->paginate(8);
-		
+
     	if ($request->ajax()) {
     		$view = view('frontend.events.ajax-events-list',compact('callProgramEvent'))->render();
             return response()->json(['html'=>$view]);
@@ -101,7 +101,7 @@ class EventsController extends Controller
     }
 
     function eventsView($slug){
-        
+
         if (App::getLocale() == 'id') {
             $callProgramEventJudul = 'judul_promosi_ID as judul';
             $callProgramEventDeskripsi = 'deskripsi_ID as deskripsi';
@@ -112,12 +112,13 @@ class EventsController extends Controller
         }
 
     	$callProgramEvent = ProgramEvents::select(
-                $callProgramEventJudul, 
-                'img_url', 
-                'img_alt', 
+                $callProgramEventJudul,
+                'img_url',
+                'img_alt',
                 $callProgramEventDeskripsi,
-                'tanggal_post', 
-                'video_url'
+                'tanggal_post',
+                'video_url',
+                'slug'
             )
             ->where('slug', $slug)
             ->first();
@@ -138,7 +139,7 @@ class EventsController extends Controller
 
     	$date = new DateTime;
 		$format_date = $date->format('Y-m-d');
-		
+
         if (App::getLocale() == 'id') {
             $callProgramEventVidioJudul = 'judul_promosi_ID as judul';
             $callProgramEventVidioDeskripsi = 'deskripsi_ID as deskripsi';
@@ -149,10 +150,10 @@ class EventsController extends Controller
         }
 
 		$callProgramEventVidio = ProgramEvents::select(
-            $callProgramEventVidioJudul, 
-            'video_url', 
-            'img_alt', 
-            'slug', 
+            $callProgramEventVidioJudul,
+            'video_url',
+            'img_alt',
+            'slug',
             $callProgramEventVidioDeskripsi
         )
         ->where('flag_publish', '1')
@@ -160,7 +161,7 @@ class EventsController extends Controller
         ->whereNotNull('video_url')
         ->orderBy('id', 'desc')
         ->paginate(8);
-		
+
     	if ($request->ajax()) {
     		$view = view('frontend.events.ajax-events-vidio-list',compact('callProgramEventVidio'))->render();
             return response()->json(['html'=>$view]);

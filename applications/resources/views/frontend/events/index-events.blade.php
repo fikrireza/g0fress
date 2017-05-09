@@ -6,16 +6,16 @@
 
 @section('meta')
 <meta name="title" content="Gofress - Program Events">
-@if($callAbout != null)
-<meta name="description" content="{{ strip_tags(Str::words($callAbout->deskripsi, 150)) }}">
-@endif
+	@if($callAbout != null)
+<meta name="description" content="Gofress - {{ strip_tags(Str::words($callAbout->deskripsi, 40)) }}">
+	@endif
+<meta name="keywords" content="Gofress, Permen Tipis, Candy" />
 @endsection
 
 @section('head-style')
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/public-sub-page.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/events-list-item-normal-not-owl.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/for-share-wrapper.css') }}">
-
+	<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/events-list-item-normal-not-owl.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/for-share-wrapper.css') }}">
 @endsection
 
 @section('body-content')
@@ -47,7 +47,7 @@
 		</div>
 		<div class="wrapper-events-list">
 			@include('frontend.events.ajax-events-list')
-			
+
 			<div id="appendNextProgramEvent">
 			</div>
 
@@ -116,4 +116,3 @@
 	}
 </script>
 @endsection
-

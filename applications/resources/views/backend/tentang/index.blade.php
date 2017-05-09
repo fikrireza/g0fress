@@ -63,16 +63,7 @@
             {!! $getTentang[0]->visi_deskripsi_EN !!}
             <footer>Visi EN</footer>
           </blockquote>
-        </div>
-        <div class="col-md-4 col-lg-4 col-sm-5">
-          <b>Deskripsi ID</b>
-          {!! $getTentang[0]->deskripsi_ID !!}
-          <b>Deskripsi EN</b>
-          {!! $getTentang[0]->deskripsi_EN !!}
-        </div>
-
-        <div class="clearfix"></div>
-        <div class="col-md-8 col-lg-8 col-sm-7">
+<hr>
           <blockquote>
             {!! $getTentang[0]->misi_deskripsi_ID!!}
             <footer>Misi ID</footer>
@@ -83,6 +74,15 @@
             <footer>Misi EN</footer>
           </blockquote>
         </div>
+        <div class="col-md-4 col-lg-4 col-sm-5">
+          Deskripsi ID
+          <b>{!! $getTentang[0]->deskripsi_ID !!}</b>
+          <hr>
+          Deskripsi EN
+          <b>{!! $getTentang[0]->deskripsi_EN !!}</b>
+        </div>
+
+        <div class="clearfix"></div>
         <hr>
         <div class="col-md-12 col-sm-12">
           <h2>Distribution Maps</h2>

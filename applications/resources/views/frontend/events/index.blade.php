@@ -6,19 +6,20 @@
 
 @section('meta')
 <meta name="title" content="Gofress - Program Events">
-@if($callAbout != null)
-<meta name="description" content="{{ strip_tags(Str::words($callAbout->deskripsi, 150)) }}">
-@endif
+	@if($callAbout != null)
+<meta name="description" content="Gofress - {{ strip_tags(Str::words($callAbout->deskripsi, 40)) }}">
+	@endif
+<meta name="keywords" content="Gofress, Permen Tipis, Candy"/>
 @endsection
 
 @section('head-style')
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/public-sub-page.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/events-list-item-normal.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/events-list-item-vidio.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/for-share-wrapper.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/events-list-item-normal.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/events-list-item-vidio.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/for-share-wrapper.css') }}">
 
-<link rel="stylesheet" href="{{ asset('plugin/owl-carousel/owl.carousel.css') }}">
-<link rel="stylesheet" href="{{ asset('plugin/owl-carousel/owl.theme.css') }}">
+	<link rel="stylesheet" href="{{ asset('plugin/owl-carousel/owl.carousel.css') }}">
+	<link rel="stylesheet" href="{{ asset('plugin/owl-carousel/owl.theme.css') }}">
 @endsection
 
 @section('body-content')
@@ -152,4 +153,3 @@
 <script src="{{ asset('frontend/js/events-index.js') }}"></script>
 
 @endsection
-

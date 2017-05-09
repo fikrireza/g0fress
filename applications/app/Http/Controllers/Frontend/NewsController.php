@@ -27,14 +27,14 @@ class NewsController extends Controller
         else if (App::getLocale() == 'en') {
             $callNewsJudul = 'judul_EN as judul';
             $callNewsDeskripsi = 'deskripsi_EN as deskripsi';
-            
+
             $callNewsListJudul = 'judul_EN as judul';
         }
 
     	$callNews = News::select(
-                $callNewsJudul, 
-                $callNewsDeskripsi, 
-                'slug', 
+                $callNewsJudul,
+                $callNewsDeskripsi,
+                'slug',
                 'tanggal_post',
                 'img_url',
                 'img_alt'
@@ -45,8 +45,8 @@ class NewsController extends Controller
             ->paginate(2);
 
 		$callNewsList = News::select(
-                $callNewsListJudul, 
-                'slug', 
+                $callNewsListJudul,
+                'slug',
                 'tanggal_post'
             )
             ->where('flag_publish', '1')
@@ -68,11 +68,12 @@ class NewsController extends Controller
         }
 
     	$callNews = News::select(
-                $callNewsJudul, 
-                $callNewsDeskripsi, 
+                $callNewsJudul,
+                $callNewsDeskripsi,
                 'tanggal_post',
                 'img_url',
-                'img_alt'
+                'img_alt',
+                'slug'
             )
             ->where('slug', $slug)
             ->first();

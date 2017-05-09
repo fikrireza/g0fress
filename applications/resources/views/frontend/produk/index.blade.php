@@ -1,24 +1,25 @@
 @extends('frontend._layouts.basic')
 
 @section('head-title')
-<title>Go Fress - Produk</title>
+<title>Gofress - Produk</title>
 @endsection
 
 @section('meta')
 <meta name="title" content="Gofress - Produk">
-@if($callAbout != null)
-<meta name="description" content="{{ strip_tags(Str::words($callAbout->deskripsi, 150)) }}">
-@endif
+	@if($callAbout != null)
+<meta name="description" content="Gofress - {{ strip_tags(Str::words($callAbout->deskripsi, 40)) }}">
+	@endif
+<meta name="keywords" content="Gofress, Permen Tipis, Candy"/>
 @endsection
 
 @section('head-style')
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/public-sub-page.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/produk-index.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/produk-slider-category.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/for-share-wrapper.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/produk-index.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/produk-slider-category.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/for-share-wrapper.css') }}">
 
-<link rel="stylesheet" href="{{ asset('plugin/owl-carousel/owl.carousel.css') }}">
-<link rel="stylesheet" href="{{ asset('plugin/owl-carousel/owl.theme.css') }}">
+	<link rel="stylesheet" href="{{ asset('plugin/owl-carousel/owl.carousel.css') }}">
+	<link rel="stylesheet" href="{{ asset('plugin/owl-carousel/owl.theme.css') }}">
 @endsection
 
 @section('body-content')

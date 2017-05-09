@@ -25,12 +25,6 @@
 </div>
 @endif
 
-{{ $getProduk }}
-{{ $getProdukKategori }}
-{{ $getNews }}
-{{ $getProgram }}
-{{ $getProgramKategori }}
-{{ $getSlider }}
 
 
 @endsection

@@ -36,7 +36,7 @@ Route::get('hello/test-email', 'FirstCampaignController@testemail');
 
 // Auth::routes();
 Route::post('login-process', 'Auth\LoginController@loginProcess')->name('login');
-Route::get('logout-process', 'Auth\LoginController@logoutProcess')->name('logout');
+Route::get('admin/logout-process', 'Auth\LoginController@logoutProcess')->name('logout');
 // END Auth::routes()
 
 Route::get('admin/login', 'Auth\LoginController@showLoginForm')->name('login.pages');
