@@ -23,7 +23,7 @@ class HomeController extends Controller
 
     	$items = [];
     	$client = new \GuzzleHttp\Client;
-	    $response = $client->get('https://www.instagram.com/dessurya/media');
+	    $response = $client->get('https://www.instagram.com/gofress/media');
 	    $items = json_decode((string) $response->getBody(), true)['items'];
 
     	$date = new DateTime;

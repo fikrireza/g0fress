@@ -212,13 +212,13 @@
 		@if(!empty($items))
 			@php ($insCount=0)
 			@foreach($items as $key => $item)
-		<div class="insta-wrapper col-md-4 col-sm-12 col-xs-12">
+		<div class="insta-wrapper col-md-3 col-sm-12 col-xs-12">
 			<div class="insta-picture" style="background-image: url('{{ $item['images']['standard_resolution']['url'] }}');">
 				<div class="insta-contain-wrapper">
 					<div class="insta-contain">
 						<p>{{ $item['likes']['count'] }} <i class="fa fa-heart" aria-hidden="true"></i> || {{ $item['comments']['count'] }} <i class="fa fa-comment" aria-hidden="true"></i></p>
 						@if(isset($item['caption']['text']))
-							<p>{{ $item['caption']['text'] }}</p>
+							<p>{{ Str::words($item['caption']['text'], 15) }}</p>
 						@endif
 						<a href="{{ $item['link'] }}">@lang('front/publict.view')</a>
 					</div>
@@ -227,7 +227,7 @@
 		</div>
 			@php
 				$insCount++;
-				if($insCount == 6){
+				if($insCount == 8){
 					break;
 				}
 			@endphp

@@ -61,6 +61,10 @@ class ProdukController extends Controller
 			->orderBy('amd_produk.id', 'desc')
 			->get();
 
+		if ($callProduk == null) {
+            abort('errors.404');
+        }
+
     	return view('frontend.produk.indexView',compact('callProduk'));
     }
 
@@ -81,6 +85,10 @@ class ProdukController extends Controller
 			->whereDATE('amd_produk.tanggal_post', '<=', $format_date)
 			->orderBy('amd_produk.id', 'desc')
 			->get();
+
+		if ($callProduk == null) {
+            abort('errors.404');
+        }
 
     	return view('frontend.produk.indexView',compact('callProduk', 'sdSlug'));
     }

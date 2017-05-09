@@ -77,6 +77,10 @@ class NewsController extends Controller
             ->where('slug', $slug)
             ->first();
 
+        if ($callNews == null) {
+            abort('errors.404');
+        }
+        
     	return view('frontend.news.view',compact('callNews'));
     }
 

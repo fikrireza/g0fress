@@ -122,6 +122,9 @@ class EventsController extends Controller
             ->where('slug', $slug)
             ->first();
 
+        if ($callProgramEvent == null) {
+            abort('errors.404');
+        }
     	if ($callProgramEvent->video_url == null) {
 	    	return view('frontend.events.events-view',compact('callProgramEvent'));
     	}
