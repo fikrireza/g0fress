@@ -64,7 +64,7 @@
             </ul>
 
           </li>
-          <li class="{{ Route::currentRouteNamed('inbox.index') ? 'active' : '' }}"><a href="{{ route('inbox.index') }}"><i class="fa fa-inbox"></i> Inbox </a></li>
+          <li class="{{ Route::currentRouteNamed('afiliasi.index') ? 'active' : '' }}"><a href="{{ route('afiliasi.index') }}"><i class="fa fa-inbox"></i> Afiliasi </a></li>
           <li class="{{ Route::currentRouteNamed('social.index') ? 'active' : '' }}{{ Route::currentRouteNamed('social.tambah') ? 'active' : '' }}{{ Route::currentRouteNamed('social.ubah') ? 'active' : '' }}"><a href="{{ route('social.index') }}"><i class="fa fa-share-alt"></i> Social Media </a></li>
         </ul>
       </div>
