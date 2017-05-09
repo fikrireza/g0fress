@@ -47,9 +47,7 @@ Route::post('admin/verify', 'Backend\UserController@store')->name('verify.store'
 
 //----------------------- BACKEND -----------------------//
 Route::group(['middleware' => ['isAdministrator']], function () {
-  Route::get('admin/dashboard', function(){
-      return view('backend.dashboard.index');
-  })->name('admin.dashboard');
+  Route::get('admin/dashboard', 'Backend\DashboardController@index')->name('admin.dashboard');
 
   // Produk
   Route::get('admin/produk', 'Backend\ProdukController@index')->name('produk.index');
@@ -167,6 +165,15 @@ Route::group(['middleware' => ['isAdministrator']], function () {
   Route::get('admin/users', 'Backend\UserController@index')->name('users.index');
   Route::get('admin/users/reset/{id}', 'Backend\UserController@reset')->name('users.reset');
   Route::post('admin/users', 'Backend\UserController@new')->name('users.new');
+
+  // Afiliasi
+  Route::get('admin/afiliasi', 'Backend\AfiliasiController@index')->name('afiliasi.index');
+  Route::get('admin/afiliasi/tambah', 'Backend\AfiliasiController@tambah')->name('afiliasi.tambah');
+  Route::post('admin/afiliasi/tambah', 'Backend\AfiliasiController@store')->name('afiliasi.store');
+  Route::get('admin/afiliasi/ubah/{id}', 'Backend\AfiliasiController@ubah')->name('afiliasi.ubah');
+  Route::post('admin/afiliasi/ubah', 'Backend\AfiliasiController@edit')->name('afiliasi.edit');
+  Route::get('admin/afiliasi/publish/{id}', 'Backend\AfiliasiController@publish')->name('afiliasi.pubish');
+  Route::get('admin/afiliasi/delete/{id}', 'Backend\AfiliasiController@delete')->name('afiliasi.delete');
 
 });
 //----------------------- BACKEND -----------------------//
