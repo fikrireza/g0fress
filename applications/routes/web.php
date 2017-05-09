@@ -176,6 +176,11 @@ Route::group(['middleware' => ['isAdministrator']], function () {
   Route::get('admin/afiliasi/publish/{id}', 'Backend\AfiliasiController@publish')->name('afiliasi.pubish');
   Route::get('admin/afiliasi/delete/{id}', 'Backend\AfiliasiController@delete')->name('afiliasi.delete');
 
+  // Facebook Apps
+  Route::get('admin/facebook', 'Backend\FacebookController@index')->name('facebook.index');
+  Route::get('admin/facebook/ubah/{id}', 'Backend\FacebookController@ubah')->name('facebook.ubah');
+  Route::post('admin/facebook/ubah', 'Backend\FacebookController@edit')->name('facebook.edit');
+
 });
 //----------------------- BACKEND -----------------------//
 

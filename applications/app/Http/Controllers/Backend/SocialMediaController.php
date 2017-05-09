@@ -44,7 +44,6 @@ class SocialMediaController extends Controller
 
       $validator = Validator::make($request->all(), [
         'nama' => 'required|unique:amd_social_media',
-        // 'img_url' => 'required|image|mimes:jpeg,bmp,png|size:2000|dimensions:max_width=1000,max_height=2000',
         'img_url' => 'required|image|mimes:jpeg,bmp,png|max:1000|dimensions:max_width=40,max_height=40',
         'url_account' => 'required|url'
       ], $message);

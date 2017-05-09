@@ -11,6 +11,7 @@ use App\Models\News;
 use App\Models\ProgramEvents;
 use App\Models\ProgramEventsKategori;
 use App\Models\SliderHome;
+use App\Models\FacebookApp;
 
 class DashboardController extends Controller
 {
@@ -34,28 +35,31 @@ class DashboardController extends Controller
 
     // Anal Facebook
     public function getFB(){
+
+        $getCode = FacebookApp::first();
+
         $fb = new \Facebook\Facebook([
-          'app_id' => '180780819104546',
-          'app_secret' => '217bc574afae3a1eb3768846ad3df464',
+          'app_id' => $getCode->app_id,
+          'app_secret' => $getCode->app_secret,
           'default_graph_version' => 'v2.8',
-          'default_access_token' => 'EAACka1CBQyIBACmEsKtz6a8IGhGHfcwlmMZCDNhqdmYbZBuIpXR2a7YEKpvpphjfcl8nD6DehvTaXf8XQj5dyypdYRZAEyOcwJZA7iQXta4jyTT6ZCdEnfrTWvZAjixW2WiISZAs3AgCxg7SnH2N6EM4ZCFsAScsOjcZD',
+          'default_access_token' => $getCode->default_access_token,
           ]);
 
-        $fb->setDefaultAccessToken('EAACka1CBQyIBACmEsKtz6a8IGhGHfcwlmMZCDNhqdmYbZBuIpXR2a7YEKpvpphjfcl8nD6DehvTaXf8XQj5dyypdYRZAEyOcwJZA7iQXta4jyTT6ZCdEnfrTWvZAjixW2WiISZAs3AgCxg7SnH2N6EM4ZCFsAScsOjcZD');
+        $fb->setDefaultAccessToken($getCode->default_access_token);
 
-         $requestPageImpression = $fb->request('GET', '/amadeo.id/insights/page_impressions?since=1483228800&until=1490918400');
+         $requestPageImpression = $fb->request('GET', '/'.$getCode->page_id.'/insights/page_impressions?since=1483228800&until=1490918400');
 
-        $requestPageImpressionOrganic = $fb->request('GET', 'amadeo.id/insights/page_impressions_organic');
+        $requestPageImpressionOrganic = $fb->request('GET', '623577477829239/insights/page_impressions_organic');
 
-        $requestPageView = $fb->request('GET', 'amadeo.id/insights/page_views_total');
+        $requestPageView = $fb->request('GET', ''.$getCode->page_id.'/insights/page_views_total');
 
-        $requestGenderAge = $fb->request('GET', 'amadeo.id/insights/page_fans_gender_age');
+        $requestGenderAge = $fb->request('GET', ''.$getCode->page_id.'/insights/page_fans_gender_age');
 
-        $requestFanReach = $fb->request('GET', 'amadeo.id/insights/post_fan_reach');
+        $requestFanReach = $fb->request('GET', ''.$getCode->page_id.'/insights/post_fan_reach');
 
-        $requestPageEngagedUser = $fb->request('GET', 'amadeo.id/insights/page_engaged_users');
+        $requestPageEngagedUser = $fb->request('GET', ''.$getCode->page_id.'/insights/page_engaged_users');
 
-        $requestPostEngagedFan = $fb->request('GET', 'amadeo.id/insights/post_engaged_fan');
+        $requestPostEngagedFan = $fb->request('GET', ''.$getCode->page_id.'/insights/post_engaged_fan');
 
         $batch = [
             'page-impression' => $requestPageImpression,
