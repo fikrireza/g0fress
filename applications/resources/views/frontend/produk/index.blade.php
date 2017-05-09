@@ -4,6 +4,11 @@
 <title>Go Fress - Produk</title>
 @endsection
 
+@section('meta')
+<meta name="title" content="Gofress - Produk">
+<meta name="description" content="{{ strip_tags(Str::words($callAbout->deskripsi, 150)) }}">
+@endsection
+
 @section('head-style')
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/public-sub-page.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/produk-index.css') }}">

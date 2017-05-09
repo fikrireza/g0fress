@@ -11,6 +11,8 @@
     <?php /* CSRF Token */ ?>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    @yield('meta')
+
     <link rel="stylesheet" type="text/css" href="{{ asset('plugin/bootstrap-3.3.7/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('plugin/font-awesome/css/font-awesome.min.css') }}">
 

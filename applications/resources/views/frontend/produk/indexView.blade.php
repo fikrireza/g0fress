@@ -1,7 +1,12 @@
 @extends('frontend._layouts.basic')
 
 @section('head-title')
-<title>Go Fress - Produk</title>
+<title>Go Fress - {{ $callProduk[0]['nama_kategori'] }}</title>
+@endsection
+
+@section('meta')
+<meta name="title" content="Gofress - {{ $callProduk[0]['nama_kategori'] }}">
+<meta name="description" content="{{ strip_tags(Str::words($callAbout->deskripsi, 150)) }}">
 @endsection
 
 @section('head-style')
