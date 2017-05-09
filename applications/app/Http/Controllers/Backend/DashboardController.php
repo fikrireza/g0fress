@@ -13,6 +13,9 @@ use App\Models\ProgramEventsKategori;
 use App\Models\SliderHome;
 use App\Models\FacebookApp;
 
+use Analytics;
+use Spatie\Analytics\Period;
+
 class DashboardController extends Controller
 {
 
@@ -290,5 +293,22 @@ class DashboardController extends Controller
             'pageEngagedUserPaging'
             )
         );
+    }
+
+    // Anal Google
+    public function getGA(){
+
+      $f1 = Analytics::fetchMostVisitedPages(Period::days(30));
+      $f2 = Analytics::fetchTopBrowsers(Period::days(30));
+      $f3 = Analytics::performQuery(Period::days(30), "ga:users", array("dimensions" => "ga:city"))->rows;
+      $f4 = Analytics::performQuery(Period::days(30), "ga:bounceRate")->rows;
+      $f5 = Analytics::performQuery(Period::days(30), "ga:avgSessionDuration")->rows;
+      $f6 = Analytics::performQuery(Period::days(30), "ga:organicSearches", array("dimensions" => "ga:source"))->rows;
+      $f7 = Analytics::performQuery(Period::days(30), "ga:newUsers", array("dimensions" => "ga:date"))->rows;
+      $f8 = Analytics::performQuery(Period::days(30), "ga:users", array("dimensions" => "ga:date"))->rows;
+      
+      dd($f8);
+
+      return response()->json(compact("f1","f2","f3","f4","f5","f6","f7","f8"));
     }
 }
