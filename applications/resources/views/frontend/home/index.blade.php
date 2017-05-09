@@ -1,7 +1,12 @@
 @extends('frontend._layouts.basic')
 
 @section('head-title')
-<title>Go Fress</title>
+<title>Gofress</title>
+@endsection
+
+@section('meta')
+<meta name="title" content="Gofress">
+<meta name="description" content="{{ strip_tags(Str::words($callAbout->deskripsi, 150)) }}">
 @endsection
 
 @section('head-style')
@@ -57,7 +62,7 @@
 		</div>
 
 		<div class="content-description">
-			<label>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in scelerisque massa, aliquam molestie lorem. Sed rhoncus, erat ac ornare cursus, tellus odio egestas urna, eu accumsan sapien sapien molestie nulla. Etiam dignissim malesuada vulputate. Nulla at nunc sapien. Proin mollis ligula sapien, in euismod nisl cursus ut. In at quam orci. Cras pharetra eros sed rhoncus feugiat. Nam ligula ante, consectetur eget sagittis at, eleifend vel tortor. Etiam varius faucibus arcu, ut posuere massa fermentum quis. Etiam eu ipsum convallis, aliquet elit ut, pellentesque purus. Curabitur in felis pulvinar, feugiat tellus eu, elementum enim. Curabitur accumsan eu mauris vel vulputate.</label>
+			{!! $callAbout->deskripsi !!}
 		</div>
 
 		<div class="flag-title-wrapper color">
@@ -106,7 +111,7 @@
 				<label class="circle-shape left"></label>
 			</div>
 			<div class="vertical-align-midle">
-				<label class="flag-title">Promotion</label>
+				<label class="flag-title">@lang('front/home.promotion')</label>
 			</div>
 			<div class="vertical-align-midle">
 				<label class="circle-shape right"></label>

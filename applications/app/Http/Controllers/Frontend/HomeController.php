@@ -9,6 +9,7 @@ use App\Models\ProgramEvents;
 use App\Models\ProdukKategori;
 use App\Models\News;
 use App\Models\SliderHome;
+use App\Models\Tentang;
 
 use App;
 use DB;
@@ -83,6 +84,12 @@ class HomeController extends Controller
             ->limit(6)
             ->get();
 	    
-    	return view('frontend.home.index',compact('items','callSlider','callProgramEvent','callKategory','callNews'));
+    	return view('frontend.home.index',compact(
+            'items',
+            'callSlider',
+            'callProgramEvent',
+            'callKategory',
+            'callNews'
+        ));
     }
 }

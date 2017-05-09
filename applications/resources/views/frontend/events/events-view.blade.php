@@ -1,7 +1,12 @@
 @extends('frontend._layouts.basic')
 
 @section('head-title')
-<title>Go Fress - Program Events</title>
+<title>Gofress - {{ $callProgramEvent->judul }}</title>
+@endsection
+
+@section('meta')
+<meta name="title" content="Gofress - {{ $callProgramEvent->judul }}">
+<meta name="description" content="{{ strip_tags(Str::words($callProgramEvent->deskripsi, 150)) }}">
 @endsection
 
 @section('head-style')

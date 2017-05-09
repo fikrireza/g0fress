@@ -19,9 +19,9 @@ class AboutController extends Controller
             $misi = 'misi_deskripsi_ID as misi';
         }
         elseif (App::getLocale() == 'en') {
-        	$deskripsi = 'deskripsi_ID as deskripsi';
-            $visi = 'visi_deskripsi_ID as visi';
-            $misi = 'misi_deskripsi_ID as misi';
+        	$deskripsi = 'deskripsi_EN as deskripsi';
+            $visi = 'visi_deskripsi_EN as visi';
+            $misi = 'misi_deskripsi_EN as misi';
         }
 
     	$callAbout = Tentang::select(
