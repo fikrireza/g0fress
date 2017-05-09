@@ -6,7 +6,7 @@
 
 @section('meta')
 <meta name="title" content="Gofress - {{ $callNews->judul }}">
-<meta name="description" content="{{ strip_tags(Str::words($callAbout->deskripsi, 150)) }}">
+<meta name="description" content="{{ strip_tags(Str::words($callNews->deskripsi, 150)) }}">
 @endsection
 
 @section('head-style')
