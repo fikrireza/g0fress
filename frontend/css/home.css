@@ -199,11 +199,17 @@
 	vertical-align: middle;
 	text-align: center;
 }
-.wrapper-connect-with-us{
+.wrapper-connect-with-us,
+.afiliasi-wrapper{
 	text-align: center;
 }
-.wrapper-connect-with-us a{
+.wrapper-connect-with-us a,
+.afiliasi-wrapper a{
 	text-decoration: none;
+}
+
+.afiliasi-wrapper{
+	margin-top: 60px;
 }
 @media (max-width: 480px) {
 	.slider{

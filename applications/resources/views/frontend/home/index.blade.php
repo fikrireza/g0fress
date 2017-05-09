@@ -6,7 +6,9 @@
 
 @section('meta')
 <meta name="title" content="Gofress">
+@if($callAbout != null)
 <meta name="description" content="{{ strip_tags(Str::words($callAbout->deskripsi, 150)) }}">
+@endif
 @endsection
 
 @section('head-style')
@@ -62,7 +64,9 @@
 		</div>
 
 		<div class="content-description">
+			@if($callAbout != null)
 			{!! $callAbout->deskripsi !!}
+			@endif
 		</div>
 
 		<div class="flag-title-wrapper color">
@@ -268,8 +272,13 @@
 			</div>
 		</div>
 
-		<img src="{{ asset('public/image/default/toko.png') }}" style="width: 100%; margin-top: 60px;">
-
+		<div class="afiliasi-wrapper">
+			@foreach($callAfiliasi as $list)
+			<a href="{{ $list->link_url }}">
+				<img src="{{ asset('images/afiliasi/'.$list->img_url) }}" title="{{ $list->nama_afiliasi }}" alt="{{ $list->img_alt }}">
+			</a>
+			@endforeach
+		</div>
 	</div>
 </div>
 

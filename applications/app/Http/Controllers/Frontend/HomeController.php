@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use App\Models\Afiliasi;
 use App\Models\ProgramEvents;
 use App\Models\ProdukKategori;
 use App\Models\News;
@@ -29,6 +30,8 @@ class HomeController extends Controller
 		$format_date = $date->format('Y-m-d');
         
         $callSlider = SliderHome::select('img_url', 'img_alt')->where('flag_publish', '1')->orderBy('posisi', 'asc')->get();
+
+        $callAfiliasi = Afiliasi::select('nama_afiliasi', 'link_url', 'img_url', 'img_alt')->where('flag_publish', '1')->get();
 
 		$callKategory = ProdukKategori::select(
             'nama_kategori', 
@@ -89,7 +92,8 @@ class HomeController extends Controller
             'callSlider',
             'callProgramEvent',
             'callKategory',
-            'callNews'
+            'callNews',
+            'callAfiliasi'
         ));
     }
 }

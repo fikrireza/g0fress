@@ -6,7 +6,9 @@
 
 @section('meta')
 <meta name="title" content="Gofress - About">
+@if($callAbout != null)
 <meta name="description" content="{{ strip_tags(Str::words($callAbout->deskripsi, 150)) }}">
+@endif
 @endsection
 
 @section('head-style')
@@ -44,7 +46,9 @@
 		</div>
 
 		<div class="wrapper-about-description">
+			@if($callAbout != null)
 			{!! $callAbout->deskripsi !!}
+			@endif
 		</div>
 
 		<div class="wrapper-vision-mision">
@@ -56,7 +60,9 @@
 								@lang('front/about.our-vission')
 							</h1>
 							<div class="description">
+								@if($callAbout != null)
 								{!! $callAbout->visi !!}
+								@endif
 							</div>
 						</div>
 					</div>
@@ -72,7 +78,9 @@
 								@lang('front/about.our-mission')
 							</h1>
 							<div class="description">
+								@if($callAbout != null)
 								{!! $callAbout->misi !!}
+								@endif
 							</div>
 						</div>
 					</div>
@@ -114,7 +122,9 @@
 	</div>
 </div>
 
+	@if($callAbout != null)
 	<img src="{{ asset('images/tentang/'.$callAbout->img_url) }}" alt="{{ $callAbout->img_alt }}" style="width: 100%;">
+	@endif
 
 <div class="background-content background-content-first for-share-wrapper">
 	<div class="content-wrapper">

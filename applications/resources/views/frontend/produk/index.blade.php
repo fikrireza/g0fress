@@ -6,7 +6,9 @@
 
 @section('meta')
 <meta name="title" content="Gofress - Produk">
+@if($callAbout != null)
 <meta name="description" content="{{ strip_tags(Str::words($callAbout->deskripsi, 150)) }}">
+@endif
 @endsection
 
 @section('head-style')
