@@ -6,15 +6,16 @@
 
 @section('meta')
 <meta name="title" content="Gofress - About">
-@if($callAbout != null)
-<meta name="description" content="{{ strip_tags(Str::words($callAbout->deskripsi, 150)) }}">
-@endif
+	@if($callAbout != null)
+<meta name="description" content="Gofress - {{ strip_tags(Str::words($callAbout->deskripsi, 40)) }}">
+	@endif
+<meta name="keywords" content="Gofress, Permen Tipis, Candy"/>
 @endsection
 
 @section('head-style')
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/public-sub-page.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/for-share-wrapper.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/about.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/for-share-wrapper.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/about.css') }}">
 @endsection
 
 @section('body-content')
@@ -101,7 +102,7 @@
 			@endif
 			@endforeach
 		</div>
-		
+
 		<div class="wrapper-show-image">
 			<h2 class="title">
 				@lang('front/about.achievements')

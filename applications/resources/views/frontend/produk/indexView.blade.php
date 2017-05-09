@@ -1,20 +1,21 @@
 @extends('frontend._layouts.basic')
 
 @section('head-title')
-<title>Go Fress - {{ $callProduk[0]['nama_kategori'] }}</title>
+<title>Gofress - {{ $callProduk[0]['nama_kategori'] }}</title>
 @endsection
 
 @section('meta')
 <meta name="title" content="Gofress - {{ $callProduk[0]['nama_kategori'] }}">
-@if($callAbout != null)
-<meta name="description" content="{{ strip_tags(Str::words($callAbout->deskripsi, 150)) }}">
-@endif
+	@if($callAbout != null)
+<meta name="description" content="Gofress - {{ strip_tags(Str::words($callAbout->deskripsi, 25)) }}">
+	@endif
+<meta name="keywords" content="{{ $callProduk[0]['nama_kategori'] }}, Gofress, Permen Tipis, Candy"/>
 @endsection
 
 @section('head-style')
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/public-sub-page.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/for-share-wrapper.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/produk-view.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/for-share-wrapper.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/produk-view.css') }}">
 
 @endsection
 
@@ -80,4 +81,3 @@
 <script src="{{ asset('frontend/js/click-scroll-animate.js') }}"></script>
 <script src="{{ asset('frontend/js/produk-view.js') }}"></script>
 @endsection
-

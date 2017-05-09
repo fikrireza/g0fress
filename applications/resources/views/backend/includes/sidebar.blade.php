@@ -6,17 +6,15 @@
 
     <div class="clearfix"></div>
 
-    <!-- menu profile quick info -->
     <div class="profile">
       <div class="profile_pic">
         <img src="{{ asset('images/users').'/'.Auth::user()->avatar }}" alt="..." class="img-circle profile_img">
       </div>
       <div class="profile_info">
-        <span>Welcome,</span>
+        <span>Hai,</span>
         <h2>{{ Auth::user()->name }}</h2>
       </div>
     </div>
-    <!-- /menu profile quick info -->
 
     <br />
 
@@ -86,16 +84,16 @@
 
     <!-- /menu footer buttons -->
     <div class="sidebar-footer hidden-small">
-      {{-- <a data-toggle="tooltip" data-placement="top" title="Lock">
-        <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+      <a href="{{ route('users.index') }}" data-toggle="tooltip" data-placement="top" title="Users">
+        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
       </a>
-      <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-        <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-      </a> --}}
-      <a data-toggle="tooltip" data-placement="top" title="Settings">
+      <a href="{{ route('inbox.index') }}" data-toggle="tooltip" data-placement="top" title="Inbox">
+        <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+      </a>
+      <a href="{{ route('profile.index') }}" data-toggle="tooltip" data-placement="top" title="Profile">
         <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
       </a>
-      <a href="{{ url('logout') }}" data-toggle="tooltip" data-placement="top" title="Logout">
+      <a href="{{ route('logout') }}" data-toggle="tooltip" data-placement="top" title="Logout">
         <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
       </a>
     </div>

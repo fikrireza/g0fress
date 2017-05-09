@@ -1,21 +1,21 @@
 @extends('frontend._layouts.basic')
 
 @section('head-title')
-<title>Go Fress - Program Events</title>
+<title>Gofress - Program Events</title>
 @endsection
 
 @section('meta')
 <meta name="title" content="Gofress - Program Events">
-@if($callAbout != null)
-<meta name="description" content="{{ strip_tags(Str::words($callAbout->deskripsi, 150)) }}">
-@endif
+	@if($callAbout != null)
+<meta name="description" content="Gofress - {{ strip_tags(Str::words($callAbout->deskripsi, 40)) }}">
+	@endif
+<meta name="keywords" content="Gofress, Permen Tipis, Candy" />
 @endsection
 
 @section('head-style')
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/public-sub-page.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/events-list-item-vidio.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/for-share-wrapper.css') }}">
-
+	<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/events-list-item-vidio.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/for-share-wrapper.css') }}">
 @endsection
 
 @section('body-content')
@@ -45,10 +45,10 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="wrapper-vidio">
 			@include('frontend.events.ajax-events-vidio-list')
-			
+
 			<div id="appendNext">
 			</div>
 
@@ -117,4 +117,3 @@
 	}
 </script>
 @endsection
-

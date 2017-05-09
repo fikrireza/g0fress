@@ -6,14 +6,15 @@
 
 @section('meta')
 <meta name="title" content="Gofress - News">
-@if($callAbout != null)
-<meta name="description" content="{{ strip_tags(Str::words($callAbout->deskripsi, 150)) }}">
-@endif
+	@if($callAbout != null)
+<meta name="description" content="Gofress - {{ strip_tags(Str::words($callAbout->deskripsi, 40)) }}">
+	@endif
+<meta name="keywords" content="Gofress, Permen Tipis, Candy"/>
 @endsection
 
 @section('head-style')
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/public-sub-page.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/news-index.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/news-index.css') }}">
 @endsection
 
 @section('body-content')

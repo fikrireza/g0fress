@@ -6,12 +6,32 @@
 
 @section('meta')
 <meta name="title" content="Gofress - {{ $callNews->judul }}">
-<meta name="description" content="{{ strip_tags(Str::words($callNews->deskripsi, 150)) }}">
+	<meta name="description" content="Gofress - {{ strip_tags(Str::words($callNews->deskripsi, 25)) }}">
+	<meta name="keywords" content="{{ $callNews->judul }}, Gofress, Permen Tipis, Candy"/>
 @endsection
 
 @section('head-style')
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/public-sub-page.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/news-view.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/news-view.css') }}">
+
+	<meta itemprop="thumbnailUrl" content="{{ asset('images/news/').'/'.$callNews->img_url }}"/>
+	<meta itemprop="image" content="{{ asset('images/news/').'/'.$callNews->img_url }}" />
+
+	<meta property="og:type" content="Article" />
+	<meta property="og:site_name" content="gofress.co.id">
+	<meta property="og:title" content="{{ $callNews->judul }}">
+	<meta property="og:url" content="{{ url('news').'/'.$callNews->slug}} ">
+	<meta property="og:description" content="{{ strip_tags(Str::words($callNews->deskripsi, 35)) }}">
+	<meta property="og:image" content="{{ asset('images/news/').'/'.$callNews->img_url }}">
+
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/id_ID/sdk.js#xfbml=1&version=v2.5";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+	</script>
 @endsection
 
 @section('body-content')
