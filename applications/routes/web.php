@@ -48,6 +48,7 @@ Route::post('admin/verify', 'Backend\UserController@store')->name('verify.store'
 //----------------------- BACKEND -----------------------//
 Route::group(['middleware' => ['isAdministrator']], function () {
   Route::get('admin/dashboard', 'Backend\DashboardController@index')->name('admin.dashboard');
+  Route::get('admin/dashboard/get-fb', 'Backend\DashboardController@getFB')->name('analytics.getFB');
 
   // Produk
   Route::get('admin/produk', 'Backend\ProdukController@index')->name('produk.index');
