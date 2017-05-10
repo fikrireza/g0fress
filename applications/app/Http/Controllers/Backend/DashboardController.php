@@ -268,7 +268,7 @@ class DashboardController extends Controller
         }
         // end page-engaged-user
 
-        // dd($pageImpressionOrganic);
+        // dd($pageImpressionDayDatas);
         return response()->json(
           compact(
             'pageImpressionDayDatas',
@@ -294,17 +294,27 @@ class DashboardController extends Controller
     // Anal Google
     public function getGA(){
 
-      $f1 = Analytics::fetchMostVisitedPages(Period::days(30));
-      $f2 = Analytics::fetchTopBrowsers(Period::days(30));
-      $f3 = Analytics::performQuery(Period::days(30), "ga:users", array("dimensions" => "ga:city"))->rows;
-      $f4 = Analytics::performQuery(Period::days(30), "ga:bounceRate")->rows;
-      $f5 = Analytics::performQuery(Period::days(30), "ga:avgSessionDuration")->rows;
-      $f6 = Analytics::performQuery(Period::days(30), "ga:organicSearches", array("dimensions" => "ga:source"))->rows;
-      $f7 = Analytics::performQuery(Period::days(30), "ga:newUsers", array("dimensions" => "ga:date"))->rows;
-      $f8 = Analytics::performQuery(Period::days(30), "ga:users", array("dimensions" => "ga:date"))->rows;
+      $MostVisitedPages   = Analytics::fetchMostVisitedPages(Period::days(30));
+      $TopBrowsers        = Analytics::fetchTopBrowsers(Period::days(30));
+      $CityVisited        = Analytics::performQuery(Period::days(30), "ga:users", array("dimensions" => "ga:city"))->rows;
+      $organicSearches    = Analytics::performQuery(Period::days(30), "ga:organicSearches", array("dimensions" => "ga:source"))->rows;
+      $userVisited        = Analytics::performQuery(Period::days(30), "ga:users", array("dimensions" => "ga:userGender,ga:userAgeBracket"))->rows;
+      $VisitorWebsite     = Analytics::performQuery(Period::days(30), "ga:users", array("dimensions" => "ga:date"))->rows;
       
-      dd($f8);
+      $bounceRate         = Analytics::performQuery(Period::days(30), "ga:bounceRate")->rows;
+      $avgSessionDuration = Analytics::performQuery(Period::days(30), "ga:avgSessionDuration")->rows;
 
-      return response()->json(compact("f1","f2","f3","f4","f5","f6","f7","f8"));
+      return response()->json(
+        compact(
+          "MostVisitedPages",
+          "TopBrowsers",
+          "CityVisited",
+          "organicSearches",
+          "userVisited",
+          "VisitorWebsite",
+          "bounceRate",
+          "avgSessionDuration"
+        )
+      );
     }
 }
