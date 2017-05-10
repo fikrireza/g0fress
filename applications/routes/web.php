@@ -31,6 +31,7 @@ Route::get('/hello/terimakasih', 'FirstCampaignController@thanksPage')->name('fi
 Route::get('/hello/syarat-ketentuan', function(){
       return view('pages.firstCampaign.syarat-ketentuan');
   });
+Route::get('/hello/sorry', 'FirstCampaignController@sorry')->name('first-campaign-sorry');
 Route::get('hello/test-email', 'FirstCampaignController@testemail');
 /* end first campaign : kuisioner hello go fress */
 

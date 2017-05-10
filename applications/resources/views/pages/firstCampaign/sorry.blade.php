@@ -122,16 +122,15 @@
 @section('content')
 <div class="thanks-wrapper">
 	<div class="thanks-head">
-		<h1>Terima Kasih!</h1>
+		<h1>Ooopps... Sorry!!!</h1>
 	</div>
 	<div class="thanks-body">
-		<label>Silahkan Screenshot Kupon dibawah ini dan <br>Tunjukkan di <img class="logo-alfamart" src="{{ asset('picture\firstCampaign\logo-alfamart.png') }}"> <br />
-		Untuk mendapatkan 1 PCS  Gofress Gratis !</label>
+		<label>Mohon Maaf, kode kupon telah habis. Terima kasih anda telah berpartisipasi dalam Campaign ini!!</label>
 
 		<div class="kupon-wrapper">
 			<img class="kupon-image" src="{{ asset('picture\firstCampaign\kupon.png') }}">
 			<div class="kupon-code">
-				<label>{{ $cekEmail->kupon}}</label>
+				<label>HABIS</label>
 			</div>
 		</div>
 

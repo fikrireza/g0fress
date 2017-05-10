@@ -349,7 +349,7 @@
 					<input type="reset" name="Reset" class="btn-costum" value="Reset">
 				</div>
 				<div>
-					<input id="submitForm" type="Submit" name="Submit" class="btn-costum" value="Submit" disabled>
+					<input id="submitForm" type="Submit" name="Submit" class="btn-costum" value="Submit">
 				</div>
 			</div>
 		</div>
