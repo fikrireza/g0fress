@@ -358,7 +358,12 @@ window.onload = function () {
           captionVarCV.push(value);
         }
         if (intConfert%2 == 0) {
-          captionValCV.push(value);
+          if (value > 40) {
+            captionValCV.push(value);
+          }
+          else if(value < 40){
+            captionVarCV.splice(-1,1);
+          }
         }
         intConfert = intConfert + 1;
       });

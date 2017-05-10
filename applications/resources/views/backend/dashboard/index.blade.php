@@ -5,6 +5,8 @@
 @endsection
 
 @section('headscript')
+<link href="{{ asset('backend/vendors/bootstrap-daterangepicker/daterangepicker.css') }}" rel="stylesheet">
+
 <script src="{{ asset('backend/vendors/Chart.js/dist/Chart.min.js')}}"></script>
 @endsection
 
@@ -155,7 +157,14 @@
         <div class="clearfix"></div>
       </div>
       <div class="x_content">
-        <div id=""></div>
+        <div class="control-group">
+          <div class="controls">
+            <div class="input-prepend input-group">
+              <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
+              <input type="text" name="periode_GA" id="periode_GA" class="form-control" value="" />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -272,4 +281,24 @@
 
 @section('script')
   @include('backend.dashboard.include-js')
+
+  <script src="{{ asset('backend/vendors/moment/min/moment.min.js') }}"></script>
+  <script src="{{ asset('backend/vendors/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+
+  <script type="text/javascript">
+    $('#periode_GA').daterangepicker(
+    {
+      ranges: {
+        'Today': [moment(), moment()],
+        'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+        'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+        'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+        'This Month': [moment().startOf('month'), moment().endOf('month')],
+        'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+      },
+      startDate: moment().subtract(29, 'days'),
+      endDate: moment()
+    }
+    );
+  </script>
 @endsection
