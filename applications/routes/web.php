@@ -51,6 +51,7 @@ Route::group(['middleware' => ['isAdministrator']], function () {
   Route::get('admin/dashboard', 'Backend\DashboardController@index')->name('admin.dashboard');
   Route::get('admin/dashboard/get-fb', 'Backend\DashboardController@getFB')->name('analytics.getFB');
   Route::get('admin/dashboard/get-ga', 'Backend\DashboardController@getGA')->name('analytics.getGA');
+  Route::get('admin/dashboard/get-ga/{start}/{end}', 'Backend\DashboardController@getGAP')->name('analytics.getGA.period');
 
   // Produk
   Route::get('admin/produk', 'Backend\ProdukController@index')->name('produk.index');
