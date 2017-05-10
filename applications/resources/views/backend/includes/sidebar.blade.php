@@ -75,6 +75,7 @@
               <li><a href="{{ route('hello.index') }}">Hello</a></li>
             </ul>
           </li>
+          <li class="{{ Route::currentRouteNamed('facebook.index') ? 'active' : '' }}"><a href="{{ route('facebook.index') }}"><i class="fa fa-facebook"></i> Facebook Analytics </a></li>
           <li class="{{ Route::currentRouteNamed('users.index') ? 'active' : '' }}"><a href="{{ route('users.index') }}"><i class="fa fa-users"></i> Users </a></li>
         </ul>
       </div>

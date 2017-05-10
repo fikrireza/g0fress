@@ -9,10 +9,10 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-		<link rel="stylesheet" type="text/css" href="{{ asset('plugin/bootstrap-3.3.7/css/bootstrap.css') }}" />
-		<link rel="stylesheet" href="{{ asset('plugin/font-awesome/css/font-awesome.css') }}">
-		<link rel="stylesheet" type="text/css" href="{{ asset('font/1-font-family.css') }}" />
-		@yield('style')
+	<link rel="stylesheet" type="text/css" href="{{ asset('plugin/bootstrap-3.3.7/css/bootstrap.min.css') }}" />
+	<link rel="stylesheet" href="{{ asset('plugin/font-awesome/css/font-awesome.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('font/1-font-family.css') }}" />
+	@yield('style')
 
 </head>
 <body style="margin: 0; padding: 0;">
@@ -79,7 +79,7 @@
 	@yield('content')
 
 	<script src="{{ asset ('plugin/jquery/jquery-3.2.0.min.js') }}"></script>
-	<script src="{{ asset('plugin/bootstrap-3.3.7/js/bootstrap.js') }}"></script>
+	<script src="{{ asset('plugin/bootstrap-3.3.7/js/bootstrap.min.js') }}"></script>
 	@yield('script')
 
 </body>

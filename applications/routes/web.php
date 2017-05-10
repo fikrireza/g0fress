@@ -31,6 +31,7 @@ Route::get('/hello/terimakasih', 'FirstCampaignController@thanksPage')->name('fi
 Route::get('/hello/syarat-ketentuan', function(){
       return view('pages.firstCampaign.syarat-ketentuan');
   });
+Route::get('/hello/sorry', 'FirstCampaignController@sorry')->name('first-campaign-sorry');
 Route::get('hello/test-email', 'FirstCampaignController@testemail');
 /* end first campaign : kuisioner hello go fress */
 
@@ -176,6 +177,11 @@ Route::group(['middleware' => ['isAdministrator']], function () {
   Route::post('admin/afiliasi/ubah', 'Backend\AfiliasiController@edit')->name('afiliasi.edit');
   Route::get('admin/afiliasi/publish/{id}', 'Backend\AfiliasiController@publish')->name('afiliasi.pubish');
   Route::get('admin/afiliasi/delete/{id}', 'Backend\AfiliasiController@delete')->name('afiliasi.delete');
+
+  // Facebook Apps
+  Route::get('admin/facebook', 'Backend\FacebookController@index')->name('facebook.index');
+  Route::get('admin/facebook/ubah/{id}', 'Backend\FacebookController@ubah')->name('facebook.ubah');
+  Route::post('admin/facebook/ubah', 'Backend\FacebookController@edit')->name('facebook.edit');
 
 });
 //----------------------- BACKEND -----------------------//

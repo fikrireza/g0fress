@@ -26,7 +26,13 @@ class FirstCampaignController extends Controller
 					$cekEmail = Campaign1::where('email', '=', Auth::user()->email)->first();
 
 					if($cekEmail){
-						return redirect()->route('first-campaign-terimakasih');
+						$cekKupon = Campaign1::where('kupon_id', '=', '9999999')->where('email', '=', Auth::user()->email)->first();
+						
+						if($cekKupon){
+							return redirect()->route('first-campaign-sorry');
+						}else{
+							return redirect()->route('first-campaign-terimakasih');
+						}
 					}
 				}
 
@@ -76,6 +82,33 @@ class FirstCampaignController extends Controller
         return redirect()->route('first-campaign-pertanyaan-dari-kami')->withErrors($validator)->withInput();
       }
 
+	  
+	  		$kupon = DB::select('SELECT id, kupon FROM amd_master_kupon
+								WHERE id NOT IN (SELECT kupon_id FROM amd_campaign_1)
+								ORDER BY RAND() LIMIT 0,1');
+			
+			if($kupon == null){
+				
+				$set = new Campaign1;
+				$set->nama = $request->nama;
+				$set->email = $request->email;
+				$set->hp = $request->hp;
+				$set->kota = $request->kota;
+				$set->pertanyaan_1 = $request->pertanyaan_1;
+				$set->pertanyaan_2 = $request->pertanyaan_2;
+				$set->pertanyaan_3 = $request->pertanyaan_3;
+				$set->pertanyaan_4 = implode(',',$request->pertanyaan_4);
+				$set->kupon_id = 9999999;
+				$set->save();
+
+				$updateEmail = User::find($request->user_id);
+				$updateEmail->email = $request->email;
+				$updateEmail->update();
+				
+				return redirect()->route('first-campaign-sorry');
+			}
+	  
+	  
 			DB::transaction(function() use($request) {
 				// Ambil Kupon yang masih berlaku
 				$kupon = DB::select('SELECT id, kupon FROM amd_master_kupon
@@ -101,17 +134,18 @@ class FirstCampaignController extends Controller
 
 
 				// Kirim email
-				$data = array([
+				/*$data = array([
 					'nama' => $request->nama,
 					'email' => $request->email,
 					'kupon' => $kupon[0]->kupon
 					]);
-
-				Mail::send('mails.campaign1_kupon', ['data' => $data], function ($message) use($data){
-						$message->from('no-reply@gofress.co.id', 'Gofress');
-						$message->to($data[0]['email'],$data[0]['nama']);
-						$message->subject('Hello Tukarkan Kupon Ini di Alfamart');
-				});
+					
+				Mail::send('mails.campaign1_kupon', ['data' => $data], function ($message) use($data)
+				{
+					$message->from('noreply.gofress@gmail.com', 'Gofress');
+					$message->to($data[0]['email'],$data[0]['nama']);
+					$message->subject('Hello Tukarkan Kupon Ini di Alfamart');
+				});*/
 
 			});
 
@@ -135,24 +169,28 @@ class FirstCampaignController extends Controller
 
         return view('pages.firstCampaign.terimakasih', compact('cekEmail'));
     }
-
-		public function testemail()
-		{					
-			$data = array([
-				'email'	=> 'fikrirezaa@gmail.com',
-				'nama'	=> 'Fikri Reza Alhadi',
-				'kupon' => 'TESTEMAIL',
-				]);
-
-			Mail::send('mails.campaign1_kupon', ['title' => 'Hello Tukarkan Kupon Ini di Alfamart', 'data' => $data], function ($message) use($data)
-			{
-				$message->from('no-reply@gofress.co.id', 'Gofress');
-				$message->to($data[0]['email'],$data[0]['nama']);
-				$message->subject('Hello Tukarkan Kupon Ini di Alfamart');
-			});
-
-			return "bisa";
-		}
-
+	
+	
+	public function sorry(){
+		return view('pages.firstCampaign.sorry');
+	}
+	
+	public function testemail()
+	{					
+		$data = array([				
+			'email'	=> 'fikrirezaa@gmail.com',
+			'nama'	=> 'Fikri Reza Alhadi',
+			'kupon' => 'TESTEMAIL',
+			]);
+		
+		Mail::send('mails.campaign1_kupon', ['data' => $data], function ($message) use($data)
+		{
+			$message->from('noreply.gofress@gmail.com', 'Gofress');			
+			$message->to($data[0]['email'],$data[0]['nama']);			
+			$message->subject('Test Email Hello Tukarkan Kupon Ini di Alfamart');		
+		});							
+		
+		return "Terkirim ke ".$data[0]['email'];			
+	}
 
 }
