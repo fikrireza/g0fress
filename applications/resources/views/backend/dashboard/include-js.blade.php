@@ -326,38 +326,6 @@ window.onload = function () {
           captionVarCV.push(value);
         }
         if (intConfert%2 == 0) {
-          captionValCV.push(value);
-        }
-        intConfert = intConfert + 1;
-      });
-    });
-
-    var cCV = document.getElementById("chartCityVisited");
-    var barChartCityVisited = new Chart(cCV, {
-        type: 'horizontalBar',
-        data: {
-          labels: captionVarCV,
-          datasets: [
-              {
-                label: "City Visited",
-                data: eval(captionValCV),
-                backgroundColor : "rgba(255,0,0,.5)"
-              }
-            ]
-        }
-    });
-    // end for CityVisited
-
-    // for CityVisited
-    var captionVarCV = new Array();
-    var captionValCV = new Array();
-    var intConfert = 1;
-    $.each(json.CityVisited, function () {
-      $.each(this, function (name, value) {
-        if (intConfert%2 != 0) {
-          captionVarCV.push(value);
-        }
-        if (intConfert%2 == 0) {
           if (value > 40) {
             captionValCV.push(value);
           }
@@ -371,7 +339,7 @@ window.onload = function () {
 
     var cCV = document.getElementById("chartCityVisited");
     var barChartCityVisited = new Chart(cCV, {
-        type: 'horizontalBar',
+        type: 'bar',
         data: {
           labels: captionVarCV,
           datasets: [
