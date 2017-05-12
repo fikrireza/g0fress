@@ -47,7 +47,7 @@
             <td>{{ $getProgramEventsKategori->judul_kategori_EN }}</td>
           </tr>
           <tr>
-            <td><strong>Gambar Produk</strong></td>
+            <td><strong>Gambar</strong></td>
             <td>:</td>
             <td>@if ($getProgramEventsKategori->img_url != null)
               <img src="{{ asset('images/programEvent/').'/'.$getProgramEventsKategori->img_url }}" /> @else - @endif</td>

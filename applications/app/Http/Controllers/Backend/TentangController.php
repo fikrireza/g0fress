@@ -22,7 +22,7 @@ class TentangController extends Controller
     public function index()
     {
         $getTentang = Tentang::get();
-// dd($getTentang);
+
         return view('backend.tentang.index', compact('getTentang'));
     }
 
@@ -262,5 +262,75 @@ class TentangController extends Controller
         });
 
         return redirect()->route('tentangGaleri.index')->with('berhasil', 'Berhasil menghapus');
+    }
+
+    public function ubahGaleri($id)
+    {
+        $getTentangGaleri = TentangGaleri::find($id);
+
+        if(!$getTentangGaleri){
+          abort('backend.errors.404');
+        }
+
+        return view('backend.tentangGaleri.ubah', compact('getTentangGaleri'));
+    }
+
+    public function editGaleri(Request $request)
+    {
+        $message = [
+          'cer_ach.required' => 'Pilih Satu',
+          'img_url.image' => 'Format Gambar Tidak Sesuai',
+          'img_url.max' => 'File Size Terlalu Besar',
+          'img_url.dimensions' => 'Ukuran yg di terima 1920px x 781px',
+          'img_alt.required' => 'Wajib di isi',
+        ];
+
+        $validator = Validator::make($request->all(), [
+          'cer_ach' => 'required',
+          'img_url' => 'image|mimes:jpeg,bmp,png|max:2000|dimensions:max_width=350,max_height=300',
+          'img_alt' => 'required',
+        ], $message);
+
+
+        if($validator->fails())
+        {
+            return redirect()->route('tentangGaleri.ubah', array('id' => $request->id))->withErrors($validator)->withInput();
+        }
+
+
+        DB::transaction(function() use($request){
+          $image = $request->file('img_url');
+
+          if($request->flag_publish == 'on'){
+            $flag_publish = 1;
+          }else{
+            $flag_publish = 0;
+          }
+
+          $update = new tentangGaleri;
+          $update->cer_ach  = $request->cer_ach;
+          $update->img_alt  = $request->img_alt;
+          $update->flag_publish = $flag_publish;
+          $update->actor = Auth::user()->id;
+
+          if(!$image){
+            $update->update();
+          }else{
+            $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
+            Image::make($image)->fit(350,300)->save('images/tentang/'. $img_url);
+
+            $update->img_url  = $img_url;
+            
+            $update->update();
+          }
+
+
+          $log = new LogAkses;
+          $log->actor = Auth::user()->id;
+          $log->aksi = 'Mengubah Tentang Certification '.$request->img_alt;
+          $log->save();
+        });
+
+        return redirect()->route('tentangGaleri.index')->with('berhasil', 'Berhasil Mengubah tentang '.$request->img_alt);
     }
 }

@@ -1,2 +1,16 @@
+sitemap: http://www.gofress.co.id/sitemap.xml
 User-agent: *
-Disallow:
+Allow: /
+# disallow all files in these directories
+Disallow: /applications/
+Allow: /frontend/
+Disallow: /error_log/
+Disallow: /*?*
+User-agent:Mediapartners-Google*
+Allow:/
+User-agent:Googlebot-Image
+Allow:/image/
+User-agent:Adsbot-Google
+Allow:/
+User-agent:Googlebot-Mobile
+Allow:/

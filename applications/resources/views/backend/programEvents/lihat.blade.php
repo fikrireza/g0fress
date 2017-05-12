@@ -62,7 +62,7 @@
             <td>{!! $getProgramEvents->deskripsi_EN !!}</td>
           </tr>
           <tr>
-            <td><strong>Gambar Produk</strong></td>
+            <td><strong>Gambar</strong></td>
             <td>:</td>
             <td>@if ($getProgramEvents->img_url != null)
               <img src="{{ asset('images/programEvent/').'/'.$getProgramEvents->img_url }}" class="thumbnail"/> @else - @endif</td>
@@ -75,7 +75,8 @@
           <tr>
             <td><strong>Video Url</strong></td>
             <td>:</td>
-            <td>{{ $getProgramEvents->video_url }}<br>
+            <td>@if ($getProgramEvents->video_url != null)
+              {{ $getProgramEvents->video_url }}<br>
               @php
         				$url = $getProgramEvents->video_url;
         				$step1=explode('v=', $url);
@@ -83,7 +84,7 @@
         				$vedio_id = $step2[0];
         			@endphp
         			<iframe class="youtube-embed" src="http://www.youtube.com/embed/{{ $vedio_id }}" frameborder="0" allowfullscreen></iframe>
-
+              @else - @endif
             </td>
           </tr>
           <tr>
