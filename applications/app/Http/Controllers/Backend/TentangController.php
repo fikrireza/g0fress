@@ -203,13 +203,13 @@ class TentangController extends Controller
           'img_url.required' => 'Wajib di isi',
           'img_url.image' => 'Format Gambar Tidak Sesuai',
           'img_url.max' => 'File Size Terlalu Besar',
-          'img_url.dimensions' => 'Ukuran yg di terima 1920px x 781px',
+          'img_url.dimensions' => 'Ukuran Lebar Maksimal 116px',
           'img_alt.required' => 'Wajib di isi',
         ];
 
         $validator = Validator::make($request->all(), [
           'cer_ach' => 'required',
-          'img_url' => 'required|image|mimes:jpeg,bmp,png|max:2000|dimensions:max_width=350,max_height=300',
+          'img_url' => 'required|image|mimes:jpeg,bmp,png|max:1000|dimensions:max_width=116',
           'img_alt' => 'required',
         ], $message);
 
@@ -223,7 +223,7 @@ class TentangController extends Controller
         DB::transaction(function() use($request){
           $image = $request->file('img_url');
           $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
-          Image::make($image)->fit(350,300)->save('images/tentang/'. $img_url);
+          Image::make($image)->save('images/tentang/'. $img_url);
 
           if($request->flag_publish == 'on'){
             $flag_publish = 1;
@@ -281,13 +281,13 @@ class TentangController extends Controller
           'cer_ach.required' => 'Pilih Satu',
           'img_url.image' => 'Format Gambar Tidak Sesuai',
           'img_url.max' => 'File Size Terlalu Besar',
-          'img_url.dimensions' => 'Ukuran yg di terima 1920px x 781px',
+          'img_url.dimensions' => 'Ukuran Lebar Maksimal 116px',
           'img_alt.required' => 'Wajib di isi',
         ];
 
         $validator = Validator::make($request->all(), [
           'cer_ach' => 'required',
-          'img_url' => 'image|mimes:jpeg,bmp,png|max:2000|dimensions:max_width=350,max_height=300',
+          'img_url' => 'image|mimes:jpeg,bmp,png|max:2000|dimensions:max_width=116',
           'img_alt' => 'required',
         ], $message);
 
@@ -317,10 +317,10 @@ class TentangController extends Controller
             $update->update();
           }else{
             $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
-            Image::make($image)->fit(350,300)->save('images/tentang/'. $img_url);
+            Image::make($image)->save('images/tentang/'. $img_url);
 
             $update->img_url  = $img_url;
-            
+
             $update->update();
           }
 

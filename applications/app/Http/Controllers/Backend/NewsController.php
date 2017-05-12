@@ -49,6 +49,7 @@ class NewsController extends Controller
           'deskripsi_EN.required' => 'wajib di isi',
           'img_url.image' => 'Format Gambar Tidak Sesuai',
           'img_url.max' => 'File Size Terlalu Besar',
+          'img_url.dimensions' => 'Ukuran Maksimal 363px X 363px',
           'tanggal_post.required' => 'wajib di isi',
         ];
 
@@ -57,7 +58,7 @@ class NewsController extends Controller
           'judul_EN'  => 'required',
           'deskripsi_ID'  => 'required',
           'deskripsi_EN'  => 'required',
-          'img_url' => 'image|mimes:jpeg,bmp,png|max:2000',
+          'img_url' => 'image|mimes:jpeg,bmp,png|max:2000|dimensions:max_width=363,max_height=363',
           'tanggal_post'  => 'required',
         ], $message);
 
@@ -96,7 +97,7 @@ class NewsController extends Controller
             $save->save();
           }else{
             $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
-            Image::make($image)->fit(472,270)->save('images/news/'. $img_url);
+            Image::make($image)->fit(363,363)->save('images/news/'. $img_url);
 
             $save = new News;
             $save->judul_ID = $request->judul_ID;
@@ -155,6 +156,7 @@ class NewsController extends Controller
         'deskripsi_EN.required' => 'wajib di isi',
         'img_url.image' => 'Format Gambar Tidak Sesuai',
         'img_url.max' => 'File Size Terlalu Besar',
+        'img_url.dimensions' => 'Ukuran Maksimal 363px X 363px',
         'tanggal_post.required' => 'wajib di isi',
       ];
 
@@ -163,7 +165,7 @@ class NewsController extends Controller
         'judul_EN'  => 'required',
         'deskripsi_ID'  => 'required',
         'deskripsi_EN'  => 'required',
-        'img_url' => 'image|mimes:jpeg,bmp,png|max:2000',
+        'img_url' => 'image|mimes:jpeg,bmp,png|max:2000|dimensions:max_width=363,max_height=363',
         'tanggal_post'  => 'required',
       ], $message);
 
@@ -203,7 +205,7 @@ class NewsController extends Controller
           $update->update();
         }else{
           $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
-          Image::make($image)->fit(472,270)->save('images/news/'. $img_url);
+          Image::make($image)->fit(363,363)->save('images/news/'. $img_url);
 
           $update = News::find($request->id);
           $update->judul_ID = $request->judul_ID;

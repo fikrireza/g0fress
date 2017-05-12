@@ -105,7 +105,7 @@
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
               <input id="img_url" class="form-control col-md-7 col-xs-12" name="img_url" type="file">
-              <span style="color:blue; font-size:10px;">Width: 100px; Heigh: 100px</span>
+              <span style="color:blue; font-size:11px;">Width: 443px; Heigh: 418px</span>
               @if($errors->has('img_url'))
                 <code><span style="color:red; font-size:12px;">{{ $errors->first('img_url')}}</span></code>
               @endif
@@ -139,7 +139,7 @@
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
               <input id="img_url_kanan" class="form-control col-md-7 col-xs-12" name="img_url_kanan" type="file">
-              <span style="color:blue; font-size:10px;">Width: 100px; Heigh: 100px</span>
+              <span style="color:blue; font-size:11px;">Width: 291px; Heigh: 308px</span>
               @if($errors->has('img_url_kanan'))
                 <code><span style="color:red; font-size:12px;">{{ $errors->first('img_url_kanan')}}</span></code>
               @endif
@@ -173,7 +173,7 @@
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
               <input id="img_url_kiri" class="form-control col-md-7 col-xs-12" name="img_url_kiri" type="file">
-              <span style="color:blue; font-size:10px;">Width: 100px; Heigh: 100px</span>
+              <span style="color:blue; font-size:11px;">Width: 247px; Heigh: 178px</span>
               @if($errors->has('img_url_kiri'))
                 <code><span style="color:red; font-size:12px;">{{ $errors->first('img_url_kiri')}}</span></code>
               @endif

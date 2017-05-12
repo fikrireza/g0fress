@@ -67,7 +67,7 @@
               </table>
             </td>
             <td>
-              <canvas id="pertanyaan_1" height="150" width="200" style="margin: 15px 10px 10px 0"></canvas>
+              {{-- <canvas id="pertanyaan_1" height="150" width="200" style="margin: 15px 10px 10px 0"></canvas> --}}
             </td>
           </tr>
         </table>
@@ -105,7 +105,7 @@
               </table>
             </td>
             <td>
-              <canvas id="pertanyaan_2" height="150" width="200" style="margin: 15px 10px 10px 0"></canvas>
+              {{-- <canvas id="pertanyaan_2" height="150" width="200" style="margin: 15px 10px 10px 0"></canvas> --}}
             </td>
           </tr>
         </table>
@@ -143,7 +143,7 @@
               </table>
             </td>
             <td>
-              <canvas id="pertanyaan_3" height="150" width="250" style="margin: 15px 10px 10px 0"></canvas>
+              {{-- <canvas id="pertanyaan_3" height="150" width="250" style="margin: 15px 10px 10px 0"></canvas> --}}
             </td>
           </tr>
         </table>
@@ -181,7 +181,7 @@
               </table>
             </td>
             <td>
-              <canvas id="pertanyaan_4" height="180" width="250" style="margin: 0 0 0 0"></canvas>
+              {{-- <canvas id="pertanyaan_4" height="180" width="250" style="margin: 0 0 0 0"></canvas> --}}
             </td>
           </tr>
         </table>

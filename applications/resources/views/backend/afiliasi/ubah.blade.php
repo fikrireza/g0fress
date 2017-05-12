@@ -46,7 +46,7 @@
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
               <input id="img_url" class="form-control col-md-7 col-xs-12" name="img_url" type="file">
-              <span style="color:blue; font-size:10px;">Width: 39px; Heigh: 39px</span>
+              <span style="color:blue; font-size:10px;">Width: 46px</span>
               @if($errors->has('img_url'))
                 <code><span style="color:red; font-size:12px;">{{ $errors->first('img_url')}}</span></code>
               @endif

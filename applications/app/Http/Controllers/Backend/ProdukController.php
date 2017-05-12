@@ -56,17 +56,18 @@ class ProdukController extends Controller
         'deskripsi_ID.required' => 'Wajib di isi',
         'deskripsi_ID.min' => 'Terlalu Singkat',
         'img_url.required' => 'Wajib di isi',
+        'img_url.dimensions' => 'Ukuran yg di terima 443px x 418px',
         'img_url.image' => 'Format Gambar Tidak Sesuai',
         'img_url.max' => 'File Size Terlalu Besar',
         'img_alt.required' => 'Wajib di isi',
         'img_url_kanan.required' => 'Wajib di isi',
         'img_url_kanan.image' => 'Format Gambar Tidak Sesuai',
         'img_url_kanan.max' => 'File Size Terlalu Besar',
-        'img_alt_kanan.required' => 'Wajib di isi',
+        'img_url_kanan.dimensions' => 'Ukuran yg di terima 291px x 308px',
         'img_url_kiri.required' => 'Wajib di isi',
         'img_url_kiri.image' => 'Format Gambar Tidak Sesuai',
         'img_url_kiri.max' => 'File Size Terlalu Besar',
-        'img_alt_kiri.required' => 'Wajib di isi',
+        'img_alt_kiri.dimensions' => 'Ukuran yg di terima 247px x 178px',
         'tanggal_post.required' => 'Wajib di isi',
       ];
 
@@ -75,10 +76,9 @@ class ProdukController extends Controller
         'nama_produk' => 'required|unique:amd_produk',
         'deskripsi_EN' => 'required|min:20',
         'deskripsi_ID' => 'required|min:20',
-        // 'img_url' => 'required|image|mimes:jpeg,bmp,png|size:2000|dimensions:max_width=1000,max_height=2000',
-        'img_url' => 'required|image|mimes:jpeg,bmp,png|max:2000',
-        'img_url_kanan' => 'required|image|mimes:jpeg,bmp,png|max:2000',
-        'img_url_kiri' => 'required|image|mimes:jpeg,bmp,png|max:2000',
+        'img_url' => 'required|image|mimes:jpeg,bmp,png|max:2000|dimensions:max_width=443,max_height=418',
+        'img_url_kanan' => 'required|image|mimes:jpeg,bmp,png|max:2000|dimensions:max_width=291,max_height=308',
+        'img_url_kiri' => 'required|image|mimes:jpeg,bmp,png|max:2000|dimensions:max_width=247,max_height=178',
         'img_alt' => 'required',
         'img_alt_kanan' => 'required',
         'img_alt_kiri' => 'required',
@@ -94,15 +94,15 @@ class ProdukController extends Controller
       DB::transaction(function () use($request) {
         $image = $request->file('img_url');
         $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
-        Image::make($image)->fit(472,270)->save('images/produk/'. $img_url);
+        Image::make($image)->fit(443,418)->save('images/produk/'. $img_url);
 
         $image_kanan = $request->file('img_url_kanan');
         $img_url_kanan = str_slug($request->img_alt_kanan,'-'). '.' . $image_kanan->getClientOriginalExtension();
-        Image::make($image_kanan)->fit(472,270)->save('images/produk/'. $img_url_kanan);
+        Image::make($image_kanan)->fit(291,308)->save('images/produk/'. $img_url_kanan);
 
         $image_kiri = $request->file('img_url_kiri');
         $img_url_kiri = str_slug($request->img_alt_kiri,'-'). '.' . $image_kiri->getClientOriginalExtension();
-        Image::make($image_kiri)->fit(472,270)->save('images/produk/'. $img_url_kiri);
+        Image::make($image_kiri)->fit(247,178)->save('images/produk/'. $img_url_kiri);
 
         if($request->flag_publish == 'on'){
           $flag_publish = 1;
@@ -175,10 +175,13 @@ class ProdukController extends Controller
         'deskripsi_ID.required' => 'Wajib di isi',
         'img_url.image' => 'Format Gambar Tidak Sesuai',
         'img_url.max' => 'File Size Terlalu Besar',
+        'img_url.dimensions' => 'Ukuran yg di terima 443px x 418px',
         'img_url_kanan.image' => 'Format Gambar Tidak Sesuai',
         'img_url_kanan.max' => 'File Size Terlalu Besar',
+        'img_url_kanan.dimensions' => 'Ukuran yg di terima 291px x 308px',
         'img_url_kiri.image' => 'Format Gambar Tidak Sesuai',
         'img_url_kiri.max' => 'File Size Terlalu Besar',
+        'img_alt_kiri.dimensions' => 'Ukuran yg di terima 247px x 178px',
         'img_alt.required' => 'Wajib di isi',
         'img_alt_kanan.required' => 'Wajib di isi',
         'img_alt_kiri.required' => 'Wajib di isi',
@@ -190,9 +193,9 @@ class ProdukController extends Controller
         'nama_produk' => 'required|unique:amd_produk,nama_produk,'.$request->id,
         'deskripsi_EN' => 'required',
         'deskripsi_ID' => 'required',
-        'img_url' => 'image|mimes:jpeg,bmp,png|max:2000',
-        'img_url_kanan' => 'image|mimes:jpeg,bmp,png|max:2000',
-        'img_url_kiri' => 'image|mimes:jpeg,bmp,png|max:2000',
+        'img_url' => 'image|mimes:jpeg,bmp,png|max:2000|dimensions:max_width=443,max_height=418',
+        'img_url_kanan' => 'image|mimes:jpeg,bmp,png|max:2000|dimensions:max_width=291,max_height=308',
+        'img_url_kiri' => 'image|mimes:jpeg,bmp,png|max:2000|dimensions:max_width=247,max_height=178',
         'img_alt' => 'required',
         'img_alt_kanan' => 'required',
         'img_alt_kiri' => 'required',
@@ -235,13 +238,13 @@ class ProdukController extends Controller
           $update->update();
         }elseif($image && $image_kanan && $image_kiri){
           $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
-          Image::make($image)->fit(472,270)->save('images/produk/'. $img_url);
+          Image::make($image)->fit(443,418)->save('images/produk/'. $img_url);
 
           $img_url_kanan = str_slug($request->img_alt_kanan,'-'). '.' . $image_kanan->getClientOriginalExtension();
-          Image::make($image_kanan)->fit(472,270)->save('images/produk/'. $img_url_kanan);
+          Image::make($image_kanan)->fit(291,308)->save('images/produk/'. $img_url_kanan);
 
           $img_url_kiri = str_slug($request->img_alt_kiri,'-'). '.' . $image_kiri->getClientOriginalExtension();
-          Image::make($image_kiri)->fit(472,270)->save('images/produk/'. $img_url_kiri);
+          Image::make($image_kiri)->fit(247,178)->save('images/produk/'. $img_url_kiri);
 
           $update->img_url  = $img_url;
           $update->img_url_kanan  = $img_url_kanan;
@@ -249,29 +252,29 @@ class ProdukController extends Controller
           $update->update();
         }elseif($image_kanan && $image_kiri){
           $img_url_kanan = str_slug($request->img_alt_kanan,'-'). '.' . $image_kanan->getClientOriginalExtension();
-          Image::make($image_kanan)->fit(472,270)->save('images/produk/'. $img_url_kanan);
+          Image::make($image_kanan)->fit(443,418)->save('images/produk/'. $img_url_kanan);
 
           $img_url_kiri = str_slug($request->img_alt_kiri,'-'). '.' . $image_kiri->getClientOriginalExtension();
-          Image::make($image_kiri)->fit(472,270)->save('images/produk/'. $img_url_kiri);
+          Image::make($image_kiri)->fit(247,178)->save('images/produk/'. $img_url_kiri);
 
           $update->img_url_kanan  = $img_url_kanan;
           $update->img_url_kiri  = $img_url_kiri;
           $update->update();
         }elseif($image){
           $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
-          Image::make($image)->fit(472,270)->save('images/produk/'. $img_url);
+          Image::make($image)->fit(443,418)->save('images/produk/'. $img_url);
 
           $update->img_url  = $img_url;
           $update->update();
         }elseif($image_kanan){
           $img_url_kanan = str_slug($request->img_alt_kanan,'-'). '.' . $image_kanan->getClientOriginalExtension();
-          Image::make($image_kanan)->fit(472,270)->save('images/produk/'. $img_url_kanan);
+          Image::make($image_kanan)->fit(443,418)->save('images/produk/'. $img_url_kanan);
 
           $update->img_url_kanan  = $img_url_kanan;
           $update->update();
         }elseif($image_kiri){
           $img_url_kiri = str_slug($request->img_alt_kiri,'-'). '.' . $image_kiri->getClientOriginalExtension();
-          Image::make($image_kiri)->fit(472,270)->save('images/produk/'. $img_url_kiri);
+          Image::make($image_kiri)->fit(247,178)->save('images/produk/'. $img_url_kiri);
 
           $update->img_url_kiri  = $img_url_kiri;
           $update->update();

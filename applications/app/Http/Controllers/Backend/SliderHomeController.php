@@ -48,14 +48,14 @@ class SliderHomeController extends Controller
           'img_url.required' => 'Wajib di isi',
           'img_url.image' => 'Format Gambar Tidak Sesuai',
           'img_url.max' => 'File Size Terlalu Besar',
+          'img_url.dimensions' => 'Ukuran yg di terima 1366px x 769px',
           'img_alt.required' => 'Wajib di isi',
           'tanggal_post.required' => 'Wajib di isi',
           'posisi.required' => 'Wajib di isi',
         ];
 
         $validator = Validator::make($request->all(), [
-          // 'img_url' => 'required|image|mimes:jpeg,bmp,png|size:2000|dimensions:max_width=1000,max_height=2000',
-          'img_url' => 'required|image|mimes:jpeg,bmp,png|max:2000',
+          'img_url' => 'required|image|mimes:jpeg,bmp,png|max:2000|dimensions:max_width=1366,max_height=769',
           'img_alt' => 'required',
           'tanggal_post' => 'required',
           'posisi'  => 'required'
@@ -89,7 +89,7 @@ class SliderHomeController extends Controller
           }
 
           $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
-          Image::make($image)->fit(472,270)->save('images/slider/'. $img_url);
+          Image::make($image)->fit(1366,769)->save('images/slider/'. $img_url);
 
           $save = new SliderHome;
           $save->img_url  = $img_url;
@@ -121,14 +121,14 @@ class SliderHomeController extends Controller
       $message = [
         'img_url.image' => 'Format Gambar Tidak Sesuai',
         'img_url.max' => 'File Size Terlalu Besar',
+        'img_url.dimensions' => 'Ukuran yg di terima 1366px x 769px',
         'img_alt.required' => 'Wajib di isi',
         'tanggal_post.required' => 'Wajib di isi',
         'posisi.required' => 'Wajib di isi',
       ];
 
       $validator = Validator::make($request->all(), [
-        // 'img_url' => 'required|image|mimes:jpeg,bmp,png|size:2000|dimensions:max_width=1000,max_height=2000',
-        'img_url' => 'image|mimes:jpeg,bmp,png|max:2000',
+        'img_url' => 'image|mimes:jpeg,bmp,png|max:2000|dimensions:max_width=1366,max_height=769',
         'img_alt' => 'required',
         'tanggal_post' => 'required',
         'posisi' => 'required'
@@ -171,7 +171,7 @@ class SliderHomeController extends Controller
           $update->update();
         }else{
           $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
-          Image::make($image)->fit(472,270)->save('images/slider/'. $img_url);
+          Image::make($image)->fit(1366,769)->save('images/slider/'. $img_url);
 
           $update->img_url  = $img_url;
           $update->update();

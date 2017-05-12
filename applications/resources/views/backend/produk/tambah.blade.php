@@ -96,7 +96,7 @@
           <div class="item form-group">
             <label class="col-md-3"></label>
             <div class="col-md-6">
-              <span style="color:blue; font-size:11px;">Width: 100px; Heigh: 100px</span>
+              <span style="color:blue; font-size:11px;">Width: 443px; Heigh: 418px</span>
             </div>
           </div>
           <div class="item form-group {{ $errors->has('img_url') ? 'has-error' : ''}}">
@@ -123,7 +123,7 @@
           <div class="item form-group">
             <label class="col-md-3"></label>
             <div class="col-md-6">
-              <span style="color:blue; font-size:11px;">Width: 100px; Heigh: 100px</span>
+              <span style="color:blue; font-size:11px;">Width: 291px; Heigh: 308px</span>
             </div>
           </div>
           <div class="item form-group {{ $errors->has('img_url_kanan') ? 'has-error' : ''}}">
@@ -150,7 +150,7 @@
           <div class="item form-group">
             <label class="col-md-3"></label>
             <div class="col-md-6">
-              <span style="color:blue; font-size:11px;">Width: 100px; Heigh: 100px</span>
+              <span style="color:blue; font-size:11px;">Width: 247px; Heigh: 178px</span>
             </div>
           </div>
           <div class="item form-group {{ $errors->has('img_url_kiri') ? 'has-error' : ''}}">
