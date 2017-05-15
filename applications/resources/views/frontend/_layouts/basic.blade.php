@@ -21,12 +21,11 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('plugin/font-awesome/css/font-awesome.min.css') }}">
 
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/public.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/navbar.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/footer.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/font/1-font-family.css') }}">
 
     @yield('head-style')
 
+	<link rel="icon" type="image/png" href="{{ asset('public/image/default/logo-gofress.png') }}" />
 	<link rel="image_src" href="" />
 
     <script>

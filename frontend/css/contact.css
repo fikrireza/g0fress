@@ -18,9 +18,10 @@
 .background-content .content-wrapper .wrapper-content .odd-even:nth-child(even){
 	padding-left: 40px;
 }
-.background-content .content-wrapper .wrapper-content input{
+.background-content .content-wrapper .wrapper-content input,
+.background-content .content-wrapper .wrapper-content textarea{
 	margin-bottom: 5px;
-	font-family: 'FontAwesome';
+	/*font-family: 'FontAwesome';*/
 	color: rgb(112,123,123);
 }
 .background-content .content-wrapper .wrapper-content button.submit{
