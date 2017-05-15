@@ -58,6 +58,7 @@ class ProgramEventsController extends Controller
           'deskripsi_EN.min' => 'Terlalu Singkat',
           'tanggal_post.required' => 'Wajib di isi',
           'img_url.image' => 'Format Gambar Tidak Sesuai',
+          'img_url.dimensions' => 'Ukuran yg di terima 932px x 350px',
           'img_url.max' => 'File Size Terlalu Besar'
         ];
 
@@ -67,7 +68,7 @@ class ProgramEventsController extends Controller
           'judul_promosi_EN' => 'required',
           'deskripsi_ID' => 'required|min:20',
           'deskripsi_EN' => 'required|min:20',
-          'img_url' => 'image|mimes:jpeg,bmp,png|max:2000',
+          'img_url' => 'image|mimes:jpeg,bmp,png|max:2000|dimensions:max_width=932,max_height=350',
           'tanggal_post' => 'required'
         ], $message);
 
@@ -108,7 +109,7 @@ class ProgramEventsController extends Controller
             $save->save();
           }else{
             $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
-            Image::make($image)->fit(472,270)->save('images/programEvent/'. $img_url);
+            Image::make($image)->fit(932,350)->save('images/programEvent/'. $img_url);
 
             $save = new ProgramEvents;
             $save->program_events_kategori_id = $request->program_events_kategori_id;
@@ -181,7 +182,8 @@ class ProgramEventsController extends Controller
           'deskripsi_EN.min' => 'Terlalu Singkat',
           'tanggal_post.required' => 'Wajib di isi',
           'img_url.image' => 'Format Gambar Tidak Sesuai',
-          'img_url.max' => 'File Size Terlalu Besar'
+          'img_url.max' => 'File Size Terlalu Besar',
+          'img_url.dimensions' => 'Ukuran yg di terima 932px x 350px'
         ];
 
         $validator = Validator::make($request->all(), [
@@ -190,7 +192,7 @@ class ProgramEventsController extends Controller
           'judul_promosi_EN' => 'required',
           'deskripsi_ID' => 'required|min:20',
           'deskripsi_EN' => 'required|min:20',
-          'img_url' => 'image|mimes:jpeg,bmp,png|max:2000',
+          'img_url' => 'image|mimes:jpeg,bmp,png|max:2000|dimensions:max_width=932,max_height=350',
           'tanggal_post' => 'required'
         ], $message);
 
@@ -236,7 +238,7 @@ class ProgramEventsController extends Controller
             $update->update();
           }else{
             $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
-            Image::make($image)->fit(472,270)->save('images/programEvent/'. $img_url);
+            Image::make($image)->fit(932,350)->save('images/programEvent/'. $img_url);
 
             $update->img_url  = $img_url;
             $update->update();

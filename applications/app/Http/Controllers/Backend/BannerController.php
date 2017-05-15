@@ -36,14 +36,14 @@ class BannerController extends Controller
           'img_url.required' => 'Wajib di isi',
           'img_url.image' => 'Format Gambar Tidak Sesuai',
           'img_url.max' => 'File Size Terlalu Besar',
-          'img_url.dimensions' => 'Ukuran Maksimal 1350px X 405px',
+          'img_url.dimensions' => 'Ukuran Maksimal 1366px X 494px',
           'img_alt.required' => 'Wajib di isi',
           'halaman.required' => 'Wajib di isi',
           'halaman.unique'  => 'Sudah ada Banner Pada Halaman Ini'
         ];
 
         $validator = Validator::make($request->all(), [
-          'img_url' => 'required|image|mimes:jpeg,bmp,png|max:1000|dimensions:max_width=1672,max_height=941',
+          'img_url' => 'required|image|mimes:jpeg,bmp,png|max:1000|dimensions:max_width=1366,max_height=494',
           'img_alt' => 'required',
           'halaman' => 'required|unique:amd_banner_head'
         ], $message);
@@ -56,7 +56,7 @@ class BannerController extends Controller
 
         $image = $request->file('img_url');
         $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
-        Image::make($image)->fit(1672,941)->save('images/banner/'. $img_url);
+        Image::make($image)->fit(1366,494)->save('images/banner/'. $img_url);
 
         $save = new Banner;
         $save->img_url = $img_url;
@@ -90,6 +90,7 @@ class BannerController extends Controller
         $message = [
           'img_url.image' => 'Format Gambar Tidak Sesuai',
           'img_url.max' => 'File Size Terlalu Besar',
+          'img_url.dimensions' => 'Ukuran Maksimal 1366px X 494px',
           'img_alt.required' => 'Wajib di isi',
           'halaman.required' => 'Wajib di isi',
           'halaman.unique' => 'Halaman ini sudah ada banner',
@@ -97,7 +98,7 @@ class BannerController extends Controller
 
         $validator = Validator::make($request->all(), [
           'halaman' => 'required|unique:amd_banner_head,halaman,'.$request->id,
-          'img_url' => 'image|mimes:jpeg,bmp,png|max:2000',
+          'img_url' => 'image|mimes:jpeg,bmp,png|max:2000|dimensions:max_width=1366,max_height=494',
           'img_alt' => 'required',
         ], $message);
 
@@ -126,7 +127,7 @@ class BannerController extends Controller
             $update->update();
           }else{
             $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
-            Image::make($image)->fit(1672,941)->save('images/banner/'. $img_url);
+            Image::make($image)->fit(1366,494)->save('images/banner/'. $img_url);
 
             $update->img_url  = $img_url;
             $update->update();

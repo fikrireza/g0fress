@@ -53,6 +53,7 @@ class ProdukKategoriController extends Controller
         'img_url.required' => 'Wajib di isi',
         'img_url.image' => 'Format Gambar Tidak Sesuai',
         'img_url.max' => 'File Size Terlalu Besar',
+        'img_url.dimensions' => 'Ukuran yg di terima 443px x 418px',
         'img_alt.required' => 'Wajib di isi',
         'tanggal_post.required' => 'Wajib di isi',
       ];
@@ -61,8 +62,7 @@ class ProdukKategoriController extends Controller
         'nama_kategori' => 'required|unique:amd_produk_kategori',
         'deskripsi_EN' => 'required|min:20',
         'deskripsi_ID' => 'required|min:20',
-        // 'img_url' => 'required|image|mimes:jpeg,bmp,png|size:2000|dimensions:max_width=1000,max_height=2000',
-        'img_url' => 'required|image|mimes:jpeg,bmp,png|max:2000',
+        'img_url' => 'required|image|mimes:jpeg,bmp,png|max:2000|dimensions:max_width=443,max_height=418',
         'img_alt' => 'required',
         'tanggal_post' => 'required'
       ], $message);
@@ -75,7 +75,7 @@ class ProdukKategoriController extends Controller
 
       $image = $request->file('img_url');
       $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
-      Image::make($image)->fit(472,270)->save('images/produk/'. $img_url);
+      Image::make($image)->fit(443,418)->save('images/produk/'. $img_url);
 
       if($request->flag_publish == 'on'){
         $flag_publish = 1;
@@ -136,6 +136,7 @@ class ProdukKategoriController extends Controller
         'deskripsi_EN.min' => 'Terlalu Singkat',
         'img_url.image' => 'Format Gambar Tidak Sesuai',
         'img_url.max' => 'File Size Terlalu Besar',
+        'img_url.dimensions' => 'Ukuran yg di terima 443px x 418px',
         'img_alt.required' => 'Wajib di isi',
         'tanggal_post.required' => 'Wajib di isi',
       ];
@@ -144,7 +145,7 @@ class ProdukKategoriController extends Controller
         'nama_kategori' => 'required|unique:amd_produk_kategori,nama_kategori,'.$request->id,
         'deskripsi_ID' => 'required|min:20',
         'deskripsi_EN' => 'required|min:20',
-        'img_url' => 'image|mimes:jpeg,bmp,png|max:2000',
+        'img_url' => 'image|mimes:jpeg,bmp,png|max:2000|dimensions:max_width=443,max_height=418',
         'img_alt' => 'required',
         'tanggal_post' => 'required'
       ], $message);
@@ -176,7 +177,7 @@ class ProdukKategoriController extends Controller
         $update->update();
       }else{
         $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
-        Image::make($image)->fit(472,270)->save('images/produk/'. $img_url);
+        Image::make($image)->fit(443,418)->save('images/produk/'. $img_url);
 
         $update = ProdukKategori::find($request->id);
         $update->nama_kategori = $request->nama_kategori;

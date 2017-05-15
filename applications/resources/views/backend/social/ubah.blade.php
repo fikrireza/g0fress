@@ -42,11 +42,11 @@
             </div>
           </div>
           <div class="item form-group {{ $errors->has('img_url') ? 'has-error' : ''}}">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Gambar Produk Utama <span class="required">*</span>
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Gambar Icon <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
               <input id="img_url" class="form-control col-md-7 col-xs-12" name="img_url" type="file">
-              <span style="color:blue; font-size:10px;">Width: 39px; Heigh: 39px</span>
+              <span style="color:blue; font-size:10px;">Width: 40px; Heigh: 40px</span>
               @if($errors->has('img_url'))
                 <code><span style="color:red; font-size:12px;">{{ $errors->first('img_url')}}</span></code>
               @endif
@@ -55,7 +55,7 @@
           <div class="item form-group">
             <label class="col-md-3"></label>
             <div class="col-md-6">
-              <img src="{{ asset('images/sosmed/').'/'.$getSocial->img_url }}" alt="" class="thumbnail">
+              <img src="{{ asset('images/sosmed/').'/'.$getSocial->img_url }}" alt="">
             </div>
           </div>
           <div class="item form-group {{ $errors->has('url_account') ? 'has-error' : ''}}">

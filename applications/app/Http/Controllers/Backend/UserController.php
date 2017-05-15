@@ -55,7 +55,7 @@ class UserController extends Controller
         return redirect()->route('users.index')->with('berhasil', 'Berhasil Me Reset Password '.$getUser->name);
     }
 
-    public function new(Request $request)
+    public function newUser(Request $request)
     {
         $message = [
           'name.required' => 'Wajib di isi',

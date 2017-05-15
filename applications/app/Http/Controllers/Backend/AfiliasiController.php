@@ -37,7 +37,7 @@ class AfiliasiController extends Controller
         'img_url.required' => 'Wajib di isi',
         'img_url.image' => 'Format Gambar Tidak Sesuai',
         'img_url.max' => 'File Size Terlalu Besar',
-        'img_url.dimensions' => 'Ukuran Maksimal 40px x 40px',
+        'img_url.dimensions' => 'Ukuran Lebar Maksimal 46px',
         'img_alt.required' => 'Wajib di isi',
         'link_url.required' => 'Wajib di isi',
         'link_url.url' => 'URL Tidak Valid'
@@ -45,7 +45,7 @@ class AfiliasiController extends Controller
 
       $validator = Validator::make($request->all(), [
         'nama_afiliasi' => 'required|unique:amd_afiliasi',
-        'img_url' => 'required|image|mimes:jpeg,bmp,png|max:1000|dimensions:max_width=40,max_height=40',
+        'img_url' => 'required|image|mimes:jpeg,bmp,png|max:1000|dimensions:max_width=46',
         'img_alt' => 'required',
         'link_url' => 'required|url'
       ], $message);
@@ -59,7 +59,7 @@ class AfiliasiController extends Controller
 
       $image = $request->file('img_url');
       $img_url = str_slug($request->nama_afiliasi,'-'). '.' . $image->getClientOriginalExtension();
-      Image::make($image)->fit(39,39)->save('images/afiliasi/'. $img_url);
+      Image::make($image)->save('images/afiliasi/'. $img_url);
 
       if($request->flag_publish == 'on'){
         $flag_publish = 1;
@@ -103,14 +103,14 @@ class AfiliasiController extends Controller
           'nama_afiliasi.unique' => 'Social Media ini sudah ada',
           'img_url.image' => 'Format Gambar Tidak Sesuai',
           'img_url.max' => 'File Size Terlalu Besar',
-          'img_url.dimensions' => 'Ukuran Maksimal 40px x 40px',
+          'img_url.dimensions' => 'Ukuran Lebar Maksimal 40px',
           'img_alt.required' => 'Wajib di isi',
           'link_url.required' => 'Wajib di isi',
         ];
 
         $validator = Validator::make($request->all(), [
           'nama_afiliasi' => 'required|unique:amd_afiliasi,nama_afiliasi,'.$request->id,
-          'img_url' => 'image|mimes:jpeg,bmp,png|max:1000|dimensions:max_width=40,max_height=40',
+          'img_url' => 'image|mimes:jpeg,bmp,png|max:1000|dimensions:max_width=40',
           'img_alt' => 'required',
           'link_url' => 'required',
         ], $message);
@@ -141,7 +141,7 @@ class AfiliasiController extends Controller
             $update->update();
           }else{
             $img_url = str_slug($request->nama_afiliasi,'-'). '.' . $image->getClientOriginalExtension();
-            Image::make($image)->fit(39,39)->save('images/sosmed/'. $img_url);
+            Image::make($image)->save('images/afiliasi/'. $img_url);
 
             $update->img_url  = $img_url;
             $update->update();

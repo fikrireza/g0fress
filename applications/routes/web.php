@@ -168,7 +168,7 @@ Route::group(['middleware' => ['isAdministrator']], function () {
   // User
   Route::get('admin/users', 'Backend\UserController@index')->name('users.index');
   Route::get('admin/users/reset/{id}', 'Backend\UserController@reset')->name('users.reset');
-  Route::post('admin/users', 'Backend\UserController@new')->name('users.new');
+  Route::post('admin/users', 'Backend\UserController@newUser')->name('users.new');
 
   // Afiliasi
   Route::get('admin/afiliasi', 'Backend\AfiliasiController@index')->name('afiliasi.index');

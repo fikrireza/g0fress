@@ -57,7 +57,7 @@ class SocialMediaController extends Controller
 
       $image = $request->file('img_url');
       $img_url = str_slug($request->nama,'-'). '.' . $image->getClientOriginalExtension();
-      Image::make($image)->fit(39,39)->save('images/sosmed/'. $img_url);
+      Image::make($image)->fit(40,40)->save('images/sosmed/'. $img_url);
 
       if($request->flag_publish == 'on'){
         $flag_publish = 1;
@@ -137,7 +137,7 @@ class SocialMediaController extends Controller
           $update->update();
         }else{
           $img_url = str_slug($request->nama,'-'). '.' . $image->getClientOriginalExtension();
-          Image::make($image)->fit(39,39)->save('images/sosmed/'. $img_url);
+          Image::make($image)->fit(40,40)->save('images/sosmed/'. $img_url);
 
           $update->img_url  = $img_url;
           $update->update();

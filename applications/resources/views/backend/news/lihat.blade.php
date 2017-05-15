@@ -50,7 +50,7 @@
             <td>{!! $getNews->deskripsi_EN !!}</td>
           </tr>
           <tr>
-            <td><strong>Gambar Produk</strong></td>
+            <td><strong>Gambar</strong></td>
             <td>:</td>
             <td>@if (!$getNews->img_url) -
                 @else <img src="{{ asset('images/news').'/'.$getNews->img_url }}"/> @endif</td>

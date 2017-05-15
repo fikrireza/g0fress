@@ -87,7 +87,7 @@
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Gambar </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
               <input id="img_url" class="form-control col-md-7 col-xs-12" data-validate-length-range="1" name="img_url" type="file">
-              <span style="color:blue; font-size:10px;">Width: 100px; Heigh: 100px</span>
+              <span style="color:blue; font-size:10px;">Width: 932px; Heigh: 350px</span>
               @if($errors->has('img_url'))
                 <code><span style="color:red; font-size:12px;">{{ $errors->first('img_url')}}</span></code>
               @endif
