@@ -184,7 +184,7 @@
 		</div>
 
 		<div class="for-btn-see-more">
-			<a class="btn-see-more" href="">@lang('front/publict.see-more')</a>
+			<a class="btn-see-more" href="{{ route('frontend.news') }}">@lang('front/publict.see-more')</a>
 		</div>
 
 	</div>

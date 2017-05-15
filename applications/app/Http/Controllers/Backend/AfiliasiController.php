@@ -37,7 +37,7 @@ class AfiliasiController extends Controller
         'img_url.required' => 'Wajib di isi',
         'img_url.image' => 'Format Gambar Tidak Sesuai',
         'img_url.max' => 'File Size Terlalu Besar',
-        'img_url.dimensions' => 'Ukuran Lebar Maksimal 46px',
+        'img_url.dimensions' => 'Ukuran Tinggi Maksimal 46px',
         'img_alt.required' => 'Wajib di isi',
         'link_url.required' => 'Wajib di isi',
         'link_url.url' => 'URL Tidak Valid'
@@ -45,7 +45,7 @@ class AfiliasiController extends Controller
 
       $validator = Validator::make($request->all(), [
         'nama_afiliasi' => 'required|unique:amd_afiliasi',
-        'img_url' => 'required|image|mimes:jpeg,bmp,png|max:1000|dimensions:max_width=46',
+        'img_url' => 'required|image|mimes:jpeg,bmp,png|max:1000|dimensions:max_height=46',
         'img_alt' => 'required',
         'link_url' => 'required|url'
       ], $message);
@@ -103,14 +103,14 @@ class AfiliasiController extends Controller
           'nama_afiliasi.unique' => 'Social Media ini sudah ada',
           'img_url.image' => 'Format Gambar Tidak Sesuai',
           'img_url.max' => 'File Size Terlalu Besar',
-          'img_url.dimensions' => 'Ukuran Lebar Maksimal 40px',
+          'img_url.dimensions' => 'Ukuran Tinggi Maksimal 46px',
           'img_alt.required' => 'Wajib di isi',
           'link_url.required' => 'Wajib di isi',
         ];
 
         $validator = Validator::make($request->all(), [
           'nama_afiliasi' => 'required|unique:amd_afiliasi,nama_afiliasi,'.$request->id,
-          'img_url' => 'image|mimes:jpeg,bmp,png|max:1000|dimensions:max_width=40',
+          'img_url' => 'image|mimes:jpeg,bmp,png|max:1000|dimensions:max_height=46',
           'img_alt' => 'required',
           'link_url' => 'required',
         ], $message);

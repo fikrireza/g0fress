@@ -1,6 +1,6 @@
 .background-content.background-content-first.space-for-produk-owl,
 .background-content.background-content-second.space-for-produk-owl{
-	height: 50vh
+	height: 65vh
 }
 .product-wrapper{
 	position: relative;
@@ -8,7 +8,21 @@
 .product-wrapper .product-wrapper-position{
 	position: absolute; 
 	width: 100%; 
-	top:-90vh;
+	top:-120vh;
+}
+.slider-product .item .wrapper-product{
+    width: 65%;
+	height: 100vh;
+}
+
+.slider-product .item .wrapper-product .front{
+	height: 100vh;
+}
+.slider-product .item .wrapper-product .front .vertical-align-middle{
+	height: 100vh;
+}
+.slider-product .item .wrapper-product .front .vertical-align-middle img{
+	width: 40%;
 }
 .slider-product .item .wrapper-product .front .vertical-align-middle .deskripsi{
 	width: 45%;

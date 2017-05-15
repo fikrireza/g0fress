@@ -47,6 +47,10 @@
 .background-content .content-wrapper .wrapper-share a:hover{
 	text-decoration: none;
 }
+.background-content .content-wrapper .wrapper-share a .share-icon{
+	width: 65px;
+	height: auto;
+}
 @media (max-width: 480px) {
 	.flag-title-wrapper.color.costume-light-blue .vertical-align-midle{
 		height: 50px;

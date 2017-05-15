@@ -17,9 +17,9 @@
 </div>
 <div class="wrapper-share">
 	<a href="http://facebook.com/share?url={{ Request::fullUrl() }}" target="_blank">
-		<img src="{{ asset('public/image/default/socmed-logo-fb.png') }}">
+		<img class="share-icon" src="{{ asset('public/image/default/socmed-logo-fb.png') }}">
 	</a>
 	<a href="http://twitter.com/share?url={{ Request::fullUrl() }}" target="_blank">
-		<img src="{{ asset('public/image/default/socmed-logo-twit.png') }}">
+		<img class="share-icon" src="{{ asset('public/image/default/socmed-logo-twit.png') }}">
 	</a>
 </div>

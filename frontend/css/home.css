@@ -204,6 +204,11 @@
 .afiliasi-wrapper{
 	text-align: center;
 }
+.afiliasi-wrapper img{
+	width: auto;
+	height: 40px;
+	padding: 0 2.5px;
+}
 .wrapper-connect-with-us a,
 .afiliasi-wrapper a{
 	text-decoration: none;
