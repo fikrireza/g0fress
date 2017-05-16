@@ -123,7 +123,9 @@
                 @endif
             </td>
             <td>{{ $key->login_count }}</td>
-            <td><a href="" class="reset" data-value="{{ $key->id }}" data-toggle="modal" data-target=".modal-reset"><span class="btn btn-xs btn-danger reset" data-toggle="tooltip" data-placement="top" title="Reset Password"><i class="fa fa-recycle"></i> </span></a>
+            <td>@if($key->id != Auth::user()->id)
+                <a href="" class="reset" data-value="{{ $key->id }}" data-toggle="modal" data-target=".modal-reset"><span class="btn btn-xs btn-danger reset" data-toggle="tooltip" data-placement="top" title="Reset Password"><i class="fa fa-recycle"></i> </span></a>
+            @else - @endif
             </td>
           </tr>
           @php
