@@ -43,7 +43,7 @@ Route::get('admin/logout-process', 'Auth\LoginController@logoutProcess')->name('
 Route::get('admin/login', 'Auth\LoginController@showLoginForm')->name('login.pages');
 
 //Verify User CMS
-Route::get('admin/verify/{confirmation_code}', 'Backend\UserController@verify')->name('verify.index');
+Route::get('admin/verify/{confirmation_code}', 'Backend\UserController@verify')->name('verify.index')->middleware('guest');
 Route::post('admin/verify', 'Backend\UserController@store')->name('verify.store');
 
 //----------------------- BACKEND -----------------------//
