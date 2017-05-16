@@ -43,6 +43,7 @@ class NewsController extends Controller
     {
         $message = [
           'judul_ID.required' => 'wajib di isi',
+          'judul_ID.max' => 'Terlalu Panjang, Maks 25 Karakter',
           'judul_ID.unique' => 'judul berita sudah ada',
           'judul_EN.required' => 'wajib di isi',
           'deskripsi_ID.required' => 'wajib di isi',
@@ -54,7 +55,7 @@ class NewsController extends Controller
         ];
 
         $validator = Validator::make($request->all(), [
-          'judul_ID' => 'required|unique:amd_news',
+          'judul_ID' => 'required|unique:amd_news|max:25',
           'judul_EN'  => 'required',
           'deskripsi_ID'  => 'required',
           'deskripsi_EN'  => 'required',
@@ -150,6 +151,7 @@ class NewsController extends Controller
     {
       $message = [
         'judul_ID.required' => 'wajib di isi',
+        'judul_ID.max' => 'Terlalu Panjang, Maks 25 Karakter',
         'judul_ID.unique' => 'judul berita sudah ada',
         'judul_EN.required' => 'wajib di isi',
         'deskripsi_ID.required' => 'wajib di isi',
@@ -161,7 +163,7 @@ class NewsController extends Controller
       ];
 
       $validator = Validator::make($request->all(), [
-        'judul_ID' => 'required|unique:amd_news,judul_ID,'.$request->id,
+        'judul_ID' => 'required|max:25|unique:amd_news,judul_ID,'.$request->id,
         'judul_EN'  => 'required',
         'deskripsi_ID'  => 'required',
         'deskripsi_EN'  => 'required',

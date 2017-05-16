@@ -73,6 +73,17 @@
             <td>{{ $getProgramEvents->img_alt }}</td>
           </tr>
           <tr>
+            <td><strong>Thumbnail</strong></td>
+            <td>:</td>
+            <td>@if ($getProgramEvents->img_url != null)
+              <img src="{{ asset('images/programEvent/').'/'.$getProgramEvents->img_thumb }}" class="thumbnail"/> @else - @endif</td>
+          </tr>
+          <tr>
+            <td><strong>Thumbnail alt</strong></td>
+            <td>:</td>
+            <td>@if($getProgramEvents->img_alt_thumb != null) {{ $getProgramEvents->img_alt_thumb }} @else - @endif</td>
+          </tr>
+          <tr>
             <td><strong>Video Url</strong></td>
             <td>:</td>
             <td>@if ($getProgramEvents->video_url != null)

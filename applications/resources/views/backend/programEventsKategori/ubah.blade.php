@@ -47,43 +47,6 @@
           </div>
           <div class="ln_solid"></div>
           <div class="item form-group">
-            <label class="col-md-3"></label>
-            <div class="col-md-6">
-              <span style="color:blue; font-size:10px;">Biarkan Kosong Jika Tidak Ingin Mengubah Gambar</span>
-            </div>
-          </div>
-          <div class="item form-group {{ $errors->has('img_url') ? 'has-error' : ''}}">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Gambar </label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="img_url" class="form-control col-md-7 col-xs-12" name="img_url" type="file">
-              <span style="color:blue; font-size:10px;">Width: 932px; Heigh: 350px</span>
-              @if($errors->has('img_url'))
-                <code><span style="color:red; font-size:12px;">{{ $errors->first('img_url')}}</span></code>
-              @endif
-            </div>
-          </div>
-          @if ($getProgramEventsKategori->img_url != null)
-          <div class="item form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12">Hapus Gambar </label>
-            <div class="col-md-1 col-sm-1 col-xs-12">
-              <label></label><input type="checkbox" class="flat" name="remove_image"/></label>
-            </div>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <img src="{{ asset('images/programEvent/').'/'.$getProgramEventsKategori->img_url }}" alt="" class="thumbnail">
-            </div>
-          </div>
-          @endif
-          <div class="item form-group {{ $errors->has('img_alt') ? 'has-error' : ''}}">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Deskripsi Gambar  </label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="img_alt" class="form-control col-md-7 col-xs-12" name="img_alt" placeholder="Contoh: Judul Kategori" type="text" value="{{ old('img_alt', $getProgramEventsKategori->img_alt) }}">
-              @if($errors->has('img_alt'))
-                <code><span style="color:red; font-size:12px;">{{ $errors->first('img_alt')}}</span></code>
-              @endif
-            </div>
-          </div>
-          <div class="ln_solid"></div>
-          <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Publish </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
               <label>

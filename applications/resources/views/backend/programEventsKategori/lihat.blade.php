@@ -37,25 +37,14 @@
           </thead>
           <tbody>
           <tr>
-            <td><strong>Judul ID</strong></td>
+            <td><strong>Judul Kategori ID</strong></td>
             <td>:</td>
             <td>{{ $getProgramEventsKategori->judul_kategori_ID }}</td>
           </tr>
           <tr>
-            <td><strong>Judul EN</strong></td>
+            <td><strong>Judul Kategori EN</strong></td>
             <td>:</td>
             <td>{{ $getProgramEventsKategori->judul_kategori_EN }}</td>
-          </tr>
-          <tr>
-            <td><strong>Gambar</strong></td>
-            <td>:</td>
-            <td>@if ($getProgramEventsKategori->img_url != null)
-              <img src="{{ asset('images/programEvent/').'/'.$getProgramEventsKategori->img_url }}" /> @else - @endif</td>
-          </tr>
-          <tr>
-            <td><strong>Gambar alt</strong></td>
-            <td>:</td>
-            <td>{{ ($getProgramEventsKategori->img_alt != null) ? $getProgramEventsKategori->img_alt : '-' }}</td>
           </tr>
           <tr>
             <td><strong>Publish</strong></td>

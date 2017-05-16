@@ -120,6 +120,43 @@
               @endif
             </div>
           </div>
+
+          <div class="item form-group">
+            <label class="col-md-3"></label>
+            <div class="col-md-6">
+              <span style="color:blue; font-size:11px;">Biarkan Kosong Jika Tidak Ingin Mengubah Thumbnail</span>
+            </div>
+          </div>
+          <div class="item form-group {{ $errors->has('img_thumb') ? 'has-error' : ''}}">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Thumbnail </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input id="img_thumb" class="form-control col-md-7 col-xs-12" data-validate-length-range="1" name="img_thumb" type="file">
+              <span style="color:blue; font-size:11px;">Width: 217px; Heigh: 224px</span>
+              @if($errors->has('img_thumb'))
+                <code><span style="color:red; font-size:12px;">{{ $errors->first('img_thumb')}}</span></code>
+              @endif
+            </div>
+          </div>
+          @if ($getProgramEvents->img_thumb != null)
+          <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12"> </label>
+            {{-- <div class="col-md-1 col-sm-1 col-xs-12">
+              <label></label><input type="checkbox" class="flat" name="remove_image"/></label>
+            </div> --}}
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <img src="{{ asset('images/programEvent/').'/'.$getProgramEvents->img_thumb }}" alt="" class="thumbnail">
+            </div>
+          </div>
+          @endif
+          <div class="item form-group {{ $errors->has('img_alt_thumb') ? 'has-error' : ''}}">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Deskripsi Thumbnail  </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input id="img_alt_thumb" class="form-control col-md-7 col-xs-12" data-validate-length-range="1" name="img_alt_thumb" placeholder="Contoh: Nama Produk" type="text" value="{{ old('img_alt_thumb', $getProgramEvents->img_alt_thumb) }}">
+              @if($errors->has('img_alt_thumb'))
+                <code><span style="color:red; font-size:12px;">{{ $errors->first('img_alt_thumb')}}</span></code>
+              @endif
+            </div>
+          </div>
           <div class="item form-group {{ $errors->has('video_url') ? 'has-error' : ''}}">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Video URL </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
@@ -231,7 +268,7 @@
     { name: 'about', items: [ 'About' ] }
   ]
   });
-  CKFinder.setupCKEditor( null, { basePath : '{{url('/')}}/plugins/ckfinder/'} );
+  CKFinder.setupCKEditor( null, { basePath : '{{url('/')}}/backend/vendors/ckfinder/'} );
   CKEDITOR.instances[deskripsi_ID].getData();
   CKEDITOR.instances[deskripsi_EN].getData();
 </script>

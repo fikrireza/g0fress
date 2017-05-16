@@ -96,16 +96,35 @@
           <div class="item form-group {{ $errors->has('img_alt') ? 'has-error' : ''}}">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Deskripsi Gambar  </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="img_alt" class="form-control col-md-7 col-xs-12" data-validate-length-range="1" name="img_alt" placeholder="Contoh: Judul Program & Events" type="text" value="{{ old('img_alt') }}">
+              <input id="img_alt" class="form-control col-md-7 col-xs-12" name="img_alt" placeholder="Contoh: Judul Program & Events" type="text" value="{{ old('img_alt') }}">
               @if($errors->has('img_alt'))
                 <code><span style="color:red; font-size:12px;">{{ $errors->first('img_alt')}}</span></code>
+              @endif
+            </div>
+          </div>
+          <div class="item form-group  {{ $errors->has('img_thumb') ? 'has-error' : ''}}">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Thumbnail </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input id="img_thumb" class="form-control col-md-7 col-xs-12" name="img_thumb" type="file">
+              <span style="color:blue; font-size:10px;">Width: 217px; Heigh: 224px</span>
+              @if($errors->has('img_thumb'))
+                <code><span style="color:red; font-size:12px;">{{ $errors->first('img_thumb')}}</span></code>
+              @endif
+            </div>
+          </div>
+          <div class="item form-group {{ $errors->has('img_alt_thumb') ? 'has-error' : ''}}">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Deskripsi Thumbnail </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input id="img_alt_thumb" class="form-control col-md-7 col-xs-12" name="img_alt_thumb" placeholder="Contoh: Judul Program & Events" type="text" value="{{ old('img_alt_thumb') }}">
+              @if($errors->has('img_alt_thumb'))
+                <code><span style="color:red; font-size:12px;">{{ $errors->first('img_alt_thumb')}}</span></code>
               @endif
             </div>
           </div>
           <div class="item form-group {{ $errors->has('video_url') ? 'has-error' : ''}}">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Video URL </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="video_url" class="form-control col-md-7 col-xs-12" data-validate-length-range="1" name="video_url" placeholder="http://youtube.com/watch?=" type="text" value="{{ old('video_url') }}">
+              <input id="video_url" class="form-control col-md-7 col-xs-12" data-validate-length-range="1" name="video_url" placeholder="Contoh: https://www.youtube.com/watch?v=aPdNFMN1unU" type="text" value="{{ old('video_url') }}">
               @if($errors->has('video_url'))
                 <code><span style="color:red; font-size:12px;">{{ $errors->first('video_url')}}</span></code>
               @endif
@@ -197,7 +216,7 @@
     { name: 'about', items: [ 'About' ] }
   ]
   });
-  CKFinder.setupCKEditor( null, { basePath : '{{url('/')}}/plugins/ckfinder/'} );
+  CKFinder.setupCKEditor( null, { basePath : '{{url('/')}}/backend/vendors/ckfinder/'} );
   CKEDITOR.instances[deskripsi_ID].getData();
   CKEDITOR.instances[deskripsi_EN].getData();
 </script>

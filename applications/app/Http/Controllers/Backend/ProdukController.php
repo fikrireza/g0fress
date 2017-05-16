@@ -50,6 +50,7 @@ class ProdukController extends Controller
       $message = [
         'kategori_id.required' => 'Wajib di isi',
         'nama_produk.required' => 'Wajib di isi',
+        'nama_produk.max' => 'Terlalu Panjang, Maks 25 Karakter',
         'nama_produk.unique' => 'Produk ini sudah ada',
         'deskripsi_EN.required' => 'Wajib di isi',
         'deskripsi_EN.min' => 'Terlalu Singkat',
@@ -73,7 +74,7 @@ class ProdukController extends Controller
 
       $validator = Validator::make($request->all(), [
         'kategori_id' => 'required',
-        'nama_produk' => 'required|unique:amd_produk',
+        'nama_produk' => 'required|unique:amd_produk|max:25',
         'deskripsi_EN' => 'required|min:20',
         'deskripsi_ID' => 'required|min:20',
         'img_url' => 'required|image|mimes:jpeg,bmp,png|max:2000|dimensions:max_width=443,max_height=418',
@@ -170,6 +171,7 @@ class ProdukController extends Controller
       $message = [
         'kategori_id.required' => 'Wajib di isi',
         'nama_produk.required' => 'Wajib di isi',
+        'nama_produk.max' => 'Terlalu Panjang, Maks 25 Karakter',
         'nama_produk.unique' => 'Produk ini sudah ada',
         'deskripsi_EN.required' => 'Wajib di isi',
         'deskripsi_ID.required' => 'Wajib di isi',
@@ -190,7 +192,7 @@ class ProdukController extends Controller
 
       $validator = Validator::make($request->all(), [
         'kategori_id' => 'required',
-        'nama_produk' => 'required|unique:amd_produk,nama_produk,'.$request->id,
+        'nama_produk' => 'required|max:25|unique:amd_produk,nama_produk,'.$request->id,
         'deskripsi_EN' => 'required',
         'deskripsi_ID' => 'required',
         'img_url' => 'image|mimes:jpeg,bmp,png|max:2000|dimensions:max_width=443,max_height=418',

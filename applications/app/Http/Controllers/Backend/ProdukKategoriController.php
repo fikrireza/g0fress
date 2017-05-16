@@ -46,6 +46,7 @@ class ProdukKategoriController extends Controller
       $message = [
         'nama_kategori.required' => 'Wajib di isi',
         'nama_kategori.unique' => 'Ketogori ini sudah ada',
+        'nama_kategori.max' => 'Terlalu Panjang, Maks 25 Katakter',
         'deskripsi_EN.required' => 'Wajib di isi',
         'deskripsi_EN.min' => 'Terlalu Singkat',
         'deskripsi_ID.required' => 'Wajib di isi',
@@ -59,7 +60,7 @@ class ProdukKategoriController extends Controller
       ];
 
       $validator = Validator::make($request->all(), [
-        'nama_kategori' => 'required|unique:amd_produk_kategori',
+        'nama_kategori' => 'required|unique:amd_produk_kategori|max:25',
         'deskripsi_EN' => 'required|min:20',
         'deskripsi_ID' => 'required|min:20',
         'img_url' => 'required|image|mimes:jpeg,bmp,png|max:2000|dimensions:max_width=443,max_height=418',
@@ -129,6 +130,7 @@ class ProdukKategoriController extends Controller
     {
       $message = [
         'nama_kategori.required' => 'Wajib di isi',
+        'nama_kategori.max' => 'Terlalu Panjang, Maks 25 Karakter',
         'nama_kategori.unique' => 'Kategori ini sudah ada',
         'deskripsi_ID.required' => 'Wajib di isi',
         'deskripsi_ID.min' => 'Terlalu Singkat',
@@ -142,7 +144,7 @@ class ProdukKategoriController extends Controller
       ];
 
       $validator = Validator::make($request->all(), [
-        'nama_kategori' => 'required|unique:amd_produk_kategori,nama_kategori,'.$request->id,
+        'nama_kategori' => 'required|max:25|unique:amd_produk_kategori,nama_kategori,'.$request->id,
         'deskripsi_ID' => 'required|min:20',
         'deskripsi_EN' => 'required|min:20',
         'img_url' => 'image|mimes:jpeg,bmp,png|max:2000|dimensions:max_width=443,max_height=418',

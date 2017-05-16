@@ -215,3 +215,7 @@ Route::get('/program-events', 'Frontend\EventsController@index')->name('frontend
 Route::get('/program-events/more-events', 'Frontend\EventsController@indexEvents')->name('frontend.program-event.events');
 Route::get('/program-events/more-events-vidio', 'Frontend\EventsController@indexEventsVidio')->name('frontend.program-event.events-vidio');
 Route::get('/program-events/event/{slug}', 'Frontend\EventsController@eventsView')->name('frontend.program-event.view');
+
+
+// Sitemap
+Route::get('sitemap.xml', 'Backend\SitemapController@index')->name('sitemap.index');

@@ -50,6 +50,7 @@ class ProgramEventsController extends Controller
         $message = [
           'program_events_kategori_id.required' => 'Pilih Satu',
           'judul_promosi_ID.required' => 'Wajib di isi',
+          'judul_promosi_ID.max' => 'Terlalu Panjang, Max 25 Karakter',
           'judul_promosi_ID.unique' => 'Judul ini sudah ada',
           'judul_promosi_EN.required' => 'Wajib di isi',
           'deskripsi_ID.required' => 'Wajib di isi',
@@ -59,16 +60,20 @@ class ProgramEventsController extends Controller
           'tanggal_post.required' => 'Wajib di isi',
           'img_url.image' => 'Format Gambar Tidak Sesuai',
           'img_url.dimensions' => 'Ukuran yg di terima 932px x 350px',
-          'img_url.max' => 'File Size Terlalu Besar'
+          'img_url.max' => 'File Size Terlalu Besar',
+          'img_thumb.image' => 'Format Gambar Tidak Sesuai',
+          'img_thumb.dimensions' => 'Ukuran yg di terima 217px x 224px',
+          'img_thumb.max' => 'File Size Terlalu Besar'
         ];
 
         $validator = Validator::make($request->all(), [
           'program_events_kategori_id' => 'required',
-          'judul_promosi_ID' => 'required|unique:amd_program_events',
+          'judul_promosi_ID' => 'required|unique:amd_program_events|max:25',
           'judul_promosi_EN' => 'required',
           'deskripsi_ID' => 'required|min:20',
           'deskripsi_EN' => 'required|min:20',
           'img_url' => 'image|mimes:jpeg,bmp,png|max:2000|dimensions:max_width=932,max_height=350',
+          'img_thumb' => 'image|mimes:jpeg,bmp,png|max:1000|dimensions:max_width=217,max_height=224',
           'tanggal_post' => 'required'
         ], $message);
 
@@ -77,9 +82,9 @@ class ProgramEventsController extends Controller
           return redirect()->route('programEvents.tambah')->withErrors($validator)->withInput();
         }
 
-
         DB::transaction(function() use($request){
           $image = $request->file('img_url');
+          $image_thumb = $request->file('img_thumb');
 
           if($request->flag_publish == null){
             $flag_publish = 0;
@@ -93,37 +98,31 @@ class ProgramEventsController extends Controller
             $show_homepage = 0;
           }
 
-          if (!$image) {
-            $save = new ProgramEvents;
-            $save->program_events_kategori_id = $request->program_events_kategori_id;
-            $save->judul_promosi_ID = $request->judul_promosi_ID;
-            $save->judul_promosi_EN = $request->judul_promosi_EN;
-            $save->deskripsi_EN = $request->deskripsi_EN;
-            $save->deskripsi_ID = $request->deskripsi_ID;
-            $save->img_alt  = $request->img_alt;
-            $save->show_homepage = $show_homepage;
-            $save->tanggal_post = $request->tanggal_post;
-            $save->flag_publish = $flag_publish;
-            $save->slug = str_slug($request->judul_promosi_ID,'-');
-            $save->actor = Auth::user()->id;
+          $save = new ProgramEvents;
+          $save->program_events_kategori_id = $request->program_events_kategori_id;
+          $save->judul_promosi_ID = $request->judul_promosi_ID;
+          $save->judul_promosi_EN = $request->judul_promosi_EN;
+          $save->deskripsi_EN = $request->deskripsi_EN;
+          $save->deskripsi_ID = $request->deskripsi_ID;
+          $save->img_alt  = $request->img_alt;
+          $save->img_alt_thumb  = $request->img_alt_thumb;
+          $save->show_homepage = $show_homepage;
+          $save->tanggal_post = $request->tanggal_post;
+          $save->flag_publish = $flag_publish;
+          $save->slug = str_slug($request->judul_promosi_ID,'-');
+          $save->actor = Auth::user()->id;
+
+          if (!$image && !$image_thumb) {
             $save->save();
-          }else{
-            $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
+          }elseif($image && $image_thumb){
+            $img_url = str_slug($request->img_alt,'-'). '932x350.' . $image->getClientOriginalExtension();
             Image::make($image)->fit(932,350)->save('images/programEvent/'. $img_url);
 
-            $save = new ProgramEvents;
-            $save->program_events_kategori_id = $request->program_events_kategori_id;
-            $save->judul_promosi_ID = $request->judul_promosi_ID;
-            $save->judul_promosi_EN = $request->judul_promosi_EN;
-            $save->deskripsi_EN = $request->deskripsi_EN;
-            $save->deskripsi_ID = $request->deskripsi_ID;
-            $save->img_url  = $img_url;
-            $save->img_alt  = $request->img_alt;
-            $save->show_homepage = $show_homepage;
-            $save->tanggal_post = $request->tanggal_post;
-            $save->flag_publish = $flag_publish;
-            $save->slug = str_slug($request->judul_promosi_ID,'-');
-            $save->actor = Auth::user()->id;
+            $img_url_thumb = str_slug($request->img_alt_thumb,'-'). '217x224.' . $image_thumb->getClientOriginalExtension();
+            Image::make($image_thumb)->fit(217,224)->save('images/programEvent/'. $img_url_thumb);
+
+            $save->img_url = $img_url;
+            $save->img_thumb = $img_url_thumb;
             $save->save();
           }
 
@@ -183,7 +182,10 @@ class ProgramEventsController extends Controller
           'tanggal_post.required' => 'Wajib di isi',
           'img_url.image' => 'Format Gambar Tidak Sesuai',
           'img_url.max' => 'File Size Terlalu Besar',
-          'img_url.dimensions' => 'Ukuran yg di terima 932px x 350px'
+          'img_url.dimensions' => 'Ukuran yg di terima 932px x 350px',
+          'img_thumb.image' => 'Format Gambar Tidak Sesuai',
+          'img_thumb.max' => 'File Size Terlalu Besar',
+          'img_thumb.dimensions' => 'Ukuran yg di terima 217px x 224px'
         ];
 
         $validator = Validator::make($request->all(), [
@@ -193,6 +195,7 @@ class ProgramEventsController extends Controller
           'deskripsi_ID' => 'required|min:20',
           'deskripsi_EN' => 'required|min:20',
           'img_url' => 'image|mimes:jpeg,bmp,png|max:2000|dimensions:max_width=932,max_height=350',
+          'img_thumb' => 'image|mimes:jpeg,bmp,png|max:1000|dimensions:max_width=217,max_height=224',
           'tanggal_post' => 'required'
         ], $message);
 
@@ -203,6 +206,7 @@ class ProgramEventsController extends Controller
 
         DB::transaction(function() use($request){
           $image = $request->file('img_url');
+          $image_thumb = $request->file('img_thumb');
 
           if($request->flag_publish == null){
             $flag_publish = 0;
@@ -223,6 +227,7 @@ class ProgramEventsController extends Controller
           $update->deskripsi_EN = $request->deskripsi_EN;
           $update->deskripsi_ID = $request->deskripsi_ID;
           $update->img_alt  = $request->img_alt;
+          $update->img_alt_thumb = $request->img_alt_thumb;
           $update->video_url  = $request->video_url;
           $update->show_homepage = $show_homepage;
           $update->tanggal_post = $request->tanggal_post;
@@ -230,19 +235,37 @@ class ProgramEventsController extends Controller
           $update->slug = str_slug($request->judul_promosi_ID,'-');
           $update->actor = Auth::user()->id;
 
-          if($request->remove_image == "on"){
+          if($request->remove_image == "on")
+          {
             $update->img_url = null;
-            $update->update();
           }
-          elseif(!$image) {
-            $update->update();
-          }else{
-            $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
+          elseif($image)
+          {
+            $img_url = str_slug($request->img_alt,'-'). '-932x350.' . $image->getClientOriginalExtension();
             Image::make($image)->fit(932,350)->save('images/programEvent/'. $img_url);
 
             $update->img_url  = $img_url;
-            $update->update();
           }
+          elseif($image_thumb)
+          {
+            $img_thumb = str_slug($request->img_alt_thumb,'-'). '-217x224.' . $image_thumb->getClientOriginalExtension();
+            Image::make($image_thumb)->fit(217,224)->save('images/programEvent/'. $img_thumb);
+
+            $update->img_thumb  = $img_thumb;
+          }
+          elseif($image && $image_thumb)
+          {
+            $img_url = str_slug($request->img_alt,'-'). '-932x350.' . $image->getClientOriginalExtension();
+            Image::make($image)->fit(932,350)->save('images/programEvent/'. $img_url);
+
+            $img_thumb = str_slug($request->img_alt_thumb,'-'). '-217x224.' . $image_thumb->getClientOriginalExtension();
+            Image::make($image_thumb)->fit(217,224)->save('images/programEvent/'. $img_thumb);
+
+            $update->img_thumb  = $img_thumb;
+            $update->img_url  = $img_url;
+          }
+
+          $update->update();
 
           $log = new LogAkses;
           $log->actor = Auth::user()->id;
