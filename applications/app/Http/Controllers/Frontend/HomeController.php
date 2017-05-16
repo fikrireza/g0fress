@@ -63,8 +63,8 @@ class HomeController extends Controller
 
 		$callProgramEvent = ProgramEvents::select(
                 $callProgramEventJudul, 
-                'img_url', 
-                'img_alt', 
+                'img_thumb', 
+                'img_alt_thumb', 
                 'slug', 
                 $callProgramEventDeskripsi
             )

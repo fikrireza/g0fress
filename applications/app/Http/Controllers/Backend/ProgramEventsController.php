@@ -62,7 +62,7 @@ class ProgramEventsController extends Controller
           'img_url.dimensions' => 'Ukuran yg di terima 932px x 350px',
           'img_url.max' => 'File Size Terlalu Besar',
           'img_thumb.image' => 'Format Gambar Tidak Sesuai',
-          'img_thumb.dimensions' => 'Ukuran yg di terima 217px x 224px',
+          'img_thumb.dimensions' => 'Ukuran yg di terima 325px x 413px',
           'img_thumb.max' => 'File Size Terlalu Besar'
         ];
 
@@ -73,7 +73,7 @@ class ProgramEventsController extends Controller
           'deskripsi_ID' => 'required|min:20',
           'deskripsi_EN' => 'required|min:20',
           'img_url' => 'image|mimes:jpeg,bmp,png|max:2000|dimensions:max_width=932,max_height=350',
-          'img_thumb' => 'image|mimes:jpeg,bmp,png|max:1000|dimensions:max_width=217,max_height=224',
+          'img_thumb' => 'image|mimes:jpeg,bmp,png|max:1000|dimensions:max_width=325,max_height=413',
           'tanggal_post' => 'required'
         ], $message);
 
@@ -118,8 +118,8 @@ class ProgramEventsController extends Controller
             $img_url = str_slug($request->img_alt,'-'). '932x350.' . $image->getClientOriginalExtension();
             Image::make($image)->fit(932,350)->save('images/programEvent/'. $img_url);
 
-            $img_url_thumb = str_slug($request->img_alt_thumb,'-'). '217x224.' . $image_thumb->getClientOriginalExtension();
-            Image::make($image_thumb)->fit(217,224)->save('images/programEvent/'. $img_url_thumb);
+            $img_url_thumb = str_slug($request->img_alt_thumb,'-'). '325x413.' . $image_thumb->getClientOriginalExtension();
+            Image::make($image_thumb)->fit(325,413)->save('images/programEvent/'. $img_url_thumb);
 
             $save->img_url = $img_url;
             $save->img_thumb = $img_url_thumb;
@@ -185,7 +185,7 @@ class ProgramEventsController extends Controller
           'img_url.dimensions' => 'Ukuran yg di terima 932px x 350px',
           'img_thumb.image' => 'Format Gambar Tidak Sesuai',
           'img_thumb.max' => 'File Size Terlalu Besar',
-          'img_thumb.dimensions' => 'Ukuran yg di terima 217px x 224px'
+          'img_thumb.dimensions' => 'Ukuran yg di terima 325px x 413px'
         ];
 
         $validator = Validator::make($request->all(), [
@@ -195,7 +195,7 @@ class ProgramEventsController extends Controller
           'deskripsi_ID' => 'required|min:20',
           'deskripsi_EN' => 'required|min:20',
           'img_url' => 'image|mimes:jpeg,bmp,png|max:2000|dimensions:max_width=932,max_height=350',
-          'img_thumb' => 'image|mimes:jpeg,bmp,png|max:1000|dimensions:max_width=217,max_height=224',
+          'img_thumb' => 'image|mimes:jpeg,bmp,png|max:1000|dimensions:max_width=325,max_height=413',
           'tanggal_post' => 'required'
         ], $message);
 
@@ -249,7 +249,7 @@ class ProgramEventsController extends Controller
           elseif($image_thumb)
           {
             $img_thumb = str_slug($request->img_alt_thumb,'-'). '-217x224.' . $image_thumb->getClientOriginalExtension();
-            Image::make($image_thumb)->fit(217,224)->save('images/programEvent/'. $img_thumb);
+            Image::make($image_thumb)->fit(325,413)->save('images/programEvent/'. $img_thumb);
 
             $update->img_thumb  = $img_thumb;
           }
@@ -259,7 +259,7 @@ class ProgramEventsController extends Controller
             Image::make($image)->fit(932,350)->save('images/programEvent/'. $img_url);
 
             $img_thumb = str_slug($request->img_alt_thumb,'-'). '-217x224.' . $image_thumb->getClientOriginalExtension();
-            Image::make($image_thumb)->fit(217,224)->save('images/programEvent/'. $img_thumb);
+            Image::make($image_thumb)->fit(325,413)->save('images/programEvent/'. $img_thumb);
 
             $update->img_thumb  = $img_thumb;
             $update->img_url  = $img_url;
