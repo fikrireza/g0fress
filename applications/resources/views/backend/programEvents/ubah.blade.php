@@ -131,7 +131,7 @@
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Thumbnail </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
               <input id="img_thumb" class="form-control col-md-7 col-xs-12" data-validate-length-range="1" name="img_thumb" type="file">
-              <span style="color:blue; font-size:11px;">Width: 217px; Heigh: 224px</span>
+              <span style="color:blue; font-size:11px;">Width: 325px; Heigh: 413px</span>
               @if($errors->has('img_thumb'))
                 <code><span style="color:red; font-size:12px;">{{ $errors->first('img_thumb')}}</span></code>
               @endif

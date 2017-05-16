@@ -13,6 +13,28 @@
 @endsection
 
 @section('content')
+
+@if(Session::has('gagal'))
+<script>
+  window.setTimeout(function() {
+    $(".alert-danger").fadeTo(700, 0).slideUp(700, function(){
+        $(this).remove();
+    });
+  }, 35000);
+</script>
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="alert alert-danger alert-dismissible fade in" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+      </button>
+      <strong>{{ Session::get('gagal') }}</strong>
+    </div>
+  </div>
+</div>
+@endif
+
+
+
 <div class="row">
   <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="x_panel">
@@ -106,7 +128,7 @@
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Thumbnail </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
               <input id="img_thumb" class="form-control col-md-7 col-xs-12" name="img_thumb" type="file">
-              <span style="color:blue; font-size:10px;">Width: 217px; Heigh: 224px</span>
+              <span style="color:blue; font-size:10px;">Width: 325px; Heigh: 413px</span>
               @if($errors->has('img_thumb'))
                 <code><span style="color:red; font-size:12px;">{{ $errors->first('img_thumb')}}</span></code>
               @endif

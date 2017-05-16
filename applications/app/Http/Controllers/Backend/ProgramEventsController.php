@@ -82,6 +82,11 @@ class ProgramEventsController extends Controller
           return redirect()->route('programEvents.tambah')->withErrors($validator)->withInput();
         }
 
+        if(!$request->img_url && !$request->img_thumb && !$request->video_url)
+        {
+          return redirect()->route('programEvents.tambah')->with('gagal', 'Isi Image Atau Video')->withInput();
+        }
+
         DB::transaction(function() use($request){
           $image = $request->file('img_url');
           $image_thumb = $request->file('img_thumb');
