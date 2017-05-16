@@ -106,6 +106,7 @@ class ProgramEventsController extends Controller
           $save->deskripsi_ID = $request->deskripsi_ID;
           $save->img_alt  = $request->img_alt;
           $save->img_alt_thumb  = $request->img_alt_thumb;
+          $save->video_url = $request->video_url;
           $save->show_homepage = $show_homepage;
           $save->tanggal_post = $request->tanggal_post;
           $save->flag_publish = $flag_publish;
