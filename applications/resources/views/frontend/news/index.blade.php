@@ -61,22 +61,15 @@
 					@lang('front/news-index.archive')
 				</h2>
 				<ul id="accordionList">
-				@php
-					$month = '';
-					$monthOld = '';
-				@endphp
-				@foreach($callNewsList as $list)
-				@php
-					$month = date("F",strtotime($list->tanggal_post));
-					$year = date("Y",strtotime($list->tanggal_post));
-				@endphp
-					@if($month != $monthOld)
+				
+				@foreach($callNewsListDate as $listDate)
 					<li class="costume-list-style">
-						<label class="click-collapse" data-toggle="collapse" data-parent="#accordionList" href="#{{ $month }}">
-							{{ $month }} {{ $year}}
+						<label class="click-collapse" data-toggle="collapse" data-parent="#accordionList" href="#{{ str_slug($listDate->date, '_') }}">
+							{{ date("F Y",strtotime('01-'.str_slug($listDate->date, '-'))) }}
 						</label>
-						<div id="{{ $month }}" class="collapse">
-					@endif
+						<div id="{{ str_slug($listDate->date, '_') }}" class="collapse">
+							@foreach($callNewsList as $list)
+							@if($list->date == $listDate->date)
 							<div>
 								<label>
 									<a href="{{ route('frontend.news.view', ['slug'=>$list->slug]) }}">
@@ -84,13 +77,10 @@
 									</a>
 								</label>
 							</div>
-					@if($month == $monthOld)
+							@endif
+							@endforeach
 						</div>
 					</li>
-					@endif
-				@php
-					$monthOld = date("F",strtotime($list->tanggal_post));
-				@endphp
 				@endforeach
 				</ul>
 			</div>

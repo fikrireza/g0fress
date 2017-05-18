@@ -71,6 +71,7 @@ class HomeController extends Controller
             ->where('show_homepage', 1)
             ->where('flag_publish', '1')
             ->whereDATE('tanggal_post', '<=', $format_date)
+            ->whereNull('video_url')
             ->orderBy('id', 'desc')
             ->limit(15)
             ->get();

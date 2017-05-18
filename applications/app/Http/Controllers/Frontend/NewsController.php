@@ -47,14 +47,25 @@ class NewsController extends Controller
 		$callNewsList = News::select(
                 $callNewsListJudul,
                 'slug',
-                'tanggal_post'
+                'tanggal_post',
+                DB::raw("DATE_FORMAT(tanggal_post, '%m %Y') date")
             )
             ->where('flag_publish', '1')
             ->whereDATE('tanggal_post', '<=', $format_date)
             ->orderBy('tanggal_post', 'desc')
             ->get();
 
-    	return view('frontend.news.index',compact('callNews','callNewsList'));
+        $callNewsListDate = News::select(
+                DB::raw("DATE_FORMAT(tanggal_post, '%m %Y') date")
+            )
+            ->where('flag_publish', '1')
+            ->whereDATE('tanggal_post', '<=', $format_date)
+            ->orderBy('tanggal_post', 'desc')
+            ->groupBy('date')
+            ->get();
+
+        // dd($callNewsListDate);
+    	return view('frontend.news.index',compact('callNews','callNewsList','callNewsListDate'));
     }
     function view($slug){
 
