@@ -27,6 +27,10 @@
     <span class="count_top"><i class="fa fa-ticket"></i> Total Kupon</span>
     <div class="count green">{{ $getAllKupon }}</div>
   </div>
+  <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+    <span class="count_top"><i class="fa fa-ticket"></i> Tidak Dapat Kupon</span>
+    <div class="count red">{{ $getNoKupon }}</div>
+  </div>
 </div>
 
 <div class="page-title">
@@ -73,8 +77,7 @@
         </table>
       </div>
     </div>
-  </div>
-  <div class="col-md-6 col-sm-12 col-xs-12">
+
     <div class="x_panel">
       <div class="x_title">
         <h2>Cara mengatasi bau mulut?</h2>
@@ -111,8 +114,7 @@
         </table>
       </div>
     </div>
-  </div>
-  <div class="col-md-6 col-sm-12 col-xs-12">
+
     <div class="x_panel">
       <div class="x_title">
         <h2>Sudah pernah coba Gofress</h2>
@@ -150,6 +152,12 @@
       </div>
     </div>
   </div>
+  {{-- <div class="col-md-6 col-sm-12 col-xs-12">
+
+  </div>
+  <div class="col-md-6 col-sm-12 col-xs-12">
+
+  </div> --}}
   <div class="col-md-6 col-sm-12 col-xs-12">
     <div class="x_panel">
       <div class="x_title">
@@ -293,7 +301,7 @@
                 },
               ],
               responsive: true,
-              pageLength: 25
+              pageLength: 100
             });
           }
         };

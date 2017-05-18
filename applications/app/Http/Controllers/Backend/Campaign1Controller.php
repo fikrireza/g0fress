@@ -24,6 +24,8 @@ class Campaign1Controller extends Controller
                                   ->select('a.nama_kota', 'b.kupon', 'amd_campaign_1.*')
                                   ->get();
 
+        $getNoKupon = Campaign1::where('kupon_id', 9999999)->count();
+
         $getKupon = DB::select('SELECT count(*) as sisa_kupon FROM amd_master_kupon
 														WHERE id NOT IN (SELECT kupon_id FROM amd_campaign_1)');
 
@@ -32,15 +34,18 @@ class Campaign1Controller extends Controller
 
         $pertanyaan_1 = DB::select("SELECT pertanyaan_1, count(pertanyaan_1) as jumlah
                               FROM amd_campaign_1
-                              GROUP BY pertanyaan_1");
+                              GROUP BY pertanyaan_1
+                              ORDER BY jumlah desc");
 
         $pertanyaan_2 = DB::select("SELECT pertanyaan_2, count(pertanyaan_2) as jumlah
                                     FROM amd_campaign_1
-                                    GROUP BY pertanyaan_2");
+                                    GROUP BY pertanyaan_2
+                                    ORDER BY jumlah desc");
 
         $pertanyaan_3 = DB::select("SELECT pertanyaan_3, count(pertanyaan_3) as jumlah
                                     FROM amd_campaign_1
-                                    GROUP BY pertanyaan_3");
+                                    GROUP BY pertanyaan_3
+                                    ORDER BY jumlah desc");
 
         $pertanyaan_4 = Campaign1::select('pertanyaan_4')->get();
 
@@ -51,7 +56,7 @@ class Campaign1Controller extends Controller
         $pecah = str_replace(']', "", $pecah);
         $pertanyaan_4 = array_count_values($pecah);
 
-        return view('backend.campaign.index', compact('getCampaign', 'getKupon', 'getUserCampaign', 'getAllKupon', 'pertanyaan_1', 'pertanyaan_2', 'pertanyaan_3', 'pertanyaan_4'));
+        return view('backend.campaign.index', compact('getCampaign', 'getKupon', 'getNoKupon', 'getUserCampaign', 'getAllKupon', 'pertanyaan_1', 'pertanyaan_2', 'pertanyaan_3', 'pertanyaan_4'));
     }
 
     public function getPertanyaan_1()

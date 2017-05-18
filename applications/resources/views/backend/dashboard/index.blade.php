@@ -35,111 +35,6 @@
 <div class="row">
   <div class="page-title">
     <div class="title_left">
-      <h3>Facebook <small>Fanpage Analytics</small></h3>
-    </div>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-md-6 col-sm-6 col-xs-12">
-    <div class="x_panel">
-      <div class="x_title">
-        <h2>Chart Page Impression</h2>
-        <ul class="nav navbar-right panel_toolbox">
-          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
-        </ul>
-        <div class="clearfix"></div>
-      </div>
-      <div class="x_content">
-        <canvas id="chartPageImpression"></canvas>
-          <div style="text-align: center;">
-            <label>
-              <a id="pagingImpressionPrev" onclick="pagingImpression(this)">Prev</a>
-            </label>
-            <label>
-              <a id="pagingImpressionNext" onclick="pagingImpression(this)">Next</a>
-            </label>
-          </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-md-6 col-sm-6 col-xs-12">
-    <div class="x_panel">
-      <div class="x_title">
-        <h2>Chart Page Impression Organic</h2>
-        <ul class="nav navbar-right panel_toolbox">
-          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
-        </ul>
-        <div class="clearfix"></div>
-      </div>
-      <div class="x_content">
-        <canvas id="chartPageImpressionOrganic"></canvas>
-          <div style="text-align: center;">
-            <label>
-              <a id="pagingImpressionOrganicPrev" onclick="pagingImpressionOrganic(this)">Prev</a>
-            </label>
-            <label>
-              <a id="pagingImpressionOrganicNext" onclick="pagingImpressionOrganic(this)">Next</a>
-            </label>
-          </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-md-6 col-sm-6 col-xs-12">
-    <div class="x_panel">
-      <div class="x_title">
-        <h2>Chart Page View</h2>
-        <ul class="nav navbar-right panel_toolbox">
-          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
-        </ul>
-        <div class="clearfix"></div>
-      </div>
-      <div class="x_content">
-        <canvas id="chartPageView"></canvas>
-          <div style="text-align: center;">
-            <label>
-              <a id="pagingPageViewPrev" onclick="pagingPageView(this)">Prev</a>
-            </label>
-            <label>
-              <a id="pagingPageViewNext" onclick="pagingPageView(this)">Next</a>
-            </label>
-          </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-md-6 col-sm-6 col-xs-12">
-    <div class="x_panel">
-      <div class="x_title">
-        <h2>Chart Engaged User</h2>
-        <ul class="nav navbar-right panel_toolbox">
-          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
-        </ul>
-        <div class="clearfix"></div>
-      </div>
-      <div class="x_content">
-        <canvas id="chartEngagedUser"></canvas>
-          <div style="text-align: center;">
-            <label>
-              <a id="pagingEngagedUserPrev" onclick="pagingEngagedUser(this)">Prev</a>
-            </label>
-            <label>
-              <a id="pagingEngagedUserNext" onclick="pagingEngagedUser(this)">Next</a>
-            </label>
-          </div>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-<hr>
-
-<div class="row">
-  <div class="page-title">
-    <div class="title_left">
       <h3>Google <small>Website Analytics</small></h3>
     </div>
   </div>
@@ -270,6 +165,111 @@
       </div>
       <div class="x_content">
         <canvas id="chartTopBrowsers"></canvas>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="page-title">
+    <div class="title_left">
+      <h3>Facebook <small>Fanpage Analytics</small></h3>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Chart Page Impression</h2>
+        <ul class="nav navbar-right panel_toolbox">
+          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+        </ul>
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content">
+        <canvas id="chartPageImpression"></canvas>
+          <div style="text-align: center;">
+            <label>
+              <a id="pagingImpressionPrev" onclick="pagingImpression(this)">Prev</a>
+            </label>
+            <label>
+              <a id="pagingImpressionNext" onclick="pagingImpression(this)">Next</a>
+            </label>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Chart Page Impression Organic</h2>
+        <ul class="nav navbar-right panel_toolbox">
+          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+        </ul>
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content">
+        <canvas id="chartPageImpressionOrganic"></canvas>
+          <div style="text-align: center;">
+            <label>
+              <a id="pagingImpressionOrganicPrev" onclick="pagingImpressionOrganic(this)">Prev</a>
+            </label>
+            <label>
+              <a id="pagingImpressionOrganicNext" onclick="pagingImpressionOrganic(this)">Next</a>
+            </label>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Chart Page View</h2>
+        <ul class="nav navbar-right panel_toolbox">
+          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+        </ul>
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content">
+        <canvas id="chartPageView"></canvas>
+          <div style="text-align: center;">
+            <label>
+              <a id="pagingPageViewPrev" onclick="pagingPageView(this)">Prev</a>
+            </label>
+            <label>
+              <a id="pagingPageViewNext" onclick="pagingPageView(this)">Next</a>
+            </label>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Chart Engaged User</h2>
+        <ul class="nav navbar-right panel_toolbox">
+          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+        </ul>
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content">
+        <canvas id="chartEngagedUser"></canvas>
+          <div style="text-align: center;">
+            <label>
+              <a id="pagingEngagedUserPrev" onclick="pagingEngagedUser(this)">Prev</a>
+            </label>
+            <label>
+              <a id="pagingEngagedUserNext" onclick="pagingEngagedUser(this)">Next</a>
+            </label>
+          </div>
       </div>
     </div>
   </div>
@@ -475,7 +475,7 @@
         });
 
         $('#chartVisitorWebsite').replaceWith('<canvas id="chartVisitorWebsite"></canvas>');
-        
+
         var cVW = document.getElementById("chartVisitorWebsite");
         var lineChartVisitorWebsite = new Chart(cVW, {
             type: 'line',
@@ -503,7 +503,7 @@
 
         $.each(json.avgSessionDuration, function () {
           $.each(this, function (name, value) {
-            echoAvgSessionDuration = value.toHHMMSS(); 
+            echoAvgSessionDuration = value.toHHMMSS();
           });
         });
             $("#wrapper-avgSessionDuration").text(echoAvgSessionDuration);
