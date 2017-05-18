@@ -108,7 +108,7 @@ class UserController extends Controller
         $getUser = User::where('confirmation_code', $confirmation_code)->first();
 
         if(!$getUser){
-          abort('errors.404');
+          abort(404);
         }
 
         return view('backend.user.verify', compact('getUser'));
@@ -134,7 +134,7 @@ class UserController extends Controller
         $user = User::where('confirmation_code', $request->confirmation_code)->first();
 
         if(!$user){
-          abort('errors.404');
+          abort(404);
         }
 
         $user->password = Hash::make($request->password);
