@@ -50,7 +50,7 @@ class ProgramEventsController extends Controller
         $message = [
           'program_events_kategori_id.required' => 'Pilih Satu',
           'judul_promosi_ID.required' => 'Wajib di isi',
-          'judul_promosi_ID.max' => 'Terlalu Panjang, Max 25 Karakter',
+          'judul_promosi_ID.max' => 'Terlalu Panjang, Max 70 Karakter',
           'judul_promosi_ID.unique' => 'Judul ini sudah ada',
           'judul_promosi_EN.required' => 'Wajib di isi',
           'deskripsi_ID.required' => 'Wajib di isi',
@@ -68,7 +68,7 @@ class ProgramEventsController extends Controller
 
         $validator = Validator::make($request->all(), [
           'program_events_kategori_id' => 'required',
-          'judul_promosi_ID' => 'required|unique:amd_program_events|max:25',
+          'judul_promosi_ID' => 'required|unique:amd_program_events|max:70',
           'judul_promosi_EN' => 'required',
           'deskripsi_ID' => 'required|min:20',
           'deskripsi_EN' => 'required|min:20',
@@ -179,6 +179,7 @@ class ProgramEventsController extends Controller
         $message = [
           'program_events_kategori_id.required' => 'Pilih Satu',
           'judul_promosi_ID.required' => 'Wajib di isi',
+          'judul_promosi_ID.max' => 'Terlalu Panjang, Max 70 Karakter',
           'judul_promosi_ID.unique' => 'Judul ini sudah ada',
           'judul_promosi_EN.required' => 'Wajib di isi',
           'deskripsi_ID.required' => 'Wajib di isi',
@@ -196,7 +197,7 @@ class ProgramEventsController extends Controller
 
         $validator = Validator::make($request->all(), [
           'program_events_kategori_id' => 'required',
-          'judul_promosi_ID' => 'required|unique:amd_program_events,judul_promosi_ID,'.$request->id,
+          'judul_promosi_ID' => 'required|max:70|unique:amd_program_events,judul_promosi_ID,'.$request->id,
           'judul_promosi_EN' => 'required',
           'deskripsi_ID' => 'required|min:20',
           'deskripsi_EN' => 'required|min:20',

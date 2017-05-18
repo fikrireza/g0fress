@@ -44,13 +44,13 @@ class ProgramEventsKategoriController extends Controller
     {
         $message = [
           'judul_kategori_ID.required' => 'Wajib di isi',
-          'judul_kategori_ID.max' => 'Terlalu Panjang',
+          'judul_kategori_ID.max' => 'Terlalu Panjang, Max 70 Karakter',
           'judul_kategori_ID.unique' => 'Judul ini sudah ada',
           'judul_kategori_EN.required' => 'Wajib di isi',
         ];
 
         $validator = Validator::make($request->all(), [
-          'judul_kategori_ID' => 'required|unique:amd_program_events_kategori|max:30',
+          'judul_kategori_ID' => 'required|unique:amd_program_events_kategori|max:70',
           'judul_kategori_EN' => 'required'
         ], $message);
 
@@ -113,12 +113,13 @@ class ProgramEventsKategoriController extends Controller
     {
         $message = [
           'judul_kategori_ID.required' => 'Wajib di isi',
+          'judul_kategori_ID.max' => 'Terlalu Panjang, Max 70 Karakter',
           'judul_kategori_ID.unique' => 'Judul ini sudah ada',
           'judul_kategori_EN.required' => 'Wajib di isi'
         ];
 
         $validator = Validator::make($request->all(), [
-          'judul_kategori_ID' => 'required|unique:amd_program_events_kategori,judul_kategori_ID,'.$request->id,
+          'judul_kategori_ID' => 'required|max:70|unique:amd_program_events_kategori,judul_kategori_ID,'.$request->id,
           'judul_kategori_EN' => 'required'
         ], $message);
 
@@ -142,7 +143,7 @@ class ProgramEventsKategoriController extends Controller
           $update->slug = str_slug($request->judul_kategori_ID,'-');
           $update->actor = Auth::user()->id;
           $update->update();
-          
+
           $log = new LogAkses;
           $log->actor = Auth::user()->id;
           $log->aksi = 'Mengubah Program & Events Kategori '.$request->judul_kategori_ID;
