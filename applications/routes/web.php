@@ -165,6 +165,14 @@ Route::group(['middleware' => ['isAdministrator']], function () {
   Route::post('admin/tentang-galeri/ubah', 'Backend\TentangController@editGaleri')->name('tentangGaleri.edit');
   Route::get('admin/tentang-galeri/delete/{id}', 'Backend\TentangController@deleteGaleri')->name('tentangGaleri.delete');
 
+  // Tentang Distribution Maps
+  Route::get('admin/tentang-distribution', 'Backend\DistributionController@index')->name('distribution.index');
+  Route::get('admin/tentang-distribution/tambah', 'Backend\DistributionController@tambah')->name('distribution.tambah');
+  Route::post('admin/tentang-distribution/tambah', 'Backend\DistributionController@store')->name('distribution.store');
+  Route::get('admin/tentang-distribution/ubah/{id}', 'Backend\DistributionController@ubah')->name('distribution.ubah');
+  Route::post('admin/tentang-distribution/ubah', 'Backend\DistributionController@edit')->name('distribution.edit');
+  Route::get('admin/tentang-distribution/publish/{id}', 'Backend\DistributionController@publish')->name('distribution.publish');
+
   // User
   Route::get('admin/users', 'Backend\UserController@index')->name('users.index');
   Route::get('admin/users/reset/{id}', 'Backend\UserController@reset')->name('users.reset');

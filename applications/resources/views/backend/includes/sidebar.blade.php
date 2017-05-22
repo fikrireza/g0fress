@@ -59,6 +59,7 @@
             <ul class="nav child_menu">
               <li class="{{ Route::currentRouteNamed('tentang.index') ? 'current-page' : '' }}{{ Route::currentRouteNamed('tentang.tambah') ? 'current-page' : '' }}{{ Route::currentRouteNamed('tentang.ubah') ? 'current-page' : '' }}"><a href="{{ route('tentang.index') }}">Visi & Misi</a></li>
               <li class="{{ Route::currentRouteNamed('tentangGaleri.index') ? 'current-page' : '' }}{{ Route::currentRouteNamed('tentangGaleri.tambah') ? 'current-page' : '' }}{{ Route::currentRouteNamed('tentangGaleri.ubah') ? 'current-page' : '' }}"><a href="{{ route('tentangGaleri.index') }}">Certificate & Achievement </a></li>
+              <li class="{{ Route::currentRouteNamed('distribution.index') ? 'current-page' : ''}}{{ Route::currentRouteNamed('distribution.tambah') ? 'current-page' : ''}}"><a href="{{ route('distribution.index')}}">Distribution Maps</a></li>
             </ul>
 
           </li>
