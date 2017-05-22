@@ -45,12 +45,7 @@ class TentangController extends Controller
           'misi_deskripsi_EN.required' => 'Wajib di isi',
           'misi_deskripsi_EN.min' => 'Terlalu Singkat',
           'misi_deskripsi_ID.required' => 'Wajib di isi',
-          'misi_deskripsi_ID.min' => 'Terlalu Singkat',
-          'img_url.required' => 'Wajib di isi',
-          'img_url.image' => 'Format Gambar Tidak Sesuai',
-          'img_url.max' => 'File Size Terlalu Besar',
-          'img_url.dimensions' => 'Ukuran yg di terima 1920px x 781px',
-          'img_alt.required' => 'Wajib di isi',
+          'misi_deskripsi_ID.min' => 'Terlalu Singkat'
         ];
 
         $validator = Validator::make($request->all(), [
@@ -59,9 +54,7 @@ class TentangController extends Controller
           'visi_deskripsi_EN' => 'required|min:20',
           'visi_deskripsi_ID' => 'required|min:20',
           'misi_deskripsi_EN' => 'required|min:20',
-          'misi_deskripsi_ID' => 'required|min:20',
-          'img_url' => 'required|image|mimes:jpeg,bmp,png|max:2000|dimensions:max_width=1920,max_height=781',
-          'img_alt' => 'required',
+          'misi_deskripsi_ID' => 'required|min:20'
         ], $message);
 
 
@@ -71,10 +64,6 @@ class TentangController extends Controller
         }
 
         DB::transaction(function() use($request){
-          $image = $request->file('img_url');
-          $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
-          Image::make($image)->fit(1920,781)->save('images/tentang/'. $img_url);
-
           $save = new Tentang;
           $save->deskripsi_EN = $request->deskripsi_EN;
           $save->deskripsi_ID = $request->deskripsi_ID;
@@ -82,8 +71,6 @@ class TentangController extends Controller
           $save->visi_deskripsi_ID = $request->visi_deskripsi_ID;
           $save->misi_deskripsi_EN = $request->misi_deskripsi_EN;
           $save->misi_deskripsi_ID = $request->misi_deskripsi_ID;
-          $save->img_url  = $img_url;
-          $save->img_alt  = $request->img_alt;
           $save->slug = 'tentang';
           $save->actor = Auth::user()->id;
           $save->save();
@@ -124,11 +111,7 @@ class TentangController extends Controller
           'misi_deskripsi_EN.required' => 'Wajib di isi',
           'misi_deskripsi_EN.min' => 'Terlalu Singkat',
           'misi_deskripsi_ID.required' => 'Wajib di isi',
-          'misi_deskripsi_ID.min' => 'Terlalu Singkat',
-          'img_url.image' => 'Format Gambar Tidak Sesuai',
-          'img_url.max' => 'File Size Terlalu Besar',
-          'img_url.dimensions' => 'Ukuran yg di terima 1920px x 781px',
-          'img_alt.required' => 'Wajib di isi',
+          'misi_deskripsi_ID.min' => 'Terlalu Singkat'
         ];
 
         $validator = Validator::make($request->all(), [
@@ -137,9 +120,7 @@ class TentangController extends Controller
           'visi_deskripsi_EN' => 'required|min:20',
           'visi_deskripsi_ID' => 'required|min:20',
           'misi_deskripsi_EN' => 'required|min:20',
-          'misi_deskripsi_ID' => 'required|min:20',
-          'img_url' => 'image|mimes:jpeg,bmp,png|max:2000|dimensions:max_width=1920,max_height=781',
-          'img_alt' => 'required',
+          'misi_deskripsi_ID' => 'required|min:20'
         ], $message);
 
 
@@ -149,7 +130,6 @@ class TentangController extends Controller
         }
 
         DB::transaction(function() use($request){
-          $image = $request->file('img_url');
 
           $update = Tentang::find($request->id);
           $update->deskripsi_EN = $request->deskripsi_EN;
@@ -158,19 +138,9 @@ class TentangController extends Controller
           $update->visi_deskripsi_ID = $request->visi_deskripsi_ID;
           $update->misi_deskripsi_EN = $request->misi_deskripsi_EN;
           $update->misi_deskripsi_ID = $request->misi_deskripsi_ID;
-          $update->img_alt  = $request->img_alt;
           $update->slug = 'tentang';
           $update->actor = Auth::user()->id;
-
-          if(!$image){
-            $update->update();
-          }else{
-            $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
-            Image::make($image)->fit(1920,781)->save('images/tentang/'. $img_url);
-
-            $update->img_url  = $img_url;
-            $update->update();
-          }
+          $update->update();
 
           $log = new LogAkses;
           $log->actor = Auth::user()->id;

@@ -86,27 +86,6 @@
             </div>
           </div>
           <div class="ln_solid"></div>
-          <div class="item form-group {{ $errors->has('img_url') ? 'has-error' : ''}}">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Distribution Map</label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="img_url" class="form-control col-md-7 col-xs-12" name="img_url" type="file">
-              <span style="color:blue; font-size:11px;">Width: 100px; Heigh: 100px</span>
-              @if($errors->has('img_url'))
-                <code><span style="color:red; font-size:12px;">{{ $errors->first('img_url')}}</span></code>
-              @endif
-            </div>
-          </div>
-          <div class="item form-group {{ $errors->has('img_alt') ? 'has-error' : ''}}">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Deskripsi Gambar
-            </label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="img_alt" class="form-control col-md-7 col-xs-12" name="img_alt" placeholder="Contoh: Deskripsi Gambar" type="text" value="{{ old('img_alt') }}">
-              @if($errors->has('img_alt'))
-                <code><span style="color:red; font-size:12px;">{{ $errors->first('img_alt')}}</span></code>
-              @endif
-            </div>
-          </div>
-          <div class="ln_solid"></div>
           <div class="form-group">
             <div class="col-md-6 col-md-offset-3">
               <a href="{{ route('tentang.index') }}" class="btn btn-primary">Cancel</a>

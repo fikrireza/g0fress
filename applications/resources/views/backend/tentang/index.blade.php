@@ -45,6 +45,8 @@
         <ul class="nav panel_toolbox">
           @if ($getTentang->isEmpty())
           <a href="{{ route('tentang.tambah') }}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Tambah</a>
+          @else
+          <a href="{{ route('tentang.ubah', $getTentang[0]->id) }}" class="btn btn-large btn-warning btn-sm pull-right"><i class="fa fa-pencil"></i> Ubah</a>
           @endif
         </ul>
         <div class="clearfix"></div>
@@ -63,7 +65,7 @@
             {!! $getTentang[0]->visi_deskripsi_EN !!}
             <footer>Visi EN</footer>
           </blockquote>
-<hr>
+            <hr>
           <blockquote>
             {!! $getTentang[0]->misi_deskripsi_ID!!}
             <footer>Misi ID</footer>
@@ -84,10 +86,6 @@
 
         <div class="clearfix"></div>
         <hr>
-        <div class="col-md-12 col-sm-12">
-          <h2>Distribution Maps</h2>
-          <img src="{{ asset('images/tentang').'/'.$getTentang[0]->img_url }}" class="thumbnail">
-        </div>
         <div class="col-md-12">
           <a href="{{ route('tentang.ubah', $getTentang[0]->id) }}" class="btn btn-large btn-warning btn-sm pull-right"><i class="fa fa-pencil"></i> Ubah</a>
         </div>
