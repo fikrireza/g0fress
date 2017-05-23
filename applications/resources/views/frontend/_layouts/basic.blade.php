@@ -21,7 +21,6 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('plugin/font-awesome/css/font-awesome.min.css') }}">
 
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/public.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/font/1-font-family.css') }}">
 
     @yield('head-style')
 

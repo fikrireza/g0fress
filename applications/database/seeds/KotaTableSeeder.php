@@ -13,7 +13,7 @@ class KotaTableSeeder extends Seeder
      */
     public function run()
     {
-      DB::table('kota')->insert(array(
+      DB::table('amd_kota')->insert(array(
           array('nama_kota'=>'ACEH'),
           array('nama_kota'=>'SUMATERA UTARA'),
           array('nama_kota'=>'SUMATERA BARAT'),

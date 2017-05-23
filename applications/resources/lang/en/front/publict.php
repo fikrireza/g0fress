@@ -5,7 +5,7 @@ return [
 	'product' => 'Product',
 	'about' => 'About',
 	'news'  => 'News',
-	'program' => 'Program & Events',
+	'program' => 'Promotion',
 	'contact' => 'Contact',
 	'copy-right' => '© 2017 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore<br>magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
 	

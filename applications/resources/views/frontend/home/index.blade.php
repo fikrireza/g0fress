@@ -14,8 +14,6 @@
 
 @section('head-style')
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/home.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/events-list-item-normal.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/produk-slider-category.css') }}">
 
 	<link rel="stylesheet" href="{{ asset('plugin/owl-carousel/owl.carousel.css') }}">
 	<link rel="stylesheet" href="{{ asset('plugin/owl-carousel/owl.theme.css') }}">
@@ -142,6 +140,32 @@
 				</div>
 			</div>
 			@endforeach
+		</div>
+
+		<div class="wrapper-vidio">
+			@foreach($callProgramEventVidio as $list)
+			@php
+				$url 			= $list->video_url;
+				$step1			= explode('v=', $url);
+				$step2 			= explode('&',$step1[1]);
+				$vedio_id 		= $step2[0];
+				$thumbnail 		= 'http://img.youtube.com/vi/'.$vedio_id.'/0.jpg';
+			@endphp
+			<div class="vidio-content">
+				<div class="thumnail-vidio" style="background-image: url('{{ $thumbnail }}');">
+					<div class="wrapper-icon">
+						<a href="{{ route('frontend.program-event.view', ['slug'=>$list->slug]) }}">
+							<img src="{{ asset('public/image/default/icon-youtube.png') }}">
+						</a>
+					</div>
+				</div>
+				<div class="description">
+					<h2>{{ $list->judul }}</h2>
+					<p>{!! Str::words($list->deskripsi, 20, "") !!}</p>
+				</div>
+			</div>
+			@endforeach
+			<div class="clearfix"></div>
 		</div>
 
 		<div class="for-btn-see-more">

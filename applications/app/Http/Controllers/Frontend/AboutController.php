@@ -7,8 +7,11 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Tentang;
 use App\Models\TentangGaleri;
+use App\Models\Distribution;
+use App\Models\Kota;
 
 use App;
+use DB;
 
 class AboutController extends Controller
 {
@@ -27,9 +30,7 @@ class AboutController extends Controller
     	$callAbout = Tentang::select(
     		$deskripsi,
     		$misi,
-    		$visi,
-    		'img_url',
-    		'img_alt'
+    		$visi
     	)->first();
 
     	$callImg = TentangGaleri::select(
@@ -40,6 +41,25 @@ class AboutController extends Controller
         ->where('flag_publish', '1')
         ->get();
 
-    	return view('frontend.about.index', compact('callAbout','callImg'));
+        $callProv = Kota::select(
+            'id',
+            'nama_kota',
+            DB::raw('(select count(id_provinsi) from amd_distribution where amd_distribution.id_provinsi = amd_kota.id) as count_city')
+        )
+        ->get();
+        
+        $callCity = Distribution::select(
+            'id_provinsi',
+            'nama_kota'
+        )
+        ->where('flag_publish', '1')
+        ->get();
+
+    	return view('frontend.about.index', compact(
+            'callAbout',
+            'callImg',
+            'callProv',
+            'callCity'
+        ));
     }
 }

@@ -76,6 +76,20 @@ class HomeController extends Controller
             ->limit(15)
             ->get();
 
+        $callProgramEventVidio = ProgramEvents::select(
+                $callProgramEventJudul, 
+                'video_url',
+                'img_alt',
+                'slug',
+                $callProgramEventDeskripsi
+            )
+            ->where('flag_publish', '1')
+            ->whereDATE('tanggal_post', '<=', $format_date)
+            ->whereNotNull('video_url')
+            ->orderBy('id', 'desc')
+            ->limit(8)
+            ->get();
+
 		$callNews = News::select(
                 $callNewsJudul, 
                 $callNewsDeskripsi, 
@@ -92,6 +106,7 @@ class HomeController extends Controller
             'items',
             'callSlider',
             'callProgramEvent',
+            'callProgramEventVidio',
             'callKategory',
             'callNews',
             'callAfiliasi'

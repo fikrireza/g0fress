@@ -64,7 +64,6 @@ class NewsController extends Controller
             ->groupBy('date')
             ->get();
 
-        // dd($callNewsListDate);
     	return view('frontend.news.index',compact('callNews','callNewsList','callNewsListDate'));
     }
     function view($slug){

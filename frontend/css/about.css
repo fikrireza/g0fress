@@ -59,6 +59,224 @@
 	width: auto;
 	margin-top: 40px;
 }
+
+.wrapper-map{
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+}
+.wrapper-map .img-map{
+	width: 100%;
+}
+.wrapper-map .part-maps{
+	float: left;
+	width: 25%;
+	position: relative;
+}
+.wrapper-map .pin-wrapper{
+	position: absolute;
+	width: 20px;
+	height: 20px;
+}
+.wrapper-map .pin-wrapper img{
+	cursor: pointer;
+	width: 20px;
+	height: auto;
+	visibility: visible;
+	opacity: 1;
+	transition: all .51s;
+}
+.wrapper-map .pin-wrapper:hover img{
+	visibility: hidden;
+	opacity: 0;
+}
+.wrapper-map .pin-wrapper .description{
+	top: -70px;
+	left: -50px;
+	text-align: center;
+	width: 200px; 
+	border-radius: 10px; 
+	border:5px solid rgb(0,162,220); 
+	background-color: rgb(255,255,255); 
+	padding: 5px;
+	position: relative;
+	z-index: 2;
+	visibility: hidden;
+	opacity: 0;
+	transition: all .51s;
+}
+.wrapper-map .pin-wrapper:hover .description{
+	visibility: visible;
+	opacity: 1;
+}
+/*.wrapper-map .pin-wrapper .description:after{
+    top: 100%;
+    left: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(136, 183, 213, 0);
+    border-top-color: rgb(0,162,220);
+    border-width: 20px;
+    margin-left: -20px;
+}*/
+.wrapper-map .pin-wrapper .description h4{
+    font-family: 'US101';
+	color: rgb(114,119,121);
+	text-align: center;
+	border-bottom: .5px solid rgb(0,162,220); 
+	margin: 0px;
+}
+.wrapper-map .pin-wrapper .description p{
+	font-family: 'US101';
+	color: rgb(114,119,121);
+	text-align: center;
+	width: 50%;
+	margin: 0px;
+	float: left;
+}
+
+.wrapper-map .pin-wrapper#maps-prov-1{
+	top: 7vh;
+	left: 4vw;
+}
+.wrapper-map .pin-wrapper#maps-prov-2{
+	top: 12vh;
+	left: 7vw;
+}
+.wrapper-map .pin-wrapper#maps-prov-3{
+	top: 26vh;
+	left: 11vw;
+}
+.wrapper-map .pin-wrapper#maps-prov-4{
+	top: 21vh;
+	left: 13vw;
+}
+.wrapper-map .pin-wrapper#maps-prov-5{
+	top: 25vh;
+	left: 21vw;
+}
+.wrapper-map .pin-wrapper#maps-prov-6{
+	top: 30vh;
+	left: 17vw;
+}
+.wrapper-map .pin-wrapper#maps-prov-7{
+	top: 39vh;
+	left: 19vw;
+}
+.wrapper-map .pin-wrapper#maps-prov-8{
+	top: 38vh;
+	left: 25vw;
+}
+.wrapper-map .pin-wrapper#maps-prov-9{
+	top: 41vh;
+	left: 16vw;
+}
+.wrapper-map .pin-wrapper#maps-prov-10{
+	top: 46vh;
+	left: 21vw;
+}
+.wrapper-map .pin-wrapper#maps-prov-11{
+	top: 54vh;
+	left: 27vw;
+}
+.wrapper-map .pin-wrapper#maps-prov-12{
+	top: 58vh;
+	left: 28vw;
+}
+.wrapper-map .pin-wrapper#maps-prov-13{
+	top: 55vh;
+	left: 24vw;
+}
+.wrapper-map .pin-wrapper#maps-prov-14{
+	top: 58vh;
+	left: 31vw;
+}
+.wrapper-map .pin-wrapper#maps-prov-15{
+	top: 61vh;
+	left: 33vw;
+}
+.wrapper-map .pin-wrapper#maps-prov-16{
+	top: 61vh;
+	left: 37vw;
+}
+.wrapper-map .pin-wrapper#maps-prov-17{
+	top: 63vh;
+	left: 44vw;
+}
+.wrapper-map .pin-wrapper#maps-prov-18{
+	top: 65vh;
+	left: 48vw;
+}
+.wrapper-map .pin-wrapper#maps-prov-19{
+	top: 66vh;
+	left: 58vw;
+}
+.wrapper-map .pin-wrapper#maps-prov-20{
+	top: 30vh;
+	left: 34vw;
+}
+.wrapper-map .pin-wrapper#maps-prov-21{
+	top: 35vh;
+	left: 39vw;
+}
+.wrapper-map .pin-wrapper#maps-prov-22{
+	top: 39vh;
+	left: 44vw;
+}
+.wrapper-map .pin-wrapper#maps-prov-23{
+	top: 26vh;
+	left: 46vw;
+}
+.wrapper-map .pin-wrapper#maps-prov-24{
+	top: 15vh;
+	left: 46vw;
+}
+.wrapper-map .pin-wrapper#maps-prov-25{
+	top: 24vh;
+	left: 63vw;
+}
+.wrapper-map .pin-wrapper#maps-prov-26{
+	top: 39vh;
+	left: 52vw;
+}
+.wrapper-map .pin-wrapper#maps-prov-27{
+	top: 35vh;
+	left: 56vw;
+}
+.wrapper-map .pin-wrapper#maps-prov-28{
+	top: 42vh;
+	left: 58vw;
+}
+.wrapper-map .pin-wrapper#maps-prov-29{
+	top: 45vh;
+	left: 54vw;
+}
+.wrapper-map .pin-wrapper#maps-prov-30{
+	top: 24vh;
+	left: 59vw;
+}
+.wrapper-map .pin-wrapper#maps-prov-31{
+	top: 49vh;
+	left: 74vw;
+}
+.wrapper-map .pin-wrapper#maps-prov-32{
+	top: 28vh;
+	left: 70vw;
+}
+.wrapper-map .pin-wrapper#maps-prov-33{
+	top: 33vh;
+	left: 82vw;
+}
+.wrapper-map .pin-wrapper#maps-prov-34{
+	top: 45vh;
+	left: 94vw;
+}
+
+
 @media (max-width: 480px) {
 	.background-content{
 		padding-bottom: 40px;
@@ -79,5 +297,14 @@
 		height: auto; 
 		width: 80%;
 		margin-top: 20px;
+	}
+
+	.wrapper-map .pin-wrapper:hover img{
+		visibility: visible;
+		opacity: 1;
+	}
+	.wrapper-map .pin-wrapper,
+	.wrapper-map .pin-wrapper .description{
+		display: none;
 	}
 }
