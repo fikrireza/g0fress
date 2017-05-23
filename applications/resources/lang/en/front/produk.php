@@ -1,6 +1,6 @@
 <?php
 
 return [
-	'nutrition-information' => 'nutrition information',
+	'nutrition-information' => 'description',
 	'ingredients' => 'ingredients',
 ];

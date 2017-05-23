@@ -37,7 +37,7 @@
             <td>:</td>
             <td>{{ $getProdukKategori->nama_kategori }}</td>
           </tr>
-          <tr>
+          {{-- <tr>
             <td><strong>Deskripsi ID</strong></td>
             <td>:</td>
             <td>{!! $getProdukKategori->deskripsi_ID !!}</td>
@@ -46,7 +46,7 @@
             <td><strong>Deskripsi EN</strong></td>
             <td>:</td>
             <td>{!! $getProdukKategori->deskripsi_EN !!}</td>
-          </tr>
+          </tr> --}}
           <tr>
             <td><strong>Gambar Produk</strong></td>
             <td>:</td>

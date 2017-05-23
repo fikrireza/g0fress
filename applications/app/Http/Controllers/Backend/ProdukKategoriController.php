@@ -47,10 +47,10 @@ class ProdukKategoriController extends Controller
         'nama_kategori.required' => 'Wajib di isi',
         'nama_kategori.unique' => 'Ketogori ini sudah ada',
         'nama_kategori.max' => 'Terlalu Panjang, Maks 25 Katakter',
-        'deskripsi_EN.required' => 'Wajib di isi',
-        'deskripsi_EN.min' => 'Terlalu Singkat',
-        'deskripsi_ID.required' => 'Wajib di isi',
-        'deskripsi_ID.min' => 'Terlalu Singkat',
+        // 'deskripsi_EN.required' => 'Wajib di isi',
+        // 'deskripsi_EN.min' => 'Terlalu Singkat',
+        // 'deskripsi_ID.required' => 'Wajib di isi',
+        // 'deskripsi_ID.min' => 'Terlalu Singkat',
         'img_url.required' => 'Wajib di isi',
         'img_url.image' => 'Format Gambar Tidak Sesuai',
         'img_url.max' => 'File Size Terlalu Besar',
@@ -61,8 +61,8 @@ class ProdukKategoriController extends Controller
 
       $validator = Validator::make($request->all(), [
         'nama_kategori' => 'required|unique:amd_produk_kategori|max:25',
-        'deskripsi_EN' => 'required|min:20',
-        'deskripsi_ID' => 'required|min:20',
+        // 'deskripsi_EN' => 'required|min:20',
+        // 'deskripsi_ID' => 'required|min:20',
         'img_url' => 'required|image|mimes:jpeg,bmp,png|max:2000|dimensions:max_width=443,max_height=418',
         'img_alt' => 'required',
         'tanggal_post' => 'required'
@@ -86,8 +86,8 @@ class ProdukKategoriController extends Controller
 
       $save = new ProdukKategori;
       $save->nama_kategori = $request->nama_kategori;
-      $save->deskripsi_EN = $request->deskripsi_EN;
-      $save->deskripsi_ID = $request->deskripsi_ID;
+      // $save->deskripsi_EN = $request->deskripsi_EN;
+      // $save->deskripsi_ID = $request->deskripsi_ID;
       $save->img_url  = $img_url;
       $save->img_alt  = $request->img_alt;
       $save->tanggal_post = $request->tanggal_post;
@@ -132,10 +132,10 @@ class ProdukKategoriController extends Controller
         'nama_kategori.required' => 'Wajib di isi',
         'nama_kategori.max' => 'Terlalu Panjang, Maks 25 Karakter',
         'nama_kategori.unique' => 'Kategori ini sudah ada',
-        'deskripsi_ID.required' => 'Wajib di isi',
-        'deskripsi_ID.min' => 'Terlalu Singkat',
-        'deskripsi_EN.required' => 'Wajib di isi',
-        'deskripsi_EN.min' => 'Terlalu Singkat',
+        // 'deskripsi_ID.required' => 'Wajib di isi',
+        // 'deskripsi_ID.min' => 'Terlalu Singkat',
+        // 'deskripsi_EN.required' => 'Wajib di isi',
+        // 'deskripsi_EN.min' => 'Terlalu Singkat',
         'img_url.image' => 'Format Gambar Tidak Sesuai',
         'img_url.max' => 'File Size Terlalu Besar',
         'img_url.dimensions' => 'Ukuran yg di terima 443px x 418px',
@@ -145,8 +145,8 @@ class ProdukKategoriController extends Controller
 
       $validator = Validator::make($request->all(), [
         'nama_kategori' => 'required|max:25|unique:amd_produk_kategori,nama_kategori,'.$request->id,
-        'deskripsi_ID' => 'required|min:20',
-        'deskripsi_EN' => 'required|min:20',
+        // 'deskripsi_ID' => 'required|min:20',
+        // 'deskripsi_EN' => 'required|min:20',
         'img_url' => 'image|mimes:jpeg,bmp,png|max:2000|dimensions:max_width=443,max_height=418',
         'img_alt' => 'required',
         'tanggal_post' => 'required'
@@ -169,8 +169,8 @@ class ProdukKategoriController extends Controller
       if (!$image) {
         $update = ProdukKategori::find($request->id);
         $update->nama_kategori = $request->nama_kategori;
-        $update->deskripsi_EN = $request->deskripsi_EN;
-        $update->deskripsi_ID = $request->deskripsi_ID;
+        // $update->deskripsi_EN = $request->deskripsi_EN;
+        // $update->deskripsi_ID = $request->deskripsi_ID;
         $update->img_alt  = $request->img_alt;
         $update->tanggal_post = $request->tanggal_post;
         $update->flag_publish = $flag_publish;
@@ -183,8 +183,8 @@ class ProdukKategoriController extends Controller
 
         $update = ProdukKategori::find($request->id);
         $update->nama_kategori = $request->nama_kategori;
-        $update->deskripsi_EN = $request->deskripsi_EN;
-        $update->deskripsi_ID = $request->deskripsi_ID;
+        // $update->deskripsi_EN = $request->deskripsi_EN;
+        // $update->deskripsi_ID = $request->deskripsi_ID;
         $update->img_url  = $img_url;
         $update->img_alt  = $request->img_alt;
         $update->tanggal_post = $request->tanggal_post;
