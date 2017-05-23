@@ -97,7 +97,7 @@
             <tr role="row">
               <th>No</th>
               <th>Produk Kategori</th>
-              <th>Deskripsi</th>
+              {{-- <th>Deskripsi</th> --}}
               <th>Tanggal Post</th>
               <th>Publish</th>
               <th>Aksi</th>
@@ -111,7 +111,7 @@
             <tr>
               <td>{{ $no }}</td>
               <td>{{ $key->nama_kategori }}</td>
-              <td>{!! $key->deskripsi_ID !!}</td>
+              {{-- <td>{!! $key->deskripsi_ID !!}</td> --}}
               <td>{!! ($key->tanggal_post <= date('Y-m-d')) ? "<span class='label label-success'>$key->tanggal_post</span>" : "<span class='label label-danger'>$key->tanggal_post</span>" !!}</td>
               <td>@if ($key->flag_publish == 1)
                     <a href="" class="unpublish" data-value="{{ $key->id }}" data-toggle="modal" data-target=".modal-unpublish"><span class="label label-success" data-toggle="tooltip" data-placement="top" title="Publish"><i class="fa fa-thumbs-o-up"></i></span></a>
