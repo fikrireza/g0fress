@@ -1,7 +1,7 @@
 <?php
 
 return [
-	'our-vission' => 'Our Vission',
+	'our-vission' => 'Our Vision',
 	'our-mission' => 'Our Mission',
 	'certifications' => 'Certifications',
 	'achievements' => 'Achievements',
