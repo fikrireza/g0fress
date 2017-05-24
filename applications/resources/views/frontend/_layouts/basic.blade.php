@@ -24,7 +24,7 @@
 
     @yield('head-style')
 
-	<link rel="icon" type="image/png" href="{{ asset('public/image/default/logo-gofress.png') }}" />
+	<link rel="icon" type="image/png" href="{{ asset('public/image/default/icon-gofress.png') }}" />
 	<link rel="image_src" href="" />
 
 		<script>
