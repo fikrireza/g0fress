@@ -49,11 +49,13 @@
 						@endforeach
 					</div>
 				</li>
+				@if($countNews != 0)
 				<li class="nav-link-list-li">
 					<a href="{{ route('frontend.news') }}">
 						@lang('front/publict.news')
 					</a>
 				</li>
+				@endif
 				<li class="nav-link-list-li">
 					<a href="{{ route('frontend.program-event') }}">
 						@lang('front/publict.program')

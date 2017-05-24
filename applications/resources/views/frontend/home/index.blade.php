@@ -177,6 +177,7 @@
 	</div>
 </div>
 
+@if($countNews != 0)
 <div class="background-content background-content-first">
 	<div class="title-background">
 		<div class="flag-title-wrapper white">
@@ -213,7 +214,7 @@
 
 	</div>
 </div>
-
+@endif
 <div class="background-content background-content-second">
 
 	<div class="title-background">

@@ -12,6 +12,7 @@ use App\Models\Inbox;
 use App\Models\Tentang;
 use App\Models\Banner;
 use App\Models\SocialMedia;
+use App\Models\News;
 
 use App;
 use Auth;
@@ -56,6 +57,10 @@ class AppServiceProvider extends ServiceProvider
             view()->share('navCallKategory', $navCallKategory);
             view()->share('navCallProduk', $navCallProduk);
             
+            // for news validate
+            $countNews = News::where('flag_publish', '1')->whereDATE('tanggal_post', '<=', $format_date)->count('id');
+            view()->share('countNews', $countNews);
+
             // for sosmed
             $callSosMed = SocialMedia::select(
                 'img_url',
