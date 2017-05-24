@@ -8,8 +8,8 @@
 <link href="{{ asset('backend/vendors/select2/dist/css/select2.min.css') }}" rel="stylesheet">
 <link href="{{ asset('backend/vendors/iCheck/skins/flat/green.css')}}" rel="stylesheet">
 <link href="{{ asset('backend/vendors/switchery/dist/switchery.min.css') }}" rel="stylesheet">
-{{-- <script src="{{asset('backend/vendors/ckeditor/ckeditor.js')}}"></script>
-<script src="{{asset('backend/vendors/ckfinder/ckfinder.js')}}"></script> --}}
+<script src="{{asset('backend/vendors/ckeditor/ckeditor.js')}}"></script>
+<script src="{{asset('backend/vendors/ckfinder/ckfinder.js')}}"></script>
 @endsection
 
 @section('content')
@@ -37,7 +37,7 @@
               @endif
             </div>
           </div>
-          {{-- <div class="ln_solid"></div>
+          <div class="ln_solid"></div>
           <div class="item form-group {{ $errors->has('deskripsi_ID') ? 'has-error' : ''}}">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Deskripsi ID <span class="required">*</span>
             </label>
@@ -57,7 +57,7 @@
                 <code><span style="color:red; font-size:12px;">{{ $errors->first('deskripsi_EN')}}</span></code>
               @endif
             </div>
-          </div> --}}
+          </div>
           <div class="ln_solid"></div>
           <div class="item form-group">
             <label class="col-md-3"></label>
@@ -136,7 +136,7 @@
 <script src="{{ asset('backend/vendors/switchery/dist/switchery.min.js')}}"></script>
 <script src="{{ asset('backend/js/moment/moment.min.js') }}"></script>
 <script src="{{ asset('backend/js/datepicker/daterangepicker.js') }}"></script>
-{{-- <script type="text/javascript">
+<script type="text/javascript">
   CKEDITOR.replace('deskripsi_ID', {
     toolbar: [
     { name: 'document', groups: [ 'mode', 'document', 'doctools' ], items: [ 'Source', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates' ] },
@@ -178,7 +178,7 @@
   CKFinder.setupCKEditor( null, { basePath : '{{url('/')}}/plugins/ckfinder/'} );
   CKEDITOR.instances[deskripsi_ID].getData();
   CKEDITOR.instances[deskripsi_EN].getData();
-</script> --}}
+</script>
 <script>
   $(".select2_single").select2({
     placeholder: "Pilih Kategori",
