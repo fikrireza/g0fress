@@ -5,5 +5,5 @@ return [
 	'our-mission' => 'Our Mission',
 	'certifications' => 'Certifications',
 	'achievements' => 'Achievements',
-	'distribution-map' => 'Distribution Map',
+	'distribution-map' => 'Overseas Distribution',
 ];
