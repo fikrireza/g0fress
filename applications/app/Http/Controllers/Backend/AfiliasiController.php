@@ -57,8 +57,10 @@ class AfiliasiController extends Controller
       }
 
 
+      $salt = str_random(4);
+
       $image = $request->file('img_url');
-      $img_url = str_slug($request->nama_afiliasi,'-'). '.' . $image->getClientOriginalExtension();
+      $img_url = str_slug($request->nama_afiliasi,'-').'-'.$salt. '.' . $image->getClientOriginalExtension();
       Image::make($image)->save('images/afiliasi/'. $img_url);
 
       if($request->flag_publish == 'on'){
@@ -120,6 +122,7 @@ class AfiliasiController extends Controller
           return redirect()->route('afiliasi.ubah', array('id' => $request->id))->withErrors($validator)->withInput();
         }
 
+        $salt = str_random(4);
 
         DB::transaction(function() use($request){
           $image = $request->file('img_url');
@@ -140,7 +143,7 @@ class AfiliasiController extends Controller
           if (!$image) {
             $update->update();
           }else{
-            $img_url = str_slug($request->nama_afiliasi,'-'). '.' . $image->getClientOriginalExtension();
+            $img_url = str_slug($request->nama_afiliasi,'-').'-'.$salt. '.' . $image->getClientOriginalExtension();
             Image::make($image)->save('images/afiliasi/'. $img_url);
 
             $update->img_url  = $img_url;

@@ -73,9 +73,10 @@ class ProdukKategoriController extends Controller
         return redirect()->route('produkKategori.tambah')->withErrors($validator)->withInput();
       }
 
+      $salt = str_random(4);
 
       $image = $request->file('img_url');
-      $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
+      $img_url = str_slug($request->img_alt,'-').'-'.$salt. '.' . $image->getClientOriginalExtension();
       Image::make($image)->fit(443,418)->save('images/produk/'. $img_url);
 
       if($request->flag_publish == 'on'){
@@ -166,6 +167,8 @@ class ProdukKategoriController extends Controller
         $flag_publish = 1;
       }
 
+      $salt = str_random(4);
+
       if (!$image) {
         $update = ProdukKategori::find($request->id);
         $update->nama_kategori = $request->nama_kategori;
@@ -178,7 +181,7 @@ class ProdukKategoriController extends Controller
         $update->actor = Auth::user()->id;
         $update->update();
       }else{
-        $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
+        $img_url = str_slug($request->img_alt,'-').'-'.$salt. '.' . $image->getClientOriginalExtension();
         Image::make($image)->fit(443,418)->save('images/produk/'. $img_url);
 
         $update = ProdukKategori::find($request->id);
