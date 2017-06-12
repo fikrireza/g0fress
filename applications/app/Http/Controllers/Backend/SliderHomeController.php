@@ -174,7 +174,7 @@ class SliderHomeController extends Controller
         if (!$image) {
           $update->update();
         }else{
-          $img_url = str_slug($request->img_alt,'-').'-'.$salt '.' . $image->getClientOriginalExtension();
+          $img_url = str_slug($request->img_alt,'-').'-'.$salt. '.' . $image->getClientOriginalExtension();
           Image::make($image)->fit(1366,769)->save('images/slider/'. $img_url);
 
           $update->img_url  = $img_url;
