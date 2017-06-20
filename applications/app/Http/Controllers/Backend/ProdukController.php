@@ -241,7 +241,7 @@ class ProdukController extends Controller
         $update->slug = str_slug($request->nama_produk,'-');
         $update->actor = Auth::user()->id;
 
-        if (!$image || !$image_kanan || !$image_kiri) {
+        if (!$image && !$image_kanan && !$image_kiri) {
           $update->update();
         }elseif($image && $image_kanan && $image_kiri){
           $img_url = str_slug($request->img_alt,'-').'-'.$salt. '.' . $image->getClientOriginalExtension();
