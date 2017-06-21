@@ -21,11 +21,13 @@
 		</div>
 
 		<div class="float-right">
+			@if($callSosMed != null)
 			@foreach($callSosMed as $list)
 			<a href="{{ $list->url_account }}">
 				<img src="{{ asset('images/sosmed/'.$list->img_url) }}">
 			</a>
 			@endforeach
+			@endif
 		</div>
 
 		<div class="clearfix"></div>

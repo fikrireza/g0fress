@@ -23,7 +23,7 @@ class ProdukController extends Controller
             $callKategoryDeskripsi = 'deskripsi_ID as deskripsi';
         }
         else if (App::getLocale() == 'en') {
-            $callKategoryDeskripsi = 'deskripsi_ID as deskripsi';
+            $callKategoryDeskripsi = 'deskripsi_EN as deskripsi';
         }
 
 		$callKategory = ProdukKategori::select(
@@ -94,11 +94,17 @@ class ProdukController extends Controller
     }
 
     function callData($id){
-
+    	if (App::getLocale() == 'id') {
+            $callKategoryDeskripsi = 'deskripsi_ID as deskripsi';
+        }
+        else if (App::getLocale() == 'en') {
+            $callKategoryDeskripsi = 'deskripsi_EN as deskripsi';
+        }
+        
     	if (is_numeric($id)) {
 	    	$callProduk = Produk::select(
 	    		'ingredient', 
-	    		'nutrition_fact', 
+	    		$callKategoryDeskripsi, 
 	    		'img_url', 
 	    		'img_alt', 
 	    		'img_url_kiri', 
@@ -110,7 +116,7 @@ class ProdukController extends Controller
     	else{
     		$callProduk = Produk::select(
 	    		'ingredient', 
-	    		'nutrition_fact', 
+	    		$callKategoryDeskripsi, 
 	    		'img_url', 
 	    		'img_alt', 
 	    		'img_url_kiri', 

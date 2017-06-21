@@ -13,7 +13,7 @@
 					@lang('front/produk.nutrition-information')
 				</h2>
 				<div class="ditails">
-					{!! $callProduk->nutrition_fact !!}
+					{!! $callProduk->deskripsi !!}
 				</div>
 			</div>
 			<div class="ditails-description right">
