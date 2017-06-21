@@ -54,8 +54,10 @@ class BannerController extends Controller
           return redirect()->route('banner.tambah')->withErrors($validator)->withInput();
         }
 
+        $salt = str_random(4);
+
         $image = $request->file('img_url');
-        $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
+        $img_url = str_slug($request->img_alt,'-').'-'.$salt. '.' . $image->getClientOriginalExtension();
         Image::make($image)->fit(1366,494)->save('images/banner/'. $img_url);
 
         $save = new Banner;
@@ -107,6 +109,8 @@ class BannerController extends Controller
           return redirect()->route('banner.ubah', array('id' => $request->id))->withErrors($validator)->withInput();
         }
 
+        $salt = str_random(4);
+
         DB::transaction(function() use($request){
           $image = $request->file('img_url');
           $image_kanan = $request->file('img_url_kanan');
@@ -126,7 +130,7 @@ class BannerController extends Controller
           if (!$image) {
             $update->update();
           }else{
-            $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
+            $img_url = str_slug($request->img_alt,'-').'-'.$salt. '.' . $image->getClientOriginalExtension();
             Image::make($image)->fit(1366,494)->save('images/banner/'. $img_url);
 
             $update->img_url  = $img_url;

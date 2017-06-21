@@ -54,9 +54,10 @@ class SocialMediaController extends Controller
         return redirect()->route('social.tambah')->withErrors($validator)->withInput();
       }
 
+      $salt = str_random(4);
 
       $image = $request->file('img_url');
-      $img_url = str_slug($request->nama,'-'). '.' . $image->getClientOriginalExtension();
+      $img_url = str_slug($request->nama,'-').'-'.$salt. '.' . $image->getClientOriginalExtension();
       Image::make($image)->fit(40,40)->save('images/sosmed/'. $img_url);
 
       if($request->flag_publish == 'on'){
@@ -127,6 +128,8 @@ class SocialMediaController extends Controller
           $flag_publish = 1;
         }
 
+        $salt = str_random(4);
+
         $update = SocialMedia::find($request->id);
         $update->nama = $request->nama;
         $update->url_account  = $request->url_account;
@@ -136,7 +139,7 @@ class SocialMediaController extends Controller
         if (!$image) {
           $update->update();
         }else{
-          $img_url = str_slug($request->nama,'-'). '.' . $image->getClientOriginalExtension();
+          $img_url = str_slug($request->nama,'-').'-'.$salt. '.' . $image->getClientOriginalExtension();
           Image::make($image)->fit(40,40)->save('images/sosmed/'. $img_url);
 
           $update->img_url  = $img_url;

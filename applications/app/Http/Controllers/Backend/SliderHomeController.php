@@ -76,6 +76,8 @@ class SliderHomeController extends Controller
             $flag_publish = 1;
           }
 
+          $salt = str_random(4);
+
           $getPosisi = SliderHome::get();
           if($getPosisi->isEmpty()){
             $setPosisi = 0;
@@ -88,7 +90,7 @@ class SliderHomeController extends Controller
             $setPosisi = $request->posisi;
           }
 
-          $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
+          $img_url = str_slug($request->img_alt,'-').'-'.$salt. '.' . $image->getClientOriginalExtension();
           Image::make($image)->fit(1366,769)->save('images/slider/'. $img_url);
 
           $save = new SliderHome;
@@ -140,7 +142,7 @@ class SliderHomeController extends Controller
       }
 
 
-      // DB::transaction(function() use($request){
+      DB::transaction(function() use($request){
         $image = $request->file('img_url');
 
         if($request->flag_publish == null){
@@ -148,6 +150,8 @@ class SliderHomeController extends Controller
         }else{
           $flag_publish = 1;
         }
+
+        $salt = str_random(4);
 
         $getPosisi = SliderHome::get();
         if($getPosisi->isEmpty()){
@@ -170,7 +174,7 @@ class SliderHomeController extends Controller
         if (!$image) {
           $update->update();
         }else{
-          $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
+          $img_url = str_slug($request->img_alt,'-').'-'.$salt. '.' . $image->getClientOriginalExtension();
           Image::make($image)->fit(1366,769)->save('images/slider/'. $img_url);
 
           $update->img_url  = $img_url;
@@ -181,7 +185,7 @@ class SliderHomeController extends Controller
         $log->actor = Auth::user()->id;
         $log->aksi = 'Mengubah Slider Home';
         $log->save();
-      // });
+      });
 
       return redirect()->route('slider.index')->with('berhasil', 'Berhasil Mengubah Slider');
     }

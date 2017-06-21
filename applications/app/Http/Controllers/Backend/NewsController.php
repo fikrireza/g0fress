@@ -68,6 +68,7 @@ class NewsController extends Controller
           return redirect()->route('news.tambah')->withErrors($validator)->withInput();
         }
 
+
         DB::transaction(function () use($request) {
           $image = $request->file('img_url');
 
@@ -83,6 +84,8 @@ class NewsController extends Controller
             $show_homepage = 0;
           }
 
+          $salt = str_random(4);
+          
           if (!$image) {
             $save = New News;
             $save->judul_ID = $request->judul_ID;
@@ -97,7 +100,7 @@ class NewsController extends Controller
             $save->actor = Auth::user()->id;
             $save->save();
           }else{
-            $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
+            $img_url = str_slug($request->img_alt,'-').'-'.$salt. '.' . $image->getClientOriginalExtension();
             Image::make($image)->fit(363,363)->save('images/news/'. $img_url);
 
             $save = new News;
@@ -176,6 +179,7 @@ class NewsController extends Controller
         return redirect()->route('news.ubah', array('id' => $request->id))->withErrors($validator)->withInput();
       }
 
+
       DB::transaction(function () use($request) {
         $image = $request->file('img_url');
 
@@ -190,6 +194,8 @@ class NewsController extends Controller
         }else{
           $show_homepage = 0;
         }
+
+        $salt = str_random(4);
 
         if (!$image) {
           $update = News::find($request->id);
@@ -206,7 +212,7 @@ class NewsController extends Controller
           $update->actor = Auth::user()->id;
           $update->update();
         }else{
-          $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
+          $img_url = str_slug($request->img_alt,'-').'-'.$salt. '.' . $image->getClientOriginalExtension();
           Image::make($image)->fit(363,363)->save('images/news/'. $img_url);
 
           $update = News::find($request->id);

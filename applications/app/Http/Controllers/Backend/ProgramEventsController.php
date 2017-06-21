@@ -87,6 +87,7 @@ class ProgramEventsController extends Controller
           return redirect()->route('programEvents.tambah')->with('gagal', 'Isi Image Atau Video')->withInput();
         }
 
+
         DB::transaction(function() use($request){
           $image = $request->file('img_url');
           $image_thumb = $request->file('img_thumb');
@@ -103,6 +104,8 @@ class ProgramEventsController extends Controller
             $show_homepage = 0;
           }
 
+          $salt = str_random(4);
+          
           $save = new ProgramEvents;
           $save->program_events_kategori_id = $request->program_events_kategori_id;
           $save->judul_promosi_ID = $request->judul_promosi_ID;
@@ -121,10 +124,10 @@ class ProgramEventsController extends Controller
           if (!$image && !$image_thumb) {
             $save->save();
           }elseif($image && $image_thumb){
-            $img_url = str_slug($request->img_alt,'-'). '932x350.' . $image->getClientOriginalExtension();
+            $img_url = str_slug($request->img_alt,'-').'-'.$salt. '.' . $image->getClientOriginalExtension();
             Image::make($image)->fit(932,350)->save('images/programEvent/'. $img_url);
 
-            $img_url_thumb = str_slug($request->img_alt_thumb,'-'). '325x413.' . $image_thumb->getClientOriginalExtension();
+            $img_url_thumb = str_slug($request->img_alt_thumb,'-').'-'.$salt. '.' . $image_thumb->getClientOriginalExtension();
             Image::make($image_thumb)->fit(325,413)->save('images/programEvent/'. $img_url_thumb);
 
             $save->img_url = $img_url;
@@ -211,6 +214,7 @@ class ProgramEventsController extends Controller
           return redirect()->route('programEvents.ubah', array('id' => $request->id))->withErrors($validator)->withInput();
         }
 
+
         DB::transaction(function() use($request){
           $image = $request->file('img_url');
           $image_thumb = $request->file('img_thumb');
@@ -226,6 +230,8 @@ class ProgramEventsController extends Controller
           }else{
             $show_homepage = 0;
           }
+
+          $salt = str_random(4);
 
           $update = ProgramEvents::find($request->id);
           $update->program_events_kategori_id = $request->program_events_kategori_id;
@@ -248,24 +254,24 @@ class ProgramEventsController extends Controller
           }
           elseif($image)
           {
-            $img_url = str_slug($request->img_alt,'-'). '-932x350.' . $image->getClientOriginalExtension();
+            $img_url = str_slug($request->img_alt,'-').'-'.$salt. '.' . $image->getClientOriginalExtension();
             Image::make($image)->fit(932,350)->save('images/programEvent/'. $img_url);
 
             $update->img_url  = $img_url;
           }
           elseif($image_thumb)
           {
-            $img_thumb = str_slug($request->img_alt_thumb,'-'). '-217x224.' . $image_thumb->getClientOriginalExtension();
+            $img_thumb = str_slug($request->img_alt_thumb,'-').'-'.$salt. '.' . $image_thumb->getClientOriginalExtension();
             Image::make($image_thumb)->fit(325,413)->save('images/programEvent/'. $img_thumb);
 
             $update->img_thumb  = $img_thumb;
           }
           elseif($image && $image_thumb)
           {
-            $img_url = str_slug($request->img_alt,'-'). '-932x350.' . $image->getClientOriginalExtension();
+            $img_url = str_slug($request->img_alt,'-').'-'.$salt. '.' . $image->getClientOriginalExtension();
             Image::make($image)->fit(932,350)->save('images/programEvent/'. $img_url);
 
-            $img_thumb = str_slug($request->img_alt_thumb,'-'). '-217x224.' . $image_thumb->getClientOriginalExtension();
+            $img_thumb = str_slug($request->img_alt_thumb,'-').'-'.$salt. '.' . $image_thumb->getClientOriginalExtension();
             Image::make($image_thumb)->fit(325,413)->save('images/programEvent/'. $img_thumb);
 
             $update->img_thumb  = $img_thumb;

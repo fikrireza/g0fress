@@ -191,8 +191,10 @@ class TentangController extends Controller
 
 
         DB::transaction(function() use($request){
+          $salt = str_random(4);
+
           $image = $request->file('img_url');
-          $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
+          $img_url = str_slug($request->img_alt,'-').'-'.$salt. '.' . $image->getClientOriginalExtension();
           Image::make($image)->save('images/tentang/'. $img_url);
 
           if($request->flag_publish == 'on'){
@@ -271,6 +273,8 @@ class TentangController extends Controller
         DB::transaction(function() use($request){
           $image = $request->file('img_url');
 
+          $salt = str_random(4);
+
           if($request->flag_publish == 'on'){
             $flag_publish = 1;
           }else{
@@ -286,7 +290,7 @@ class TentangController extends Controller
           if(!$image){
             $update->update();
           }else{
-            $img_url = str_slug($request->img_alt,'-'). '.' . $image->getClientOriginalExtension();
+            $img_url = str_slug($request->img_alt,'-').'-'.$salt. '.' . $image->getClientOriginalExtension();
             Image::make($image)->save('images/tentang/'. $img_url);
 
             $update->img_url  = $img_url;
