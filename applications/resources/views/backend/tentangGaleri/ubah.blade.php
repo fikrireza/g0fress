@@ -48,7 +48,7 @@
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
               <input id="img_url" class="form-control col-md-7 col-xs-12" name="img_url" type="file">
-              <span style="color:blue; font-size:10px;">Max Width: 116px</span>
+              <span style="color:blue; font-size:10px;">Max Width: 160px</span>
               @if($errors->has('img_url'))
                 <code><span style="color:red; font-size:12px;">{{ $errors->first('img_url')}}</span></code>
               @endif
@@ -63,7 +63,7 @@
           <div class="item form-group {{ $errors->has('img_alt') ? 'has-error' : ''}}">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Deskripsi Gambar <span class="required">*</span></label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="img_alt" class="form-control col-md-7 col-xs-12" name="img_alt" placeholder="Contoh: Penghargaan Satu" required="required" type="text" value="{{ old('img_alt') }}">
+              <input id="img_alt" class="form-control col-md-7 col-xs-12" name="img_alt" placeholder="Contoh: Penghargaan Satu" required="required" type="text" value="{{ old('img_alt', $getTentangGaleri->img_alt) }}">
               @if($errors->has('img_alt'))
                 <code><span style="color:red; font-size:12px;">{{ $errors->first('img_alt')}}</span></code>
               @endif

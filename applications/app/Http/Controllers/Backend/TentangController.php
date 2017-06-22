@@ -173,13 +173,13 @@ class TentangController extends Controller
           'img_url.required' => 'Wajib di isi',
           'img_url.image' => 'Format Gambar Tidak Sesuai',
           'img_url.max' => 'File Size Terlalu Besar',
-          'img_url.dimensions' => 'Ukuran Lebar Maksimal 116px',
+          'img_url.dimensions' => 'Ukuran Lebar Maksimal 160px',
           'img_alt.required' => 'Wajib di isi',
         ];
 
         $validator = Validator::make($request->all(), [
           'cer_ach' => 'required',
-          'img_url' => 'required|image|mimes:jpeg,bmp,png|max:1000|dimensions:max_width=116',
+          'img_url' => 'required|image|mimes:jpeg,bmp,png|max:1000|dimensions:max_width=160',
           'img_alt' => 'required',
         ], $message);
 
@@ -253,13 +253,13 @@ class TentangController extends Controller
           'cer_ach.required' => 'Pilih Satu',
           'img_url.image' => 'Format Gambar Tidak Sesuai',
           'img_url.max' => 'File Size Terlalu Besar',
-          'img_url.dimensions' => 'Ukuran Lebar Maksimal 116px',
+          'img_url.dimensions' => 'Ukuran Lebar Maksimal 160px',
           'img_alt.required' => 'Wajib di isi',
         ];
 
         $validator = Validator::make($request->all(), [
           'cer_ach' => 'required',
-          'img_url' => 'image|mimes:jpeg,bmp,png|max:2000|dimensions:max_width=116',
+          'img_url' => 'image|mimes:jpeg,bmp,png|max:2000|dimensions:max_width=160',
           'img_alt' => 'required',
         ], $message);
 
@@ -273,30 +273,28 @@ class TentangController extends Controller
         DB::transaction(function() use($request){
           $image = $request->file('img_url');
 
-          $salt = str_random(4);
-
           if($request->flag_publish == 'on'){
             $flag_publish = 1;
           }else{
             $flag_publish = 0;
           }
 
-          $update = new tentangGaleri;
+          $update = TentangGaleri::find($request->id);
           $update->cer_ach  = $request->cer_ach;
           $update->img_alt  = $request->img_alt;
           $update->flag_publish = $flag_publish;
           $update->actor = Auth::user()->id;
 
-          if(!$image){
-            $update->update();
-          }else{
+          if($image){
+            $salt = str_random(4);
+
             $img_url = str_slug($request->img_alt,'-').'-'.$salt. '.' . $image->getClientOriginalExtension();
             Image::make($image)->save('images/tentang/'. $img_url);
 
             $update->img_url  = $img_url;
-
-            $update->update();
           }
+
+          $update->update();
 
 
           $log = new LogAkses;

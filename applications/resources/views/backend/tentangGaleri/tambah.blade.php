@@ -40,7 +40,7 @@
           <div class="item form-group">
             <label class="col-md-3"></label>
             <div class="col-md-6">
-              <span style="color:blue; font-size:11px;">Max Width: 116px</span>
+              <span style="color:blue; font-size:11px;">Max Width: 160px</span>
             </div>
           </div>
           <div class="item form-group {{ $errors->has('img_url') ? 'has-error' : ''}}">
