@@ -5,6 +5,6 @@ return [
 	'our-mission' => 'Misi Kami',
 	'certifications' => 'Sertifikasi',
 	'achievements' => 'Prestasi',
-	'distribution-map' => 'Peta Distrubusi',
+	'distribution-map' => 'Peta Distribusi',
 	'distribution' => 'Distrubusi',
 ];

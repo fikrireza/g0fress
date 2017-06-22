@@ -155,11 +155,11 @@
 			</h2>
 		</div>
 
-		<ul>
+		<div class="row">
 			@foreach($callCityOut as $list)
-				<li>{{ $list->nama_kota }}</li>
+				<div class="col-md-4 col-sm-6 text-center">{{ $list->nama_kota }}</div>
 			@endforeach
-		</ul>
+		</div>
 	</div>
 </div>
 @endif

@@ -7,6 +7,6 @@ return [
 	'latest-news' => 'Berita Terbaru',
 	'stay-connected' => 'Tetap Terhubung',
 	'connect-with-us' => 'Terhubung Dengan Kami',
-	'where-to-find-us' => 'Dimana Menemukan Kita',
+	'where-to-find-us' => 'Temukan Kami',
 	'promotion' => 'Promosi',
 ];

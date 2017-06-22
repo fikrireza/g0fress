@@ -7,7 +7,7 @@ return [
 	'news'  => 'News',
 	'program' => 'Promotion',
 	'contact' => 'Contact',
-	'copy-right' => '© 2017 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore<br>magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
+	'copy-right' => '© 2017 Copyright by PT. Aquasolve Sanaria. All rights reserved.',
 	
 	'view' => 'View',
 	'see-more' => 'See More',
