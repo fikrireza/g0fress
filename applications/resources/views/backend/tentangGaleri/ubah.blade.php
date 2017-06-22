@@ -30,7 +30,7 @@
               <select class="form-control select2_single" name="cer_ach">
                 <option value=""></option>
                 <option value="1" @if ($getTentangGaleri->cer_ach == 1) selected @endif>Certifications</option>
-                <option value="0" @if ($getTentangGaleri->cer_ach == 2) selected @endif>Achievements</option>
+                <option value="0" @if ($getTentangGaleri->cer_ach == 0) selected @endif>Achievements</option>
               </select>
               @if($errors->has('cer_ach'))
                 <code><span style="color:red; font-size:12px;">{{ $errors->first('cer_ach')}}</span></code>

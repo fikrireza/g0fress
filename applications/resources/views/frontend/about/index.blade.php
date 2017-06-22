@@ -92,27 +92,31 @@
 			<div class="clearfix"></div>
 		</div>
 
+		@if (!$callImgCer->isEmpty())
 		<div class="wrapper-show-image">
 			<h2 class="title">
 				@lang('front/about.certifications')
 			</h2>
-			@foreach($callImg as $list)
+			@foreach($callImgCer as $list)
 			@if($list->cer_ach == 1)
 			<img src="{{ asset('images/tentang/'.$list->img_url) }}" alt="{{ $list->img_alt }}">
 			@endif
 			@endforeach
 		</div>
+		@endif
 
+		@if (!$callImgAch->isEmpty())
 		<div class="wrapper-show-image">
 			<h2 class="title">
 				@lang('front/about.achievements')
 			</h2>
-			@foreach($callImg as $list)
+			@foreach($callImgAch as $list)
 			@if($list->cer_ach == 0)
 			<img src="{{ asset('images/tentang/'.$list->img_url) }}" alt="{{ $list->img_alt }}">
 			@endif
 			@endforeach
 		</div>
+		@endif
 
 		<div class="wrapper-show-image">
 			<h2 class="title">

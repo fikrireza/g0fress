@@ -33,12 +33,22 @@ class AboutController extends Controller
     		$visi
     	)->first();
 
-    	$callImg = TentangGaleri::select(
-            'cer_ach', 
-            'img_url', 
+    	$callImgCer = TentangGaleri::select(
+            'cer_ach',
+            'img_url',
             'img_alt'
         )
         ->where('flag_publish', '1')
+        ->where('cer_ach', '1')
+        ->get();
+
+      $callImgAch = TentangGaleri::select(
+            'cer_ach',
+            'img_url',
+            'img_alt'
+        )
+        ->where('flag_publish', '1')
+        ->where('cer_ach', '0')
         ->get();
 
         $callProv = Kota::select(
@@ -47,7 +57,7 @@ class AboutController extends Controller
             DB::raw('(select count(id_provinsi) from amd_distribution where amd_distribution.id_provinsi = amd_kota.id) as count_city')
         )
         ->get();
-        
+
         $callCity = Distribution::select(
             'id_provinsi',
             'nama_kota'
@@ -65,7 +75,8 @@ class AboutController extends Controller
 
     	return view('frontend.about.index', compact(
             'callAbout',
-            'callImg',
+            'callImgCer',
+            'callImgAch',
             'callProv',
             'callCity',
             'callCityOut'

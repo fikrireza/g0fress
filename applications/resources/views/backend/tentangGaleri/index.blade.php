@@ -104,7 +104,7 @@
                 <p>{{ $ach->img_url }}</p>
                 <div class="tools tools-bottom">
                   <a href="{{ route('tentangGaleri.ubah', ['id' => $ach->id])}}"><i class="fa fa-pencil"></i></a>
-                  <a href="" class="hapus" data-value="{{ $ach->id }}" data-toggle="modal" data-target=".bs-example-modal-sm"><i class="fa fa-times"></i></a>
+                  <a href="" class="hapus" data-value="{{ $ach->id }}" data-toggle="modal" data-target=".modal-hapus"><i class="fa fa-times"></i></a>
                 </div>
               </div>
             </div>
