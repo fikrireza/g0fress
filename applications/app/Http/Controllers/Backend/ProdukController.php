@@ -111,7 +111,7 @@ class ProdukController extends Controller
         }else{
           $flag_publish = 0;
         }
-        
+
         $salt = str_random(4);
 
         $save = new Produk;
@@ -259,7 +259,7 @@ class ProdukController extends Controller
           $update->update();
         }elseif($image_kanan && $image_kiri){
           $img_url_kanan = str_slug($request->img_alt_kanan,'-').'-'.$salt. '.' . $image_kanan->getClientOriginalExtension();
-          Image::make($image_kanan)->fit(443,418)->save('images/produk/'. $img_url_kanan);
+          Image::make($image_kanan)->fit(291,308)->save('images/produk/'. $img_url_kanan);
 
           $img_url_kiri = str_slug($request->img_alt_kiri,'-').'-'.$salt. '.' . $image_kiri->getClientOriginalExtension();
           Image::make($image_kiri)->fit(247,178)->save('images/produk/'. $img_url_kiri);
@@ -275,7 +275,7 @@ class ProdukController extends Controller
           $update->update();
         }elseif($image_kanan){
           $img_url_kanan = str_slug($request->img_alt_kanan,'-').'-'.$salt. '.' . $image_kanan->getClientOriginalExtension();
-          Image::make($image_kanan)->fit(443,418)->save('images/produk/'. $img_url_kanan);
+          Image::make($image_kanan)->fit(291,308)->save('images/produk/'. $img_url_kanan);
 
           $update->img_url_kanan  = $img_url_kanan;
           $update->update();
