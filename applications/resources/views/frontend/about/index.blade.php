@@ -119,7 +119,6 @@
 				@lang('front/about.distribution-map')
 			</h2>
 		</div>
-
 	</div>
 </div>
 
@@ -143,7 +142,23 @@
 	@endforeach
 </div>
 
+@if($callCityOut != null)
+<div class="background-content background-content-first">
+	<div class="content-wrapper">
+		<div class="wrapper-show-image" style="margin-top: 0;">
+			<h2 class="title" style="margin-top: 0; padding-top: 30px;">
+				@lang('front/about.distribution')
+			</h2>
+		</div>
 
+		<ul>
+			@foreach($callCityOut as $list)
+				<li>{{ $list->nama_kota }}</li>
+			@endforeach
+		</ul>
+	</div>
+</div>
+@endif
 
 <div class="background-content background-content-first for-share-wrapper">
 	<div class="content-wrapper">

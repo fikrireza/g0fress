@@ -55,11 +55,20 @@ class AboutController extends Controller
         ->where('flag_publish', '1')
         ->get();
 
+        $callCityOut = Distribution::leftJoin('amd_kota', 'amd_kota.id', '=', 'amd_distribution.id_provinsi')
+        ->select(
+            'amd_distribution.nama_kota as nama_kota'
+        )
+        ->where('amd_distribution.flag_publish', '1')
+        ->where('amd_kota.nama_kota', 'like', '%mancanegara%')
+        ->get();
+
     	return view('frontend.about.index', compact(
             'callAbout',
             'callImg',
             'callProv',
-            'callCity'
+            'callCity',
+            'callCityOut'
         ));
     }
 }

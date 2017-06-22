@@ -6,4 +6,5 @@ return [
 	'certifications' => 'Sertifikasi',
 	'achievements' => 'Prestasi',
 	'distribution-map' => 'Peta Distrubusi',
+	'distribution' => 'Distrubusi',
 ];
