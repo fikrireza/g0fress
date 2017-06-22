@@ -55,8 +55,8 @@
 
 }
 .wrapper-show-image img{
-	height: 160px; 
-	width: auto;
+	height: auto; 
+	width: 160px;
 	margin-top: 40px;
 }
 
