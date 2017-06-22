@@ -75,6 +75,11 @@
 					Submit
 				</button>
 				<div class="clearfix"></div>
+				@if(Session::has('berhasil'))
+				<p class="info">
+					{{ Session::get('berhasil') }}
+				</p>
+			@endif
 			</div>
 		</form>
 	</div>

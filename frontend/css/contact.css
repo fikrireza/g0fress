@@ -1,3 +1,9 @@
+p.info{
+	color: rgb(112,123,123);
+    font-family: 'US101';
+    font-size: 18px;
+    text-align: center;
+}
 .background-content.background-content-first.spaces-top{
 	padding-top: 80px;
 }

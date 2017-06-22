@@ -21,6 +21,13 @@ class ContactController extends Controller
 
     public function store(Request $request)
     {
+        if(!str_contains($request->email, ['gmail', 'yahoo', 'ymail', 'hotmail'])){
+          return redirect()->route('frontend.contact')->with('berhasil', 'Terima Kasih Telah Menghubungi Kami.');
+        }
+        if(str_contains($request->pesan, ['href', 'http', 'https', 'porn', 'pocker'])){
+          return redirect()->route('frontend.contact')->with('berhasil', 'Terima Kasih Telah Menghubungi Kami.');
+        }
+
         $message = [
           'nama.required' => 'Nama Wajib di isi',
           'nama.min' => 'Nama Terlalu Pendek',
