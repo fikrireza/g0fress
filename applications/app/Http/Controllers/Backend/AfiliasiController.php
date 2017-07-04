@@ -122,10 +122,10 @@ class AfiliasiController extends Controller
           return redirect()->route('afiliasi.ubah', array('id' => $request->id))->withErrors($validator)->withInput();
         }
 
-        $salt = str_random(4);
 
         DB::transaction(function() use($request){
-          $image = $request->file('img_url');
+          $salt = str_random(4);
+		  $image = $request->file('img_url');
 
           if($request->flag_publish == null){
             $flag_publish = 0;
