@@ -276,6 +276,10 @@
 	left: 94vw;
 }
 
+.col-md-3.col-sm-6 label{
+    color: rgb(112,123,123);
+    font-family: 'AvenirNext';
+}
 
 @media (max-width: 480px) {
 	.background-content{
