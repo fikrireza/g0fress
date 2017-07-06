@@ -412,8 +412,11 @@
 
 /* end for navbar */
 
+.footer.background-content {
+	padding-bottom: 20px;
+}
 .footer .wrapper-footer-link{
-	padding-top: 80px;
+	padding-top: 30px;
 }
 .footer .wrapper-footer-link .float-left{
 	float: left;
@@ -439,7 +442,7 @@
 }
 .footer .wrapper-footer-link .copy-right{
 	text-align: right; 
-	margin-top: 40px;
+	margin-top: 30px;
 	color: rgb(85,85,85);
     font-family: 'AvenirNext';
 }
