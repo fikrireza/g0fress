@@ -172,21 +172,21 @@
   });
 
   $(function(){
-    $('a.unpublish').click(function(){
+    $('#slidertabel').on('click', 'a.unpublish', function(){
       var a = $(this).data('value');
       $('#setUnpublish').attr('href', "{{ url('/') }}/admin/slider/publish/"+a);
     });
   });
 
   $(function(){
-    $('a.publish').click(function(){
+    $('#slidertabel').on('click', 'a.publish', function(){
       var a = $(this).data('value');
       $('#setPublish').attr('href', "{{ url('/') }}/admin/slider/publish/"+a);
     });
   });
 
   $(function(){
-    $('a.hapus').click(function(){
+    $('#slidertabel').on('click', 'a.hapus', function(){
       var a = $(this).data('value');
       $('#setHapus').attr('href', "{{ url('/') }}/admin/slider/delete/"+a);
     });

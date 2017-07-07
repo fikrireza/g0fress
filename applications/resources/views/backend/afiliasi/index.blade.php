@@ -170,21 +170,21 @@
   $('#afiliasitabel').DataTable();
 
   $(function(){
-    $('a.unpublish').click(function(){
+    $('#afiliasitabel').on('click', 'a.unpublish', function(){
       var a = $(this).data('value');
       $('#setUnpublish').attr('href', "{{ url('/') }}/admin/afiliasi/publish/"+a);
     });
   });
 
   $(function(){
-    $('a.publish').click(function(){
+    $('#afiliasitabel').on('click', 'a.publish', function(){
       var a = $(this).data('value');
       $('#setPublish').attr('href', "{{ url('/') }}/admin/afiliasi/publish/"+a);
     });
   });
 
   $(function(){
-    $('a.hapus').click(function(){
+    $('#afiliasitabel').on('click', 'a.hapus', function(){
       var a = $(this).data('value');
       $('#setHapus').attr('href', "{{ url('/') }}/admin/afiliasi/delete/"+a);
     });

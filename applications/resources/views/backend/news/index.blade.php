@@ -191,28 +191,28 @@
   $('#newstabel').DataTable();
 
   $(function(){
-    $('a.unpublish').click(function(){
+    $('#newstabel').on('click', 'a.unpublish', function(){
       var a = $(this).data('value');
       $('#setUnpublish').attr('href', "{{ url('/') }}/admin/news/publish/"+a);
     });
   });
 
   $(function(){
-    $('a.publish').click(function(){
+    $('#newstabel').on('click', 'a.publish', function(){
       var a = $(this).data('value');
       $('#setPublish').attr('href', "{{ url('/') }}/admin/news/publish/"+a);
     });
   });
 
   $(function(){
-    $('a.unshow').click(function(){
+    $('#newstabel').on('click', 'a.unshow', function(){
       var a = $(this).data('value');
       $('#setUnshow').attr('href', "{{ url('/') }}/admin/news/homepage/"+a);
     });
   });
 
   $(function(){
-    $('a.show').click(function(){
+    $('#newstabel').on('click', 'a.show', function(){
       var a = $(this).data('value');
       $('#setShow').attr('href', "{{ url('/') }}/admin/news/homepage/"+a);
     });

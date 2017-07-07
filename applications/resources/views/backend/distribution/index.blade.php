@@ -146,14 +146,14 @@
   $('#distributiontabel').DataTable();
 
   $(function(){
-    $('a.unpublish').click(function(){
+    $('#distributiontabel').on('click', 'a.unpublish', function(){
       var a = $(this).data('value');
       $('#setUnpublish').attr('href', "{{ url('/') }}/admin/tentang-distribution/publish/"+a);
     });
   });
 
   $(function(){
-    $('a.publish').click(function(){
+    $('#distributiontabel').on('click', 'a.publish', function(){
       var a = $(this).data('value');
       $('#setPublish').attr('href', "{{ url('/') }}/admin/tentang-distribution/publish/"+a);
     });

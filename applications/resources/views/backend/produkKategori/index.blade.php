@@ -146,14 +146,14 @@
   $('#produktabel').DataTable();
 
   $(function(){
-    $('a.unpublish').click(function(){
+    $('#produktabel').on('click', 'a.unpublish', function(){
       var a = $(this).data('value');
       $('#setUnpublish').attr('href', "{{ url('/') }}/admin/produk-kategori/publish/"+a);
     });
   });
 
   $(function(){
-    $('a.publish').click(function(){
+    $('#produktabel').on('click', 'a.publish', function(){
       var a = $(this).data('value');
       $('#setPublish').attr('href', "{{ url('/') }}/admin/produk-kategori/publish/"+a);
     });
