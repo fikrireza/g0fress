@@ -16,10 +16,10 @@
 	</div>
 </div>
 <div class="wrapper-share">
-	<a href="http://facebook.com/share?url={{ Request::fullUrl() }}" target="_blank">
+	<a href="{{ Share::load(Request::fullUrl())->facebook() }}" target="_blank">
 		<img class="share-icon" src="{{ asset('public/image/default/socmed-logo-fb.png') }}">
 	</a>
-	<a href="http://twitter.com/share?url={{ Request::fullUrl() }}" target="_blank">
+	<a href="{{ Share::load(Request::fullUrl())->twitter() }}" target="_blank">
 		<img class="share-icon" src="{{ asset('public/image/default/socmed-logo-twit.png') }}">
 	</a>
 </div>
