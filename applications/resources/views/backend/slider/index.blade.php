@@ -118,7 +118,7 @@
               <th>No</th>
               <th>Image</th>
               <th>Image Description</th>
-              {{-- <th>Image Position</th> --}}
+              <th>Link Url</th>
               <th>Tanggal Post</th>
               <th>Publish</th>
               <th>Aksi</th>
@@ -133,7 +133,7 @@
               <td>{{ $no }}</td>
               <td><img style="display: block;" src="{{ url('images/slider/').'/'.$key->img_url }}" alt="" class="thumbnail"></td>
               <td>{{ $key->img_alt }}</td>
-              {{-- <td>{{ $key->posisi }}</td> --}}
+              <td>{{ $key->link_url ? $key->link_url : '-' }}</td>
               <td>{!! ($key->tanggal_post <= date('Y-m-d')) ? "<span class='label label-success'>$key->tanggal_post</span>" : "<span class='label label-danger' data-toggle='tooltip' data-placement='top' title='Posting Otomatis'>$key->tanggal_post</span>" !!}</td>
               <td>@if ($key->flag_publish == 1)
                     <a href="" class="unpublish" data-value="{{ $key->id }}" data-toggle="modal" data-target=".modal-unpublish"><span class="label label-success" data-toggle="tooltip" data-placement="top" title="Publish"><i class="fa fa-thumbs-o-up"></i></span></a>

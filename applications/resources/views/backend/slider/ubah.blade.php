@@ -56,6 +56,16 @@
               @endif
             </div>
           </div>
+          <div class="item form-group {{ $errors->has('link_url') ? 'has-error' : ''}}">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Link Url
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input id="link_url" class="form-control col-md-7 col-xs-12" name="link_url" placeholder="Contoh: http://amadeo.id" required="required" type="text" value="{{ old('link_url', $getSlider->link_url ) }}">
+              @if($errors->has('link_url'))
+                <code><span style="color:red; font-size:12px;">{{ $errors->first('link_url')}}</span></code>
+              @endif
+            </div>
+          </div>
           <div class="ln_solid"></div>
           <div class="item form-group {{ $errors->has('posisi') ? 'has-error' : ''}}">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Posisi <span class="required">*</span>

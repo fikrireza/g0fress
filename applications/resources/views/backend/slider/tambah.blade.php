@@ -23,14 +23,13 @@
         <form action="{{ route('slider.store') }}" method="POST" class="form-horizontal form-label-left" enctype="multipart/form-data" novalidate>
           {{ csrf_field() }}
           <div class="item form-group">
-            {{-- <label class="col-md-3"></label> --}}
+            <label class="col-md-3"></label>
             <div class="col-md-6">
               <span style="color:blue; font-size:11px;">Width: 1366px; Heigh: 769px</span>
             </div>
           </div>
           <div class="item form-group {{ $errors->has('img_url') ? 'has-error' : ''}}">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Gambar Slider <span class="required">*</span>
-            </label>
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Gambar Slider <span class="required">*</span></label>
             <div class="col-md-6 col-sm-6 col-xs-12">
               <input id="img_url" class="form-control col-md-7 col-xs-12" name="img_url" required="required" type="file">
               @if($errors->has('img_url'))
@@ -45,6 +44,16 @@
               <input id="img_alt" class="form-control col-md-7 col-xs-12" name="img_alt" placeholder="Contoh: Nama Produk Kategori" required="required" type="text" value="{{ old('img_alt') }}">
               @if($errors->has('img_alt'))
                 <code><span style="color:red; font-size:12px;">{{ $errors->first('img_alt')}}</span></code>
+              @endif
+            </div>
+          </div>
+          <div class="item form-group {{ $errors->has('link_url') ? 'has-error' : ''}}">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Link Url
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input id="link_url" class="form-control col-md-7 col-xs-12" name="link_url" placeholder="Contoh: http://amadeo.id" required="required" type="text" value="{{ old('link_url') }}">
+              @if($errors->has('link_url'))
+                <code><span style="color:red; font-size:12px;">{{ $errors->first('link_url')}}</span></code>
               @endif
             </div>
           </div>
