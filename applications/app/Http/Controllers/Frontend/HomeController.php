@@ -29,7 +29,7 @@ class HomeController extends Controller
     	$date = new DateTime;
 		$format_date = $date->format('Y-m-d');
         
-        $callSlider = SliderHome::select('img_url', 'img_alt')->where('flag_publish', '1')->orderBy('posisi', 'asc')->get();
+        $callSlider = SliderHome::select('img_url', 'img_alt', 'link_url')->where('flag_publish', '1')->orderBy('posisi', 'asc')->get();
 
         $callAfiliasi = Afiliasi::select('nama_afiliasi', 'link_url', 'img_url', 'img_alt')->where('flag_publish', '1')->get();
 

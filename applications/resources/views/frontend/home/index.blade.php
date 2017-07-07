@@ -26,8 +26,14 @@
 <div class="slider">
 	@foreach($callSlider as $list)
 	<div class="item">
+		@if($list->link_url != null)
+		<a href="{{$list->link_url}}">
+		@endif
 		<div class="img" style="background-image: url('{{ asset('images/slider/'.$list->img_url) }}');" title="{{ $list->img_alt }}">
 		</div>
+		@if($list->link_url != null)
+		</a>
+		@endif
 	</div>
 	@endforeach
 </div>
