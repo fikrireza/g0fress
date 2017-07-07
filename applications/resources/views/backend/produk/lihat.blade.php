@@ -57,7 +57,7 @@
             <td>{!! $getProduk->ingredient !!}</td>
           </tr>
           <tr>
-            <td><strong>Nutrition Fact</strong></td>
+            <td><strong>Deskripsi</strong></td>
             <td>:</td>
             <td>{!! $getProduk->nutrition_fact !!}</td>
           </tr>
