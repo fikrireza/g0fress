@@ -55,7 +55,7 @@
           <div class="item form-group">
             <label class="col-md-3"></label>
             <div class="col-md-6">
-              <img src="{{ asset('images/afiliasi/').'/'.$getAfiliasi->img_url }}" alt="" class="thumbnail">
+              <img src="{{ asset('images/afiliasi/').'/'.$getAfiliasi->img_url }}" alt="{{$getAfiliasi->img_alt}}">
             </div>
           </div>
           <div class="item form-group {{ $errors->has('img_alt') ? 'has-error' : ''}}">
@@ -79,6 +79,15 @@
             </div>
           </div>
           <div class="ln_solid"></div>
+          <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Buy Now <span class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <label>
+                <input type="checkbox" class="flat" name="flag_buynow" {{ $getAfiliasi->flag_buynow == 1 ? 'checked="checked"' : '' }}>
+              </label>
+            </div>
+          </div>
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Publish <span class="required">*</span>
             </label>

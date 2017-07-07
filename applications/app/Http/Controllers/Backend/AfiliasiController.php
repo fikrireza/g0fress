@@ -40,7 +40,7 @@ class AfiliasiController extends Controller
         'img_url.dimensions' => 'Ukuran Tinggi Maksimal 46px',
         'img_alt.required' => 'Wajib di isi',
         'link_url.required' => 'Wajib di isi',
-        'link_url.url' => 'URL Tidak Valid'
+        'link_url.url' => 'Format url tidak sesuai'
       ];
 
       $validator = Validator::make($request->all(), [
@@ -69,11 +69,18 @@ class AfiliasiController extends Controller
         $flag_publish = 0;
       }
 
+      if($request->flag_buynow == 'on'){
+        $flag_buynow = 1;
+      }else{
+        $flag_buynow = 0;
+      }
+
       $save = new Afiliasi;
       $save->nama_afiliasi = $request->nama_afiliasi;
       $save->img_url = $img_url;
       $save->img_alt = $request->img_alt;
       $save->link_url = $request->link_url;
+      $save->flag_buynow = $flag_buynow;
       $save->flag_publish = $flag_publish;
       $save->actor = Auth::user()->id;
       $save->save();
@@ -108,13 +115,14 @@ class AfiliasiController extends Controller
           'img_url.dimensions' => 'Ukuran Tinggi Maksimal 46px',
           'img_alt.required' => 'Wajib di isi',
           'link_url.required' => 'Wajib di isi',
+          'link_url.url' => 'Format url tidak sesuai',
         ];
 
         $validator = Validator::make($request->all(), [
           'nama_afiliasi' => 'required|unique:amd_afiliasi,nama_afiliasi,'.$request->id,
           'img_url' => 'image|mimes:jpeg,bmp,png|max:1000|dimensions:max_height=46',
           'img_alt' => 'required',
-          'link_url' => 'required',
+          'link_url' => 'required|url',
         ], $message);
 
         if($validator->fails())
@@ -125,7 +133,7 @@ class AfiliasiController extends Controller
 
         DB::transaction(function() use($request){
           $salt = str_random(4);
-		  $image = $request->file('img_url');
+    		  $image = $request->file('img_url');
 
           if($request->flag_publish == null){
             $flag_publish = 0;
@@ -133,10 +141,17 @@ class AfiliasiController extends Controller
             $flag_publish = 1;
           }
 
+          if($request->flag_buynow == null){
+            $flag_buynow = 0;
+          }else{
+            $flag_buynow = 1;
+          }
+
           $update = Afiliasi::find($request->id);
           $update->nama_afiliasi = $request->nama_afiliasi;
           $update->img_alt  = $request->img_alt;
           $update->link_url  = $request->link_url;
+          $update->flag_buynow = $flag_buynow;
           $update->flag_publish = $flag_publish;
           $update->actor = Auth::user()->id;
 
