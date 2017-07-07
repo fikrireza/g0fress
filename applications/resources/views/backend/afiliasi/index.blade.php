@@ -120,6 +120,7 @@
               <th>Afiliasi</th>
               <th>Image</th>
               <th>Url</th>
+              <th>Buy Now!!</th>
               <th>Publish</th>
               <th>Aksi</th>
             </tr>
@@ -134,6 +135,12 @@
               <td>{{ $key->nama_afiliasi }}</td>
               <td class="text-center"><img src="{{ asset('images/afiliasi').'/'.$key->img_url}}"></td>
               <td>{{ $key->link_url }}</td>
+              <td>@if ($key->flag_buynow == 1)
+                    <a href=""><span class="label label-success"><i class="fa fa-thumbs-o-up"></i></span></a>
+                  @else
+                    <a href=""><span class="label label-danger"><i class="fa fa-thumbs-o-down"></i></span></a>
+                  @endif
+              </td>
               <td>@if ($key->flag_publish == 1)
                     <a href="" class="unpublish" data-value="{{ $key->id }}" data-toggle="modal" data-target=".modal-unpublish"><span class="label label-success" data-toggle="tooltip" data-placement="top" title="Publish"><i class="fa fa-thumbs-o-up"></i></span></a>
                   @else
@@ -170,21 +177,21 @@
   $('#afiliasitabel').DataTable();
 
   $(function(){
-    $('a.unpublish').click(function(){
+    $('#afiliasitabel').on('click', 'a.unpublish', function(){
       var a = $(this).data('value');
       $('#setUnpublish').attr('href', "{{ url('/') }}/admin/afiliasi/publish/"+a);
     });
   });
 
   $(function(){
-    $('a.publish').click(function(){
+    $('#afiliasitabel').on('click', 'a.publish', function(){
       var a = $(this).data('value');
       $('#setPublish').attr('href', "{{ url('/') }}/admin/afiliasi/publish/"+a);
     });
   });
 
   $(function(){
-    $('a.hapus').click(function(){
+    $('#afiliasitabel').on('click', 'a.hapus', function(){
       var a = $(this).data('value');
       $('#setHapus').attr('href', "{{ url('/') }}/admin/afiliasi/delete/"+a);
     });

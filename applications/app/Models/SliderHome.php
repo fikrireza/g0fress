@@ -8,7 +8,7 @@ class SliderHome extends Model
 {
     protected $table = 'amd_slider_home';
 
-    protected $fillable = ['img_url', 'img_alt','posisi','tanggal_post','flag_publish'];
+    protected $fillable = ['img_url', 'img_alt','link_url','posisi','tanggal_post','flag_publish'];
 
 
 }

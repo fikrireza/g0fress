@@ -8,5 +8,5 @@ class Afiliasi extends Model
 {
     protected $table = 'amd_afiliasi';
 
-    protected $fillable = ['nama_afiliasi','img_url','img_alt','tanggal_post','flag_publish'];
+    protected $fillable = ['nama_afiliasi','img_url','img_alt','flag_buynow','link_url','tanggal_post','flag_publish'];
 }

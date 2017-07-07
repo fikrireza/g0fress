@@ -143,14 +143,14 @@
   $('#programEventstabel').DataTable();
 
   $(function(){
-    $('a.unpublish').click(function(){
+    $('#programEventstabel').on('click', 'a.unpublish', function(){
       var a = $(this).data('value');
       $('#setUnpublish').attr('href', "{{ url('/') }}/admin/program-events-kategori/publish/"+a);
     });
   });
 
   $(function(){
-    $('a.publish').click(function(){
+    $('#programEventstabel').on('click', 'a.publish', function(){
       var a = $(this).data('value');
       $('#setPublish').attr('href', "{{ url('/') }}/admin/program-events-kategori/publish/"+a);
     });

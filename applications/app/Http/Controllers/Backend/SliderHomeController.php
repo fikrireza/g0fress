@@ -52,13 +52,15 @@ class SliderHomeController extends Controller
           'img_alt.required' => 'Wajib di isi',
           'tanggal_post.required' => 'Wajib di isi',
           'posisi.required' => 'Wajib di isi',
+          'link_url.url' => 'Format url tidak sesuai'
         ];
 
         $validator = Validator::make($request->all(), [
           'img_url' => 'required|image|mimes:jpeg,bmp,png|max:2000|dimensions:max_width=1366,max_height=769',
           'img_alt' => 'required',
           'tanggal_post' => 'required',
-          'posisi'  => 'required'
+          'posisi'  => 'required',
+          'link_url'  => 'nullable|url'
         ], $message);
 
         if($validator->fails())
@@ -96,6 +98,7 @@ class SliderHomeController extends Controller
           $save = new SliderHome;
           $save->img_url  = $img_url;
           $save->img_alt  = $request->img_alt;
+          $save->link_url = $request->link_url ? $request->link_url : null;
           $save->posisi = $setPosisi;
           $save->tanggal_post = $request->tanggal_post;
           $save->flag_publish = $flag_publish;
@@ -127,13 +130,15 @@ class SliderHomeController extends Controller
         'img_alt.required' => 'Wajib di isi',
         'tanggal_post.required' => 'Wajib di isi',
         'posisi.required' => 'Wajib di isi',
+        'link_url.url' => 'Format url tidak sesuai'
       ];
 
       $validator = Validator::make($request->all(), [
         'img_url' => 'image|mimes:jpeg,bmp,png|max:2000|dimensions:max_width=1366,max_height=769',
         'img_alt' => 'required',
         'tanggal_post' => 'required',
-        'posisi' => 'required'
+        'posisi' => 'required',
+        'link_url'  => 'nullable|url'
       ], $message);
 
       if($validator->fails())
@@ -167,6 +172,7 @@ class SliderHomeController extends Controller
 
         $update = SliderHome::find($request->id);
         $update->img_alt  = $request->img_alt;
+        $update->link_url = $request->link_url ? $request->link_url : null;
         $update->posisi = $setPosisi;
         $update->tanggal_post = $request->tanggal_post;
         $update->flag_publish = $flag_publish;

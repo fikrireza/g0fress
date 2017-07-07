@@ -153,7 +153,7 @@
   $('#usertabel').DataTable();
 
   $(function(){
-    $('a.reset').click(function(){
+    $('#usertabel').on('click', 'a.reset', function(){
       var a = $(this).data('value');
       $('#setReset').attr('href', "{{ url('/') }}/admin/users/reset/"+a);
     });

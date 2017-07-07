@@ -83,7 +83,7 @@
             </div>
           </div>
           <div class="item form-group {{ $errors->has('nutrition_fact') ? 'has-error' : ''}}">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Nutrition Fact <span class="required">*</span>
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Deskripsi <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
               <textarea id="nutrition_fact" required="required" name="nutrition_fact">{{ old('nutrition_fact')}}</textarea>
