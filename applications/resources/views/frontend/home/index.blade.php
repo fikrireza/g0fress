@@ -74,7 +74,11 @@
 			@if($callAbout != null)
 			{!! $callAbout->deskripsi !!}
 			@endif
+			<div class="for-btn-see-more" style="margin: 0 auto;">
+				<a class="btn-see-more" href="{{ route('frontend.about') }}">@lang('front/publict.see-more')</a>
+			</div>
 		</div>
+
 
 		<div class="flag-title-wrapper color">
 			<div class="vertical-align-midle">
