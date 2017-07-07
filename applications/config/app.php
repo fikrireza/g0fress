@@ -204,6 +204,8 @@ return [
         Yajra\Datatables\DatatablesServiceProvider::class,
         // Google Analytics
         Spatie\Analytics\AnalyticsServiceProvider::class,
+        // Share Social Media
+        Chencha\Share\ShareServiceProvider::class,
     ],
 
     /*
@@ -260,6 +262,7 @@ return [
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Analytics' => Spatie\Analytics\AnalyticsFacade::class,
+        'Share' => Chencha\Share\ShareFacade::class,
     ],
 
 ];
