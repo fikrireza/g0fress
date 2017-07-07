@@ -11,9 +11,9 @@
 }
 .slider.owl-theme .owl-controls{
 	position: absolute;
-    top: 0px;
+    bottom: 0;
     width: 100%;
-    height: 100vh;
+    /*height: 100vh;*/
     margin: 0;
 }
 .slider.owl-theme .owl-controls .owl-pagination{
@@ -30,11 +30,13 @@
 	background-color: rgb(17,177,206) !important;
 }
 .slider.owl-theme .owl-controls .owl-buttons{
-	height: 100vh;
-	width: 100vw;
-	display: table-cell;
-	vertical-align: middle;
-	position: relative;
+	/*height: 100vh;*/
+	position: absolute;
+    bottom: 50vh;
+	width: 100%;
+	/*display: table-cell;*/
+	/*vertical-align: middle;*/
+	/*position: relative;*/
 }
 .slider.owl-theme .owl-controls .owl-buttons .owl-prev{
 	position: absolute;
