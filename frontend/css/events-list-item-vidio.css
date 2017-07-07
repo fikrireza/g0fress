@@ -6,6 +6,7 @@
 	float: left; 
 	width: 25%; 
 	padding: 1%;
+	cursor: pointer;
 }
 .background-content .content-wrapper .wrapper-vidio .vidio-content .thumnail-vidio{
 	width: 100%; 
@@ -37,6 +38,45 @@
 	padding: 80px 0px;
 }
 
+#vidio-show{
+	position: fixed; 
+	z-index: 10;
+	bottom: 0; 
+	height: 0vh; 
+	width: 100%;
+	padding-top: 0vh;
+	background-color: rgba(68,217,217,1);
+	transition: all .51s;
+}
+#vidio-show.active{
+	height: 100vh; 
+	padding-top: 15vh;
+}
+#vidio-show .wrapper{
+	position: relative;
+	width: 80%;
+	margin: 0 auto;
+	text-align: center;
+}
+#vidio-show .wrapper #youtube-embed iframe{
+	width: 60%;
+	height: 40vh;
+	margin-bottom: 20px;
+}
+#vidio-show .wrapper #wrapper-description{
+	position: relative;
+	margin: 0 auto;
+	width: 75%;
+	font-family: 'AvenirNext';
+	color: rgb(255,255,255);
+}
+#vidio-show #wrapper-description h1{
+    font-family: 'Nautilus';
+    font-weight: normal;
+    margin: 0;
+}
+
+
 @media (max-width: 480px) {
 	.background-content .content-wrapper .wrapper-vidio .vidio-content{
 		width: 100%;
@@ -53,5 +93,18 @@
 
 	.background-content.background-content-first.for-spase-wrapper{
 		padding: 40px 0px;
+	}
+
+	#vidio-show .wrapper{
+		width: 90%;
+	}
+	#vidio-show .wrapper #youtube-embed iframe{
+		width: 80%;
+		height: 30vh;
+	}
+	#vidio-show .wrapper #wrapper-description{
+		width: 80%;
+		height: 45vh;
+		overflow: auto;
 	}
 }

@@ -3,9 +3,9 @@
 return [
 	'home' => 'Home',
 	'product' => 'Product',
-	'about' => 'About',
+	'about' => 'About Us',
 	'news'  => 'News',
-	'program' => 'Promotion',
+	'program' => 'Program & Event',
 	'contact' => 'Contact',
 	'copy-right' => '© 2017 Copyright by PT. Aquasolve Sanaria. All rights reserved.',
 	

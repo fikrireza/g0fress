@@ -71,18 +71,19 @@
 	</div>
 </div>
 
-
 <div class="background-content background-content-first for-share-wrapper">
 	<div class="content-wrapper">
 		@include('frontend._include.share-on-social')
 	</div>
 </div>
 
+@include('frontend.events.vidio-show')
 @endsection
 
 @section('footer-script')
 <script src="{{ asset('plugin/bootstrap-3.3.7/js/bootstrap.min.js') }}"></script>
 
+<script src="{{ asset('frontend/js/youtube-embed.js') }}"></script>
 <script type="text/javascript">
 	var page = 1;
 	$("#callNext").click(function(){

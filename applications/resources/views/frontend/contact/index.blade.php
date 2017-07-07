@@ -91,7 +91,7 @@
 	</div>
 
 	<div class="content-wrapper">
-		<div class="wrapper-content">
+		<div id="contact-ditails" class="wrapper-content">
 			@if ($getKontak->isEmpty())
 			<div class="odd-even">
 				<h3 class="title">

@@ -70,6 +70,8 @@
 		</div>
 		<div class="connect-social">
 			<div class="social-wrapper">
+				<div id="fb-root"></div>
+				<a><div class="fb-like" data-href="https://www.facebook.com/Gofress" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div></a>
 				<a href="{!! url('bahasa/id') !!}"><img src="{{ asset('public/image/default/lang-id-icon.png') }}"></a>
 				<a href="{!! url('bahasa/en') !!}"><img src="{{ asset('public/image/default/lang-en-icon.png') }}"></a>
 			</div>

@@ -3,7 +3,7 @@
 return [
 	'home' => 'Beranda',
 	'product' => 'Produk',
-	'about' => 'Tentang',
+	'about' => 'Tentang Kami',
 	'news'  => 'Berita & Info',
 	'program' => 'Program & Acara',
 	'contact' => 'Kontak',

@@ -1,7 +1,7 @@
 <?php
 
 return [
-	'contact-us' => 'Hubungin Kami',
+	'contact-us' => 'Hubungi Kami',
 	'your-name' => 'Nama Anda',
 	'email-address' => 'Alamat Email',
 	'phone-number' => 'Nomer Telepon',

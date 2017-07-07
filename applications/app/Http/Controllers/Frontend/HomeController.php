@@ -92,7 +92,8 @@ class HomeController extends Controller
 
 		$callNews = News::select(
                 $callNewsJudul, 
-                $callNewsDeskripsi, 
+                $callNewsDeskripsi,
+                'img_url',
                 'slug'
             )
             ->where('show_homepage', 1)

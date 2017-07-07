@@ -17,6 +17,8 @@
 
 	<link rel="stylesheet" href="{{ asset('plugin/owl-carousel/owl.carousel.css') }}">
 	<link rel="stylesheet" href="{{ asset('plugin/owl-carousel/owl.theme.css') }}">
+	
+	<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/events-list-item-vidio.css') }}">
 @endsection
 
 @section('body-content')
@@ -144,26 +146,7 @@
 
 		<div class="wrapper-vidio">
 			@foreach($callProgramEventVidio as $list)
-			@php
-				$url 			= $list->video_url;
-				$step1			= explode('v=', $url);
-				$step2 			= explode('&',$step1[1]);
-				$vedio_id 		= $step2[0];
-				$thumbnail 		= 'http://img.youtube.com/vi/'.$vedio_id.'/0.jpg';
-			@endphp
-			<div class="vidio-content">
-				<div class="thumnail-vidio" style="background-image: url('{{ $thumbnail }}');">
-					<div class="wrapper-icon">
-						<a href="{{ route('frontend.program-event.view', ['slug'=>$list->slug]) }}">
-							<img src="{{ asset('public/image/default/icon-youtube.png') }}">
-						</a>
-					</div>
-				</div>
-				<div class="description">
-					<h2>{{ $list->judul }}</h2>
-					<p>{!! Str::words($list->deskripsi, 20, "") !!}</p>
-				</div>
-			</div>
+			@include('frontend.events.events-vidios-list-looping')
 			@endforeach
 			<div class="clearfix"></div>
 		</div>
@@ -201,6 +184,9 @@
 			<div class="col-md-4 col-sm-12 col-xs-12">
 				<div class="wrapper-news">
 					<h3>{{ $list->judul }}</h3>
+					<a href="{{route('frontend.news.view', ['slug'=>$list->slug])}}">
+						<div class="thumnail-news" title="{{ $list->judul }}" style="background-image: url('{{ asset('images/news/'.$list->img_url) }}');"></div>
+					</a>
 					<label>{!! Str::words($list->deskripsi, 25," <a href=".route('frontend.news.view', ['slug'=>$list->slug]) .">Read More</a>")  !!}</label>
 				</div>
 			</div>
@@ -308,10 +294,12 @@
 	</div>
 </div>
 
+@include('frontend.events.vidio-show')
 @endsection
 
 @section('footer-script')
 <script src="{{ asset('plugin/owl-carousel/owl.carousel.js') }}"></script>
 <script src="{{ asset('plugin/owl-carousel/owl.carousel.js') }}"></script>
 <script src="{{ asset('frontend/js/home.js') }}"></script>
+<script src="{{ asset('frontend/js/youtube-embed.js') }}"></script>
 @endsection
