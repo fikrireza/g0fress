@@ -47,7 +47,6 @@
       <div class="modal-footer">
         <a class="btn btn-primary" id="setUnpublish">Ya</a>
       </div>
-
     </div>
   </div>
 </div>
@@ -66,6 +65,25 @@
       </div>
       <div class="modal-footer">
         <a class="btn btn-primary" id="setPublish">Ya</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade modal-delete" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content alert-danger">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel2">Hapus Produk</h4>
+      </div>
+      <div class="modal-body">
+        <h4>Yakin ?</h4>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-primary" id="setDelete">Ya</a>
       </div>
 
     </div>
@@ -120,7 +138,11 @@
                     <a href="" class="publish" data-value="{{ $key->id }}" data-toggle="modal" data-target=".modal-publish"><span class="label label-danger" data-toggle="tooltip" data-placement="top" title="Unpublish"><i class="fa fa-thumbs-o-down"></i></span></a>
                   @endif
               </td>
-              <td><a href="{{ route('produk.lihat', $key->id) }}" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="Lihat"><i class="fa fa-folder"></i> </a> <a href="{{ route('produk.ubah', $key->id) }}" class="btn btn-xs btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="Ubah"><i class="fa fa-pencil"></i> </a></td>
+              <td>
+                <a href="{{ route('produk.ubah', $key->id) }}" class="btn btn-xs btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="Ubah"><i class="fa fa-pencil"></i></a>
+                <a href="{{ route('produk.lihat', $key->id) }}" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="Lihat"><i class="fa fa-folder"></i></a>
+                <a href="" class="delete" data-value="{{ $key->id }}" data-toggle="modal" data-target=".modal-delete"><span class="btn btn-xs btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-remove"></i></span></a>
+              </td>
             </tr>
             @php
               $no++;
@@ -157,6 +179,13 @@
     $('#produktabel').on('click', 'a.publish', function(){
       var a = $(this).data('value');
       $('#setPublish').attr('href', "{{ url('/') }}/admin/produk/publish/"+a);
+    });
+  });
+
+  $(function(){
+    $('#produktabel').on('click', 'a.delete', function(){
+      var a = $(this).data('value');
+      $('#setDelete').attr('href', "{{ url('/') }}/admin/produk/delete/"+a);
     });
   });
 </script>

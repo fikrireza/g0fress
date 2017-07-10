@@ -14,6 +14,7 @@ use DB;
 use Auth;
 use Validator;
 use Image;
+use File;
 
 class ProdukKategoriController extends Controller
 {
@@ -30,7 +31,7 @@ class ProdukKategoriController extends Controller
 
     public function index()
     {
-      $getProdukKategori = ProdukKategori::get();
+      $getProdukKategori = ProdukKategori::orderBy('flag_publish', 'desc')->get();
 
       return view('backend.produkKategori.index', compact('getProdukKategori'));
     }
@@ -217,13 +218,44 @@ class ProdukKategoriController extends Controller
           $getProdukKategori->flag_publish = 0;
           $getProdukKategori->update();
 
+          $log = new LogAkses;
+          $log->actor = Auth::user()->id;
+          $log->aksi = 'Unpublish Produk Kategori '.$getProdukKategori->nama_kategori;
+          $log->save();
+
           return redirect()->route('produkKategori.index')->with('berhasil', 'Berhasil Unpublish '.$getProdukKategori->nama_kategori);
         }else{
           $getProdukKategori->flag_publish = 1;
           $getProdukKategori->update();
 
+          $log = new LogAkses;
+          $log->actor = Auth::user()->id;
+          $log->aksi = 'Publish Produk Kategori '.$getProdukKategori->nama_kategori;
+          $log->save();
+
           return redirect()->route('produkKategori.index')->with('berhasil', 'Berhasil Publish '.$getProdukKategori->nama_kategori);
         }
     }
 
+    public function delete($id)
+    {
+      $getProdukKategori = ProdukKategori::find($id);
+
+      if(!$getProdukKategori){
+        return view('backend.errors.404');
+      }
+
+      DB::transaction(function() use($getProdukKategori){
+        File::delete('images/produk/' .$getProdukKategori->img_url);
+        $getProdukKategori->delete();
+
+        $log = new LogAkses;
+        $log->actor = Auth::user()->id;
+        $log->aksi = 'Menghapus Produk Kategori '.$getProdukKategori->nama_kategori;
+        $log->save();
+      });
+
+      return redirect()->route('produkKategori.index')->with('berhasil', 'Berhasil menghapus Produk Kategori '.$getProdukKategori->nama_kategori);
+
+    }
 }

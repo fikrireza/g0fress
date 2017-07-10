@@ -14,6 +14,7 @@ use DB;
 use Auth;
 use Validator;
 use Image;
+use File;
 
 class ProgramEventsController extends Controller
 {
@@ -33,6 +34,7 @@ class ProgramEventsController extends Controller
     {
         $getProgramEvents = ProgramEvents::join('amd_program_events_kategori', 'amd_program_events_kategori.id', '=', 'amd_program_events.program_events_kategori_id')
                                           ->select('amd_program_events.*', 'amd_program_events_kategori.judul_kategori_ID')
+                                          ->orderBy('amd_program_events.flag_publish', 'desc')
                                           ->get();
 
         return view('backend.programEvents.index', compact('getProgramEvents'));
@@ -105,7 +107,7 @@ class ProgramEventsController extends Controller
           }
 
           $salt = str_random(4);
-          
+
           $save = new ProgramEvents;
           $save->program_events_kategori_id = $request->program_events_kategori_id;
           $save->judul_promosi_ID = $request->judul_promosi_ID;
@@ -159,7 +161,6 @@ class ProgramEventsController extends Controller
 
         return view('backend.programEvents.lihat', compact('getProgramEvents'));
     }
-
 
     public function ubah($id)
     {
@@ -303,10 +304,20 @@ class ProgramEventsController extends Controller
           $getProgramEvents->flag_publish = 0;
           $getProgramEvents->update();
 
+          $log = new LogAkses;
+          $log->actor = Auth::user()->id;
+          $log->aksi = 'Unpublish Program Event '.$getProgramEvents->judul_promosi_ID;
+          $log->save();
+
           return redirect()->route('programEvents.index')->with('berhasil', 'Berhasil Unpublish '.$getProgramEvents->judul_promosi_ID);
         }else{
           $getProgramEvents->flag_publish = 1;
           $getProgramEvents->update();
+
+          $log = new LogAkses;
+          $log->actor = Auth::user()->id;
+          $log->aksi = 'Publish Program Event '.$getProgramEvents->judul_promosi_ID;
+          $log->save();
 
           return redirect()->route('programEvents.index')->with('berhasil', 'Berhasil Publish '.$getProgramEvents->judul_promosi_ID);
         }
@@ -331,5 +342,28 @@ class ProgramEventsController extends Controller
 
           return redirect()->route('programEvents.index')->with('berhasil', 'Berhasil Show '.$getProgramEvents->judul_promosi_ID);
         }
+    }
+
+    public function delete($id)
+    {
+      $getProgramEvents = ProgramEvents::find($id);
+
+      if(!$getProgramEvents){
+        return view('backend.errors.404');
+      }
+
+      DB::transaction(function() use($getProgramEvents){
+        File::delete('images/programEvent/' .$getProgramEvents->img_url);
+        File::delete('images/programEvent/' .$getProgramEvents->img_thumb);
+        $getProgramEvents->delete();
+
+        $log = new LogAkses;
+        $log->actor = Auth::user()->id;
+        $log->aksi = 'Menghapus Program Event '.$getProgramEvents->judul_promosi_ID;
+        $log->save();
+      });
+
+      return redirect()->route('programEvents.index')->with('berhasil', 'Berhasil menghapus Program Event '.$getProgramEvents->judul_promosi_ID);
+
     }
 }

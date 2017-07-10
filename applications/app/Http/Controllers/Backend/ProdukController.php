@@ -14,6 +14,7 @@ use DB;
 use Auth;
 use Validator;
 use Image;
+use File;
 
 class ProdukController extends Controller
 {
@@ -25,13 +26,14 @@ class ProdukController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+      $this->middleware('auth');
     }
 
     public function index()
     {
       $getProduk = Produk::join('amd_produk_kategori', 'amd_produk_kategori.id', '=', 'amd_produk.kategori_id')
                               ->select('amd_produk.*', 'amd_produk_kategori.nama_kategori as nama_kategori')
+                              ->orderBy('amd_produk.flag_publish', 'desc')
                               ->get();
 
       return view('backend.produk.index', compact('getProduk'));
@@ -46,7 +48,6 @@ class ProdukController extends Controller
 
     public function store(Request $request)
     {
-      // dd($request);
       $message = [
         'kategori_id.required' => 'Wajib di isi',
         'nama_produk.required' => 'Wajib di isi',
@@ -311,12 +312,46 @@ class ProdukController extends Controller
           $getProduk->flag_publish = 0;
           $getProduk->update();
 
+          $log = new LogAkses;
+          $log->actor = Auth::user()->id;
+          $log->aksi = 'Unpublish Produk '.$getProduk->nama_produk;
+          $log->save();
+
           return redirect()->route('produk.index')->with('berhasil', 'Berhasil Unpublish '.$getProduk->nama_produk);
         }else{
           $getProduk->flag_publish = 1;
           $getProduk->update();
 
+          $log = new LogAkses;
+          $log->actor = Auth::user()->id;
+          $log->aksi = 'Publish Produk '.$getProduk->nama_produk;
+          $log->save();
+
           return redirect()->route('produk.index')->with('berhasil', 'Berhasil Publish '.$getProduk->nama_produk);
         }
+    }
+
+    public function delete($id)
+    {
+      $getProduk = Produk::find($id);
+
+      if(!$getProduk){
+        return view('backend.errors.404');
+      }
+
+      DB::transaction(function() use($getProduk){
+        File::delete('images/produk/' .$getProduk->img_url);
+        File::delete('images/produk/' .$getProduk->img_url_kanan);
+        File::delete('images/produk/' .$getProduk->img_url_kiri);
+        $getProduk->delete();
+
+        $log = new LogAkses;
+        $log->actor = Auth::user()->id;
+        $log->aksi = 'Menghapus Produk '.$getProduk->nama_produk;
+        $log->save();
+      });
+
+      return redirect()->route('produk.index')->with('berhasil', 'Berhasil menghapus Produk '.$getProduk->nama_produk);
+
     }
 }
