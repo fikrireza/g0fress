@@ -95,6 +95,8 @@ class ProdukController extends Controller
 
 
       DB::transaction(function () use($request) {
+        $salt = str_random(4);
+        
         $image = $request->file('img_url');
         $img_url = str_slug($request->img_alt,'-').'-'.$salt. '.' . $image->getClientOriginalExtension();
         Image::make($image)->fit(443,418)->save('images/produk/'. $img_url);
@@ -113,7 +115,6 @@ class ProdukController extends Controller
           $flag_publish = 0;
         }
 
-        $salt = str_random(4);
 
         $save = new Produk;
         $save->kategori_id = $request->kategori_id;
