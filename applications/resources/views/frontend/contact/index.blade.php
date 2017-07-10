@@ -112,19 +112,39 @@
 				<p class="phone"><i class="fa fa-phone" aria-hidden="true"></i> 000-0000000</p>
 			</div>
 			@else
-			@foreach ($getKontak as $key)
-			<div class="odd-even">
-				<h3 class="title">
-					{{ $key->kantor_kategori}}
-				</h3>
-				<div class="description">
-					{!! $key->alamat !!}
+			<div>
+				@foreach ($getKontak as $key)
+				@if($key->flag_mancanegara == 0)
+				<div class="odd-even">
+					<h3 class="title">
+						{{ $key->kantor_kategori}}
+					</h3>
+					<div class="description">
+						{!! $key->alamat !!}
+					</div>
+					<p class="phone"><i class="fa fa-phone" aria-hidden="true"></i> {{ $key->no_telp }}</p>
 				</div>
-				<p class="phone"><i class="fa fa-phone" aria-hidden="true"></i> {{ $key->no_telp }}</p>
-			</div>
-			@endforeach
-			@endif
+				@endif
+				@endforeach
 			<div class="clearfix"></div>
+			</div>
+			<div>
+				@foreach ($getKontak as $key)
+				@if($key->flag_mancanegara == 1)
+				<div class="odd-even">
+					<h3 class="title">
+						{{ $key->kantor_kategori}}
+					</h3>
+					<div class="description">
+						{!! $key->alamat !!}
+					</div>
+					<p class="phone"><i class="fa fa-phone" aria-hidden="true"></i> {{ $key->no_telp }}</p>
+				</div>
+				@endif
+				@endforeach
+			<div class="clearfix"></div>
+			</div>
+			@endif
 		</div>
 	</div>
 </div>

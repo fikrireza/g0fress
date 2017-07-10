@@ -14,7 +14,7 @@ class ContactController extends Controller
 {
     function index()
     {
-      $getKontak = Kontak::get();
+      $getKontak = Kontak::orderBy('flag_mancanegara', 'asc')->get();
 
     	return view('frontend.contact.index', compact('getKontak'));
     }
