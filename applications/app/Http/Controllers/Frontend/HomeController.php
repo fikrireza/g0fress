@@ -31,7 +31,7 @@ class HomeController extends Controller
         
         $callSlider = SliderHome::select('img_url', 'img_alt', 'link_url')->where('flag_publish', '1')->orderBy('posisi', 'asc')->get();
 
-        $callAfiliasi = Afiliasi::select('nama_afiliasi', 'link_url', 'img_url', 'img_alt')->where('flag_publish', '1')->get();
+        $callAfiliasi = Afiliasi::select('nama_afiliasi', 'link_url', 'img_url', 'img_alt', 'flag_buynow')->where('flag_publish', '1')->get();
 
 		$callKategory = ProdukKategori::select(
             'nama_kategori', 

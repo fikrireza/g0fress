@@ -212,7 +212,6 @@
 </div>
 @endif
 <div class="background-content background-content-second">
-
 	<div class="title-background">
 		<div class="flag-title-wrapper white">
 			<div class="vertical-align-midle">
@@ -230,7 +229,6 @@
 	</div>
 
 	<div class="content-wrapper">
-
 		@if(!empty($items))
 			@php ($insCount=0)
 			@foreach($items as $key => $item)
@@ -278,7 +276,6 @@
 </div>
 
 <div class="background-content background-content-first">
-
 	<div class="content-wrapper" style="padding-top: 60px;">
 		<div class="flag-title-wrapper color">
 			<div class="vertical-align-midle">
@@ -305,6 +302,21 @@
 </div>
 
 @include('frontend.events.vidio-show')
+<div style="position: fixed; left: 0; top: 0; display: table;">
+	<div style="display: table-cell; width: 0px; height: 100vh; vertical-align: middle;">
+		<div>
+			@foreach($callAfiliasi as $list)
+			@if($list->flag_buynow == 0)
+			<div>
+				<a href="{{ $list->link_url }}">
+					<img src="{{ asset('images/afiliasi/'.$list->img_url) }}" title="{{ $list->nama_afiliasi }}" alt="{{ $list->img_alt }}">
+				</a>
+			</div>
+			@endif
+			@endforeach
+		</div>
+	</div>
+</div>
 @endsection
 
 @section('footer-script')
