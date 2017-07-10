@@ -306,7 +306,7 @@
 	<div style="display: table-cell; width: 0px; height: 100vh; vertical-align: middle;">
 		<div>
 			@foreach($callAfiliasi as $list)
-			@if($list->flag_buynow == 0)
+			@if($list->flag_buynow == 1)
 			<div>
 				<a href="{{ $list->link_url }}">
 					<img src="{{ asset('images/afiliasi/'.$list->img_url) }}" title="{{ $list->nama_afiliasi }}" alt="{{ $list->img_alt }}">
