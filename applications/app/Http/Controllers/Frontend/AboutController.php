@@ -54,7 +54,7 @@ class AboutController extends Controller
         $callProv = Kota::select(
             'id',
             'nama_kota',
-            DB::raw('(select count(id_provinsi) from amd_distribution where amd_distribution.id_provinsi = amd_kota.id) as count_city')
+            DB::raw('(select count(id_provinsi) from amd_distribution where amd_distribution.id_provinsi = amd_kota.id and amd_distribution.flag_publish = 1) as count_city')
         )
         ->get();
 
