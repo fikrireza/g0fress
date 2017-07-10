@@ -73,7 +73,7 @@
             </div>
           </div>
           <div class="item form-group {{ $errors->has('ingredient') ? 'has-error' : ''}}">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Ingredient <span class="required">*</span>
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Komposisi <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
               <textarea id="ingredient" required="required" name="ingredient">{{ old('ingredient')}}</textarea>
@@ -82,7 +82,7 @@
               @endif
             </div>
           </div>
-          <div class="item form-group {{ $errors->has('nutrition_fact') ? 'has-error' : ''}}">
+          {{-- <div class="item form-group {{ $errors->has('nutrition_fact') ? 'has-error' : ''}}">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Deskripsi <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
@@ -91,7 +91,7 @@
                 <code><span style="color:red; font-size:12px;">{{ $errors->first('nutrition_fact')}}</span></code>
               @endif
             </div>
-          </div>
+          </div> --}}
           <div class="ln_solid"></div>
           <div class="item form-group">
             <label class="col-md-3"></label>

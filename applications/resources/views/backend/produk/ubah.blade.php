@@ -74,22 +74,12 @@
             </div>
           </div>
           <div class="item form-group {{ $errors->has('ingredient') ? 'has-error' : ''}}">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Ingredient <span class="required">*</span>
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Komposisi <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
               <textarea id="ingredient" required="required" name="ingredient" class="form-control col-md-7 col-xs-12">{{ $getProduk->ingredient }}</textarea>
               @if($errors->has('ingredient'))
                 <code><span style="color:red; font-size:12px;">{{ $errors->first('ingredient')}}</span></code>
-              @endif
-            </div>
-          </div>
-          <div class="item form-group {{ $errors->has('nutrition_fact') ? 'has-error' : ''}}">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Deskripsi <span class="required">*</span>
-            </label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <textarea id="nutrition_fact" required="required" name="nutrition_fact" class="form-control col-md-7 col-xs-12">{{ $getProduk->nutrition_fact }}</textarea>
-              @if($errors->has('nutrition_fact'))
-                <code><span style="color:red; font-size:12px;">{{ $errors->first('nutrition_fact')}}</span></code>
               @endif
             </div>
           </div>

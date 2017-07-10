@@ -52,14 +52,9 @@
             <td>{!! $getProduk->deskripsi_EN !!}</td>
           </tr>
           <tr>
-            <td><strong>Ingredient</strong></td>
+            <td><strong>Komposisi</strong></td>
             <td>:</td>
             <td>{!! $getProduk->ingredient !!}</td>
-          </tr>
-          <tr>
-            <td><strong>Deskripsi</strong></td>
-            <td>:</td>
-            <td>{!! $getProduk->nutrition_fact !!}</td>
           </tr>
           <tr>
             <td><strong>Gambar Produk Utama</strong></td>
