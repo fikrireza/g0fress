@@ -8,7 +8,7 @@
         <loc>{{ url('') }}</loc>
     </url>
     <url>
-        <loc>{{ url('') }}/tentang</loc>
+        <loc>{{ url('') }}/tentang-kami</loc>
     </url>
     <url>
       <loc>{{ url('') }}/produk</loc>
@@ -19,19 +19,22 @@
       </url>
     @endforeach
     <url>
-        <loc>{{ url('') }}/news</loc>
+        <loc>{{ url('') }}/berita-info</loc>
     </url>
     @foreach($getNews as $news)
     <url>
-        <loc>{{ url('') }}/news/{{ $news->slug }}</loc>
+        <loc>{{ url('') }}/berita-info/{{ $news->slug }}</loc>
     </url>
     @endforeach
     <url>
-        <loc>{{ url('') }}/program-events/</loc>
+        <loc>{{ url('') }}/program-acara/</loc>
     </url>
     @foreach ($getProgEven as $event)
     <url>
-        <loc>{{ url('') }}/program-events/event/{{ $event->slug }}</loc>
+        <loc>{{ url('') }}/program-acara/event/{{ $event->slug }}</loc>
     </url>
     @endforeach
+    <url>
+      <loc>http://amadeo.id</loc>
+    </url>
 </urlset>

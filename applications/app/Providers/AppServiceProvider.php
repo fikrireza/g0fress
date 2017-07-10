@@ -31,7 +31,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-             
+
         if(!Request::is('admin/*')){
 
             // for navigasi
@@ -72,13 +72,13 @@ class AppServiceProvider extends ServiceProvider
 
             // for banner head
             if(
-                Request::is('tentang') || 
-                Request::is('news') || 
-                Request::is('news/*') || 
-                Request::is('produk') || 
-                Request::is('produk/*') || 
-                Request::is('program-events') || 
-                Request::is('program-events/*')
+                Request::is('tentang-kami') ||
+                Request::is('berita-info') ||
+                Request::is('berita-info/*') ||
+                Request::is('produk') ||
+                Request::is('produk/*') ||
+                Request::is('program-acara') ||
+                Request::is('program-acara/*')
                 ){
                 $url = Request::getRequestUri();
                 $thisUrl = explode('/', $url);
@@ -96,14 +96,14 @@ class AppServiceProvider extends ServiceProvider
 
             // for meta description
             if(
-                Request::is('/') || 
-                Request::is('contact') || 
-                Request::is('program-events') || 
-                Request::is('program-events/more-events') || 
-                Request::is('program-events/more-events-vidio') || 
-                Request::is('news') || 
-                Request::is('produk') || 
-                Request::is('produk/*') || 
+                Request::is('/') ||
+                Request::is('kontak') ||
+                Request::is('program-acara') ||
+                Request::is('program-acara/more-events') ||
+                Request::is('program-acara/more-events-vidio') ||
+                Request::is('berita-info') ||
+                Request::is('produk') ||
+                Request::is('produk/*') ||
                 Request::is('produk/*/*')
 
                 ){

@@ -214,14 +214,14 @@ Route::get('bahasa/{bhs}', 'HomeController@language')->where('lang', '[A-Za-z_-]
 
 Route::get('/', 'Frontend\HomeController@index')->name('frontend.home');
 
-Route::get('/contact', 'Frontend\ContactController@index')->name('frontend.contact');
-Route::post('/contact', 'Frontend\ContactController@store')->name('frontend.contact.post');
+Route::get('/kontak', 'Frontend\ContactController@index')->name('frontend.contact');
+Route::post('/kontak', 'Frontend\ContactController@store')->name('frontend.contact.post');
 
-Route::get('/tentang', 'Frontend\AboutController@index')->name('frontend.about');
+Route::get('/tentang-kami', 'Frontend\AboutController@index')->name('frontend.about');
 
 // News
-Route::get('/news', 'Frontend\NewsController@index')->name('frontend.news');
-Route::get('/news/{slug}', 'Frontend\NewsController@view')->name('frontend.news.view');
+Route::get('/berita-info', 'Frontend\NewsController@index')->name('frontend.news');
+Route::get('/berita-info/{slug}', 'Frontend\NewsController@view')->name('frontend.news.view');
 
 // Produk
 Route::get('/produk', 'Frontend\ProdukController@index')->name('frontend.produk');
@@ -230,10 +230,10 @@ Route::get('/produk/{slug}', 'Frontend\ProdukController@indexView')->name('front
 Route::get('/produk/{slug}/{sdSlug}', 'Frontend\ProdukController@indexViewSpesifik')->name('frontend.produk.view.spesik');
 
 // Program & Event
-Route::get('/program-events', 'Frontend\EventsController@index')->name('frontend.program-event');
-Route::get('/program-events/more-events', 'Frontend\EventsController@indexEvents')->name('frontend.program-event.events');
-Route::get('/program-events/more-events-vidio', 'Frontend\EventsController@indexEventsVidio')->name('frontend.program-event.events-vidio');
-Route::get('/program-events/event/{slug}', 'Frontend\EventsController@eventsView')->name('frontend.program-event.view');
+Route::get('/program-acara', 'Frontend\EventsController@index')->name('frontend.program-event');
+Route::get('/program-acara/more-events', 'Frontend\EventsController@indexEvents')->name('frontend.program-event.events');
+Route::get('/program-acara/more-events-vidio', 'Frontend\EventsController@indexEventsVidio')->name('frontend.program-event.events-vidio');
+Route::get('/program-acara/event/{slug}', 'Frontend\EventsController@eventsView')->name('frontend.program-event.view');
 
 
 // Sitemap

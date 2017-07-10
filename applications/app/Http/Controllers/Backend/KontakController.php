@@ -53,12 +53,19 @@ class KontakController extends Controller
         }
 
         DB::transaction(function() use($request){
+          if($request->flag_mancanegara == null){
+            $flag_mancanegara = 0;
+          }else{
+            $flag_mancanegara = 1;
+          }
+
           $save = New Kontak;
           $save->kantor_kategori = $request->kantor_kategori;
           $save->alamat = $request->alamat;
           $save->email = $request->email;
           $save->maps = '-';
           $save->no_telp = $request->no_telp;
+          $save->flag_mancanegara = $flag_mancanegara;
           $save->actor = Auth::user()->id;
           $save->save();
 
@@ -108,12 +115,19 @@ class KontakController extends Controller
         }
 
         DB::transaction(function() use($request){
+          if($request->flag_mancanegara == null){
+            $flag_mancanegara = 0;
+          }else{
+            $flag_mancanegara = 1;
+          }
+
           $update = Kontak::find($request->id);
           $update->kantor_kategori = $request->kantor_kategori;
           $update->alamat = $request->alamat;
           $update->email = $request->email;
           $update->maps = '-';
           $update->no_telp = $request->no_telp;
+          $update->flag_mancanegara = $flag_mancanegara;
           $update->actor = Auth::user()->id;
           $update->update();
 
@@ -125,5 +139,26 @@ class KontakController extends Controller
         });
 
         return redirect()->route('kontak.index')->with('berhasil', 'Berhasil Mengubah Kontak '.$request->kantor_kategori);
+    }
+
+    public function delete($id)
+    {
+      $getKontak = Kontak::find($id);
+
+      if(!$getKontak){
+        return view('backend.errors.404');
+      }
+
+      DB::transaction(function() use($getKontak){
+        $getKontak->delete();
+
+        $log = new LogAkses;
+        $log->actor = Auth::user()->id;
+        $log->aksi = 'Menghapus Kontak '.$getKontak->kantor_kategori;
+        $log->save();
+      });
+
+      return redirect()->route('kontak.index')->with('berhasil', 'Berhasil menghapus Kontak '.$getKontak->kantor_kategori);
+
     }
 }

@@ -5,6 +5,8 @@
 @endsection
 
 @section('headscript')
+<link href="{{ asset('backend/vendors/iCheck/skins/flat/green.css')}}" rel="stylesheet">
+<link href="{{ asset('backend/vendors/switchery/dist/switchery.min.css') }}" rel="stylesheet">
 <script src="{{asset('backend/vendors/ckeditor/ckeditor.js')}}"></script>
 @endsection
 
@@ -59,6 +61,16 @@
             </div>
           </div>
           <div class="ln_solid"></div>
+          <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Mancanegara
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <label>
+                <input type="checkbox" class="flat" name="flag_mancanegara" />
+              </label>
+            </div>
+          </div>
+          <div class="ln_solid"></div>
           <div class="form-group">
             <div class="col-md-6 col-md-offset-3">
               <a href="{{ route('kontak.index') }}" class="btn btn-primary">Cancel</a>
@@ -74,6 +86,8 @@
 @endsection
 
 @section('script')
+  <script src="{{ asset('backend/vendors/iCheck/icheck.min.js')}}"></script>
+  <script src="{{ asset('backend/vendors/switchery/dist/switchery.min.js')}}"></script>
   <script language="javascript">
       CKEDITOR.replace('alamat', {
         toolbar: [

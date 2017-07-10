@@ -19,9 +19,9 @@
 	width: 100%;
 }
 .wrapper-vision-mision .wrapper-item .wrapper-content .wrapper-description{
-	position: absolute; 
-	top: 75px; 
-	width: 100%; 
+	position: absolute;
+	top: 75px;
+	width: 100%;
 	z-index: 1;
 }
 .wrapper-vision-mision .wrapper-item .wrapper-content .wrapper-description .content{
@@ -55,7 +55,7 @@
 
 }
 .wrapper-show-image img{
-	height: auto; 
+	height: auto;
 	width: 160px;
 	margin-top: 40px;
 }
@@ -94,10 +94,10 @@
 	top: -70px;
 	left: -50px;
 	text-align: center;
-	width: 200px; 
-	border-radius: 10px; 
-	border:5px solid rgb(0,162,220); 
-	background-color: rgb(255,255,255); 
+	width: 200px;
+	border-radius: 10px;
+	border:5px solid rgb(0,162,220);
+	background-color: rgb(255,255,255);
 	padding: 5px;
 	position: relative;
 	z-index: 2;
@@ -127,7 +127,7 @@
     font-family: 'US101';
 	color: rgb(114,119,121);
 	text-align: center;
-	border-bottom: .5px solid rgb(0,162,220); 
+	border-bottom: .5px solid rgb(0,162,220);
 	margin: 0px;
 }
 .wrapper-map .pin-wrapper .description p{
@@ -260,8 +260,8 @@
 	left: 59vw;
 }
 .wrapper-map .pin-wrapper#maps-prov-31{
-	top: 49vh;
-	left: 74vw;
+	top: 40vh;
+	left: 72vw;
 }
 .wrapper-map .pin-wrapper#maps-prov-32{
 	top: 28vh;
@@ -272,8 +272,8 @@
 	left: 82vw;
 }
 .wrapper-map .pin-wrapper#maps-prov-34{
-	top: 45vh;
-	left: 94vw;
+	top: 43vh;
+	left: 91vw;
 }
 
 .col-md-4.col-sm-6 label{
@@ -299,7 +299,7 @@
 		font-size: 11px;
 	}
 	.wrapper-show-image img{
-		height: auto; 
+		height: auto;
 		width: 80%;
 		margin-top: 20px;
 	}
