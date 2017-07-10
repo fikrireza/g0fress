@@ -19,7 +19,7 @@ class SocialMediaController extends Controller
 
     public function index()
     {
-        $getSocial = SocialMedia::get();
+        $getSocial = SocialMedia::orderBy('flag_publish', 'desc')->get();
 
         return view('backend.social.index', compact('getSocial'));
     }

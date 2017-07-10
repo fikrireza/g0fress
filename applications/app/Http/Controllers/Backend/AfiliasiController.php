@@ -19,7 +19,7 @@ class AfiliasiController extends Controller
 
     public function index()
     {
-        $getAfiliasi = Afiliasi::get();
+        $getAfiliasi = Afiliasi::orderBy('flag_publish', 'desc')->get();
 
         return view('backend.afiliasi.index', compact('getAfiliasi'));
     }

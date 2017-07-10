@@ -61,6 +61,7 @@ Route::group(['middleware' => ['isAdministrator']], function () {
   Route::get('admin/produk/ubah/{id}', 'Backend\ProdukController@ubah')->name('produk.ubah');
   Route::post('admin/produk/ubah', 'Backend\ProdukController@edit')->name('produk.edit');
   Route::get('admin/produk/publish/{id}', 'Backend\ProdukController@publish')->name('produk.publish');
+  Route::get('admin/produk/delete/{id}', 'Backend\ProdukController@delete')->name('produk.delete');
 
   // Produk Kategori
   Route::get('admin/produk-kategori', 'Backend\ProdukKategoriController@index')->name('produkKategori.index');
@@ -70,6 +71,8 @@ Route::group(['middleware' => ['isAdministrator']], function () {
   Route::get('admin/produk-kategori/ubah/{id}', 'Backend\ProdukKategoriController@ubah')->name('produkKategori.ubah');
   Route::post('admin/produk-kategori/ubah', 'Backend\ProdukKategoriController@edit')->name('produkKategori.edit');
   Route::get('admin/produk-kategori/publish/{id}', 'Backend\ProdukKategoriController@publish')->name('produkKategori.publish');
+  Route::get('admin/produk-kategori/delete/{id}', 'Backend\ProdukKategoriController@delete')->name('produkKategori.delete');
+
 
   // News
   Route::get('admin/news', 'Backend\NewsController@index')->name('news.index');
@@ -80,6 +83,8 @@ Route::group(['middleware' => ['isAdministrator']], function () {
   Route::post('admin/news/ubah', 'Backend\NewsController@edit')->name('news.edit');
   Route::get('admin/news/publish/{id}', 'Backend\NewsController@publish')->name('news.publish');
   Route::get('admin/news/homepage/{id}', 'Backend\NewsController@homepage')->name('news.homepage');
+  Route::get('admin/news/delete/{id}', 'Backend\NewsController@delete')->name('news.delete');
+
 
   // Program & Events
   Route::get('admin/program-events', 'Backend\ProgramEventsController@index')->name('programEvents.index');
@@ -90,6 +95,8 @@ Route::group(['middleware' => ['isAdministrator']], function () {
   Route::post('admin/program-events/ubah', 'Backend\ProgramEventsController@edit')->name('programEvents.edit');
   Route::get('admin/program-events/publish/{id}', 'Backend\ProgramEventsController@publish')->name('programEvents.publish');
   Route::get('admin/program-events/homepage/{id}', 'Backend\ProgramEventsController@homepage')->name('programEvents.homepage');
+  Route::get('admin/program-events/delete/{id}', 'Backend\ProgramEventsController@delete')->name('programEvents.delete');
+
 
   // Program & Events Kategori
   Route::get('admin/program-events-kategori', 'Backend\ProgramEventsKategoriController@index')->name('programEventsKategori.index');
@@ -99,6 +106,8 @@ Route::group(['middleware' => ['isAdministrator']], function () {
   Route::get('admin/program-events-kategori/ubah/{id}', 'Backend\ProgramEventsKategoriController@ubah')->name('programEventsKategori.ubah');
   Route::post('admin/program-events-kategori/ubah', 'Backend\ProgramEventsKategoriController@edit')->name('programEventsKategori.edit');
   Route::get('admin/program-events-kategori/publish/{id}', 'Backend\ProgramEventsKategoriController@publish')->name('programEventsKategori.publish');
+  Route::get('admin/program-events-kategori/delete/{id}', 'Backend\ProgramEventsKategoriController@delete')->name('programEventsKategori.delete');
+
 
   // Inbox Message
   Route::get('admin/inbox', 'Backend\InboxController@index')->name('inbox.index');
@@ -172,6 +181,8 @@ Route::group(['middleware' => ['isAdministrator']], function () {
   Route::get('admin/tentang-distribution/ubah/{id}', 'Backend\DistributionController@ubah')->name('distribution.ubah');
   Route::post('admin/tentang-distribution/ubah', 'Backend\DistributionController@edit')->name('distribution.edit');
   Route::get('admin/tentang-distribution/publish/{id}', 'Backend\DistributionController@publish')->name('distribution.publish');
+  Route::get('admin/tentang-distribution/delete/{id}', 'Backend\DistributionController@delete')->name('distribution.delete');
+
 
   // User
   Route::get('admin/users', 'Backend\UserController@index')->name('users.index');

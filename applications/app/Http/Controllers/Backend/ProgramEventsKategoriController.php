@@ -30,7 +30,7 @@ class ProgramEventsKategoriController extends Controller
 
     public function index()
     {
-      $getProgramEventsKategori = ProgramEventsKategori::get();
+      $getProgramEventsKategori = ProgramEventsKategori::orderBy('flag_publish', 'desc')->get();
 
       return view('backend.programEventsKategori.index', compact('getProgramEventsKategori'));
     }
@@ -165,13 +165,44 @@ class ProgramEventsKategoriController extends Controller
           $getProgramEventsKategori->flag_publish = 0;
           $getProgramEventsKategori->update();
 
-          return redirect()->route('programEventsKategori.index')->with('berhasil', 'Berhasil Unpublish Banner Slider '.$getProgramEventsKategori->judul_kategori_ID);
+          $log = new LogAkses;
+          $log->actor = Auth::user()->id;
+          $log->aksi = 'Unpublish Program Event Kategori '.$getProgramEventsKategori->judul_kategori_ID;
+          $log->save();
+
+          return redirect()->route('programEventsKategori.index')->with('berhasil', 'Berhasil Unpublish Program Event Kategori '.$getProgramEventsKategori->judul_kategori_ID);
         }else{
           $getProgramEventsKategori->flag_publish = 1;
           $getProgramEventsKategori->update();
 
-          return redirect()->route('programEventsKategori.index')->with('berhasil', 'Berhasil Publish Banner Slider '.$getProgramEventsKategori->judul_kategori_ID);
+          $log = new LogAkses;
+          $log->actor = Auth::user()->id;
+          $log->aksi = 'Publish Program Event Kategori '.$getProgramEventsKategori->judul_kategori_ID;
+          $log->save();
+
+          return redirect()->route('programEventsKategori.index')->with('berhasil', 'Berhasil Publish Program Event Kategori '.$getProgramEventsKategori->judul_kategori_ID);
         }
+    }
+
+    public function delete($id)
+    {
+      $getProgramEventsKategori = programEventsKategori::find($id);
+
+      if(!$getProgramEventsKategori){
+        return view('backend.errors.404');
+      }
+
+      DB::transaction(function() use($getProgramEventsKategori){
+        $getProgramEventsKategori->delete();
+
+        $log = new LogAkses;
+        $log->actor = Auth::user()->id;
+        $log->aksi = 'Menghapus Program Event Kategori '.$getProgramEventsKategori->nama_produk;
+        $log->save();
+      });
+
+      return redirect()->route('programEventsKategori.index')->with('berhasil', 'Berhasil menghapus Program Event Kategori '.$getProgramEventsKategori->nama_produk);
+
     }
 
 }

@@ -13,6 +13,7 @@ use DB;
 use Auth;
 use Validator;
 use Image;
+use File;
 
 class NewsController extends Controller
 {
@@ -29,7 +30,7 @@ class NewsController extends Controller
 
     public function index()
     {
-      $getNews = News::get();
+      $getNews = News::orderBy('flag_publish', 'desc')->get();
 
       return view('backend.news.index', compact('getNews'));
     }
@@ -85,7 +86,7 @@ class NewsController extends Controller
           }
 
           $salt = str_random(4);
-          
+
           if (!$image) {
             $save = New News;
             $save->judul_ID = $request->judul_ID;
@@ -252,10 +253,20 @@ class NewsController extends Controller
           $getNews->flag_publish = 0;
           $getNews->update();
 
+          $log = new LogAkses;
+          $log->actor = Auth::user()->id;
+          $log->aksi = 'Unpublish News '.$getNews->judul_ID;
+          $log->save();
+
           return redirect()->route('news.index')->with('berhasil', 'Berhasil Unpublish '.$getNews->judul_ID);
         }else{
           $getNews->flag_publish = 1;
           $getNews->update();
+
+          $log = new LogAkses;
+          $log->actor = Auth::user()->id;
+          $log->aksi = 'Publish News '.$getNews->judul_ID;
+          $log->save();
 
           return redirect()->route('news.index')->with('berhasil', 'Berhasil Publish '.$getNews->judul_ID);
         }
@@ -280,5 +291,27 @@ class NewsController extends Controller
 
           return redirect()->route('news.index')->with('berhasil', 'Berhasil Show Home Page '.$getNews->judul_ID);
         }
+    }
+
+    public function delete($id)
+    {
+      $getNews = News::find($id);
+
+      if(!$getNews){
+        return view('backend.errors.404');
+      }
+
+      DB::transaction(function() use($getNews){
+        File::delete('images/news/' .$getNews->img_url);
+        $getNews->delete();
+
+        $log = new LogAkses;
+        $log->actor = Auth::user()->id;
+        $log->aksi = 'Menghapus News '.$getNews->judul_ID;
+        $log->save();
+      });
+
+      return redirect()->route('news.index')->with('berhasil', 'Berhasil menghapus News '.$getNews->judul_ID);
+
     }
 }

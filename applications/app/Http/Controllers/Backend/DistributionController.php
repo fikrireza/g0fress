@@ -21,6 +21,7 @@ class DistributionController extends Controller
     {
         $getDistribution = Distribution::join('amd_kota', 'amd_kota.id', '=', 'amd_distribution.id_provinsi')
                                         ->select('amd_distribution.*', 'amd_kota.nama_kota as nama_provinsi')
+                                        ->orderBy('amd_distribution.flag_publish', 'desc')
                                         ->get();
 
         return view('backend.distribution.index', compact('getDistribution'));
@@ -143,13 +144,44 @@ class DistributionController extends Controller
           $getDistribution->flag_publish = 0;
           $getDistribution->update();
 
+          $log = new LogAkses;
+          $log->actor = Auth::user()->id;
+          $log->aksi = 'Unpublish Distribution '.$getDistribution->nama_kota;
+          $log->save();
+
           return redirect()->route('distribution.index')->with('berhasil', 'Berhasil Unpublish Distribution '.$getDistribution->nama_kota);
         }else{
           $getDistribution->flag_publish = 1;
           $getDistribution->update();
 
+          $log = new LogAkses;
+          $log->actor = Auth::user()->id;
+          $log->aksi = 'Publish Distribution '.$getDistribution->nama_kota;
+          $log->save();
+
           return redirect()->route('distribution.index')->with('berhasil', 'Berhasil Publish Distribution '.$getDistribution->nama_kota);
         }
+    }
+
+    public function delete($id)
+    {
+      $getDistribution = Distribution::find($id);
+
+      if(!$getDistribution){
+        return view('backend.errors.404');
+      }
+
+      DB::transaction(function() use($getDistribution){
+        $getDistribution->delete();
+
+        $log = new LogAkses;
+        $log->actor = Auth::user()->id;
+        $log->aksi = 'Menghapus Produk '.$getDistribution->nama_produk;
+        $log->save();
+      });
+
+      return redirect()->route('distribution.index')->with('berhasil', 'Berhasil menghapus Distribution '.$getDistribution->nama_produk);
+
     }
 
 }
