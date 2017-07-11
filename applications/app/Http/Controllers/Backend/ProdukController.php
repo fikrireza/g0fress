@@ -62,6 +62,8 @@ class ProdukController extends Controller
         'img_url.image' => 'Format Gambar Tidak Sesuai',
         'img_url.max' => 'File Size Terlalu Besar',
         'img_alt.required' => 'Wajib di isi',
+        'img_alt_kiri.required' => 'Wajib di isi',
+        'img_alt_kanan.required' => 'Wajib di isi',
         'img_url_kanan.required' => 'Wajib di isi',
         'img_url_kanan.image' => 'Format Gambar Tidak Sesuai',
         'img_url_kanan.max' => 'File Size Terlalu Besar',
@@ -75,7 +77,8 @@ class ProdukController extends Controller
 
       $validator = Validator::make($request->all(), [
         'kategori_id' => 'required',
-        'nama_produk' => 'required|unique:amd_produk|max:25',
+        'nama_produk' => 'required|max:25',
+        // 'nama_produk' => 'required|unique:amd_produk|max:25',
         'deskripsi_EN' => 'required|min:20',
         'deskripsi_ID' => 'required|min:20',
         'img_url' => 'required|image|mimes:jpeg,bmp,png|max:2000|dimensions:max_width=443,max_height=418',
@@ -93,19 +96,20 @@ class ProdukController extends Controller
         return redirect()->route('produk.tambah')->withErrors($validator)->withInput();
       }
 
-
       DB::transaction(function () use($request) {
+        $salt = str_random(4);
+
         $image = $request->file('img_url');
-        $img_url = str_slug($request->img_alt,'-').'-'.$salt. '.' . $image->getClientOriginalExtension();
-        Image::make($image)->fit(443,418)->save('images/produk/'. $img_url);
+        $img_url = str_slug($request->img_alt,'-').'-main-'.$salt. '.' . $image->getClientOriginalExtension();
+        $upload1 = Image::make($image)->fit(443,418)->save('images/produk/'. $img_url);
 
         $image_kanan = $request->file('img_url_kanan');
-        $img_url_kanan = str_slug($request->img_alt_kanan,'-').'-'.$salt. '.' . $image_kanan->getClientOriginalExtension();
-        Image::make($image_kanan)->fit(291,308)->save('images/produk/'. $img_url_kanan);
+        $img_url_kanan = str_slug($request->img_alt_kanan,'-').'-right-'.$salt. '.' . $image_kanan->getClientOriginalExtension();
+        $upload2 = Image::make($image_kanan)->fit(291,308)->save('images/produk/'. $img_url_kanan);
 
         $image_kiri = $request->file('img_url_kiri');
-        $img_url_kiri = str_slug($request->img_alt_kiri,'-').'-'.$salt. '.' . $image_kiri->getClientOriginalExtension();
-        Image::make($image_kiri)->fit(247,178)->save('images/produk/'. $img_url_kiri);
+        $img_url_kiri = str_slug($request->img_alt_kiri,'-').'-left-'.$salt. '.' . $image_kiri->getClientOriginalExtension();
+        $upload3 = Image::make($image_kiri)->fit(247,178)->save('images/produk/'. $img_url_kiri);
 
         if($request->flag_publish == 'on'){
           $flag_publish = 1;
@@ -113,15 +117,12 @@ class ProdukController extends Controller
           $flag_publish = 0;
         }
 
-        $salt = str_random(4);
-
         $save = new Produk;
         $save->kategori_id = $request->kategori_id;
         $save->nama_produk = $request->nama_produk;
         $save->deskripsi_EN = $request->deskripsi_EN;
         $save->deskripsi_ID = $request->deskripsi_ID;
         $save->ingredient = $request->ingredient;
-        $save->nutrition_fact = $request->nutrition_fact;
         $save->img_url  = $img_url;
         $save->img_alt  = $request->img_alt;
         $save->img_url_kanan  = $img_url_kanan;
@@ -187,7 +188,7 @@ class ProdukController extends Controller
         'img_url_kanan.dimensions' => 'Ukuran yg di terima 291px x 308px',
         'img_url_kiri.image' => 'Format Gambar Tidak Sesuai',
         'img_url_kiri.max' => 'File Size Terlalu Besar',
-        'img_alt_kiri.dimensions' => 'Ukuran yg di terima 247px x 178px',
+        'img_url_kiri.dimensions' => 'Ukuran yg di terima 247px x 178px',
         'img_alt.required' => 'Wajib di isi',
         'img_alt_kanan.required' => 'Wajib di isi',
         'img_alt_kiri.required' => 'Wajib di isi',
@@ -196,7 +197,8 @@ class ProdukController extends Controller
 
       $validator = Validator::make($request->all(), [
         'kategori_id' => 'required',
-        'nama_produk' => 'required|max:25|unique:amd_produk,nama_produk,'.$request->id,
+        'nama_produk' => 'required|max:25',
+        // 'nama_produk' => 'required|max:25|unique:amd_produk,nama_produk,'.$request->id,
         'deskripsi_EN' => 'required',
         'deskripsi_ID' => 'required',
         'img_url' => 'image|mimes:jpeg,bmp,png|max:2000|dimensions:max_width=443,max_height=418',
@@ -245,13 +247,13 @@ class ProdukController extends Controller
         if (!$image && !$image_kanan && !$image_kiri) {
           $update->update();
         }elseif($image && $image_kanan && $image_kiri){
-          $img_url = str_slug($request->img_alt,'-').'-'.$salt. '.' . $image->getClientOriginalExtension();
+          $img_url = str_slug($request->img_alt,'-').'-main-'.$salt. '.' . $image->getClientOriginalExtension();
           Image::make($image)->fit(443,418)->save('images/produk/'. $img_url);
 
-          $img_url_kanan = str_slug($request->img_alt_kanan,'-').'-'.$salt. '.' . $image_kanan->getClientOriginalExtension();
+          $img_url_kanan = str_slug($request->img_alt_kanan,'-').'-right-'.$salt. '.' . $image_kanan->getClientOriginalExtension();
           Image::make($image_kanan)->fit(291,308)->save('images/produk/'. $img_url_kanan);
 
-          $img_url_kiri = str_slug($request->img_alt_kiri,'-').'-'.$salt. '.' . $image_kiri->getClientOriginalExtension();
+          $img_url_kiri = str_slug($request->img_alt_kiri,'-').'-left-'.$salt. '.' . $image_kiri->getClientOriginalExtension();
           Image::make($image_kiri)->fit(247,178)->save('images/produk/'. $img_url_kiri);
 
           $update->img_url  = $img_url;
@@ -259,29 +261,29 @@ class ProdukController extends Controller
           $update->img_url_kiri  = $img_url_kiri;
           $update->update();
         }elseif($image_kanan && $image_kiri){
-          $img_url_kanan = str_slug($request->img_alt_kanan,'-').'-'.$salt. '.' . $image_kanan->getClientOriginalExtension();
+          $img_url_kanan = str_slug($request->img_alt_kanan,'-').'-right-'.$salt. '.' . $image_kanan->getClientOriginalExtension();
           Image::make($image_kanan)->fit(291,308)->save('images/produk/'. $img_url_kanan);
 
-          $img_url_kiri = str_slug($request->img_alt_kiri,'-').'-'.$salt. '.' . $image_kiri->getClientOriginalExtension();
+          $img_url_kiri = str_slug($request->img_alt_kiri,'-').'-left-'.$salt. '.' . $image_kiri->getClientOriginalExtension();
           Image::make($image_kiri)->fit(247,178)->save('images/produk/'. $img_url_kiri);
 
           $update->img_url_kanan  = $img_url_kanan;
           $update->img_url_kiri  = $img_url_kiri;
           $update->update();
         }elseif($image){
-          $img_url = str_slug($request->img_alt,'-').'-'.$salt. '.' . $image->getClientOriginalExtension();
+          $img_url = str_slug($request->img_alt,'-').'-main-'.$salt. '.' . $image->getClientOriginalExtension();
           Image::make($image)->fit(443,418)->save('images/produk/'. $img_url);
 
           $update->img_url  = $img_url;
           $update->update();
         }elseif($image_kanan){
-          $img_url_kanan = str_slug($request->img_alt_kanan,'-').'-'.$salt. '.' . $image_kanan->getClientOriginalExtension();
+          $img_url_kanan = str_slug($request->img_alt_kanan,'-').'-left-'.$salt. '.' . $image_kanan->getClientOriginalExtension();
           Image::make($image_kanan)->fit(291,308)->save('images/produk/'. $img_url_kanan);
 
           $update->img_url_kanan  = $img_url_kanan;
           $update->update();
         }elseif($image_kiri){
-          $img_url_kiri = str_slug($request->img_alt_kiri,'-').'-'.$salt. '.' . $image_kiri->getClientOriginalExtension();
+          $img_url_kiri = str_slug($request->img_alt_kiri,'-').'-right-'.$salt. '.' . $image_kiri->getClientOriginalExtension();
           Image::make($image_kiri)->fit(247,178)->save('images/produk/'. $img_url_kiri);
 
           $update->img_url_kiri  = $img_url_kiri;
