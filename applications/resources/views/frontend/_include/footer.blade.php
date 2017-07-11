@@ -35,3 +35,17 @@
 		<p class="copy-right">@lang('front/publict.copy-right')</p>
 	</div>
 </div>
+<div class="buy-now-wrapper">
+	<div class="middle">
+		<div class="content-buy-now">
+			<h2 class="title">Buy Now</h2>		
+			@foreach($callAfiliasiForBuyNow as $list)
+			<div class="buy-now-list">
+				<a href="{{ $list->link_url }}">
+					<img src="{{ asset('images/afiliasi/'.$list->img_url) }}" title="{{ $list->nama_afiliasi }}" alt="{{ $list->img_alt }}">
+				</a>
+			</div>
+			@endforeach
+		</div>
+	</div>
+</div>

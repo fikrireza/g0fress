@@ -124,7 +124,7 @@ class EventsController extends Controller
             ->first();
 
         if ($callProgramEvent == null) {
-            abort('errors.404');
+            return view('errors.404');
         }
     	if ($callProgramEvent->video_url == null) {
 	    	return view('frontend.events.events-view',compact('callProgramEvent'));

@@ -1,12 +1,16 @@
 <div id="vidio-show" class="youtube-embed">
 	<div class="wrapper">
-		<div id="youtube-embed">
+		<div class="youtube-embed-warpper">
+			<div class="youtube-embed-close">
+				<i class="fa fa-times-circle-o" aria-hidden="true"></i>
+			</div>
+			<div id="youtube-embed">
+			</div>
 		</div>
 		<div id="wrapper-description">
 			<h1 id="youtube-embed-title"></h1>
 			<div id="youtube-embed-description">
 			</div>
-			<h1 id="youtube-embed-close" style="cursor: pointer;">Close</h1>
 		</div>
 	</div>
 </div>

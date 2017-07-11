@@ -13,6 +13,7 @@ use App\Models\Tentang;
 use App\Models\Banner;
 use App\Models\SocialMedia;
 use App\Models\News;
+use App\Models\Afiliasi;
 
 use App;
 use Auth;
@@ -70,6 +71,18 @@ class AppServiceProvider extends ServiceProvider
             ->get();
             view()->share('callSosMed', $callSosMed);
 
+            // for Buy Now Afiliasi
+            $callAfiliasiForBuyNow = Afiliasi::select(
+                'nama_afiliasi', 
+                'link_url', 
+                'img_url', 
+                'img_alt'
+            )
+            ->where('flag_buynow', '1')
+            ->where('flag_publish', '1')
+            ->get();
+            view()->share('callAfiliasiForBuyNow', $callAfiliasiForBuyNow);
+
             // for banner head
             if(
                 Request::is('tentang-kami') ||
@@ -84,6 +97,19 @@ class AppServiceProvider extends ServiceProvider
                 $thisUrl = explode('/', $url);
                 $checkThis = $thisUrl[2];
 
+                if ($checkThis == 'tentang-kami') {
+                    $checkThis = 'tentang';
+                }
+                else if ($checkThis == 'produk') {
+                    $checkThis = 'produk';
+                }
+                else if ($checkThis == 'berita-info') {
+                    $checkThis = 'news';
+                }
+                else if ($checkThis == 'program-acara') {
+                    $checkThis = 'program-events';
+                }
+                
                 $callBanner = Banner::where('halaman', $checkThis)->first();
                 if(!$callBanner){
                     $forBanner = 'picture/firstCampaign/background-rainbow.png';

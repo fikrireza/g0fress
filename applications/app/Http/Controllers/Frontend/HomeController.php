@@ -43,7 +43,7 @@ class HomeController extends Controller
         )
         ->where('flag_publish', '1')
         ->whereDATE('tanggal_post', '<=', $format_date)
-        ->orderBy('id', 'desc')
+        ->orderBy('id', 'asc')
         ->get();
 
         if (App::getLocale() == 'id') {

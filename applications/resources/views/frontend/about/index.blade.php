@@ -127,23 +127,24 @@
 </div>
 
 <div class="wrapper-map">
-	<img class="img-map" src="{{ asset('images/tentang/maps.png') }}">
-	@foreach($callProv as $list)
-	@if($list->count_city != 0)
-	<div id="maps-prov-{{$list->id}}" class="pin-wrapper">
-		<img src="{{ asset('images/tentang/pin.png') }}">
-		<div class="description">
-			<h4>Prov. {{ $list->nama_kota }}</h4>
-			@foreach($callCity as $listSub)
-			@if($list->id == $listSub->id_provinsi)
-			<p>{{ $listSub->nama_kota }}</p>
-			@endif
-			@endforeach
-			<div class="clearfix"></div>
+	<div class="img-map" style="background-image: url('{{ asset('images/tentang/maps.png') }}');">
+		@foreach($callProv as $list)
+		@if($list->count_city != 0)
+		<div id="maps-prov-{{$list->id}}" class="pin-wrapper">
+			<img src="{{ asset('images/tentang/pin.png') }}">
+			<div class="description">
+				<h4>Prov. {{ $list->nama_kota }}</h4>
+				@foreach($callCity as $listSub)
+				@if($list->id == $listSub->id_provinsi)
+				<p>{{ $listSub->nama_kota }}</p>
+				@endif
+				@endforeach
+				<div class="clearfix"></div>
+			</div>
 		</div>
+		@endif
+		@endforeach
 	</div>
-	@endif
-	@endforeach
 </div>
 
 @if($callCityOut != null)

@@ -12,7 +12,7 @@ $(document).ready(function() {
 				$( "#youtube-embed-description" ).html(vedioDescription);
 	    	}
 	    });
-	    $('#youtube-embed-close').click(function() {
+	    $('.youtube-embed-close').click(function() {
 	    	if($( "#vidio-show.youtube-embed" ).hasClass( "active" )){
 				$( "#vidio-show.youtube-embed" ).removeClass( "active" );
 	    	}

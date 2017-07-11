@@ -472,6 +472,54 @@
 
 /* for footer */
 
+/* buy now */
+.buy-now-wrapper{
+	position: fixed; 
+	left: 0; 
+	top: 0; 
+	display: table;
+}
+.buy-now-wrapper .middle{
+	display: table-cell; 
+	width: 0px; 
+	height: 100vh; 
+	vertical-align: middle;
+}
+.buy-now-wrapper .content-buy-now{
+	margin-left: -30px;
+	padding-left: 0px;
+	transition: all .51s;
+}
+.buy-now-wrapper .content-buy-now:hover{
+	padding-left: 15px;
+	margin-left: 0px;
+}
+.buy-now-wrapper .content-buy-now h2.title{
+    font-family: 'Nautilus';
+    font-weight: normal;
+    text-shadow: 2px 2px 2px gray;
+    color: rgb(255,255,255);
+    -ms-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+	transition: all .51s;
+}
+.buy-now-wrapper .content-buy-now:hover h2.title{
+	-ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+.buy-now-wrapper .content-buy-now .buy-now-list a img{
+	width: 0px;
+	margin-bottom: 0px;
+	transition: all 1s;
+}
+.buy-now-wrapper .content-buy-now:hover .buy-now-list a img{
+	width: 80px;
+	margin-bottom: 10px;
+}
+/*end buy now*/
+
 /* for font family */
 @font-face {
     font-family: 'Nevis Bold';
