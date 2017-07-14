@@ -39,7 +39,6 @@ class AfiliasiController extends Controller
         'img_url.max' => 'File Size Terlalu Besar',
         'img_url.dimensions' => 'Ukuran Tinggi Maksimal 46px',
         'img_alt.required' => 'Wajib di isi',
-        'link_url.required' => 'Wajib di isi',
         'link_url.url' => 'Format url tidak sesuai'
       ];
 
@@ -47,7 +46,7 @@ class AfiliasiController extends Controller
         'nama_afiliasi' => 'required|unique:amd_afiliasi',
         'img_url' => 'required|image|mimes:jpeg,bmp,png|max:1000|dimensions:max_height=46',
         'img_alt' => 'required',
-        'link_url' => 'required|url'
+        'link_url' => 'url'
       ], $message);
 
 
@@ -114,7 +113,6 @@ class AfiliasiController extends Controller
           'img_url.max' => 'File Size Terlalu Besar',
           'img_url.dimensions' => 'Ukuran Tinggi Maksimal 46px',
           'img_alt.required' => 'Wajib di isi',
-          'link_url.required' => 'Wajib di isi',
           'link_url.url' => 'Format url tidak sesuai',
         ];
 
@@ -122,7 +120,7 @@ class AfiliasiController extends Controller
           'nama_afiliasi' => 'required|unique:amd_afiliasi,nama_afiliasi,'.$request->id,
           'img_url' => 'image|mimes:jpeg,bmp,png|max:1000|dimensions:max_height=46',
           'img_alt' => 'required',
-          'link_url' => 'required|url',
+          'link_url' => 'url',
         ], $message);
 
         if($validator->fails())

@@ -134,7 +134,7 @@
               <td>{{ $no }}</td>
               <td>{{ $key->nama_afiliasi }}</td>
               <td class="text-center"><img src="{{ asset('images/afiliasi').'/'.$key->img_url}}"></td>
-              <td>{{ $key->link_url }}</td>
+              <td>{{ $key->link_url or '-' }}</td>
               <td>@if ($key->flag_buynow == 1)
                     <a href=""><span class="label label-success"><i class="fa fa-thumbs-o-up"></i></span></a>
                   @else
