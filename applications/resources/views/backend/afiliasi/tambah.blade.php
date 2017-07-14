@@ -59,7 +59,7 @@
           <div class="item form-group {{ $errors->has('link_url') ? 'has-error' : ''}}">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Link Afiliasi</label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="link_url" class="form-control col-md-7 col-xs-12" name="link_url" placeholder="Contoh: http://facebook.com/amadeo.id" required="required" type="text" value="{{ old('link_url') }}">
+              <input id="link_url" class="form-control col-md-7 col-xs-12" name="link_url" placeholder="Contoh: http://facebook.com/amadeo.id" type="text" value="{{ old('link_url') }}">
               @if($errors->has('link_url'))
                 <code><span style="color:red; font-size:12px;">{{ $errors->first('link_url')}}</span></code>
               @endif
