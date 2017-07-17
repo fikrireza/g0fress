@@ -46,7 +46,7 @@ class AfiliasiController extends Controller
         'nama_afiliasi' => 'required|unique:amd_afiliasi',
         'img_url' => 'required|image|mimes:jpeg,bmp,png|max:1000|dimensions:max_height=46',
         'img_alt' => 'required',
-        'link_url' => 'url'
+        'link_url' => 'nullable|url'
       ], $message);
 
 
@@ -120,7 +120,7 @@ class AfiliasiController extends Controller
           'nama_afiliasi' => 'required|unique:amd_afiliasi,nama_afiliasi,'.$request->id,
           'img_url' => 'image|mimes:jpeg,bmp,png|max:1000|dimensions:max_height=46',
           'img_alt' => 'required',
-          'link_url' => 'url',
+          'link_url' => 'nullable|url',
         ], $message);
 
         if($validator->fails())

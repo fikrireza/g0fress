@@ -109,9 +109,10 @@ class BannerController extends Controller
           return redirect()->route('banner.ubah', array('id' => $request->id))->withErrors($validator)->withInput();
         }
 
-        $salt = str_random(4);
 
         DB::transaction(function() use($request){
+		  $salt = str_random(4);
+		  
           $image = $request->file('img_url');
           $image_kanan = $request->file('img_url_kanan');
           $image_kiri = $request->file('img_url_kiri');
