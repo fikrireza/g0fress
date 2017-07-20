@@ -156,15 +156,14 @@
 			</h2>
 		</div>
 
-		<div class="row">
-			@foreach($callCityOut as $list)
-				<div class="col-md-4 col-sm-6 text-center">
-					<a href="{{ route('frontend.contact') }}#contact-ditails">
-						<label>{{ $list->nama_kota }}</label>
-					</a>
-				</div>
-			@endforeach
-		</div>
+		@foreach($callCityOut as $list)
+			<div class="col-md-4 col-sm-6  col-xs-6 text-center">
+				<a href="{{ route('frontend.contact') }}#contact-ditails">
+					<label>{{ $list->nama_kota }}</label>
+				</a>
+			</div>
+		@endforeach
+		<div class="clearfix"></div>
 	</div>
 </div>
 @endif

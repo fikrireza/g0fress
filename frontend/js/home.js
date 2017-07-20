@@ -4,7 +4,7 @@ $(document).ready(function() {
  
   	$(".slider").owlCarousel({
  
-    	navigation : true, // Show next and prev buttons
+    	navigation : true,
     	slideSpeed : 300,
     	paginationSpeed : 400,
     	singleItem:true,
@@ -14,7 +14,7 @@ $(document).ready(function() {
 
   $(".slider-product").owlCarousel({
  
-      navigation : false, // Show next and prev buttons
+      navigation : false,
       items: 1,
       singleItem:true,
       pagination:true
@@ -23,12 +23,21 @@ $(document).ready(function() {
 
   $(".slider-second").owlCarousel({
  
-      navigation : true, // Show next and prev buttons
+      navigation : true,
       items: 4,
       pagination:false,
       navigationText : ["<i class='fa fa-chevron-left' aria-hidden='true'></i><i class='fa fa-chevron-left' aria-hidden='true'></i>","<i class='fa fa-chevron-right' aria-hidden='true'></i><i class='fa fa-chevron-right' aria-hidden='true'></i>"]
  
     });
+
+  $(".afiliasi-wrapper").owlCarousel({
+      items: 5,
+      navigation : false,
+      pagination:false,
+      autoPlay: 3000,
+      stopOnHover:true
+    });
+
 
   $(".scroldown-wrapper").on("click", ".scroldown", function (event) {
       $('html, body').animate({

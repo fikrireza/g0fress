@@ -1,5 +1,6 @@
 .slider-product{
-	width: 100%;
+	width: 80%;
+	margin: 0 auto;
 }
 .slider-product .item .wrapper-product{
     width: 75%;
@@ -23,7 +24,7 @@
 	text-align: center;
 }
 .slider-product .item .wrapper-product .front .vertical-align-middle img{
-	width: 55%;
+	width: 100%;
 	transition: all .51s;
 }
 .slider-product .item .wrapper-product .front .vertical-align-middle img:hover{

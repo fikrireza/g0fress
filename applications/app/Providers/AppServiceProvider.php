@@ -14,6 +14,7 @@ use App\Models\Banner;
 use App\Models\SocialMedia;
 use App\Models\News;
 use App\Models\Afiliasi;
+use App\Models\ProgramEvents;
 
 use App;
 use Auth;
@@ -61,6 +62,9 @@ class AppServiceProvider extends ServiceProvider
             // for news validate
             $countNews = News::where('flag_publish', '1')->whereDATE('tanggal_post', '<=', $format_date)->count('id');
             view()->share('countNews', $countNews);
+            // for news validate
+            $countProEve = ProgramEvents::where('flag_publish', '1')->whereDATE('tanggal_post', '<=', $format_date)->count('id');
+            view()->share('countProEve', $countProEve);
 
             // for sosmed
             $callSosMed = SocialMedia::select(

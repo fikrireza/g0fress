@@ -39,7 +39,6 @@ class ProdukController extends Controller
   			->orderBy('id', 'desc')
   			->get();
 
-
     	return view('frontend.produk.index',compact('callKategory'));
     }
 

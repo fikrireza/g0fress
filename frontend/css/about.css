@@ -290,6 +290,10 @@
 	.background-content{
 		padding-bottom: 40px;
 	}
+	.wrapper-about-description{
+		width: 80%;
+		margin: 0 auto;
+	}
 	.wrapper-vision-mision .wrapper-item{
 		width: 100%;
 	}
@@ -302,9 +306,12 @@
 	.wrapper-vision-mision .wrapper-item .wrapper-content .wrapper-description .content .description{
 		font-size: 11px;
 	}
+	.wrapper-show-image{
+		width: 80%;
+	}
 	.wrapper-show-image img{
 		height: auto;
-		width: 80%;
+		width: 55%;
 		margin-top: 20px;
 	}
 

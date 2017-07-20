@@ -14,8 +14,8 @@
 
 @section('head-style')
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/public-sub-page.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/produk-slider-category.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/produk-index.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/produk-slider-category.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/for-share-wrapper.css') }}">
 
 	<link rel="stylesheet" href="{{ asset('plugin/owl-carousel/owl.carousel.css') }}">
@@ -96,8 +96,8 @@
 
 @section('footer-script')
 <script src="{{ asset('plugin/bootstrap-3.3.7/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('plugin/owl-carousel/owl.carousel.js') }}"></script>
-<script src="{{ asset('plugin/owl-carousel/owl.carousel.js') }}"></script>
 <script src="{{ asset('frontend/js/produk-index.js') }}"></script>
 
+<script src="{{ asset('plugin/owl-carousel/owl.carousel.js') }}"></script>
+<script src="{{ asset('plugin/owl-carousel/owl.carousel.js') }}"></script>
 @endsection

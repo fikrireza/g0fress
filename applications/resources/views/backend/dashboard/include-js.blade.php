@@ -422,6 +422,8 @@ window.onload = function () {
       });
     });
 
+    console.log(captionVarVW);
+        console.log(captionValVW);
     var cVW = document.getElementById("chartVisitorWebsite");
     var lineChartVisitorWebsite = new Chart(cVW, {
         type: 'line',

@@ -118,6 +118,7 @@
 	</div>
 </div>
 
+@if($countProEve != 0)
 <div class="background-content background-content-second">
 	<div class="title-background">
 		<div class="flag-title-wrapper white">
@@ -169,7 +170,7 @@
 
 	</div>
 </div>
-
+@endif
 @if($countNews != 0)
 <div class="background-content background-content-first">
 	<div class="title-background">
@@ -293,9 +294,11 @@
 
 		<div class="afiliasi-wrapper">
 			@foreach($callAfiliasi as $list)
-			<a href="{{ $list->link_url }}">
-				<img src="{{ asset('images/afiliasi/'.$list->img_url) }}" title="{{ $list->nama_afiliasi }}" alt="{{ $list->img_alt }}">
-			</a>
+			<div class="item">
+				<a href="{{ $list->link_url }}">
+					<img src="{{ asset('images/afiliasi/'.$list->img_url) }}" title="{{ $list->nama_afiliasi }}" alt="{{ $list->img_alt }}">
+				</a>
+			</div>
 			@endforeach
 		</div>
 	</div>

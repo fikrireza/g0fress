@@ -21,7 +21,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('plugin/font-awesome/css/font-awesome.min.css') }}">
 
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/public.css') }}">
-
+    
     @yield('head-style')
 
 	<link rel="icon" type="image/png" href="{{ asset('public/image/default/icon-gofress.png') }}" />
@@ -58,6 +58,5 @@
 	<script src="{{ asset('frontend/js/navbar.js') }}"></script>
 
 	@yield('footer-script')
-
 </body>
 </html>

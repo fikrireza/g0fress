@@ -8,5 +8,5 @@ return [
 	'stay-connected' => 'Stay Connected',
 	'connect-with-us' => 'Connect With Us',
 	'where-to-find-us' => 'Where to Find Us',
-	'promotion' => 'Promotion',
+	'promotion' => 'Program & Event',
 ];

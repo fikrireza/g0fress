@@ -38,13 +38,20 @@
 <div class="buy-now-wrapper">
 	<div class="middle">
 		<div class="content-buy-now">
-			<h2 class="title">Buy Now</h2>		
+			<div class="icon-cart-wrapper">
+				<img class="icon-cart" src="{{ asset('images/afiliasi/cart.png') }}" title="buy now" alt="buy now">
+			</div>
+			@php($afiliasiBreak = 0)	
 			@foreach($callAfiliasiForBuyNow as $list)
 			<div class="buy-now-list">
 				<a href="{{ $list->link_url }}">
 					<img src="{{ asset('images/afiliasi/'.$list->img_url) }}" title="{{ $list->nama_afiliasi }}" alt="{{ $list->img_alt }}">
 				</a>
 			</div>
+			@php($afiliasiBreak++)
+			@if($afiliasiBreak == 10)
+			@break
+			@endif
 			@endforeach
 		</div>
 	</div>

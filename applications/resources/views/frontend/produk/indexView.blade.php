@@ -46,17 +46,16 @@
 		</div>
 
 		<div class="produk-view-wrapper">
-			<div class="row">
-				@foreach($callProduk as $list)
-				<div class="col-md-4 col-sm-6 col-xs-6">
-					<div class="produk-item">
-						<a class="callThisData" href="#thisLoadData" data-target="{{ route('frontend.produk.callData', ['id'=>$list->id_produk]) }}">
-							<img class="produk-ditail" src="{{ asset('images/produk/'.$list->img_url_produk) }}" alt="{{ $list->img_alt_produk }}">
-						</a>
-					</div>
+			@foreach($callProduk as $list)
+			<div class="col-md-4 col-sm-6 col-xs-6">
+				<div class="produk-item">
+					<a class="callThisData" href="#thisLoadData" data-target="{{ route('frontend.produk.callData', ['id'=>$list->id_produk]) }}">
+						<img class="produk-ditail" src="{{ asset('images/produk/'.$list->img_url_produk) }}" alt="{{ $list->img_alt_produk }}">
+					</a>
 				</div>
-				@endforeach
 			</div>
+			@endforeach
+			<div class="clearfix"></div>
 		</div>
 
 		<div class="clearfix"></div>

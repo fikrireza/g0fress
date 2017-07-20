@@ -78,6 +78,12 @@
 	    right: -20px;
 	    border-width: 25px 15px !important;
 	}
+	.flag-title-wrapper .vertical-align-midle .left{
+		margin-right: 5px;
+	}
+	.flag-title-wrapper .vertical-align-midle .right{
+		margin-left: 5px;
+	}
 	.background-content .content-wrapper .wrapper-share{
 		width: 100%;
 	}

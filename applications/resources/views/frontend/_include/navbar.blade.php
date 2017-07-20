@@ -56,11 +56,13 @@
 					</a>
 				</li>
 				@endif
+				@if($countProEve != 0)
 				<li class="nav-link-list-li">
 					<a href="{{ route('frontend.program-event') }}">
 						@lang('front/publict.program')
 					</a>
 				</li>
+				@endif
 				<li class="nav-link-list-li">
 					<a href="{{ route('frontend.contact') }}">
 						@lang('front/publict.contact')

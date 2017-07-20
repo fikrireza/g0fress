@@ -8,5 +8,5 @@ return [
 	'stay-connected' => 'Tetap Terhubung',
 	'connect-with-us' => 'Terhubung Dengan Kami',
 	'where-to-find-us' => 'Temukan Kami',
-	'promotion' => 'Promosi',
+	'promotion' => 'Program & Acara',
 ];

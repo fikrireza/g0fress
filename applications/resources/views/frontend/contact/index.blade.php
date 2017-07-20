@@ -87,7 +87,9 @@
 
 <div class="background-content background-content-first">
 	<div class="wrapper-maps">
-		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.4499759798864!2d106.68074231476972!3d-6.335711195414996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69e504a69b23ab%3A0x3a02d749206e7d74!2sPT+Aquasolve+Sanaria!5e0!3m2!1sid!2sid!4v1493956624404" frameborder="0" scrolling="no" style="border:0" allowfullscreen></iframe>
+		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.6903765769434!2d106.86181131476887!3d-6.1721943955314265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMTAnMTkuOSJTIDEwNsKwNTEnNTAuNCJF!5e0!3m2!1sen!2s!4v1499846219004" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+		<!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2358.603627724047!2d106.86166611539522!3d-6.173223490512122!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5aaf8ee5069%3A0x29f39907e21ab142!2sRuko+Indra+Sentral!5e0!3m2!1sid!2sid!4v1499825987975" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe> -->
+		<!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.4499759798864!2d106.68074231476972!3d-6.335711195414996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69e504a69b23ab%3A0x3a02d749206e7d74!2sPT+Aquasolve+Sanaria!5e0!3m2!1sid!2sid!4v1493956624404" frameborder="0" scrolling="no" style="border:0" allowfullscreen></iframe> -->
 	</div>
 
 	<div class="content-wrapper">
