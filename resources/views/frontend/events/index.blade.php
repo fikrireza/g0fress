@@ -13,13 +13,7 @@
 @endsection
 
 @section('head-style')
-<link rel="stylesheet" type="text/css" href="{{ asset('amadeo/css/public-sub-page.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('amadeo/css/events-list-item-normal.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('amadeo/css/events-list-item-vidio.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('amadeo/css/for-share-wrapper.css') }}">
-
-	<link rel="stylesheet" href="{{ asset('plugin/owl-carousel/owl.carousel.css') }}">
-	<link rel="stylesheet" href="{{ asset('plugin/owl-carousel/owl.theme.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ mix('amadeo/css/mix/event-index.css') }}">
 @endsection
 
 @section('body-content')
@@ -129,10 +123,5 @@
 @endsection
 
 @section('footer-script')
-<script src="{{ asset('plugin/bootstrap-3.3.7/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('plugin/owl-carousel/owl.carousel.js') }}"></script>
-<script src="{{ asset('plugin/owl-carousel/owl.carousel.js') }}"></script>
-<script src="{{ asset('amadeo/js/events-index.js') }}"></script>
-<script src="{{ asset('amadeo/js/youtube-embed.js') }}"></script>
-
+<script src="{{ mix('amadeo/js/mix/event-index.js') }}"></script>
 @endsection

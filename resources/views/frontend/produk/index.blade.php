@@ -13,13 +13,7 @@
 @endsection
 
 @section('head-style')
-<link rel="stylesheet" type="text/css" href="{{ asset('amadeo/css/public-sub-page.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('amadeo/css/produk-index.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('amadeo/css/produk-slider-category.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('amadeo/css/for-share-wrapper.css') }}">
-
-	<link rel="stylesheet" href="{{ asset('plugin/owl-carousel/owl.carousel.css') }}">
-	<link rel="stylesheet" href="{{ asset('plugin/owl-carousel/owl.theme.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ mix('amadeo/css/mix/produk-index.css') }}">
 @endsection
 
 @section('body-content')
@@ -28,9 +22,7 @@
 	<div class="banner" style="background-image: url(' {{ asset($forBanner) }}');">
 	</div>
 </div>
-<style type="text/css">
 
-</style>
 <div class="background-content background-content-first space-for-produk-owl">
 	<div class="content-wrapper">
 
@@ -95,9 +87,5 @@
 @endsection
 
 @section('footer-script')
-<script src="{{ asset('plugin/bootstrap-3.3.7/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('amadeo/js/produk-index.js') }}"></script>
-
-<script src="{{ asset('plugin/owl-carousel/owl.carousel.js') }}"></script>
-<script src="{{ asset('plugin/owl-carousel/owl.carousel.js') }}"></script>
+<script src="{{ mix('amadeo/js/mix/produk-index.js') }}"></script>
 @endsection

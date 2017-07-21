@@ -13,8 +13,7 @@
 @endsection
 
 @section('head-style')
-<link rel="stylesheet" type="text/css" href="{{ asset('amadeo/css/public-sub-page.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('amadeo/css/contact.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ mix('amadeo/css/mix/contact.css') }}">
 @endsection
 
 @section('body-content')
@@ -154,6 +153,5 @@
 @endsection
 
 @section('footer-script')
-<script src="{{ asset('plugin/bootstrap-3.3.7/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('amadeo/js/contact.js') }}"></script>
+<script src="{{ mix('amadeo/js/mix/contact.js') }}"></script>
 @endsection

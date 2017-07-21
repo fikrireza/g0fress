@@ -13,9 +13,7 @@
 @endsection
 
 @section('head-style')
-<link rel="stylesheet" type="text/css" href="{{ asset('amadeo/css/public-sub-page.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('amadeo/css/for-share-wrapper.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('amadeo/css/about.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ mix('amadeo/css/mix/about.css') }}">
 @endsection
 
 @section('body-content')
@@ -177,4 +175,5 @@
 @endsection
 
 @section('footer-script')
+<script src="{{ mix('amadeo/js/mix/default.js') }}"></script>
 @endsection

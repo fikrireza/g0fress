@@ -11,8 +11,7 @@
 @endsection
 
 @section('head-style')
-<link rel="stylesheet" type="text/css" href="{{ asset('amadeo/css/public-sub-page.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('amadeo/css/news-view.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ mix('amadeo/css/mix/news-view.css') }}">
 
 	<meta itemprop="thumbnailUrl" content="{{ asset('images/news/').'/'.$callNews->img_url }}"/>
 	<meta itemprop="image" content="{{ asset('images/news/').'/'.$callNews->img_url }}" />

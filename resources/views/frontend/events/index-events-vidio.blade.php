@@ -13,9 +13,7 @@
 @endsection
 
 @section('head-style')
-<link rel="stylesheet" type="text/css" href="{{ asset('amadeo/css/public-sub-page.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('amadeo/css/events-list-item-vidio.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('amadeo/css/for-share-wrapper.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ mix('amadeo/css/mix/event-index-vidio.css') }}">
 @endsection
 
 @section('body-content')
@@ -81,9 +79,7 @@
 @endsection
 
 @section('footer-script')
-<script src="{{ asset('plugin/bootstrap-3.3.7/js/bootstrap.min.js') }}"></script>
-
-<script src="{{ asset('amadeo/js/youtube-embed.js') }}"></script>
+<script src="{{ mix('amadeo/js/mix/event-index-vidio.js') }}"></script>
 <script type="text/javascript">
 	var page = 1;
 	$("#callNext").click(function(){

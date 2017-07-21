@@ -13,8 +13,7 @@
 @endsection
 
 @section('head-style')
-<link rel="stylesheet" type="text/css" href="{{ asset('amadeo/css/public-sub-page.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('amadeo/css/news-index.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ mix('amadeo/css/mix/news-index.css') }}">
 @endsection
 
 @section('body-content')
@@ -119,5 +118,4 @@
 @endsection
 
 @section('footer-script')
-<script src="{{ asset('plugin/bootstrap-3.3.7/js/bootstrap.min.js') }}"></script>
 @endsection

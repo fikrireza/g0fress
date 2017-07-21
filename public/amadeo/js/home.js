@@ -1,3 +1,4 @@
+// perubahan test
 var win = $(window);
 
 $(document).ready(function() {

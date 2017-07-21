@@ -11,9 +11,7 @@
 @endsection
 
 @section('head-style')
-<link rel="stylesheet" type="text/css" href="{{ asset('amadeo/css/public-sub-page.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('amadeo/css/events-view.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('amadeo/css/for-share-wrapper.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ mix('amadeo/css/mix/event-view-news.css') }}">
 
 	<meta itemprop="thumbnailUrl" content="{{ asset('images/programEvent/').'/'.$callProgramEvent->img_url }}"/>
 	<meta itemprop="image" content="{{ asset('images/programEvent/').'/'.$callProgramEvent->img_url }}" />
@@ -76,6 +74,4 @@
 @endsection
 
 @section('footer-script')
-<script src="{{ asset('plugin/bootstrap-3.3.7/js/bootstrap.min.js') }}"></script>
-
 @endsection

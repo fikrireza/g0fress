@@ -13,12 +13,7 @@
 @endsection
 
 @section('head-style')
-<link rel="stylesheet" type="text/css" href="{{ asset('amadeo/css/home.css') }}">
-
-	<link rel="stylesheet" href="{{ asset('plugin/owl-carousel/owl.carousel.css') }}">
-	<link rel="stylesheet" href="{{ asset('plugin/owl-carousel/owl.theme.css') }}">
-
-	<link rel="stylesheet" type="text/css" href="{{ asset('amadeo/css/events-list-item-vidio.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ mix('amadeo/css/mix/home.css') }}">
 @endsection
 
 @section('body-content')
@@ -308,8 +303,5 @@
 @endsection
 
 @section('footer-script')
-<script src="{{ asset('plugin/owl-carousel/owl.carousel.js') }}"></script>
-<script src="{{ asset('plugin/owl-carousel/owl.carousel.js') }}"></script>
-<script src="{{ asset('amadeo/js/home.js') }}"></script>
-<script src="{{ asset('amadeo/js/youtube-embed.js') }}"></script>
+<script src="{{ mix('amadeo/js/mix/home.js') }}"></script>
 @endsection
