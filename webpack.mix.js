@@ -151,9 +151,8 @@ let mix = require('laravel-mix');
 	mix.scripts([
 	    'public/plugin/jquery/jquery-3.2.0.min.js',
 	    'public/amadeo/js/navbar.js',
-	    'public/plugin/owl-carousel/owl.carousel.css',
-	    'public/plugin/owl-carousel/owl.theme.css',
-	    'public/amadeo/js/produk-index.js'
+	    'public/amadeo/js/produk-index.js',
+	    'public/plugin/owl-carousel/owl.carousel.js'
 	], 'public/amadeo/js/mix/produk-index.js').version();
 // End Produk Index Page
 
