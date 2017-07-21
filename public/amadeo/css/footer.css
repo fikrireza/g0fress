@@ -1,0 +1,54 @@
+.footer .wrapper-footer-link{
+	padding-top: 80px;
+}
+.footer .wrapper-footer-link .float-left{
+	float: left;
+}
+.footer .wrapper-footer-link .float-left ul{
+	list-style: none; 
+	margin: 0; 
+	padding: 0;
+}
+.footer .wrapper-footer-link .float-left ul li{
+	display: inline-block; 
+	margin-right: 20px;
+}
+.footer .wrapper-footer-link .float-left ul li a{
+	color: rgb(85,85,85);
+    font-family: 'AvenirNext';
+}
+.footer .wrapper-footer-link .float-right{
+	float: right;
+}
+.footer .wrapper-footer-link .float-right a{
+    text-decoration: none;
+}
+.footer .wrapper-footer-link .copy-right{
+	text-align: right; 
+	margin-top: 40px;
+	color: rgb(85,85,85);
+    font-family: 'AvenirNext';
+}
+
+
+@media (max-width: 480px) {
+	.footer .wrapper-footer-link{
+		padding: 30px 10px 0px;
+		position: relative;
+	}
+	.footer .wrapper-footer-link .float-left{
+		float: right;
+	}
+	.footer .wrapper-footer-link .float-left ul li{
+		margin-right: 0px;
+		margin-left: 10px;
+	}
+	.footer .wrapper-footer-link .float-right{
+		position: absolute;
+		bottom: -50px;
+		right: 10px;
+	}
+	.footer .wrapper-footer-link .copy-right{
+		margin-top: 15px;
+	}
+}

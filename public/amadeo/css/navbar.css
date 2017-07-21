@@ -1,0 +1,223 @@
+.nav{
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 15;
+	width: 100%;
+	height: 95px;
+	background-color: rgba(110,110,110,0);
+	transition: all .51s;
+}
+
+.nav .containt{
+	position: relative;
+	padding-left: 10%;
+	padding-right: 5%;
+}
+
+.nav .containt .icon-nav{
+	float: left;
+	height: 95px;
+	transition: all .51s;
+}
+.nav .containt .icon-nav .icon-nav-wrapper{
+	height: 95px;
+	display: table-cell;
+	vertical-align: middle;
+	transition: all .51s;
+}
+.nav .containt .icon-nav .icon-nav-wrapper img{
+	width: 165px;
+	transition: all .51s;
+}
+.nav .containt .icon-nav .bar{
+	display: none;
+}
+
+.nav .containt .nav-link-list{
+	height: 95px;
+	margin: 0 auto;
+	float: left;
+	transition: all .51s;
+}
+.nav .containt .nav-link-list .nav-link-list-ul{
+	height: 95px;
+	display: table-cell;
+	vertical-align: middle;
+	transition: all .51s;
+}
+.nav .containt .nav-link-list .nav-link-list-ul .nav-link-list-li{
+	position: relative;
+	display: inline-block;
+	list-style: none;
+	margin-right: 40px;
+	border-bottom: 3px solid rgba(0,0,0,0);
+	transition: all .51s;
+}
+.nav .containt .nav-link-list .nav-link-list-ul .nav-link-list-li:hover{
+	border-bottom-color: white;
+	transition: all .51s;
+}
+.nav .containt .nav-link-list .nav-link-list-ul .nav-link-list-li a{
+	color: white;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 16px;
+	text-shadow: 1px 1px 10px grey;
+	transition: all .51s;
+    font-family: 'Nevis Bold';
+}
+.nav .containt .nav-link-list .nav-link-list-ul .nav-link-list-li a:hover{
+	color: rgb(141,141,141);
+}
+.nav .containt .connect-social{
+	float: right;
+	height: 95px;
+	transition: all .51s;
+}
+.nav .containt .connect-social .social-wrapper{
+	height: 95px;
+	display: table-cell;
+	vertical-align: middle;
+	transition: all .51s;
+}
+.nav .containt .connect-social .social-wrapper img{
+	cursor: pointer;
+	width: 30px;
+	transition: all .51s;
+	margin-left: 10px;
+	transition: all .51s;
+}
+.nav .containt .connect-social .social-wrapper img:hover{
+	transform: scale(1.2,1.2);
+}
+
+
+.dropdown-hover .dropdown-hover-content{
+	visibility: hidden;
+	opacity: 0;
+	position: absolute;
+	top: 118%;
+	background-color: rgb(82,209,239);
+    box-shadow: 1px 4px 2px rgba(150,150,150,0.48);
+}
+.dropdown-hover:hover .dropdown-hover-content{
+	visibility: visible;
+	opacity: 1;
+	transition: all .51s, visibility 0.2s, opacity 0.5s linear;
+}
+.dropdown-hover .dropdown-hover-content .list{
+	width: 200px;
+	padding: 5px 10px;
+	position: relative;
+}
+.dropdown-hover .dropdown-hover-content .list a{
+	color: white;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 12px !important;
+	text-shadow: 1px 1px 10px grey;
+}
+
+.slide-hover{
+}
+.slide-hover .icon{
+	float: right;
+}
+.slide-hover .icon .fa{
+	margin: 0;
+	margin-left: -8px;
+	color: white;
+	transition: all .51s;
+}
+.slide-hover a:hover + .icon .fa{
+	color: rgb(141,141,141);
+}
+.slide-hover .slide-hover-content{
+	visibility: hidden;
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	left: 100%;
+	background-color: rgb(82,209,239);
+    box-shadow: -1px 4px 2px rgba(150,150,150,.48);
+    padding-top: 5px;
+}
+.slide-hover:hover .slide-hover-content{
+	visibility: visible;
+	opacity: 1;
+	transition: all .51s, visibility 0.2s, opacity 0.5s linear;
+}
+.slide-hover .slide-hover-content .list{
+	width: 200px;
+	padding: 0px 20px 5px;
+}
+
+
+
+@media (max-width: 480px) {
+	.nav{
+		background-color: rgba(28,217,217,1);
+		height: auto;
+		transition: all .51s;
+		height: 40px;
+	}
+	.nav .containt .icon-nav{
+		width: 100%;
+		margin: 10px auto;
+		height: auto;
+	}
+	.nav .containt .icon-nav .icon-nav-wrapper{
+		height: auto;
+		float: left;
+	}
+	.nav .containt .icon-nav .bar{
+		display: block;
+		float: right;
+		cursor: pointer;
+	}
+	.nav .containt .nav-link-list{
+		display: none;
+		position: relative;
+		height: auto;
+		float: left;
+		overflow-y: auto;
+		height: 360px;
+	}
+	.nav .containt .nav-link-list .nav-link-list-ul .nav-link-list-li{
+		display: block;
+		height: auto;
+	}
+	.nav .containt .connect-social{
+		display: none;
+		position: relative;
+		height: auto;
+		float: left;
+	}
+	.nav .containt .connect-social .social-wrapper{
+		display: block;
+		height: auto;
+		margin: 20px auto;
+	}
+
+	.dropdown-hover .dropdown-hover-content{
+		background-color: rgba(0,0,0,0);
+		box-shadow: none;
+	}
+	.dropdown-hover:hover .dropdown-hover-content{
+		position: relative;
+	}
+	.slide-hover .slide-hover-content{
+		background-color: rgba(0,0,0,0);
+		box-shadow: none;
+		left: 0%;
+		display: none;
+	}
+	.slide-hover:hover .slide-hover-content{
+		position: relative;
+		display: block;
+
+	}
+}

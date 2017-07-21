@@ -1,0 +1,87 @@
+.produk-view-wrapper{
+	position: relative;
+	width: 100%;
+	padding: 20px 0px;
+}
+.produk-view-wrapper .produk-item{
+	padding: 10px;
+	margin-top: 40px;
+}
+.produk-view-wrapper .produk-item .produk-ditail{
+	width: 100%;
+	height: auto;
+	cursor: pointer;
+	transition: all .51s;
+}
+.produk-view-wrapper .produk-item .produk-ditail:hover{
+	transform: scale(1.2,1.2);
+}
+.wrapper-for-detail-produk .wrapper-produk-show{
+	position: relative; 
+	width: 50%; 
+	margin:0 auto; 
+	text-align: center; 
+	border-top:2px solid rgb(68,217,217);
+}
+.wrapper-for-detail-produk .wrapper-produk-show .produk-show{
+	width: 65%; 
+	height: auto; 
+	margin-top: 30px; 
+	margin-bottom: -125px;
+}
+.wrapper-for-detail-produk .wrapper-produk-ditails-description{
+	width: 60%; 
+	margin:0px auto; 
+	padding: 60px 0px;
+}
+.wrapper-for-detail-produk .wrapper-produk-ditails-description .ditails-description{
+	float: left;
+	width: 50%;
+	color: rgb(255,255,255);
+}
+.wrapper-for-detail-produk .wrapper-produk-ditails-description .ditails-description h2{
+    font-family: 'US101';
+}
+.wrapper-for-detail-produk .wrapper-produk-ditails-description .ditails-description .ditails{
+    font-family: 'AvenirNext';
+}
+.wrapper-for-detail-produk .wrapper-produk-ditails-description .ditails-description.left{
+	padding-right: 5%;
+}
+.wrapper-for-detail-produk .wrapper-produk-ditails-description .ditails-description.right{
+	padding-left: 5%;
+}
+.wrapper-for-detail-produk .wrapper-produk-ditails-for-image{
+	position: relative;
+}
+.wrapper-for-detail-produk .wrapper-produk-ditails-for-image img{
+	position: absolute;
+	bottom: -145px;
+}
+.wrapper-for-detail-produk .wrapper-produk-ditails-for-image .left{
+	left: -55px; 
+	width: 285px;
+}
+.wrapper-for-detail-produk .wrapper-produk-ditails-for-image .right{
+	right: -55px; 
+	width: 320px;
+}
+@media (max-width: 480px) {
+	.wrapper-for-detail-produk .wrapper-produk-show .produk-show{
+		width: 100%;
+		margin-top: 20px;
+		margin-bottom: -105px;
+	}
+	.wrapper-for-detail-produk .wrapper-produk-ditails-description,
+	.wrapper-for-detail-produk .wrapper-produk-ditails-description .ditails-description{
+		width: 90%;
+	}
+	.wrapper-for-detail-produk .wrapper-produk-ditails-description .ditails-description.left,
+	.wrapper-for-detail-produk .wrapper-produk-ditails-description .ditails-description.right{
+		padding: 0;
+	}
+	.wrapper-for-detail-produk .wrapper-produk-ditails-for-image,
+	.wrapper-for-detail-produk .wrapper-produk-ditails-for-image img{
+		display: none;
+	}
+}

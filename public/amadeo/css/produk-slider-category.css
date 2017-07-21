@@ -1,0 +1,43 @@
+.slider-product{
+	width: 80%;
+	margin: 0 auto;
+}
+.slider-product .item .wrapper-product{
+    width: 75%;
+    margin: 0 auto;
+    transition: 0.6s;
+	height: 75vh;
+}
+
+.slider-product .item .wrapper-product .front{
+	width: 100%; 
+	height: 75vh;
+	display: table;
+	text-align: center;
+	position: relative;
+}
+.slider-product .item .wrapper-product .front .vertical-align-middle{
+	width: 100%; 
+	height: 75vh;
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+.slider-product .item .wrapper-product .front .vertical-align-middle img{
+	width: 100%;
+	transition: all .51s;
+}
+.slider-product .item .wrapper-product .front .vertical-align-middle img:hover{
+	transform: scale(1.2,1.2);
+}
+@media (max-width: 480px) {
+	.slider-product .item .wrapper-product,
+	.slider-product .item .wrapper-product .front,
+	.slider-product .item .wrapper-product .vertical-align-middle{
+		height: 70vh;
+	}
+	.slider-product .item .wrapper-product .front .vertical-align-middle img{
+		width: 100%;
+	}
+
+}

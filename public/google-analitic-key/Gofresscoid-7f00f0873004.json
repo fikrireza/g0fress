@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "gofresscoid",
+  "private_key_id": "7f00f0873004fcf7d5f5b324f6c93070e0f61c62",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCmX1XdXM8s/bT5\nlkR4R8c5g6mNZ69vs/LfM/cqXPL5I6t3Jxn8pI8EzhZY5Boxv+zYDVixF3rUKdvK\nRPhGL0p4G3qb48JzC9ZHm7JdtH0lqEc6pB66V4tb6jHH9FajvyZxqzUkwoSe+BqH\nEC+pkA8kj5LjnDdgB+5phH9/H6Un17NhFz7lhPv5S2RHpks1ItM98v82XblOg3zx\nDYlMrXRR31wFIEAraHxnAINKqY3keTF1pFay1nBF14VuqlPnGl6ypcHrdIiy+X1Y\nRM+L+OiviaY58y9ek3tfVrZrQ+rK3Mjlqm9l7G1tM3nc05bheB9N9jld9xpgXtMb\niLwwerNnAgMBAAECggEAFAbr3h667a6Ip3a4PUZerAS2V0hA7RBbTxUBTr8rnGP3\n0vsI/MmOUcTBGegzYwO4bfWFVKP/7CQxyfJtdH1i2HxuUO+ky5aEL9CFMxRz8CGG\nmX+CF2pMYz8YyPoXp9Rtu0chuZAUyNIS12lSY3Xs7Li/tNhsLgomX9tMQbA8gEQb\n7I28nvp6wlbQCVl86X1qkIAVT+YUOYi3iYrIBM60ZfDjAOE9hoBG9lCfc9WegaJT\n/Hu2QEdj8zKOxd7X6+fUBjUFIqXmt6t202kpmDeD/5kPDQIPf5J1hP+P1EKkMnpb\nm7yZEP+d1bC7mx6vvvuyw8NAsTaUxGGpTIzcF9HySQKBgQDj4+D6V78r+FMC7bvJ\ngJzy09TLcAYkjHAq+RHYGlA8JNUD/gko09SD0C/tEgXnEOw+nO2S402220U+Wiwm\nEZV36U+3UnZ+9AoCeO7agln7vPtLe9AMLx/HJDFSq7b9gFI7zulX9Cgs8QaZWv3o\niZs32KWPu4ZgQQyCTmC1cCiOCwKBgQC65ObKnXFir06OUm96slaP+RruTKQYQlIb\n7jzd1ER0BpPeq91ZWrMbtql1mAppGQgsrdMR84AmZcjkcymnJCd6winEpUov2znn\nngOIi0nVg8Th3Qa6H5XOZ07mK+tHAyH2D/co+wqcBGpcT0SJEY+uRBZmUU5MR4vD\nT7siif91lQKBgDYZdOE5T3LawqohUcEmPRwQWaXp9CtdA4vQEQJiTMXaYI9QEVCV\n6Q9ZrubyrmAKTmsWyfdi6qIML8X7lht7dSZARuJYOzUsLewkVV+eLkpqtKVYwS0D\nSuH1n5fml8xaWCtGlXKBzb/NgCmLxlcbw7NgRP14IRBcoOGWRbMM6zO9AoGBAINV\nc7GSbilxE/0DhP9t71KBNSGcjfvWLykdg3xHPEtki+kAUS4HhLHG7NKMI1SzmID9\nLcQBn15cTI3tN6oSyAOGCh/8H2P95HUVH1qGtz3puSMXVTDaHUXMZy9sUYu3cdge\nZAtSTqRQngV8VqcTxioqAquoGyOTa222y8R7wR75AoGBAMzriHU6diV4f4fT5Xy3\ncz5dBM3BougRrOGeIsJwPfkFClstqQr1UjA4Y27pwPVxnAvyYRnoClKJY19iH0jd\n6/tVDWvMucs16uIR0hrBGo3rdn5oTFg5kn56EQgNYYFAdO5GYfPEfTMRFig3sBBd\nLCd2RmtJTLQW7mF5vzV7ju+B\n-----END PRIVATE KEY-----\n",
+  "client_email": "gofresscoid-83@gofresscoid.iam.gserviceaccount.com",
+  "client_id": "101656824362149141653",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/gofresscoid-83%40gofresscoid.iam.gserviceaccount.com"
+}
