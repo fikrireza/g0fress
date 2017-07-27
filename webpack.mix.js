@@ -22,7 +22,6 @@ let mix = require('laravel-mix');
 // Home Page
 	mix.styles([
 	    'public/plugin/bootstrap-3.3.7/css/bootstrap.min.css',
-	    'public/plugin/font-awesome/css/font-awesome.min.css',
 	    'public/amadeo/css/public.css',
 	    'public/amadeo/css/home.css',
 	    'public/plugin/owl-carousel/owl.carousel.css',
@@ -42,7 +41,6 @@ let mix = require('laravel-mix');
 // About Page
 	mix.styles([
 	    'public/plugin/bootstrap-3.3.7/css/bootstrap.min.css',
-	    'public/plugin/font-awesome/css/font-awesome.min.css',
 	    'public/amadeo/css/public.css',
 	    'public/amadeo/css/public-sub-page.css',
 	    'public/amadeo/css/for-share-wrapper.css',
@@ -53,7 +51,6 @@ let mix = require('laravel-mix');
 // Contact Page
 	mix.styles([
 	    'public/plugin/bootstrap-3.3.7/css/bootstrap.min.css',
-	    'public/plugin/font-awesome/css/font-awesome.min.css',
 	    'public/amadeo/css/public.css',
 	    'public/amadeo/css/public-sub-page.css',
 	    'public/amadeo/css/contact.css',
@@ -69,7 +66,6 @@ let mix = require('laravel-mix');
 // Event Index Page
 	mix.styles([
 	    'public/plugin/bootstrap-3.3.7/css/bootstrap.min.css',
-	    'public/plugin/font-awesome/css/font-awesome.min.css',
 	    'public/amadeo/css/public.css',
 	    'public/amadeo/css/public-sub-page.css',
 	    'public/amadeo/css/events-list-item-normal.css',
@@ -91,7 +87,6 @@ let mix = require('laravel-mix');
 // Event Index News Page
 	mix.styles([
 	    'public/plugin/bootstrap-3.3.7/css/bootstrap.min.css',
-	    'public/plugin/font-awesome/css/font-awesome.min.css',
 	    'public/amadeo/css/public.css',
 	    'public/amadeo/css/public-sub-page.css',
 	    'public/amadeo/css/events-list-item-normal-not-owl.css',
@@ -102,7 +97,6 @@ let mix = require('laravel-mix');
 // Event Index Vidio Page
 	mix.styles([
 	    'public/plugin/bootstrap-3.3.7/css/bootstrap.min.css',
-	    'public/plugin/font-awesome/css/font-awesome.min.css',
 	    'public/amadeo/css/public.css',
 	    'public/amadeo/css/events-list-item-vidio.css',
 	    'public/amadeo/css/for-share-wrapper.css'
@@ -118,7 +112,6 @@ let mix = require('laravel-mix');
 // News Index Page
 	mix.styles([
 	    'public/plugin/bootstrap-3.3.7/css/bootstrap.min.css',
-	    'public/plugin/font-awesome/css/font-awesome.min.css',
 	    'public/amadeo/css/public.css',
 	    'public/amadeo/css/public-sub-page.css',
 	    'public/amadeo/css/news-index.css'
@@ -128,7 +121,6 @@ let mix = require('laravel-mix');
 // News View Page
 	mix.styles([
 	    'public/plugin/bootstrap-3.3.7/css/bootstrap.min.css',
-	    'public/plugin/font-awesome/css/font-awesome.min.css',
 	    'public/amadeo/css/public.css',
 	    'public/amadeo/css/public-sub-page.css',
 	    'public/amadeo/css/news-view.css'
@@ -138,7 +130,6 @@ let mix = require('laravel-mix');
 // Produk Index Page
 	mix.styles([
 	    'public/plugin/bootstrap-3.3.7/css/bootstrap.min.css',
-	    'public/plugin/font-awesome/css/font-awesome.min.css',
 	    'public/amadeo/css/public.css',
 	    'public/amadeo/css/public-sub-page.css',
 	    'public/amadeo/css/for-share-wrapper.css',
@@ -159,7 +150,6 @@ let mix = require('laravel-mix');
 // Produk View Page
 	mix.styles([
 	    'public/plugin/bootstrap-3.3.7/css/bootstrap.min.css',
-	    'public/plugin/font-awesome/css/font-awesome.min.css',
 	    'public/amadeo/css/public.css',
 	    'public/amadeo/css/public-sub-page.css',
 	    'public/amadeo/css/for-share-wrapper.css',
