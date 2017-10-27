@@ -2,259 +2,259 @@
 window.onload = function () {
   
   // for anal FB
-  var urlGetJson =  "{{ route('analytics.getFB') }}";
+    var urlGetJson =  "{{ route('analytics.getFB') }}";
 
-  $.getJSON(urlGetJson, function (json) {
+    $.getJSON(urlGetJson, function (json) {
 
-    // Page Impression
+      // Page Impression
 
-    var captionDay = new Array();
-    json.pageImpressionDayDatas.map(function(item) {
-      captionDay.push(item.end_time.substring(0, 10));
-    });
-    var countDay = new Array();
-    json.pageImpressionDayDatas.map(function(item) {
-      countDay.push(parseInt(item.value));
-    });
-    var countWeek = new Array();
-    json.pageImpressionWeekDatas.map(function(item) {
-      countWeek.push(parseInt(item.value));
-    });
-    var countMonth = new Array();
-    json.pageImpressionMonthDatas.map(function(item) {
-      countMonth.push(parseInt(item.value));
-    });
+      var captionDay = new Array();
+      json.pageImpressionDayDatas.map(function(item) {
+        captionDay.push(item.end_time.substring(0, 10));
+      });
+      var countDay = new Array();
+      json.pageImpressionDayDatas.map(function(item) {
+        countDay.push(parseInt(item.value));
+      });
+      var countWeek = new Array();
+      json.pageImpressionWeekDatas.map(function(item) {
+        countWeek.push(parseInt(item.value));
+      });
+      var countMonth = new Array();
+      json.pageImpressionMonthDatas.map(function(item) {
+        countMonth.push(parseInt(item.value));
+      });
 
-    // for paging
-    $.each(json, function (name, value) {
-      if (name == "pageImpressionPaging") {
-        $.each(value, function (name, value) {
-          if (name == "previous") {
-            document.getElementById('pagingImpressionPrev').setAttribute('data-target', value);
-          }
-          if (name == "next") {
-            document.getElementById('pagingImpressionNext').setAttribute('data-target', value);
-          }
-        });
-      }
-    });
-    // end for paging
-
-    var cPI = document.getElementById("chartPageImpression");
-    var lineChartPageImpression = new Chart(cPI, {
-        type: 'line',
-        data: {
-          labels: captionDay,
-          datasets: [
-              {
-                label: "Page Impression Day",
-                data: eval(countDay),
-                backgroundColor : "rgba(255,0,0,.5)"
-              },
-              {
-                label: "Page Impression Week",
-                data: eval(countWeek),
-                backgroundColor : "rgba(0,255,0,.5)"
-              },
-              {
-                label: "Page Impression 28 Days",
-                data: eval(countMonth),
-                backgroundColor : "rgba(0,0,255,.5)"
-              }
-
-
-            ]
+      // for paging
+      $.each(json, function (name, value) {
+        if (name == "pageImpressionPaging") {
+          $.each(value, function (name, value) {
+            if (name == "previous") {
+              document.getElementById('pagingImpressionPrev').setAttribute('data-target', value);
+            }
+            if (name == "next") {
+              document.getElementById('pagingImpressionNext').setAttribute('data-target', value);
+            }
+          });
         }
-    });
-    // End Page Impression
+      });
+      // end for paging
 
-    // Page Impression Organic
+      var cPI = document.getElementById("chartPageImpression");
+      var lineChartPageImpression = new Chart(cPI, {
+          type: 'line',
+          data: {
+            labels: captionDay,
+            datasets: [
+                {
+                  label: "Page Impression Day",
+                  data: eval(countDay),
+                  backgroundColor : "rgba(255,0,0,.5)"
+                },
+                {
+                  label: "Page Impression Week",
+                  data: eval(countWeek),
+                  backgroundColor : "rgba(0,255,0,.5)"
+                },
+                {
+                  label: "Page Impression 28 Days",
+                  data: eval(countMonth),
+                  backgroundColor : "rgba(0,0,255,.5)"
+                }
 
-    var captionDay = new Array();
-    json.pageImpressionOrganicDayDatas.map(function(item) {
-      captionDay.push(item.end_time.substring(0, 10));
-    });
-    var countDay = new Array();
-    json.pageImpressionOrganicDayDatas.map(function(item) {
-      countDay.push(parseInt(item.value));
-    });
-    var countWeek = new Array();
-    json.pageImpressionOrganicWeekDatas.map(function(item) {
-      countWeek.push(parseInt(item.value));
-    });
-    var countMonth = new Array();
-    json.pageImpressionOrganicMonthDatas.map(function(item) {
-      countMonth.push(parseInt(item.value));
-    });
 
-    // for paging
-    $.each(json, function (name, value) {
-      if (name == "pageImpressionOrganicPaging") {
-        $.each(value, function (name, value) {
-          if (name == "previous") {
-            document.getElementById('pagingImpressionOrganicPrev').setAttribute('data-target', value);
+              ]
           }
-          if (name == "next") {
-            document.getElementById('pagingImpressionOrganicNext').setAttribute('data-target', value);
-          }
-        });
-      }
-    });
-    // end for paging
+      });
+      // End Page Impression
 
-    var cPIO = document.getElementById("chartPageImpressionOrganic");
-    var lineChartPageImpressionOrganic = new Chart(cPIO, {
-        type: 'line',
-        data: {
-          labels: captionDay,
-          datasets: [
-              {
-                label: "Page Impression Organic Day",
-                data: eval(countDay),
-                backgroundColor : "rgba(255,0,0,.5)"
-              },
-              {
-                label: "Page Impression Organic Week",
-                data: eval(countWeek),
-                backgroundColor : "rgba(0,255,0,.5)"
-              },
-              {
-                label: "Page Impression Organic 28 Days",
-                data: eval(countMonth),
-                backgroundColor : "rgba(0,0,255,.5)"
-              }
+      // Page Impression Organic
 
+      var captionDay = new Array();
+      json.pageImpressionOrganicDayDatas.map(function(item) {
+        captionDay.push(item.end_time.substring(0, 10));
+      });
+      var countDay = new Array();
+      json.pageImpressionOrganicDayDatas.map(function(item) {
+        countDay.push(parseInt(item.value));
+      });
+      var countWeek = new Array();
+      json.pageImpressionOrganicWeekDatas.map(function(item) {
+        countWeek.push(parseInt(item.value));
+      });
+      var countMonth = new Array();
+      json.pageImpressionOrganicMonthDatas.map(function(item) {
+        countMonth.push(parseInt(item.value));
+      });
 
-            ]
+      // for paging
+      $.each(json, function (name, value) {
+        if (name == "pageImpressionOrganicPaging") {
+          $.each(value, function (name, value) {
+            if (name == "previous") {
+              document.getElementById('pagingImpressionOrganicPrev').setAttribute('data-target', value);
+            }
+            if (name == "next") {
+              document.getElementById('pagingImpressionOrganicNext').setAttribute('data-target', value);
+            }
+          });
         }
-    });
-    // End Page Impression Organic
+      });
+      // end for paging
 
-    // Page Page View
+      var cPIO = document.getElementById("chartPageImpressionOrganic");
+      var lineChartPageImpressionOrganic = new Chart(cPIO, {
+          type: 'line',
+          data: {
+            labels: captionDay,
+            datasets: [
+                {
+                  label: "Page Impression Organic Day",
+                  data: eval(countDay),
+                  backgroundColor : "rgba(255,0,0,.5)"
+                },
+                {
+                  label: "Page Impression Organic Week",
+                  data: eval(countWeek),
+                  backgroundColor : "rgba(0,255,0,.5)"
+                },
+                {
+                  label: "Page Impression Organic 28 Days",
+                  data: eval(countMonth),
+                  backgroundColor : "rgba(0,0,255,.5)"
+                }
 
-    var captionDay = new Array();
-    json.pagePageViewDayDatas.map(function(item) {
-      captionDay.push(item.end_time.substring(0, 10));
-    });
-    var countDay = new Array();
-    json.pagePageViewDayDatas.map(function(item) {
-      countDay.push(parseInt(item.value));
-    });
-    var countWeek = new Array();
-    json.pagePageViewWeekDatas.map(function(item) {
-      countWeek.push(parseInt(item.value));
-    });
-    var countMonth = new Array();
-    json.pagePageViewMonthDatas.map(function(item) {
-      countMonth.push(parseInt(item.value));
-    });
 
-    // for paging
-    $.each(json, function (name, value) {
-      if (name == "pagePageViewPaging") {
-        $.each(value, function (name, value) {
-          if (name == "previous") {
-            document.getElementById('pagingPageViewPrev').setAttribute('data-target', value);
+              ]
           }
-          if (name == "next") {
-            document.getElementById('pagingPageViewNext').setAttribute('data-target', value);
-          }
-        });
-      }
-    });
-    // end for paging
+      });
+      // End Page Impression Organic
 
-    var cPV = document.getElementById("chartPageView");
-    var lineChartPageView = new Chart(cPV, {
-        type: 'line',
-        data: {
-          labels: captionDay,
-          datasets: [
-              {
-                label: "Page View Day",
-                data: eval(countDay),
-                backgroundColor : "rgba(255,0,0,.5)"
-              },
-              {
-                label: "Page View Week",
-                data: eval(countWeek),
-                backgroundColor : "rgba(0,255,0,.5)"
-              },
-              {
-                label: "Page View 28 Days",
-                data: eval(countMonth),
-                backgroundColor : "rgba(0,0,255,.5)"
-              }
+      // Page Page View
 
+      var captionDay = new Array();
+      json.pagePageViewDayDatas.map(function(item) {
+        captionDay.push(item.end_time.substring(0, 10));
+      });
+      var countDay = new Array();
+      json.pagePageViewDayDatas.map(function(item) {
+        countDay.push(parseInt(item.value));
+      });
+      var countWeek = new Array();
+      json.pagePageViewWeekDatas.map(function(item) {
+        countWeek.push(parseInt(item.value));
+      });
+      var countMonth = new Array();
+      json.pagePageViewMonthDatas.map(function(item) {
+        countMonth.push(parseInt(item.value));
+      });
 
-            ]
+      // for paging
+      $.each(json, function (name, value) {
+        if (name == "pagePageViewPaging") {
+          $.each(value, function (name, value) {
+            if (name == "previous") {
+              document.getElementById('pagingPageViewPrev').setAttribute('data-target', value);
+            }
+            if (name == "next") {
+              document.getElementById('pagingPageViewNext').setAttribute('data-target', value);
+            }
+          });
         }
-    });
-    // End Page Page View
+      });
+      // end for paging
 
-    // Engaged User
+      var cPV = document.getElementById("chartPageView");
+      var lineChartPageView = new Chart(cPV, {
+          type: 'line',
+          data: {
+            labels: captionDay,
+            datasets: [
+                {
+                  label: "Page View Day",
+                  data: eval(countDay),
+                  backgroundColor : "rgba(255,0,0,.5)"
+                },
+                {
+                  label: "Page View Week",
+                  data: eval(countWeek),
+                  backgroundColor : "rgba(0,255,0,.5)"
+                },
+                {
+                  label: "Page View 28 Days",
+                  data: eval(countMonth),
+                  backgroundColor : "rgba(0,0,255,.5)"
+                }
 
-    var captionDay = new Array();
-    json.pageEngagedUserDayDatas.map(function(item) {
-      captionDay.push(item.end_time.substring(0, 10));
-    });
-    var countDay = new Array();
-    json.pageEngagedUserDayDatas.map(function(item) {
-      countDay.push(parseInt(item.value));
-    });
-    var countWeek = new Array();
-    json.pageEngagedUserWeekDatas.map(function(item) {
-      countWeek.push(parseInt(item.value));
-    });
-    var countMonth = new Array();
-    json.pageEngagedUserMonthDatas.map(function(item) {
-      countMonth.push(parseInt(item.value));
-    });
 
-    // for paging
-    $.each(json, function (name, value) {
-      if (name == "pageEngagedUserPaging") {
-        $.each(value, function (name, value) {
-          if (name == "previous") {
-            document.getElementById('pagingEngagedUserPrev').setAttribute('data-target', value);
+              ]
           }
-          if (name == "next") {
-            document.getElementById('pagingEngagedUserNext').setAttribute('data-target', value);
-          }
-        });
-      }
-    });
-    // end for paging
+      });
+      // End Page Page View
 
-    var cEU = document.getElementById("chartEngagedUser");
-    var lineChartEngagedUser = new Chart(cEU, {
-        type: 'line',
-        data: {
-          labels: captionDay,
-          datasets: [
-              {
-                label: "Page Engaged User Day",
-                data: eval(countDay),
-                backgroundColor : "rgba(255,0,0,.5)"
-              },
-              {
-                label: "Page Engaged User Week",
-                data: eval(countWeek),
-                backgroundColor : "rgba(0,255,0,.5)"
-              },
-              {
-                label: "Page Engaged User 28 Days",
-                data: eval(countMonth),
-                backgroundColor : "rgba(0,0,255,.5)"
-              }
+      // Engaged User
 
+      var captionDay = new Array();
+      json.pageEngagedUserDayDatas.map(function(item) {
+        captionDay.push(item.end_time.substring(0, 10));
+      });
+      var countDay = new Array();
+      json.pageEngagedUserDayDatas.map(function(item) {
+        countDay.push(parseInt(item.value));
+      });
+      var countWeek = new Array();
+      json.pageEngagedUserWeekDatas.map(function(item) {
+        countWeek.push(parseInt(item.value));
+      });
+      var countMonth = new Array();
+      json.pageEngagedUserMonthDatas.map(function(item) {
+        countMonth.push(parseInt(item.value));
+      });
 
-            ]
+      // for paging
+      $.each(json, function (name, value) {
+        if (name == "pageEngagedUserPaging") {
+          $.each(value, function (name, value) {
+            if (name == "previous") {
+              document.getElementById('pagingEngagedUserPrev').setAttribute('data-target', value);
+            }
+            if (name == "next") {
+              document.getElementById('pagingEngagedUserNext').setAttribute('data-target', value);
+            }
+          });
         }
-    });
-    // End Engaged User
+      });
+      // end for paging
 
-  });
+      var cEU = document.getElementById("chartEngagedUser");
+      var lineChartEngagedUser = new Chart(cEU, {
+          type: 'line',
+          data: {
+            labels: captionDay,
+            datasets: [
+                {
+                  label: "Page Engaged User Day",
+                  data: eval(countDay),
+                  backgroundColor : "rgba(255,0,0,.5)"
+                },
+                {
+                  label: "Page Engaged User Week",
+                  data: eval(countWeek),
+                  backgroundColor : "rgba(0,255,0,.5)"
+                },
+                {
+                  label: "Page Engaged User 28 Days",
+                  data: eval(countMonth),
+                  backgroundColor : "rgba(0,0,255,.5)"
+                }
+
+
+              ]
+          }
+      });
+      // End Engaged User
+
+    });
   // end for anal FB
 
   // for anal GA
@@ -263,181 +263,233 @@ window.onload = function () {
   $.getJSON(urlGetJsonGA, function (json) {
 
     // for MostVisitedPages
-    var captionVarMVP = new Array();
-    json.MostVisitedPages.map(function(item) {
-      captionVarMVP.push(item.pageTitle + ' : ' + item.url);
-    });
+      var captionVarMVP = new Array();
+      json.MostVisitedPages.map(function(item) {
+        captionVarMVP.push(item.pageTitle + ' : ' + item.url);
+      });
 
-    var captionValMVP = new Array();
-    json.MostVisitedPages.map(function(item) {
-      captionValMVP.push(item.pageViews);
-    });
+      var captionValMVP = new Array();
+      json.MostVisitedPages.map(function(item) {
+        captionValMVP.push(item.pageViews);
+      });
 
-    var cMVP = document.getElementById("chartMostVisitedPages");
-    var barChartMostVisitedPages = new Chart(cMVP, {
-        type: 'horizontalBar',
-        data: {
-          labels: captionVarMVP,
-          datasets: [
-              {
-                label: "Visited Pages",
-                data: eval(captionValMVP),
-                backgroundColor : "rgba(255,0,0,.5)"
-              }
-            ]
-        }
-    });
+      var cMVP = document.getElementById("chartMostVisitedPages");
+      var barChartMostVisitedPages = new Chart(cMVP, {
+          type: 'horizontalBar',
+          data: {
+            labels: captionVarMVP,
+            datasets: [
+                {
+                  label: "Visited Pages",
+                  data: eval(captionValMVP),
+                  backgroundColor : "rgba(255,0,0,.5)"
+                }
+              ]
+          }
+      });
     // end for MostVisitedPages
 
     // for TopBrowsers
-    var captionVarTB = new Array();
-    json.TopBrowsers.map(function(item) {
-      captionVarTB.push(item.browser);
-    });
+      var captionVarTB = new Array();
+      json.TopBrowsers.map(function(item) {
+        captionVarTB.push(item.browser);
+      });
 
-    var captionValTB = new Array();
-    json.TopBrowsers.map(function(item) {
-      captionValTB.push(item.sessions);
-    });
+      var captionValTB = new Array();
+      json.TopBrowsers.map(function(item) {
+        captionValTB.push(item.sessions);
+      });
 
-    var cTB = document.getElementById("chartTopBrowsers");
-    var barChartTopBrowsers = new Chart(cTB, {
-        type: 'horizontalBar',
-        data: {
-          labels: captionVarTB,
-          datasets: [
-              {
-                label: "Top Browsers",
-                data: eval(captionValTB),
-                backgroundColor : "rgba(255,0,0,.5)"
-              }
-            ]
-        }
-    });
-    // end for MostVisitedPages
+      var cTB = document.getElementById("chartTopBrowsers");
+      var barChartTopBrowsers = new Chart(cTB, {
+          type: 'horizontalBar',
+          data: {
+            labels: captionVarTB,
+            datasets: [
+                {
+                  label: "Top Browsers",
+                  data: eval(captionValTB),
+                  backgroundColor : "rgba(255,0,0,.5)"
+                }
+              ]
+          }
+      });
+    // end for TopBrowsers
+
+    // for chartSearchResult
+      var captionVarSR = new Array();
+      var captionVaLSR = new Array();
+      var intConfert = 1;
+
+      $.each(json.organicSearchesSOSMed, function () {
+        $.each(this, function (name, value) {
+          if (intConfert%2 != 0) {
+            if(value === "(not set)"){
+              value = "Organic Searches";
+            }
+            captionVarSR.push(value);
+          }
+          if (intConfert%2 == 0) {
+            captionVaLSR.push(value);
+          }
+          intConfert = intConfert + 1;
+        });
+      });
+      var intConfert = 1;
+      $.each(json.organicSearchesCamp, function () {
+        $.each(this, function (name, value) {
+          if(intConfert != 1 && intConfert != 2 ){
+            if (intConfert%2 != 0) {
+              captionVarSR.push(value);
+            }
+            if (intConfert%2 == 0) {
+              captionVaLSR.push(value);
+            }
+          }
+          intConfert = intConfert + 1;
+        });
+      });
+
+      var cSR = document.getElementById("chartSearchResult");
+      var barChartSearchResult = new Chart(cSR, {
+          type: 'horizontalBar',
+          data: {
+            labels: captionVarSR,
+            datasets: [
+                {
+                  label: "Search Result",
+                  data: eval(captionVaLSR),
+                  backgroundColor : "rgba(255,0,0,.5)"
+                }
+              ]
+          }
+      });
+    // end for chartSearchResult
 
     // for CityVisited
-    var captionVarCV = new Array();
-    var captionValCV = new Array();
-    var intConfert = 1;
-    $.each(json.CityVisited, function () {
-      $.each(this, function (name, value) {
-        if (intConfert%2 != 0) {
-          captionVarCV.push(value);
-        }
-        if (intConfert%2 == 0) {
-          if (value > 40) {
-            captionValCV.push(value);
+      var captionVarCV = new Array();
+      var captionValCV = new Array();
+      var intConfert = 1;
+      $.each(json.CityVisited, function () {
+        $.each(this, function (name, value) {
+          if (intConfert%2 != 0) {
+            captionVarCV.push(value);
           }
-          else if(value < 40){
-            captionVarCV.splice(-1,1);
+          if (intConfert%2 == 0) {
+            if (value > 40) {
+              captionValCV.push(value);
+            }
+            else if(value < 40){
+              captionVarCV.splice(-1,1);
+            }
           }
-        }
-        intConfert = intConfert + 1;
+          intConfert = intConfert + 1;
+        });
       });
-    });
 
-    var cCV = document.getElementById("chartCityVisited");
-    var barChartCityVisited = new Chart(cCV, {
-        type: 'bar',
-        data: {
-          labels: captionVarCV,
-          datasets: [
-              {
-                label: "City Visited",
-                data: eval(captionValCV),
-                backgroundColor : "rgba(255,0,0,.5)"
-              }
-            ]
-        }
-    });
+      var cCV = document.getElementById("chartCityVisited");
+      var barChartCityVisited = new Chart(cCV, {
+          type: 'bar',
+          data: {
+            labels: captionVarCV,
+            datasets: [
+                {
+                  label: "City Visited",
+                  data: eval(captionValCV),
+                  backgroundColor : "rgba(255,0,0,.5)"
+                }
+              ]
+          }
+      });
     // end for CityVisited
 
     // for userVisited
-    var captionVarUV = new Array();
-    var captionValUVF = new Array();
-    var captionValUVM = new Array();
-    var safeGender = "";
-    var intConfert = 1;
-    $.each(json.userVisited, function () {
-      $.each(this, function (name, value) {
-        if (intConfert%2 == 0) {
-          if ( $.inArray( value, captionVarUV ) > -1 ){
-            // this value alredy in array
+      var captionVarUV = new Array();
+      var captionValUVF = new Array();
+      var captionValUVM = new Array();
+      var safeGender = "";
+      var intConfert = 1;
+      $.each(json.userVisited, function () {
+        $.each(this, function (name, value) {
+          if (intConfert%2 == 0) {
+            if ( $.inArray( value, captionVarUV ) > -1 ){
+              // this value alredy in array
+            }
+            else{
+              captionVarUV.push(value);
+            }
           }
-          else{
-            captionVarUV.push(value);
+          if (intConfert%3 == 0) {
+            if (safeGender == "female") {
+              captionValUVF.push(value);
+            }
+            if (safeGender == "male") {
+              captionValUVM.push(value);
+            }
           }
-        }
-        if (intConfert%3 == 0) {
-          if (safeGender == "female") {
-            captionValUVF.push(value);
+          if (intConfert%2 != 0) {
+            safeGender = value;
           }
-          if (safeGender == "male") {
-            captionValUVM.push(value);
-          }
-        }
-        if (intConfert%2 != 0) {
-          safeGender = value;
-        }
-        intConfert = intConfert + 1;
+          intConfert = intConfert + 1;
+        });
+        intConfert = 1;
       });
-      intConfert = 1;
-    });
 
-    var cUV = document.getElementById("chartUserVisited");
-    var barChartUserVisited = new Chart(cUV, {
-        type: 'bar',
-        data: {
-          labels: captionVarUV,
-          datasets: [
-              {
-                label: "Female",
-                data: eval(captionValUVF),
-                backgroundColor : "rgba(255,0,0,.5)"
-              },
-              {
-                label: "Male",
-                data: eval(captionValUVM),
-                backgroundColor : "rgba(0,0,255,.5)"
-              }
-            ]
-        }
-    });
+      var cUV = document.getElementById("chartUserVisited");
+      var barChartUserVisited = new Chart(cUV, {
+          type: 'bar',
+          data: {
+            labels: captionVarUV,
+            datasets: [
+                {
+                  label: "Female",
+                  data: eval(captionValUVF),
+                  backgroundColor : "rgba(255,0,0,.5)"
+                },
+                {
+                  label: "Male",
+                  data: eval(captionValUVM),
+                  backgroundColor : "rgba(0,0,255,.5)"
+                }
+              ]
+          }
+      });
+
+      if(json.userVisited === null){
+        $('#wrapper_chartUserVisited').hide();
+      }
     // end for userVisited
 
     // for VisitorWebsite
-    var captionVarVW = new Array();
-    var captionValVW = new Array();
-    var intConfert = 1;
-    $.each(json.VisitorWebsite, function () {
-      $.each(this, function (name, value) {
-        if (intConfert%2 != 0) {
-          captionVarVW.push(parse(value));
-        }
-        if (intConfert%2 == 0) {
-          captionValVW.push(value);
-        }
-        intConfert = intConfert + 1;
+      var captionVarVW = new Array();
+      var captionValVW = new Array();
+      var intConfert = 1;
+      $.each(json.VisitorWebsite, function () {
+        $.each(this, function (name, value) {
+          if (intConfert%2 != 0) {
+            captionVarVW.push(parse(value));
+          }
+          if (intConfert%2 == 0) {
+            captionValVW.push(value);
+          }
+          intConfert = intConfert + 1;
+        });
       });
-    });
 
-    console.log(captionVarVW);
-        console.log(captionValVW);
-    var cVW = document.getElementById("chartVisitorWebsite");
-    var lineChartVisitorWebsite = new Chart(cVW, {
-        type: 'line',
-        data: {
-          labels: captionVarVW,
-          datasets: [
-              {
-                label: "Visitor Website",
-                data: eval(captionValVW),
-                backgroundColor : "rgba(255,0,0,.5)"
-              }
-            ]
-        }
-    });
+      var cVW = document.getElementById("chartVisitorWebsite");
+      var lineChartVisitorWebsite = new Chart(cVW, {
+          type: 'line',
+          data: {
+            labels: captionVarVW,
+            datasets: [
+                {
+                  label: "Visitor Website",
+                  data: eval(captionValVW),
+                  backgroundColor : "rgba(255,0,0,.5)"
+                }
+              ]
+          }
+      });
     // end for VisitorWebsite
 
     var echoBounceRate = "";

@@ -308,6 +308,9 @@ class DashboardController extends Controller
       $bounceRate         = Analytics::performQuery(Period::days(30), "ga:bounceRate")->rows;
       $avgSessionDuration = Analytics::performQuery(Period::days(30), "ga:avgSessionDuration")->rows;
 
+      $organicSearchesSOSMed = Analytics::performQuery(Period::days(30), "ga:organicSearches", array("dimensions" => "ga:socialNetwork"))->rows;
+      $organicSearchesCamp = Analytics::performQuery(Period::days(30), "ga:organicSearches", array("dimensions" => "ga:campaign"))->rows;
+
       return response()->json(
         compact(
           "MostVisitedPages",
@@ -316,7 +319,9 @@ class DashboardController extends Controller
           "userVisited",
           "VisitorWebsite",
           "bounceRate",
-          "avgSessionDuration"
+          "avgSessionDuration",
+          "organicSearchesSOSMed",
+          "organicSearchesCamp"
         )
       );
     }
@@ -333,7 +338,8 @@ class DashboardController extends Controller
         $avgSessionDuration = Analytics::performQuery(Period::create($startDate, $endDate), "ga:avgSessionDuration")->rows;
         $VisitorWebsite = Analytics::performQuery(Period::create($startDate, $endDate), "ga:users", array("dimensions" => "ga:date"))->rows;
         $userVisited = Analytics::performQuery(Period::create($startDate, $endDate), "ga:users", array("dimensions" => "ga:userGender,ga:userAgeBracket"))->rows;
-
+        $organicSearchesSOSMed = Analytics::performQuery(Period::create($startDate, $endDate), "ga:organicSearches", array("dimensions" => "ga:socialNetwork"))->rows;
+        $organicSearchesCamp = Analytics::performQuery(Period::create($startDate, $endDate), "ga:organicSearches", array("dimensions" => "ga:campaign"))->rows;
         return response()->json(
         compact(
           "MostVisitedPages",
@@ -342,7 +348,9 @@ class DashboardController extends Controller
           "userVisited",
           "VisitorWebsite",
           "bounceRate",
-          "avgSessionDuration"
+          "avgSessionDuration",
+          "organicSearchesSOSMed",
+          "organicSearchesCamp"
         )
       );
     }
